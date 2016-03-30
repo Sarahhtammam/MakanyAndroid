@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
   				// TODO Auto-generated method stub
   				AdminController adminController = new AdminController();
   				
-  				adminController.getInterests();
+  				//adminController.getInterests();
   				
   				
   				/*Intent signUpIntent = new Intent(getApplicationContext(),SignUpActivity.class);

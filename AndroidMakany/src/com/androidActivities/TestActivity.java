@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import com.controllers.AdminController;
 import com.controllers.Application;
+import com.controllers.AsyncResponse;
 import com.controllers.PostController;
 import com.controllers.UserController;
 
@@ -15,7 +16,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
 
-public class TestActivity extends Activity implements OnClickListener  {
+public class TestActivity extends Activity implements OnClickListener, AsyncResponse  {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +31,31 @@ public class TestActivity extends Activity implements OnClickListener  {
 	@Override
 	public void onClick(View v) 
 	{
-		PostController controllers = new PostController();
+		//PostController controllers = new PostController();
+
+		//controllers.getPost("art", "maadi", "");
 		
-		controllers.getPost("art", "maadi", "");
+		AdminController adminCon = new AdminController();
+		adminCon.getInterests(this);
 		
+		AdminController adminCon2 = new AdminController();
+		adminCon.getDistricts(this);
 		//Toast.makeText(getApplicationContext(),interests.get(0), Toast.LENGTH_LONG).show();
 				
+	}
+
+	@Override
+	public void processFinish(String output) {
+		// TODO Auto-generated method stub
+		Toast.makeText(getApplicationContext(),"hii " + output, Toast.LENGTH_LONG).show();
+		
+	}
+
+	@Override
+	public void processFinish2(String output) {
+		// TODO Auto-generated method stub
+		Toast.makeText(getApplicationContext(),"districts " + output, Toast.LENGTH_LONG).show();
+		
 	}
 
 

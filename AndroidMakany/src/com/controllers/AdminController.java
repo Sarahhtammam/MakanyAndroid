@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import org.apache.http.ConnectionClosedException;
+//import org.apache.http.ConnectionClosedException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,12 +24,13 @@ public class AdminController
 	protected ArrayList<String> interestsList = new ArrayList<String>();
 
 	protected static ArrayList<String> districtsList = new ArrayList<String>();
-
 	
 	
-	public void getInterests() 
+	
+	public void getInterests(AsyncResponse d) 
 	{
 		Connection connectionClass = new Connection();
+		connectionClass.delegate = d;
 		
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/ShowAllInterestsService",
 		"ShowAllInterestsService");
@@ -37,10 +38,10 @@ public class AdminController
 		return;
 	}
 	
-	public static void getDistricts() 
+	public static void getDistricts(AsyncResponse d) 
 	{
 		Connection connectionClass = new Connection();
-		
+		connectionClass.delegate = d;
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/ShowAllDistrictsService",
 		"ShowAllDistrictsService");
 		
@@ -52,7 +53,7 @@ public class AdminController
 		
 	static class Connection extends AsyncTask<String, String, String> 
 	{
-
+		public AsyncResponse delegate = null;
 		String serviceType;
 		
 		/*private static ArrayList<String> interestsList = new ArrayList<String>();
@@ -130,7 +131,7 @@ public class AdminController
 				if (serviceType.equals("ShowAllInterestsService")) 
 				{
 					System.out.println("result " + result);
-					
+					delegate.processFinish(result);
 					//String temp="";
 					//interestsList = result;
 					
@@ -176,7 +177,7 @@ public class AdminController
 				if (serviceType.equals("ShowAllDistrictsService")) 
 				{
 					System.out.println("result " + result);
-					
+					delegate.processFinish2(result);
 					
 					
 					JSONArray requestArray;
