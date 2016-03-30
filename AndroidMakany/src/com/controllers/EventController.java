@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.UserManager;
 import android.widget.Toast;
 
 import com.androidActivities.EventsMenuActivity;
@@ -39,6 +40,7 @@ public class EventController
 		
 		return;
 	}
+	
 	public void joinEvent(String eventID , String userMail) 
 	{
 		Connection connectionClass = new Connection();
@@ -47,6 +49,7 @@ public class EventController
 		
 		return;
 	}
+	
 	public void postOnEvent(String eventID, String postType, String content, String photo, 
 			String district, String onEventID, String userEmail, String categories) 
 	{
@@ -77,8 +80,23 @@ public class EventController
 		return;
 	}
 	
+	public void getEventByID(String eventID) 
+	{
+		Connection connectionClass = new Connection();
+		
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getEventByIDService", eventID, "getEventByIDService");
+		
+		return;
+	}
 	
-	
+	public void getGoingEvents(String userMail) 
+	{
+		Connection connectionClass = new Connection();
+		
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getGoingEventsService", userMail, "getGoingEventsService");
+		
+		return;
+	}
 		
 	static class Connection extends AsyncTask<String, String, String> 
 	{
@@ -124,8 +142,11 @@ public class EventController
 				urlParameters = "userMail="+ params[1] +"&eventID="+ params[2] +"&reiew="
 						+ params[3] +"&rating=" + params[4];
 			
-			if (serviceType.equals("getEventGoingService"))
+			if (serviceType.equals("getEventGoingService") || serviceType.equals("getEventByIDService"))
 				urlParameters = "eventID="+ params[1];
+			
+			if (serviceType.equals("getGoingEventsService"))
+				urlParameters = "userEmail="+ params[1];
 			
 			
 			
@@ -186,7 +207,7 @@ public class EventController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -214,7 +235,7 @@ public class EventController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -235,7 +256,7 @@ public class EventController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -254,7 +275,7 @@ public class EventController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -272,7 +293,7 @@ public class EventController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -281,6 +302,7 @@ public class EventController
 					//return;
 			
 				}
+				
 				if (serviceType.equals("getEventGoingService")) 
 				{
 					System.out.println("result " + result);
@@ -290,17 +312,58 @@ public class EventController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
+						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.LENGTH_LONG).show();
+						return;
+					}
+							
+					//return;
+				}
+
+				
+				if (serviceType.equals("getGoingEventsService")) 
+				{
+					System.out.println("result " + result);
+					
+					JSONObject object = new JSONObject(result);
+					
+					
+					if(object== null || !object.has("Status"))
+					{
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
 					}
 					
-		
+					//parse array
+							
 					//return;
-			
 				}
-
+				
+				if (serviceType.equals("getEventByIDService")) 
+				{
+					System.out.println("result " + result);
+					
+					JSONObject object = new JSONObject(result);
+					
+					
+					if(object== null || !object.has("Status"))
+					{
+						System.out.println("error" );
+						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.LENGTH_LONG).show();
+						return;
+					}
+					
+					//parse array
+							
+					//return;
+				}
+				
+				
+				
 				
 				//Do the same for other services
 				//else if(serviceType.equals(""))
