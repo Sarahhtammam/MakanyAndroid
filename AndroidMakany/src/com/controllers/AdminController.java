@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+
 //import org.apache.http.ConnectionClosedException;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,13 +22,8 @@ import android.widget.Toast;
 
 public class AdminController 
 {
-	protected ArrayList<String> interestsList = new ArrayList<String>();
-
-	protected static ArrayList<String> districtsList = new ArrayList<String>();
 	
-	
-	
-	public void getInterests(AsyncResponse d) 
+	public void getInterests(Prepare_SignUp d) 
 	{
 		Connection connectionClass = new Connection();
 		connectionClass.delegate = d;
@@ -35,10 +31,10 @@ public class AdminController
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/ShowAllInterestsService",
 		"ShowAllInterestsService");
 		
-		return;
+
 	}
 	
-	public static void getDistricts(AsyncResponse d) 
+	public void getDistricts(Prepare_SignUp d) 
 	{
 		Connection connectionClass = new Connection();
 		connectionClass.delegate = d;
@@ -53,7 +49,7 @@ public class AdminController
 		
 	static class Connection extends AsyncTask<String, String, String> 
 	{
-		public AsyncResponse delegate = null;
+		public Prepare_SignUp delegate = null;
 		String serviceType;
 		
 		/*private static ArrayList<String> interestsList = new ArrayList<String>();
@@ -131,7 +127,6 @@ public class AdminController
 				if (serviceType.equals("ShowAllInterestsService")) 
 				{
 					System.out.println("result " + result);
-					delegate.processFinish(result);
 					//String temp="";
 					//interestsList = result;
 					
@@ -158,7 +153,8 @@ public class AdminController
 						e.printStackTrace();
 					}
 
-
+					delegate.collectInterests(interestsList);
+					
 					//getDistricts();
 					//Intent signUpIntent = new Intent(Application.getAppContext(),SignUpActivity.class);
 					//signUpIntent.putExtra("interests", interestsList);
@@ -177,9 +173,9 @@ public class AdminController
 				if (serviceType.equals("ShowAllDistrictsService")) 
 				{
 					System.out.println("result " + result);
-					delegate.processFinish2(result);
+					//delegate.processFinish2(result);
 					
-					
+					ArrayList<String> districtsList = new ArrayList<String>();
 					JSONArray requestArray;
 					
 					try {
@@ -189,7 +185,7 @@ public class AdminController
 							{
 								JSONObject object=new JSONObject();
 								object = (JSONObject)requestArray.get(i);
-								String x = object.getString("districtName");
+								String x = object.getString("DistrictName");
 								districtsList.add(x);
 							}
 					
@@ -201,7 +197,7 @@ public class AdminController
 						e.printStackTrace();
 					}
 					
-				
+					delegate.collectDistricts(districtsList);
 				}
 				
 				

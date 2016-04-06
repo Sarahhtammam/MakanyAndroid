@@ -116,7 +116,8 @@ public final class R {
         public static final int edit_profile=0x7f090000;
         public static final int gain=0x7f090001;
         public static final int main=0x7f090002;
-        public static final int splash=0x7f090003;
+        public static final int main_activity_2=0x7f090003;
+        public static final int splash=0x7f090004;
     }
     public static final class string {
         public static final int action_settings=0x7f070002;
@@ -126,6 +127,7 @@ public final class R {
         public static final int title_activity_create_event=0x7f07000c;
         public static final int title_activity_edit_profile=0x7f070006;
         public static final int title_activity_events_menu=0x7f07000b;
+        public static final int title_activity_main_activity_2=0x7f07000d;
         public static final int title_activity_post=0x7f070004;
         public static final int title_activity_request_item=0x7f070007;
         public static final int title_activity_splash=0x7f070003;

@@ -2,12 +2,10 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +34,8 @@ public class SignUpActivity extends Activity implements OnClickListener {
 		EditText foursquareAccountEditText;
 		//checkbox interests
 		
-		Set<String> interestsSet = new HashSet<String>();
+		//Set<String> interestsSet = new HashSet<String>();
+		
 		ArrayList<CheckBox> checks = new ArrayList<CheckBox>() ;
 		String checkedInterests;
 
@@ -61,18 +60,16 @@ public class SignUpActivity extends Activity implements OnClickListener {
 			
 			
 			
-			ArrayList<String> Str_Array = null;
-			ArrayList<String> Str_Array2 = null;
+			ArrayList<String> Str_Array = new ArrayList<String>();
+			ArrayList<String> Str_Array2 = new ArrayList<String>();
 			
 			
 			Intent currentIntent = getIntent();
-			Str_Array = currentIntent.getStringArrayListExtra("interests");
-			Str_Array2 = currentIntent.getStringArrayListExtra("districts");
-
+			Str_Array = currentIntent.getStringArrayListExtra("interestsArrayList");
+			Str_Array2 = currentIntent.getStringArrayListExtra("districtsArrayList");
+		
 			
-			
-			Toast.makeText(getApplicationContext(),
-			"district 1 is: " + Str_Array2.get(0), Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(),"interesrt 1 isfskmskgmskvs: " + Str_Array.get(0), Toast.LENGTH_LONG).show();
 			
 			
 			//AdminController adminController = new AdminController();
@@ -82,10 +79,10 @@ public class SignUpActivity extends Activity implements OnClickListener {
 
 			//Toast.makeText(Application.getAppContext(), Integer.toString(Array_Count), Toast.LENGTH_LONG).show();
 					
-		LinearLayout my_layout = (LinearLayout)findViewById(R.id.interestLayout);
+			LinearLayout my_layout = (LinearLayout)findViewById(R.id.interestLayout);
 		
 
-//loop of generation of checkboxes
+			//loop of generation of checkboxes
 			for (int i = 0; i < Str_Array.size(); i++) 
 			{
 			    TableRow row =new TableRow(this);

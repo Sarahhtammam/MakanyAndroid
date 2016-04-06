@@ -267,13 +267,14 @@ public class UserController
 								interestsVector.add(interestsArray[i]);
 							}
 							
-							simpleUser = new SimpleUser(currentUser.getString("ID"),
+							{
+								simpleUser = new SimpleUser(currentUser.getString("ID"),
 									currentUser.getString("name"),currentUser.getString("email"),
 									currentUser.getString("password"),currentUser.getString("birthDate"),
 									currentUser.getString("district"),currentUser.getString("gender"),
 									currentUser.getString("twitter"),currentUser.getString("foursquare"),
 									Integer.parseInt(currentUser.getString("trust")), interestsVector);
-							
+							}	
 					} 
 					
 					
