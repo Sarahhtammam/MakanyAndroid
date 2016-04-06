@@ -69,7 +69,7 @@ public class SignUpActivity extends Activity implements OnClickListener {
 			Str_Array2 = currentIntent.getStringArrayListExtra("districtsArrayList");
 		
 			
-			Toast.makeText(getApplicationContext(),"interesrt 1 isfskmskgmskvs: " + Str_Array.get(0), Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(),"main : " + Str_Array.get(0), Toast.LENGTH_LONG).show();
 			
 			
 			//AdminController adminController = new AdminController();

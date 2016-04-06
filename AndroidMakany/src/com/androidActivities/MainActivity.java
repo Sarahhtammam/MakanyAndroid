@@ -24,7 +24,7 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 	Button signUpStore;
 	Button test; //to be removed
 	ArrayList<String> tempInterests;
-	//static ArrayList<String> tempDistricts = new ArrayList<String>();
+	ArrayList<String> tempDistricts = new ArrayList<String>();
 	
 	
 	
@@ -44,6 +44,10 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
           test.setOnClickListener(this);
           
           tempInterests = new ArrayList<String>();
+          AdminController adminController = new AdminController();
+			
+			adminController.getInterests(this);
+			adminController.getDistricts(this);
           
       	
     }
@@ -53,13 +57,14 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 		Toast.makeText(getApplicationContext(),"hii Interestssss      " + output.get(0), Toast.LENGTH_LONG).show();
 		//this.tempInterests.add("12345");// = new ArrayList<String>(output);
 		//signUpIntent.putStringArrayListExtra("interestsArrayList", output);
+		tempInterests = output;
 		
 		
 	}
 	@Override
 	public void collectDistricts(ArrayList<String> output) {
 		Toast.makeText(getApplicationContext(),"hii Districts      " + output.get(0), Toast.LENGTH_LONG).show();
-		//this.tempDistricts = new ArrayList<String>(output);
+		tempDistricts = output;
 		//signUpIntent.putStringArrayListExtra("districtsArrayList", output);
 		
 	}
@@ -81,16 +86,13 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 	    {
 				// TODO Auto-generated method stub
 				
-				AdminController adminController = new AdminController();
 				
-				adminController.getInterests(this);
-				//adminController.getDistricts(this);
 			    
 				//signUpIntent = new Intent(getApplicationContext(),SignUpActivity.class);
 			      
 				Intent signUpIntent = new Intent(getApplicationContext(),SignUpActivity.class);
-				//signUpIntent.putStringArrayListExtra("interestsArrayList", tempInterests);
-				//signUpIntent.putStringArrayListExtra("districtsArrayList", tempDistricts);
+				signUpIntent.putStringArrayListExtra("interestsArrayList", tempInterests);
+				signUpIntent.putStringArrayListExtra("districtsArrayList", tempDistricts);
 				
 				
 				startActivity(signUpIntent);
