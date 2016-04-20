@@ -6,7 +6,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
@@ -15,11 +18,13 @@ import android.os.UserManager;
 import android.widget.Toast;
 
 import com.androidActivities.EventsMenuActivity;
+import com.androidActivities.ShowEventsActivity;
 
 
 public class EventController 
 {
 	
+	static String userEmail;
 	
 	public void createEvent(String name, String category, String description, String latitude, String longitude, String ownerMail) 
 	{
@@ -89,11 +94,12 @@ public class EventController
 		return;
 	}
 	
-	public void getGoingEvents(String userMail) 
+	public void getGoingEvents(String userMail, String maxEventID) 
 	{
 		Connection connectionClass = new Connection();
 		
-		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getGoingEventsService", userMail, "getGoingEventsService");
+		userEmail = userMail;
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getGoingEventsService", userMail, "","getGoingEventsService");
 		
 		return;
 	}
@@ -146,7 +152,7 @@ public class EventController
 				urlParameters = "eventID="+ params[1];
 			
 			if (serviceType.equals("getGoingEventsService"))
-				urlParameters = "userEmail="+ params[1];
+				urlParameters = "userEmail="+ params[1] +"&maxEventID="+ params[2];
 			
 			
 			
@@ -326,20 +332,37 @@ public class EventController
 				{
 					System.out.println("result " + result);
 					
-					JSONObject object = new JSONObject(result);
+					ArrayList<String> events = new ArrayList<String>();
 					
+					JSONArray requestArray;
 					
-					if(object== null || !object.has("Status"))
+					try {
+							requestArray = new JSONArray(result);
+							for(int i=0;i<requestArray.length();i++)
+							
+							{
+								JSONObject object=new JSONObject();
+								object = (JSONObject)requestArray.get(i);
+								String x = object.getString("name");
+								events.add(x);
+								//temp+= x+ ",";
+							}
+					
+					}
+							
+					catch (JSONException e) 
 					{
-						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
-						return;
+						e.printStackTrace();
 					}
 					
-					//parse array
-							
-					//return;
+					Intent showEvents = new Intent(Application.getAppContext(),ShowEventsActivity.class);
+	  				showEvents.putExtra("email", userEmail);
+	  				showEvents.putExtra("events", events);
+	  				showEvents.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(showEvents);
+
+					
+					
 				}
 				
 				if (serviceType.equals("getEventByIDService")) 

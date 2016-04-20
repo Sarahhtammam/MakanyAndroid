@@ -50,14 +50,12 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 	@Override
     public void collectInterests(ArrayList<String> output) 
 	{
-		Toast.makeText(getApplicationContext(),"hii Interestssss      " + output.get(0), Toast.LENGTH_LONG).show();
 		tempInterests = output;
 	}
 	
 	@Override
 	public void collectDistricts(ArrayList<String> output) 
 	{
-		Toast.makeText(getApplicationContext(),"hii Districts      " + output.get(0), Toast.LENGTH_LONG).show();
 		tempDistricts = output;
 	}
 
@@ -106,7 +104,6 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 		
 		
 	}
-
 
 
 }

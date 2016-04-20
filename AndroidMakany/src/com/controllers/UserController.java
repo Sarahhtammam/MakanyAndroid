@@ -6,10 +6,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Vector;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,7 +16,6 @@ import com.androidActivities.HomeActivity;
 import com.androidActivities.MainActivity;
 
 import SimpleModels.SimpleUser;
-import android.R.string;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -29,8 +26,7 @@ public class UserController
 {
 
 	private static UserController userController = new UserController();
-	protected static SimpleUser simpleUser;
-	protected static String email;
+	static String emaill;
 	
 	public static UserController getInstance() 
 	{
@@ -45,13 +41,16 @@ public class UserController
 
 	public void login(String email, String password) 
 	{
-		new Connection().execute( "http://makanyapp2.appspot.com/rest/LoginService", email, password, "LoginService");
-		this.email=email;
+		Connection connectionClass = new Connection();
+		emaill =email;
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/LoginService", email, password, "LoginService");
 	}
 	
-	public static void getUser(String email) 
+	public void getUser(String email) 
 	{
-		new Connection().execute( "http://makanyapp2.appspot.com/rest/getUserService", email, "getUserService");
+		Connection connectionClass = new Connection();
+		
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getUserService", email, "getUserService");
 	}
 	
 	public void Signup(String name, String email, String password, String birthDate, 
@@ -66,7 +65,6 @@ public class UserController
 		foursquare, interests, "signUpService");
 	}
 	
-	//new by magie
 	public void EditProfile(String email, String name, String password, String birthDate, 
 			String district, String gender, String twitter, String foursquare, String interests) 
 	{
@@ -75,12 +73,13 @@ public class UserController
 		interests, "editProfileService");
 	}
 
+	
 	//"http://localhost:8888/rest/LoginService",
 	
 	
 	static class Connection extends AsyncTask<String, String, String> 
 	{
-
+		
 		String serviceType;
 
 		@Override
@@ -94,7 +93,7 @@ public class UserController
 				urlParameters = "email=" + params[1] + "&password=" + params[2];
 			
 			
-			if (serviceType.equals("getUserService"))
+			else if (serviceType.equals("getUserService"))
 				urlParameters = "email=" + params[1];
 			
 			
@@ -173,7 +172,7 @@ public class UserController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error");
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -197,45 +196,16 @@ public class UserController
 					
 					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					
-					
-					
-					
-					
-					//String username = User
-					//homeIntent.putExtra("id", user.getUserAccountId()+"");
-					//homeIntent.putExtra("name", user.getUserFullName());
-					
-					
-					//String email = simpleUser.get_email();
-					
-					////////////////////////////////////
-					//getUser(email);
-					///////////////////////////////////
-					
-					homeIntent.putExtra("email", email);
-					//homeIntent.putExtra("username", simpleUser.name);
-					
-					//System.out.println(simpleUser.get_email());
-					//System.out.println(simpleUser.name);
-					
-					
+					homeIntent.putExtra("email", emaill);
 					Application.getAppContext().startActivity(homeIntent);
-					
-					
+				
 				}
 			
 				
 				if (serviceType.equals("getUserService")) 
 				{
 					System.out.println("result " + result);
-					
-					/*JSONParser parser = new JSONParser();
-					Object obj = parser.parse(result);
-					JSONObject object = (JSONObject) obj;*/
-					
 					JSONObject object = new JSONObject(result);
-					
 					
 					if(object== null || !object.has("Status"))
 					{
@@ -253,6 +223,7 @@ public class UserController
 					}
 					
 					JSONObject currentUser;
+					SimpleUser simpleUser = null;
 					
 					try {
 							currentUser = object;
@@ -277,13 +248,11 @@ public class UserController
 							}	
 					} 
 					
-					
 					catch (JSONException e) 
 					{
 						e.printStackTrace();
 					}
 					
-				
 					
 				}
 			

@@ -1,5 +1,7 @@
 package com.androidActivities;
 
+import com.controllers.EventController;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +15,7 @@ public class EventsMenuActivity extends Activity
 {
 	String currentEmail ="";
 
-	Button createEventButton; //to be removed
+	Button createEventButton, showMyEvents; //to be removed
 	
 	
 	
@@ -23,6 +25,8 @@ public class EventsMenuActivity extends Activity
 		  super.onCreate(savedInstanceState);
 	      setContentView(R.layout.activity_events_menu);
 	      createEventButton = (Button) findViewById(R.id.createEventButton);
+  	      showMyEvents = (Button) findViewById(R.id.getMyEventsButton);
+	      
 	      Intent currentIntent = getIntent();
 		  currentEmail = currentIntent.getStringExtra("email");
 		
@@ -37,6 +41,18 @@ public class EventsMenuActivity extends Activity
   				Intent createEventIntent = new Intent(getApplicationContext(),CreateEventActivity.class);
   				createEventIntent.putExtra("email", currentEmail);
   				startActivity(createEventIntent);
+  				
+  			}
+  		});
+          
+          showMyEvents.setOnClickListener(new OnClickListener() 
+          {
+  			
+  			@Override
+  			public void onClick(View arg0) 
+  			{
+  				EventController eventController = new EventController();
+  				eventController.getGoingEvents(currentEmail, "");
   				
   			}
   		});

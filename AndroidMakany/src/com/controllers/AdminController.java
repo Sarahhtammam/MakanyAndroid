@@ -8,17 +8,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-
-//import org.apache.http.ConnectionClosedException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.androidActivities.SignUpActivity;
-
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 public class AdminController 
 {
