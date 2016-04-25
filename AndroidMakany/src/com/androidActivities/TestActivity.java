@@ -1,18 +1,14 @@
 package com.androidActivities;
 
-import java.util.ArrayList;
-
-import com.controllers.AdminController;
-import com.controllers.Prepare_SignUp;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class TestActivity extends Activity implements OnClickListener, Prepare_SignUp  {
+import com.controllers.EventController;
+
+public class TestActivity extends Activity implements OnClickListener  {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,44 +23,11 @@ public class TestActivity extends Activity implements OnClickListener, Prepare_S
 	@Override
 	public void onClick(View v) 
 	{
-		//PostController controllers = new PostController();
-
-		//controllers.getPost("art", "maadi", "");
 		
-		AdminController adminController = new AdminController();
-		adminController.getInterests(this);
-		adminController.getDistricts(this);
-		
-		//Toast.makeText(getApplicationContext(),interests.get(0), Toast.LENGTH_LONG).show();
-				
+		EventController eventController = new EventController();
+			eventController.getGoingEvents("magiedaa@hotmail.com", "");
+			
 	}
 
 	
-	@Override
-	public void collectInterests(ArrayList<String> output) {
-		// TODO Auto-generated method stub
-		Toast.makeText(getApplicationContext(),"hii Interestssss      " + output.get(0), Toast.LENGTH_LONG).show();
-		
-	}
-	@Override
-	public void collectDistricts(ArrayList<String> output) {
-		// TODO Auto-generated method stub
-		Toast.makeText(getApplicationContext(),"hii Districts      " + output.get(0), Toast.LENGTH_LONG).show();
-	}	
-	
-	/*@Override
-	public void processFinish(String output) {
-		// TODO Auto-generated method stub
-		Toast.makeText(getApplicationContext(),"hii " + output, Toast.LENGTH_LONG).show();
-		
-	}
-
-	@Override
-	public void processFinish2(String output) {
-		// TODO Auto-generated method stub
-		Toast.makeText(getApplicationContext(),"districts " + output, Toast.LENGTH_LONG).show();
-		
-	}*/
-
-
 }

@@ -7,11 +7,13 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import SimpleModels.SimpleEvent;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.UserManager;
@@ -332,7 +334,8 @@ public class EventController
 				{
 					System.out.println("result " + result);
 					
-					ArrayList<String> events = new ArrayList<String>();
+					ArrayList<String> eventsNames = new ArrayList<String>();
+					ArrayList<SimpleEvent> events = new ArrayList<SimpleEvent>();
 					
 					JSONArray requestArray;
 					
@@ -343,21 +346,29 @@ public class EventController
 							{
 								JSONObject object=new JSONObject();
 								object = (JSONObject)requestArray.get(i);
+								
+								SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
+										object.getString("category"), object.getString("description"), 
+										Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
+										object.getString("ownerMail"), object.getString("goingMails"), object.getString("postIDs"));
 								String x = object.getString("name");
-								events.add(x);
+								eventsNames.add(x);
+								events.add(simpleEvent);
 								//temp+= x+ ",";
 							}
 					
 					}
-							
+					
+					
 					catch (JSONException e) 
 					{
 						e.printStackTrace();
 					}
 					
 					Intent showEvents = new Intent(Application.getAppContext(),ShowEventsActivity.class);
-	  				showEvents.putExtra("email", userEmail);
-	  				showEvents.putExtra("events", events);
+	  				showEvents.putExtra("eventsNames", eventsNames);
+	  				Application.setEvents(events);
+	  				
 	  				showEvents.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(showEvents);
 
@@ -372,17 +383,29 @@ public class EventController
 					JSONObject object = new JSONObject(result);
 					
 					
-					if(object== null || !object.has("Status"))
+					try
 					{
-						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
-						return;
-					}
+						
+						SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
+								object.getString("category"), object.getString("description"), 
+								Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
+								object.getString("ownerMail"), object.getString("goingMails"), object.getString("postIDs"));
+						
+						Application.setCurrentEvent(simpleEvent);
 					
-					//parse array
-							
-					//return;
+					}
+			
+					
+			
+			catch (JSONException e) 
+			{
+				System.out.println("error" );
+				Toast.makeText(Application.getAppContext(), "Error occured",
+				Toast.LENGTH_LONG).show();
+		
+			}
+			
+					return;
 				}
 				
 				

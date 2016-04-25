@@ -194,6 +194,9 @@ public class UserController
 					
 					//Logged in successfully 
 					
+					//String username = object.getString("username");
+					Application.setUserName(emaill);
+					
 					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					homeIntent.putExtra("email", emaill);

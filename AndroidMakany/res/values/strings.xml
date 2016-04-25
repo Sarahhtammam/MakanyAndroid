@@ -22,5 +22,6 @@
     <string name="title_activity_create_event">CreateEventActivity</string>
     <string name="title_activity_main_activity_2">MainActivity_2</string>
     <string name="title_activity_show_events">ShowEventsActivity</string>
+    <string name="title_activity_single_event">SingleEventActivity</string>
 
 </resources>

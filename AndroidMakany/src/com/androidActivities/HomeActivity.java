@@ -27,10 +27,12 @@ public class HomeActivity extends Activity
 		Intent currentIntent = getIntent();
 		currentEmail = currentIntent.getStringExtra("email");
 		//String currentUserName = currentIntent.getStringExtra("username");
+		String userName = Application.getUserName();
 		
 		Toast.makeText(getApplicationContext(),
-		"Welocome User!\nYour Email is: " + currentEmail + "\nand your username is: " , Toast.LENGTH_LONG).show();
+		"Welocome User!\nYour Email is: " + currentEmail + "\nand your username is: " + userName , Toast.LENGTH_LONG).show();
 		
+		System.out.println("USERNAME - " + userName);
 		
 	
 

@@ -81,6 +81,10 @@
             android:name=".ShowEventsActivity"
             android:label="@string/title_activity_show_events" >
         </activity>
+        <activity
+            android:name=".SingleEventActivity"
+            android:label="@string/title_activity_single_event" >
+        </activity>
     </application>
 
 </manifest>

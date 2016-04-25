@@ -13,7 +13,7 @@ public class SimpleEvent
 	
 	public SimpleEvent(String id, String name, String category, String description,
 			double latitude, double longitude, String ownerMail,
-			Vector<String> goingMails, Vector<String> postIDs)
+			String goingMails, String postIDs)
 	{
 		this.id=id;
 		this.name=name;
@@ -22,9 +22,28 @@ public class SimpleEvent
 		this.latitude=latitude;
 		this.longitude=longitude;
 		this.ownerMail=ownerMail;
-		this.goingMails=goingMails;
-		this.postIDs=postIDs;
+		
+		
+		//this.goingMails=goingMails;
+		//this.postIDs=postIDs;
 	}
+	
+	public String getName ()
+	{
+		return name;
+	}
+
+	public String getID() {
+		// TODO Auto-generated method stub
+		return this.id;
+	}
+
+	public String getCategory() {
+		// TODO Auto-generated method stub
+		return this.category;
+	}
+
+	
 	
 
 }
