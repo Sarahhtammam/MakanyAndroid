@@ -44,24 +44,17 @@ public class ShowEventsActivity extends Activity {
 			final SimpleEvent temp = events.get(i);
 			
 			TextView name = new TextView(this);
-	        name.setText("Event Name: ");
+	        name.setText("Event Name: " + temp.getName() );
 	        my_layout.addView(name); 
-	         
-			TextView tv = new TextView(this);
-	        tv.setText(temp.getName());
-	        my_layout.addView(tv); 
+
 	        
 	        TextView category = new TextView(this);
-	        category.setText("Event Category: ");
+	        category.setText("Event Category: " + temp.getCategory() );
 	        my_layout.addView(category); 
 	       
-	        TextView tv2 = new TextView(this);
-	        tv.setText(temp.getCategory());
-	        my_layout.addView(tv2); 
-	        
-	        
+
 	        Button b = new Button(this);
-	        b.setText("Attend this event");
+	        b.setText("View event details");
 	        b.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 	        b.setId(i+1);
 	        b.setTag(temp.getID());
@@ -73,7 +66,7 @@ public class ShowEventsActivity extends Activity {
 	  				selectedEvent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	  				EventController eventController = new EventController();
 	  				eventController.getEventByID(temp.getID());
-	  				
+	  				Application.setCurrentEvent(temp);
 	  				Application.getAppContext().startActivity(selectedEvent);
 
 	            }

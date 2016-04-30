@@ -50,8 +50,8 @@
             android:label="@string/title_activity_edit_profile" >
         </activity>
         <activity
-            android:name=".RequestItem"
-            android:label="@string/title_activity_request_item" >
+            android:name=".CreateItemActivity"
+            android:label="@string/title_activity_create_item" >
         </activity>
         <activity
             android:name=".StoreSignUpActivity"
@@ -84,6 +84,11 @@
         <activity
             android:name=".SingleEventActivity"
             android:label="@string/title_activity_single_event" >
+        </activity>
+        
+        <activity
+            android:name=".ItemsMenuActivity"
+            android:label="@string/title_activity_item_menu" >
         </activity>
     </application>
 

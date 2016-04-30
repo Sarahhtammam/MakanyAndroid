@@ -14,7 +14,7 @@
     </string-array>
 
     <string name="title_activity_edit_profile">EditProfileActivity</string>
-    <string name="title_activity_request_item">Request Item</string>
+    <string name="title_activity_create_item">Create Item</string>
     <string name="title_activity_store_sign_up">StoreSignUpActivity</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_view_post">ViewPostActivity</string>
@@ -23,5 +23,6 @@
     <string name="title_activity_main_activity_2">MainActivity_2</string>
     <string name="title_activity_show_events">ShowEventsActivity</string>
     <string name="title_activity_single_event">SingleEventActivity</string>
+    <string name="title_activity_item_menu">ItemMenuActivity</string>
 
 </resources>

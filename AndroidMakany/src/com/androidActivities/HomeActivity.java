@@ -23,6 +23,7 @@ public class HomeActivity extends Activity
 		
 		Button addPost = (Button) findViewById(R.id.addPostButton);
 		Button events =  (Button) findViewById(R.id.eventsButton);
+		Button items =  (Button) findViewById(R.id.itemsButton);
 		
 		Intent currentIntent = getIntent();
 		currentEmail = currentIntent.getStringExtra("email");
@@ -65,6 +66,19 @@ public class HomeActivity extends Activity
 			
 		}
 		});
+	 
+	 
+	 items.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent itemIntent = new Intent(getApplicationContext(),ItemsMenuActivity.class);
+			itemIntent.putExtra("email", currentEmail);
+			startActivity(itemIntent);
+			
+		}
+	});
 	}
 
 }
