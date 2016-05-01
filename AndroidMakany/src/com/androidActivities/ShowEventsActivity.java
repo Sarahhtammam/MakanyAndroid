@@ -1,10 +1,9 @@
 package com.androidActivities;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import SimpleModels.SimpleEvent;
+
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +13,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.controllers.Application;
 import com.controllers.EventController;
@@ -28,7 +26,6 @@ public class ShowEventsActivity extends Activity {
 		setContentView(R.layout.activity_show_events);
 		
 		ArrayList<SimpleEvent> events = new ArrayList<SimpleEvent>(); 
-		Map<Integer, String> eventsIDs = new HashMap<Integer, String>();
 		        
 		
 		events = Application.getEvents();
@@ -38,7 +35,7 @@ public class ShowEventsActivity extends Activity {
 		LinearLayout my_layout = (LinearLayout)findViewById(R.id.userEventsLayout);
 		
 		
-		//loop of generation of check boxes
+		//loop of generation of events 
 		for (int i = 0; i < events.size(); i++) 
 		{
 			final SimpleEvent temp = events.get(i);
@@ -73,10 +70,6 @@ public class ShowEventsActivity extends Activity {
 	        });
 	        my_layout.addView(b);
 	        
-	        eventsIDs.put(i, temp.getID());
-		
-		
-	    
 		
 		
 		

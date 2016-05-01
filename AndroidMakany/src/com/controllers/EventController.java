@@ -270,7 +270,8 @@ public class EventController
 						return;
 					}
 					
-					
+					Toast.makeText(Application.getAppContext(), "OK, Joined",Toast.LENGTH_LONG).show();
+							
 					//return;
 			
 				}

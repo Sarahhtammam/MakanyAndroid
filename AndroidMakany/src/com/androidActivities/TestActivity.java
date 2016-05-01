@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.controllers.Application;
 import com.controllers.EventController;
 
 public class TestActivity extends Activity implements OnClickListener  {
@@ -23,11 +24,9 @@ public class TestActivity extends Activity implements OnClickListener  {
 	@Override
 	public void onClick(View v) 
 	{
-		
+		Application.setUserEmail("magieda@hotmail.com");
 		EventController eventController = new EventController();
 			eventController.getGoingEvents("magiedaa@hotmail.com", "");
-			
 	}
-
 	
 }

@@ -13,7 +13,7 @@ public class Application extends android.app.Application {
 	private static Context context;
 	private static UserController userController;
 	private static SimpleUser currentUser;
-	private static String userName;
+	private static String userEmail;
 	private static SimpleEvent currentEvent;
 	
 	private static ArrayList<SimpleEvent> events;
@@ -44,12 +44,13 @@ public class Application extends android.app.Application {
 		Application.currentUser = currentUser;
 	}
 
-	public static String getUserName() {
-		return userName;
+	public static String getUserEmail() {
+		return userEmail;
 	}
 
-	public static void setUserName(String userName) {
-		Application.userName = userName;
+	public static void setUserEmail(String userE) 
+	{
+		userEmail = userE;
 	}
 
 	public static ArrayList<SimpleEvent> getEvents() {
@@ -82,6 +83,11 @@ public class Application extends android.app.Application {
 
 	public static void setItems(ArrayList<SimpleItem> items) {
 		Application.items = items;
+	}
+
+	public static String getCurrentEmail() {
+		// TODO Auto-generated method stub
+		return userEmail;
 	}
     
 }

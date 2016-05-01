@@ -43,7 +43,15 @@ public class SimpleEvent
 		return this.category;
 	}
 
-	
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return this.description;
+	}
+
+	public String getOwner() {
+		// TODO Auto-generated method stub
+		return this.ownerMail;
+	}
 	
 
 }

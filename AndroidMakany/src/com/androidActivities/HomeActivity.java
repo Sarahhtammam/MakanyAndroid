@@ -25,17 +25,11 @@ public class HomeActivity extends Activity
 		Button events =  (Button) findViewById(R.id.eventsButton);
 		Button items =  (Button) findViewById(R.id.itemsButton);
 		
-		Intent currentIntent = getIntent();
-		currentEmail = currentIntent.getStringExtra("email");
-		//String currentUserName = currentIntent.getStringExtra("username");
-		String userName = Application.getUserName();
+		currentEmail = Application.getUserEmail();
 		
 		Toast.makeText(getApplicationContext(),
-		"Welocome User!\nYour Email is: " + currentEmail + "\nand your username is: " + userName , Toast.LENGTH_LONG).show();
+		"Welocome User!\nYour Email is: " + currentEmail , Toast.LENGTH_LONG).show();
 		
-		System.out.println("USERNAME - " + userName);
-		
-	
 
 	 events.setOnClickListener(new OnClickListener() 
      {
