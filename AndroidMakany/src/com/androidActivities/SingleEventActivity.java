@@ -1,21 +1,21 @@
 package com.androidActivities;
 
-import com.controllers.Application;
-import com.controllers.EventController;
-
 import SimpleModels.SimpleEvent;
 import android.app.Activity;
-import android.app.ActionBar.LayoutParams;
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.controllers.Application;
+import com.controllers.EventController;
+import com.controllers.PostController;
 
 public class SingleEventActivity extends Activity implements OnClickListener{
 
@@ -60,41 +60,21 @@ public class SingleEventActivity extends Activity implements OnClickListener{
         my_layout.addView(b);
 */
 
-        Button b1= (Button) findViewById(R.id.reviewEvent);
-		Button b22 = (Button) findViewById(R.id.goBack);
+        Button reviewEvent = (Button) findViewById(R.id.reviewEvent);
+		Button cancel = (Button) findViewById(R.id.goBack);
+    	Button atendEvent = (Button) findViewById(R.id.AttendEvent);
+        Button disAttendEvent = (Button) findViewById(R.id.DisAttendEvent);
+        Button addPost = (Button) findViewById(R.id.postOnEvent);
+    	
+        reviewEvent.setOnClickListener(this);
+		cancel.setOnClickListener(this);
+		atendEvent.setOnClickListener(this);
+		disAttendEvent.setOnClickListener(this);
+		addPost.setOnClickListener(this);
 		
-		b1.setOnClickListener(this);
-		b22.setOnClickListener(this);
-        
-		
-        /*        b.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) 
-            {
-            	Toast.makeText(Application.getAppContext(), currentEvent.getID() +  Application.getCurrentEmail(), Toast.LENGTH_LONG).show();
-	         	EventController eventController = new EventController();
-  				eventController.joinEvent(currentEvent.getID() ,  Application.getCurrentEmail());
-  				//Intent homeActivity = new Intent(getApplicationContext(),HomeActivity.class);
-  				//Application.getAppContext().startActivity(homeActivity);
-  				
-            }
-        });
-        
-        
+		//     	EventController eventController = new EventController();
+		//  	eventController.joinEvent(currentEvent.getID() ,  Application.getCurrentEmail());
 
-       Button b2 = new Button(this);
-        b2.setText("Cancel");
-        b.setId(102);
-        b.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        my_layout.addView(b2);
-        b.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) 
-            {
-            	Intent eventsIntent = new Intent(getApplicationContext(),EventsMenuActivity.class);
-				startActivity(eventsIntent);
-				
-            }
-        });
-        */
 
 
 	}
@@ -107,18 +87,117 @@ public class SingleEventActivity extends Activity implements OnClickListener{
 
 		    case R.id.reviewEvent:
 		    {
-		    	Toast.makeText(Application.getAppContext(), currentEvent.getID() +  Application.getCurrentEmail(), Toast.LENGTH_LONG).show();
-	         	//EventController eventController = new EventController();
+		    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+		    	alert.setTitle("Event Review");
+		    	alert.setMessage("write your review");
+
+		    	
+		    	LinearLayout layout = new LinearLayout(this);
+		    	layout.setOrientation(LinearLayout.VERTICAL);
+
+		    	final EditText userEventReview = new EditText(this);
+		    	userEventReview.setHint("review");
+		    	layout.addView(userEventReview);
+
+		    	final EditText userEventRating = new EditText(this);
+		    	userEventRating.setHint("rating ( 1- 10 ) ");
+		    	layout.addView(userEventRating);
+
+		    	
+		    	alert.setView(layout);
+		    	//alert.setView(userEventRating);
+
+		    	alert.setPositiveButton("Add Review", new DialogInterface.OnClickListener() {
+			    	public void onClick(DialogInterface dialog, int whichButton) 
+			    	{
+			    		String reviewText = userEventReview.getText().toString() ;
+			    		String ratingText = userEventRating.getText().toString() ;
+			    		
+			    		EventController eventController = new EventController();
+			    		eventController.reviewEvent(Application.getUserEmail(),currentEvent.getID() , reviewText, ratingText);
+			    	}
+		    	});
+
+		    	alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		    	  public void onClick(DialogInterface dialog, int whichButton) 
+		    	  {
+		    			Toast.makeText(Application.getAppContext(),"Your review is cancelled", Toast.LENGTH_LONG).show();
+				   }
+		    	});
+
+		    	alert.show();
+		    	
+		    	
+		    	//EventController eventController = new EventController();
   				//eventController.joinEvent(currentEvent.getID() ,  Application.getCurrentEmail());
   				break;
 			}
+		    
+		    
+		    
+		    case R.id.postOnEvent:
+		    {
+		    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+		    	alert.setTitle("Add Posr");
+		    	alert.setMessage("write your post");
+
+		    	
+		    	LinearLayout layout = new LinearLayout(this);
+		    	layout.setOrientation(LinearLayout.VERTICAL);
+
+		    	final EditText postText = new EditText(this);
+		    	postText.setHint("post");
+		    	layout.addView(postText);
+		    	alert.setView(layout);
+
+		    	alert.setPositiveButton("Add Post", new DialogInterface.OnClickListener() {
+			    	public void onClick(DialogInterface dialog, int whichButton) 
+			    	{
+			    		String postTextt = postText.getText().toString() ;
+			    		PostController postController = new PostController();
+			 			postController.addPost("event", postTextt, "no-pic", 
+			 			"maadi", currentEvent.getID(), Application.getCurrentEmail(), "");
+			    	}
+		    	});
+
+		    	alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		    	  public void onClick(DialogInterface dialog, int whichButton) 
+		    	  {
+		    			Toast.makeText(Application.getAppContext(),"Your post is cancelled", Toast.LENGTH_LONG).show();
+				   }
+		    	});
+
+		    	alert.show();
+		    	
+		    	
+		    	break;
+			}
+	
+		    
+		    
 	
 		    case R.id.goBack:
 		    {
 		    	Toast.makeText(Application.getAppContext(),"GO BACK", Toast.LENGTH_LONG).show();
 	         	break;
 			}
+		    
+		    case R.id.AttendEvent:
+		    {
+		    	Toast.makeText(Application.getAppContext(),"ATTEND BUTTON", Toast.LENGTH_LONG).show();
+	         	break;
+			}
+		    
+		    case R.id.DisAttendEvent:
+		    {
+		    	Toast.makeText(Application.getAppContext(),"DisATTEND BUTTON", Toast.LENGTH_LONG).show();
+	         	break;
+			}
 	
+		   	   
+			
 		    default:
 		    {    
 		    	break;

@@ -21,11 +21,11 @@ import com.androidActivities.HomeActivity;
 
 public class PostController 
 {
-	public void addPost(String postType, String content, String photo, String district, 
+	public void addPost(String postType, String content, String photo, String district, String onEventID,
 						String userEmail, String categories ) 
 	{
 		new Connection().execute( "http://makanyapp2.appspot.com/rest/addPostService",
-				postType, content, photo, district, userEmail, categories, "addPostService");
+				postType, content, photo, district, onEventID, userEmail, categories, "addPostService");
 	}
 	
 	public void deletePost(String postID, String userEmail) 
@@ -51,10 +51,10 @@ public class PostController
 		postID, userEmail, "disapprovePostService");
 	}
 	
-	public void getPost(String category, String district, String onEventID ) 
+	public void getPost(String userEmail, String category, String district, String onEventID, String postID) 
 	{
 		new Connection().execute( "http://makanyapp2.appspot.com/rest/getFilteredPostsService",
-		category, district, "", "getFilteredPostsService");
+				userEmail, category, district, onEventID, postID, "getFilteredPostsService");
 	}
 
 	
@@ -73,8 +73,8 @@ public class PostController
 			String urlParameters="";
 			if (serviceType.equals("addPostService"))
 				urlParameters = "postType="+ params[1] +"&content="+ params[2] +"&photo="
-						+ params[3] +"&district=" + params[4] +"&userEmail=" 
-						+ params[5] +"&categories="+ params[6];
+						+ params[3] +"&district=" + params[4] +"&onEventID" + params[5] + "&userEmail=" 
+						+ params[6] +"&categories="+ params[7];
 			
 			else if (serviceType.equals("deletePostService") 
 					|| serviceType.equals("addCommentService")
@@ -83,8 +83,8 @@ public class PostController
 				urlParameters = "postID="+ params[1] +"&userEmail="+ params[2];
 			
 			if (serviceType.equals("getFilteredPostsService"))
-				urlParameters = "category="+ params[1] +"&district="+ params[2] +"&onEventID="
-						+ params[3];
+				urlParameters = "userEmail=" + params[1] + "&category="+ params[2] +"&district="+ params[3] +"&onEventID="
+						+ params[4] + "&postID=" + params[5];
 			
 			
 			HttpURLConnection connection;
@@ -146,7 +146,7 @@ public class PostController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -162,9 +162,6 @@ public class PostController
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "SUCCESS",
 					Toast.LENGTH_LONG).show();
-					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
-					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(homeIntent);
 					
 				}
 			

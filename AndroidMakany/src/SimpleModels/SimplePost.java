@@ -8,8 +8,8 @@ public class SimplePost
 		private String postType, content, photo, userEmail, district;
 		private Vector<String> categories;
 		private Vector<String> approvals,disapprovals;
-		//private Vector<Comment> comments;
-		//private Vector<Report> reports;
+		private Vector<SimpleComment> comments;
+		private Vector<SimpleReport> reports;
 		
 		public SimplePost() {
 			this.id=null;
@@ -19,13 +19,15 @@ public class SimplePost
 			this.userEmail=null;
 			this.district=null;
 			this.categories=new Vector<String>();
-			//this.comments=new Vector<Comment>();
-			//this.reports=new Vector<Report>();
+			this.comments=new Vector<SimpleComment>();
+			this.reports=new Vector<SimpleReport>();
 			this.approvals=new Vector<String>();
 			this.disapprovals=new Vector<String>();
 		}
 
-		public SimplePost(String id,String type,String content,String photo,String userEmail,String district,Vector<String> categories) {
+		public SimplePost(String id,String type,String content,String photo,String userEmail,String district,
+				Vector<String> categories, Vector<SimpleComment> comments, Vector<SimpleReport> reports) 
+		{
 			this.id=id;
 			this.postType=type;
 			this.content = content;
@@ -33,8 +35,8 @@ public class SimplePost
 			this.userEmail=userEmail;
 			this.district=district;
 			this.categories=categories;
-			//this.comments=new Vector<Comment>();
-			//this.reports=new Vector<Report>();
+			this.comments=comments;
+			this.reports=reports;
 			this.approvals=new Vector<String>();
 			this.disapprovals=new Vector<String>();
 		}
@@ -46,7 +48,7 @@ public class SimplePost
 		public String getDistrict(){return district;}
 		public int getNumApprovals(){return approvals.size();}
 		public int getNumDisApprovals(){return disapprovals.size();}
-		//public int getNumReports(){return reports.size();}
+		public int getNumReports(){return reports.size();}
 
 
 }

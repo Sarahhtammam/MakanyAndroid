@@ -16,7 +16,18 @@ android:layout_width="fill_parent" android:layout_height="fill_parent">
 	   >
   	   
     </LinearLayout>
-    
+  
+ <Button
+        android:id="@+id/postOnEvent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Add Post" />
+  
+ 
   <Button
         android:id="@+id/reviewEvent"
         android:layout_width="fill_parent"
@@ -28,6 +39,26 @@ android:layout_width="fill_parent" android:layout_height="fill_parent">
         android:text="Review Event" />
     
       <Button
+        android:id="@+id/AttendEvent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Attend Event" />
+  
+  		<Button
+        android:id="@+id/DisAttendEvent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Cancel my attending to this Event" />
+  
+            <Button
         android:id="@+id/goBack"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -37,7 +68,8 @@ android:layout_width="fill_parent" android:layout_height="fill_parent">
         android:layout_marginBottom="20dp"
         android:text="Back" />
     
-         
+      
+   
 
 </LinearLayout>
 </ScrollView>

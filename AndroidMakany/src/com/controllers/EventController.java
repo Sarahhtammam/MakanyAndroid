@@ -147,7 +147,7 @@ public class EventController
 						+ params[5] +"&onEventID="+ params[6] +"&userEmail="+ params[7] +"&categories="+ params[8];
 			
 			if (serviceType.equals("reviewEventService"))
-				urlParameters = "userMail="+ params[1] +"&eventID="+ params[2] +"&reiew="
+				urlParameters = "userMail="+ params[1] +"&eventID="+ params[2] +"&review="
 						+ params[3] +"&rating=" + params[4];
 			
 			if (serviceType.equals("getEventGoingService") || serviceType.equals("getEventByIDService"))
@@ -308,7 +308,16 @@ public class EventController
 						return;
 					}
 					
-					//return;
+					if(object.get("Status").equals("Failed"))
+					{
+						System.out.println("Failed to add Review" );
+						Toast.makeText(Application.getAppContext(), "Failed to add Review",
+						Toast.LENGTH_LONG).show();
+						return;
+					}
+					
+					Toast.makeText(Application.getAppContext(), "Review Added Successfully",
+						Toast.LENGTH_LONG).show();
 			
 				}
 				
