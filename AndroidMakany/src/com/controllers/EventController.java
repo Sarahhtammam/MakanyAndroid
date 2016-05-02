@@ -55,6 +55,16 @@ public class EventController
 		return;
 	}
 	
+	public void cancelGoingEvent(String eventID , String userMail) 
+	{
+		Connection connectionClass = new Connection();
+		
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/cancelGoingEventService", eventID, userMail, "cancelGoingEventService");
+		
+		return;
+	}
+	
+	
 	public void postOnEvent(String eventID, String postType, String content, String photo, 
 			String district, String onEventID, String userEmail, String categories) 
 	{
@@ -145,7 +155,7 @@ public class EventController
 						+ params[3] +"&latitude=" + params[4] +"&longitude=" 
 						+ params[5];			
 						
-			if (serviceType.equals("joinEventService"))
+			if (serviceType.equals("joinEventService") || serviceType.equals("cancelGoingEventService"))
 			urlParameters = "eventID="+ params[1] +"&userMail="+ params[2];
 			
 			if (serviceType.equals("postOnEventService"))
@@ -266,7 +276,9 @@ public class EventController
 			
 				}
 
-				if (serviceType.equals("joinEventService")) 
+				
+				
+				if (serviceType.equals("joinEventService") || serviceType.equals("cancelGoingEventService")) 
 				{
 					System.out.println("result " + result);
 					
@@ -281,11 +293,13 @@ public class EventController
 						return;
 					}
 					
-					Toast.makeText(Application.getAppContext(), "OK, Joined",Toast.LENGTH_LONG).show();
+					Toast.makeText(Application.getAppContext(), "OK",Toast.LENGTH_LONG).show();
 							
 					//return;
 			
 				}
+			
+				
 				if (serviceType.equals("postOnEventService")) 
 				{
 					System.out.println("result " + result);

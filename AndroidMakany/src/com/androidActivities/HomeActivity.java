@@ -62,7 +62,6 @@ public class HomeActivity extends Activity
 			{
 				// TODO Auto-generated method stub
 				Intent eventsIntent = new Intent(getApplicationContext(),EventsMenuActivity.class);
-				eventsIntent.putExtra("email", currentEmail);
 				startActivity(eventsIntent);
 				
 			}

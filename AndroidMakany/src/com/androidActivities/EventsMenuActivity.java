@@ -131,15 +131,11 @@ public class EventsMenuActivity extends Activity implements OnClickListener
 		    	    }
 		    	}).setPositiveButton("Select", new DialogInterface.OnClickListener() {
 		    	    @Override
-		    	    public void onClick(DialogInterface dialog, int id) {
-		    	        //  Your code when user clicked on OK
-		    	        //  You can write the code  to save the selected item here
-		    	    	
-		    			EventController eventController = new EventController();
+		    	    public void onClick(DialogInterface dialog, int id) 
+		    	    {
+		    	    	EventController eventController = new EventController();
 		  				eventController.getFilteredEvents("", items[seletedItems.get(0)]);
-			    
-		    	    	
-		    	    }
+			        }
 		    	}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 		    	    @Override
 		    	    public void onClick(DialogInterface dialog, int id) {

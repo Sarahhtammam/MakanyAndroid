@@ -4,6 +4,7 @@ import SimpleModels.SimpleEvent;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -180,20 +181,24 @@ public class SingleEventActivity extends Activity implements OnClickListener{
 	
 		    case R.id.goBack:
 		    {
-		    	Toast.makeText(Application.getAppContext(),"GO BACK", Toast.LENGTH_LONG).show();
-	         	break;
+		    	Intent eventsIntent = new Intent(getApplicationContext(),EventsMenuActivity.class);
+				startActivity(eventsIntent);
+				break;
 			}
 		    
 		    case R.id.AttendEvent:
 		    {
-		    	Toast.makeText(Application.getAppContext(),"ATTEND BUTTON", Toast.LENGTH_LONG).show();
-	         	break;
-			}
+		    	
+		    	EventController eventController = new EventController();
+  				eventController.joinEvent(currentEvent.getID(), Application.getCurrentEmail());
+  				break;
+		    }
 		    
 		    case R.id.DisAttendEvent:
 		    {
-		    	Toast.makeText(Application.getAppContext(),"DisATTEND BUTTON", Toast.LENGTH_LONG).show();
-	         	break;
+		    	EventController eventController = new EventController();
+  				eventController.cancelGoingEvent(currentEvent.getID(), Application.getCurrentEmail());
+  				break;
 			}
 	
 		   	   
