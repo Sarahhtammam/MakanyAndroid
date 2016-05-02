@@ -1,5 +1,6 @@
 package com.androidActivities;
 
+import com.controllers.Application;
 import com.controllers.EventController;
 
 import android.app.Activity;
@@ -17,6 +18,7 @@ public class CreateEventActivity extends Activity {
 	EditText eventDescription;
 	
 	String currentEmail ="";
+	String currentDistrict ="None";
 
 	
 	@Override
@@ -29,8 +31,8 @@ public class CreateEventActivity extends Activity {
 		eventCategory =(EditText) findViewById(R.id.eventCategory);
 		eventDescription = (EditText) findViewById(R.id.eventDescription);
 		
-		Intent currentIntent = getIntent();
-		currentEmail = currentIntent.getStringExtra("email");
+		currentEmail =Application.getCurrentEmail();
+		currentDistrict =Application.getCurrentUser().getDistrict();
 		
 		
 		Button createEventButton = (Button) findViewById(R.id.createEventButton);
@@ -44,7 +46,7 @@ public class CreateEventActivity extends Activity {
  				//TODO Auto-generated method stub
  				EventController eventController = new EventController();
 				eventController.createEvent(eventName.getText().toString(), eventCategory.getText().toString(), 
-				eventDescription.getText().toString(), Integer.toString(0), Integer.toString(0), currentEmail);
+				eventDescription.getText().toString(), Integer.toString(0), Integer.toString(0), currentEmail, currentDistrict);
 
  			}
  		});

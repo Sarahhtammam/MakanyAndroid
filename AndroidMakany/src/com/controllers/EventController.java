@@ -7,7 +7,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Vector;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,7 +15,6 @@ import org.json.JSONObject;
 import SimpleModels.SimpleEvent;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.UserManager;
 import android.widget.Toast;
 
 import com.androidActivities.EventsMenuActivity;
@@ -28,12 +26,12 @@ public class EventController
 	
 	static String userEmail;
 	
-	public void createEvent(String name, String category, String description, String latitude, String longitude, String ownerMail) 
+	public void createEvent(String name, String category, String description, String latitude, 
+			String longitude, String ownerMail, String district) 
 	{
 		Connection connectionClass = new Connection();
 		
-		connectionClass.execute( "http://makanyapp2.appspot.com/rest/createEventService", name, category, description, 
-					latitude, longitude, ownerMail, "createEventService");
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/createEventService", name, category, description, latitude, longitude, ownerMail, district, "createEventService");
 		
 		return;
 	}
@@ -105,7 +103,16 @@ public class EventController
 		
 		return;
 	}
+	
+	public void getFilteredEvents(String category, String district) 
+	{
+		Connection connectionClass = new Connection();
 		
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getFilteredEventsService", category, district,"getFilteredEventsService");
+		
+		return;
+	}
+	
 	static class Connection extends AsyncTask<String, String, String> 
 	{
 
@@ -131,7 +138,7 @@ public class EventController
 			if (serviceType.equals("createEventService"))
 				urlParameters = "name="+ params[1] +"&category="+ params[2] +"&description="
 						+ params[3] +"&latitude=" + params[4] +"&longitude=" 
-						+ params[5] +"&ownerMail="+ params[6];
+						+ params[5] +"&ownerMail="+ params[6] + "&district="+ params[7];
 						
 			if (serviceType.equals("editEventService"))
 				urlParameters = "eventID="+ params[1] +"&category="+ params[2] +"&description="
@@ -155,6 +162,10 @@ public class EventController
 			
 			if (serviceType.equals("getGoingEventsService"))
 				urlParameters = "userEmail="+ params[1] +"&maxEventID="+ params[2];
+			
+			if (serviceType.equals("getFilteredEventsService"))
+				urlParameters = "category="+ params[1] +"&district="+ params[2];
+			
 			
 			
 			
@@ -360,7 +371,7 @@ public class EventController
 								SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
 										object.getString("category"), object.getString("description"), 
 										Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
-										object.getString("ownerMail"), object.getString("goingMails"), object.getString("postIDs"));
+										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs"));
 								String x = object.getString("name");
 								eventsNames.add(x);
 								events.add(simpleEvent);
@@ -375,10 +386,9 @@ public class EventController
 						e.printStackTrace();
 					}
 					
+							
 					Intent showEvents = new Intent(Application.getAppContext(),ShowEventsActivity.class);
-	  				showEvents.putExtra("eventsNames", eventsNames);
 	  				Application.setEvents(events);
-	  				
 	  				showEvents.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(showEvents);
 
@@ -399,7 +409,7 @@ public class EventController
 						SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
 								object.getString("category"), object.getString("description"), 
 								Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
-								object.getString("ownerMail"), object.getString("goingMails"), object.getString("postIDs"));
+								object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs"));
 						
 						Application.setCurrentEvent(simpleEvent);
 					
@@ -407,17 +417,59 @@ public class EventController
 			
 					
 			
-			catch (JSONException e) 
-			{
-				System.out.println("error" );
-				Toast.makeText(Application.getAppContext(), "Error occured",
-				Toast.LENGTH_LONG).show();
-		
-			}
-			
+					catch (JSONException e) 
+					{
+						System.out.println("error" );
+						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.LENGTH_LONG).show();
+				
+					}
+					
 					return;
 				}
 				
+				
+				if (serviceType.equals("getFilteredEventsService")) 
+				{
+					System.out.println("result " + result);
+					
+					ArrayList<SimpleEvent> events = new ArrayList<SimpleEvent>();
+					
+					JSONArray requestArray;
+					
+					try {
+							requestArray = new JSONArray(result);
+							for(int i=0;i<requestArray.length();i++)
+							
+							{
+								JSONObject object=new JSONObject();
+								object = (JSONObject)requestArray.get(i);
+								
+								SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
+										object.getString("category"), object.getString("description"), 
+										Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
+										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs"));
+								events.add(simpleEvent);
+							}
+					
+					}
+					
+					
+					catch (JSONException e) 
+					{
+						e.printStackTrace();
+					}
+					
+							
+					Intent showEvents = new Intent(Application.getAppContext(),ShowEventsActivity.class);
+	  				Application.setEvents(events);
+	  				showEvents.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(showEvents);
+
+					
+					
+				}
+
 				
 				
 				

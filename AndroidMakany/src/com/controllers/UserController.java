@@ -219,7 +219,7 @@ public class UserController
 					
 					if(object.getString("Status").equals("Failed"))
 					{
-						Toast.makeText(Application.getAppContext(), "error: Retype your email",
+						Toast.makeText(Application.getAppContext(), "error",
 						Toast.LENGTH_LONG).show();
 						return;
 					}
@@ -252,8 +252,13 @@ public class UserController
 					
 					catch (JSONException e) 
 					{
-						e.printStackTrace();
+						Toast.makeText(Application.getAppContext(), "error",
+								Toast.LENGTH_LONG).show();
+								
 					}
+					
+					
+					Application.setCurrentUser(simpleUser);
 					
 					
 				}

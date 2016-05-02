@@ -1,8 +1,6 @@
 package com.androidActivities;
 
 
-import com.controllers.Application;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +8,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.controllers.Application;
+import com.controllers.UserController;
 
 public class HomeActivity extends Activity
 {
@@ -25,10 +26,32 @@ public class HomeActivity extends Activity
 		Button events =  (Button) findViewById(R.id.eventsButton);
 		Button items =  (Button) findViewById(R.id.itemsButton);
 		
-		currentEmail = Application.getUserEmail();
+		currentEmail = Application.getCurrentEmail();
 		
 		Toast.makeText(getApplicationContext(),
 		"Welocome User!\nYour Email is: " + currentEmail , Toast.LENGTH_LONG).show();
+		
+		UserController userController = Application.getUserController();
+		
+		if (userController == null)
+		{
+			Toast.makeText(getApplicationContext(), "null! ", Toast.LENGTH_LONG).show();
+		}
+		
+		else
+		{
+			if(!Application.loggedIn)
+			{
+				userController.getUser(currentEmail);
+				Application.loggedIn = true;
+				
+				Toast.makeText(getApplicationContext(),
+						"first visit to homepage", Toast.LENGTH_LONG).show();
+						
+			}
+		}
+	
+		
 		
 
 	 events.setOnClickListener(new OnClickListener() 

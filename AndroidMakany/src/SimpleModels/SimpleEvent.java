@@ -7,12 +7,12 @@ public class SimpleEvent
 
 	private String id, name, category, description;
 	private double latitude, longitude;
-	private String ownerMail;
+	private String ownerMail, district;
 	private Vector<String> goingMails, postIDs;
 	
 	
 	public SimpleEvent(String id, String name, String category, String description,
-			double latitude, double longitude, String ownerMail,
+			double latitude, double longitude, String ownerMail, String district,
 			String goingMails, String postIDs)
 	{
 		this.id=id;
@@ -22,7 +22,7 @@ public class SimpleEvent
 		this.latitude=latitude;
 		this.longitude=longitude;
 		this.ownerMail=ownerMail;
-		
+		this.district=district;
 		
 		//this.goingMails=goingMails;
 		//this.postIDs=postIDs;

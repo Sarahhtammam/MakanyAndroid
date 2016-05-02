@@ -12,6 +12,8 @@ public class Application extends android.app.Application {
 
 	private static Context context;
 	private static UserController userController;
+	public static boolean loggedIn;
+	
 	private static SimpleUser currentUser;
 	private static String userEmail;
 	private static SimpleEvent currentEvent;
@@ -25,6 +27,7 @@ public class Application extends android.app.Application {
         super.onCreate();
         Application.context = getApplicationContext();
         Application.userController = UserController.getInstance();
+        loggedIn= false;
     }
 
     public static Context getAppContext() {

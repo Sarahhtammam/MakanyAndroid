@@ -4,10 +4,10 @@ import java.util.Vector;
 
 public class SimpleUser 
 {
-		public String id;
-		public String name, email, password, birthDate, district, gender;
-		public String twitter, foursquare;
-		public int trust;
+		private String id;
+		private String name, email, password, birthDate, district, gender;
+		private String twitter, foursquare;
+		private int trust;
 		
 		private Vector<String> interests;
 		
@@ -46,6 +46,18 @@ public class SimpleUser
 		public String get_email () 
 		{
 			return email;
+		}
+
+
+		public String getName() {
+			// TODO Auto-generated method stub
+			return name;
+		}
+
+
+		public String getDistrict() {
+			// TODO Auto-generated method stub
+			return district;
 		}
 
 
