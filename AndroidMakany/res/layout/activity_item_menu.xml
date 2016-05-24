@@ -17,16 +17,26 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:padding="30dp"
-        android:text="Create Loan item" />
+        android:text="Create item" />
 
     <Button
-        android:id="@+id/getAllItemsButton"
+        android:id="@+id/getLoanItemsButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:padding="30dp"
-        android:text="Show All Items" />
+        android:text="Show All Loan Items" />
+    
+    <Button
+        android:id="@+id/getRequestItemsButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:padding="30dp"
+        android:text="Show All Request Items" />
 
 </LinearLayout>

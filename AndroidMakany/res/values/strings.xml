@@ -25,4 +25,19 @@
     <string name="title_activity_single_event">SingleEventActivity</string>
     <string name="title_activity_item_menu">ItemMenuActivity</string>
 
+    <string-array name="ItemType_array">
+        <item>Loan</item>
+        <item>Request</item>
+    </string-array>
+    
+    <string-array name="ItemState_array">
+        <item>Open</item>
+        <item>Closed</item>
+    </string-array>
+
+    <string name="title_activity_view_all_loan_items">ViewAllLoanItems</string>
+    <string name="title_activity_single_item">SingleItem</string>
+    <string name="title_activity_edit_item">EditItem</string>
+    <string name="title_activity_show_items">ShowItemsActivity</string>
+
 </resources>

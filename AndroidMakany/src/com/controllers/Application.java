@@ -15,8 +15,9 @@ public class Application extends android.app.Application {
 	public static boolean loggedIn;
 	
 	private static SimpleUser currentUser;
-	private static String userEmail;
+	private static String userEmail; // no need for this
 	private static SimpleEvent currentEvent;
+	private static SimpleItem currentItem;
 	
 	private static ArrayList<SimpleEvent> events;
 	private static ArrayList<SimplePost> posts;
@@ -91,6 +92,14 @@ public class Application extends android.app.Application {
 	public static String getCurrentEmail() {
 		// TODO Auto-generated method stub
 		return userEmail;
+	}
+
+	public static SimpleItem getCurrentItem() {
+		return currentItem;
+	}
+
+	public static void setCurrentItem(SimpleItem currentItem) {
+		Application.currentItem = currentItem;
 	}
     
 }

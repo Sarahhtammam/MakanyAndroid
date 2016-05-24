@@ -11,15 +11,16 @@ import com.controllers.ItemController;
 public class ItemsMenuActivity extends Activity {
 	
 	String currentEmail ="";
-	Button createItemButton, showAllItems;
+	Button createItemButton, showLoanItems , showRequestItems;
 	
 	 @Override
 	    protected void onCreate(Bundle savedInstanceState) 
 	    {
-			  super.onCreate(savedInstanceState);
-		      setContentView(R.layout.activity_item_menu);
+			 super.onCreate(savedInstanceState);
+		     setContentView(R.layout.activity_item_menu);
 		     createItemButton = (Button) findViewById(R.id.createItemButton);
-		      showAllItems = (Button) findViewById(R.id.getAllItemsButton);
+		     showLoanItems = (Button) findViewById(R.id.getLoanItemsButton);
+		     showRequestItems = (Button) findViewById(R.id.getRequestItemsButton);
 		      
 		      Intent currentIntent = getIntent();
 			  currentEmail = currentIntent.getStringExtra("email");
@@ -39,7 +40,7 @@ public class ItemsMenuActivity extends Activity {
 	  			}
 	  		});
 	          
-			  showAllItems.setOnClickListener(new OnClickListener() 
+			  showLoanItems.setOnClickListener(new OnClickListener() 
 	          {
 	  			
 	  			@Override
@@ -47,6 +48,18 @@ public class ItemsMenuActivity extends Activity {
 	  			{
 	  				ItemController itemController = new ItemController();
 	  				itemController.getFilteredLoanItems("", "");
+	  				
+	  			}
+	  		});
+			  
+			  showRequestItems.setOnClickListener(new OnClickListener() 
+	          {
+	  			
+	  			@Override
+	  			public void onClick(View arg0) 
+	  			{
+	  				ItemController itemController = new ItemController();
+	  				itemController.getFilteredRequestItems("", "");
 	  				
 	  			}
 	  		});

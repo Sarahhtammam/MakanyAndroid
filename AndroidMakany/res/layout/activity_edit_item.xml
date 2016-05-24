@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ImageView
-        android:layout_width="76dp"
-        android:layout_height="108dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:src="@drawable/item_test" />
 
     <TextView
         android:id="@+id/itemname"
@@ -63,24 +57,24 @@
 	        android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Item Type"
+            android:text="Item State"
             android:textAppearance="?android:attr/textAppearanceLarge"
             />
 	    
 		<Spinner
-        android:id="@+id/ItemTypeSpinner"
+        android:id="@+id/ItemStateSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/ItemType_array"
+        android:entries="@array/ItemState_array"
         android:ems="10" />
         
     </LinearLayout>
 
     <Button
-        android:id="@+id/request"
+        android:id="@+id/editbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Create Item" />
+        android:text="Edit Item" />
 
 </LinearLayout>
