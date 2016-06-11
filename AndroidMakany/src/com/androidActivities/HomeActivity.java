@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.controllers.Application;
 import com.controllers.UserController;
+import com.controllers.WhatsNewController;
 
 public class HomeActivity extends Activity
 {
@@ -25,6 +26,7 @@ public class HomeActivity extends Activity
 		Button addPost = (Button) findViewById(R.id.addPostButton);
 		Button events =  (Button) findViewById(R.id.eventsButton);
 		Button items =  (Button) findViewById(R.id.itemsButton);
+		Button whatsNew =  (Button) findViewById(R.id.whatsNew);
 		
 		currentEmail = Application.getCurrentEmail();
 		
@@ -95,6 +97,19 @@ public class HomeActivity extends Activity
 			
 		}
 	});
+	 
+	 whatsNew.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				WhatsNewController whatsNewController = new WhatsNewController();
+				whatsNewController.getStaticRecommendation(currentEmail);
+				/*Intent whatsNew = new Intent(getApplicationContext(),WhatsNew.class);
+				startActivity(whatsNew);*/
+				
+			}
+		});
 	}
 
 }

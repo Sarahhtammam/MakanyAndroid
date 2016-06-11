@@ -1,12 +1,13 @@
 package SimpleModels;
 
-public class SimpleComment 
+public class SimpleComment extends Element
 {
 	
 	private String id,userEmail, username, content, postID;
 	
 	public SimpleComment(String id,String userEmail,String username, String content,String postID)
 	{
+		super(Type.COMMENT);
 		this.id=id;
 		this.userEmail=userEmail;
 		this.username=username;

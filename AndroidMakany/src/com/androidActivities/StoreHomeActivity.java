@@ -72,8 +72,8 @@ public class StoreHomeActivity extends Activity {
 			public void onClick(View arg0) 
 			{
 				// TODO Auto-generated method stub
-				Intent eventsIntent = new Intent(getApplicationContext(),editOfferActivity.class);
-				startActivity(eventsIntent);
+				/*Intent eventsIntent = new Intent(getApplicationContext(),editOfferActivity.class);
+				startActivity(eventsIntent);*/
 				
 			}
 			
@@ -86,8 +86,8 @@ public class StoreHomeActivity extends Activity {
 			public void onClick(View arg0) 
 			{
 				// TODO Auto-generated method stub
-				Intent eventsIntent = new Intent(getApplicationContext(),removeOfferActivity.class);
-				startActivity(eventsIntent);
+				/*Intent eventsIntent = new Intent(getApplicationContext(),removeOfferActivity.class);
+				startActivity(eventsIntent);*/
 				
 			}
 			

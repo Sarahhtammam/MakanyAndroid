@@ -29,7 +29,6 @@
         <item>Loan</item>
         <item>Request</item>
     </string-array>
-    
     <string-array name="ItemState_array">
         <item>Open</item>
         <item>Closed</item>
@@ -39,5 +38,12 @@
     <string name="title_activity_single_item">SingleItem</string>
     <string name="title_activity_edit_item">EditItem</string>
     <string name="title_activity_show_items">ShowItemsActivity</string>
+    <string name="title_activity_whats_new">WhatsNew</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
 
 </resources>

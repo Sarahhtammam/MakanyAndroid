@@ -2,7 +2,7 @@ package SimpleModels;
 
 import java.util.Vector;
 
-public class SimpleEvent 
+public class SimpleEvent extends Element
 {
 
 	private String id, name, category, description;
@@ -15,6 +15,7 @@ public class SimpleEvent
 			double latitude, double longitude, String ownerMail, String district,
 			String goingMails, String postIDs)
 	{
+		super(Type.EVENT);
 		this.id=id;
 		this.name=name;
 		this.category=category;

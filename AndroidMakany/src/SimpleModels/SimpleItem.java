@@ -1,13 +1,14 @@
 package SimpleModels;
 
 
-public class SimpleItem {
+public class SimpleItem extends Element {
 	
 		private String id;
 		private String name, description,userEmail, district, photo, state;
 		private String categories;
 		
 		public SimpleItem(){
+			super(Type.ITEM);
 			this.id="";
 			this.name="";
 			this.description="";
@@ -21,6 +22,7 @@ public class SimpleItem {
 		public SimpleItem(String id,String name,String description,String userEmail,
 				String district,String photo,String state,
 				String categories){
+			super(Type.ITEM);
 			this.id=id;
 			this.name=name;
 			this.description=description;

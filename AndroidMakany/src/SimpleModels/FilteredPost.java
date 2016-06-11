@@ -2,7 +2,7 @@ package SimpleModels;
 
 import java.util.Vector;
 
-public class FilteredPost 
+public class FilteredPost extends Element
 {
 	
 	 public String id,postType, content, photo, userEmail, district,numOfApprovals,numofDisapprovals;
@@ -10,6 +10,7 @@ public class FilteredPost
 
      public FilteredPost() 
      {
+    	 	super(Type.POST);
 			this.id="";
 			this.postType="";
 			this.content = "";
@@ -30,7 +31,8 @@ public class FilteredPost
      public FilteredPost(String id,String type,String content,String photo,String userEmail,
     		 String district,String numofapprovals, String approvalMails, String numofdisapprovals,
     		 String disapprovalMails, String reports,String reportmail ) {
-			this.id=id;
+    	 	super(Type.POST);	
+    	 	this.id=id;
 			this.postType=type;
 			this.content = content;
 			this.photo=photo;

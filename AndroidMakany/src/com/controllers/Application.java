@@ -2,6 +2,7 @@ package com.controllers;
 
 import java.util.ArrayList;
 
+import SimpleModels.Element;
 import SimpleModels.SimpleEvent;
 import SimpleModels.SimpleItem;
 import SimpleModels.SimplePost;
@@ -22,6 +23,7 @@ public class Application extends android.app.Application {
 	private static ArrayList<SimpleEvent> events;
 	private static ArrayList<SimplePost> posts;
 	private static ArrayList<SimpleItem> items;
+	private static ArrayList<Element> Elements;
 	
 	
     public void onCreate(){
@@ -100,6 +102,14 @@ public class Application extends android.app.Application {
 
 	public static void setCurrentItem(SimpleItem currentItem) {
 		Application.currentItem = currentItem;
+	}
+
+	public static ArrayList<Element> getElements() {
+		return Elements;
+	}
+
+	public static void setElements(ArrayList<Element> elements) {
+		Elements = elements;
 	}
     
 }

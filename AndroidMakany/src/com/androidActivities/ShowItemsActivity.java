@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.controllers.Application;
-import com.controllers.EventController;
 
 
 public class ShowItemsActivity extends Activity {
@@ -33,7 +32,7 @@ public class ShowItemsActivity extends Activity {
 		LinearLayout my_layout = (LinearLayout)findViewById(R.id.itemsLayout);
 		
 		
-		//loop of generation of events 
+		//loop of generation of items 
 		for (int i = 0; i < items.size(); i++) 
 		{
 			final SimpleItem temp = items.get(i);

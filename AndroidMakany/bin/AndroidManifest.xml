@@ -103,6 +103,10 @@
             android:name=".ShowItemsActivity"
             android:label="@string/title_activity_show_items" >
         </activity>
+        <activity
+            android:name=".WhatsNew"
+            android:label="@string/title_activity_whats_new" >
+        </activity>
     </application>
 
 </manifest>
