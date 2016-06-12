@@ -3,6 +3,8 @@ package com.androidActivities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +29,7 @@ public class HomeActivity extends Activity
 		Button events =  (Button) findViewById(R.id.eventsButton);
 		Button items =  (Button) findViewById(R.id.itemsButton);
 		Button whatsNew =  (Button) findViewById(R.id.whatsNew);
+		Button signout =  (Button) findViewById(R.id.signout);
 		
 		currentEmail = Application.getCurrentEmail();
 		
@@ -46,6 +49,12 @@ public class HomeActivity extends Activity
 			{
 				userController.getUser(currentEmail);
 				Application.loggedIn = true;
+				
+				SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+				Editor editor = pref.edit();
+				//on the login store the login
+				editor.putString("email", currentEmail); 
+				editor.commit();
 				
 				Toast.makeText(getApplicationContext(),
 						"first visit to homepage", Toast.LENGTH_LONG).show();
@@ -107,6 +116,22 @@ public class HomeActivity extends Activity
 				whatsNewController.getStaticRecommendation(currentEmail);
 				/*Intent whatsNew = new Intent(getApplicationContext(),WhatsNew.class);
 				startActivity(whatsNew);*/
+				
+			}
+		});
+	 
+	 signout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+				Editor editor = pref.edit();
+				editor.remove("email");
+				editor.commit();
+				
+				Intent login = new Intent(getApplicationContext(),LoginActivity.class);
+				startActivity(login);
 				
 			}
 		});

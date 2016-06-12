@@ -11,14 +11,13 @@ import java.util.Vector;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.controllers.Application;
-import com.androidActivities.HomeActivity;
-import com.androidActivities.MainActivity;
-
 import SimpleModels.SimpleUser;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.androidActivities.HomeActivity;
+import com.androidActivities.MainActivity;
 
 
 
@@ -259,6 +258,7 @@ public class UserController
 					
 					
 					Application.setCurrentUser(simpleUser);
+					
 					
 					
 				}

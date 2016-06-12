@@ -2,18 +2,19 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
-import com.androidActivities.LoginActivity;
-import com.androidActivities.R;
-import com.controllers.AdminController;
-import com.controllers.Prepare_SignUp;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
+
+import com.controllers.AdminController;
+import com.controllers.Application;
+import com.controllers.Prepare_SignUp;
+import com.controllers.UserController;
 
 public class MainActivity extends Activity implements OnClickListener, Prepare_SignUp {
 
@@ -45,6 +46,20 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 		AdminController adminController = new AdminController();
 		adminController.getInterests(this);
 		adminController.getDistricts(this);
+		
+		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+		Editor editor = pref.edit();
+		if (!pref.getString("email", "").equals(""))
+		{
+			UserController userController = Application.getUserController();
+			userController.getUser(pref.getString("email", ""));
+			
+			Application.setUserEmail(pref.getString("email", ""));
+			
+			Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
+			homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			Application.getAppContext().startActivity(homeIntent);
+		}
     }
     
 	@Override
