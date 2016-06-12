@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import SimpleModels.Element;
 import SimpleModels.SimpleEvent;
@@ -18,6 +19,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 
 import com.androidActivities.WhatsNew;
+import com.androidActivities.WhatsNew_Dynamic;
 
 
 public class WhatsNewController 
@@ -119,7 +121,6 @@ public class WhatsNewController
 				if (serviceType.equals("getStaticRecommendation")) 
 				{
 					
-					
 					ArrayList<Element> elements = new ArrayList<Element>();
 					
 					JSONArray requestArray;
@@ -127,16 +128,34 @@ public class WhatsNewController
 					try {
 							/*requestArray = new JSONArray(result);
 							for(int i=0;i<requestArray.length();i++)
-							
 							{
 								JSONObject object=new JSONObject();
 								object = (JSONObject)requestArray.get(i);
+								if (object.getString("type").equals("1"))
+								{
+									SimpleItem simpleItem = new SimpleItem(object.getString("id"),object.getString("name"), 
+									object.getString("description"), object.getString("userEmail"), object.getString("district"),
+									object.getString("photo"),object.getString("state"), object.getString("categories"));
+										
+									elements.add(simpleItem);
+								}
+								else if (object.getString("type").equals("2"))
+								{
+									SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
+											object.getString("category"), object.getString("description"), 
+											Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
+											object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs"));
+									elements.add(simpleEvent);
+								}
+								else if (object.getString("type").equals("3"))
+								{
+									
+								}
+								else if (object.getString("type").equals("4"))
+								{
+									
+								}
 								
-								SimpleItem simpleItem = new SimpleItem(object.getString("id"),object.getString("name"), 
-									  object.getString("description"), object.getString("userEmail"), object.getString("district"),
-									  object.getString("photo"),object.getString("state"), object.getString("categories"));
-								
-								items.add(simpleItem);
 								
 							}*/
 					
@@ -167,8 +186,38 @@ public class WhatsNewController
 	  				
 	  				whatsNew.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(whatsNew);
-
 					
+				}
+				
+				else if (serviceType.equals("getDynamicRecommendation")) 
+				{
+					
+					ArrayList<Element> elements = new ArrayList<Element>();
+					
+					JSONArray requestArray;
+					
+					try {
+						
+				
+					}
+					
+					
+					catch (JSONException e) 
+					{
+						e.printStackTrace();
+					}
+					
+					SimpleItem simpleItem = new SimpleItem("10","car","nice car","heba.khazbak@gmail.com","Zamalek","","Open","");
+					elements.add(simpleItem);
+					SimpleEvent event = new SimpleEvent("30", "caaar", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com","Zamalek", "", "");
+					elements.add(event);
+					
+					
+					Intent whatsNew = new Intent(Application.getAppContext(),WhatsNew_Dynamic.class);
+	  				Application.setElements(elements);
+	  				
+	  				whatsNew.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(whatsNew);
 					
 				}
 

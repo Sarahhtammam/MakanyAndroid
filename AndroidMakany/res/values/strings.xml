@@ -45,5 +45,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
+    <string name="title_activity_test_test">TestTest</string>
+    <string name="title_activity_one_fragment">OneFragment</string>
+    <string name="title_activity_two_fragment">TwoFragment</string>
+    <string name="title_activity_whats_new__dynamic">WhatsNew_Dynamic</string>
 
 </resources>

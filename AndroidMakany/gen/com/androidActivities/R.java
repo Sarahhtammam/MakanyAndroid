@@ -60,7 +60,7 @@ public final class R {
         public static final int RegistrationButton=0x7f0a0034;
         public static final int StoreRegistration=0x7f0a0043;
         public static final int Updatebutton=0x7f0a0045;
-        public static final int action_settings=0x7f0a004c;
+        public static final int action_settings=0x7f0a004d;
         public static final int addOffer=0x7f0a003c;
         public static final int addPostButton=0x7f0a001c;
         public static final int birthDate=0x7f0a002f;
@@ -126,6 +126,7 @@ public final class R {
         public static final int updateProfile=0x7f0a001f;
         public static final int userEventsLayout=0x7f0a002b;
         public static final int whatsNew=0x7f0a0020;
+        public static final int whatsNewDynamicLayout=0x7f0a004c;
         public static final int whatsNewLayout=0x7f0a004b;
     }
     public static final class layout {
@@ -151,6 +152,7 @@ public final class R {
         public static final int activity_update_profile=0x7f030013;
         public static final int activity_view_post=0x7f030014;
         public static final int activity_whats_new=0x7f030015;
+        public static final int activity_whats_new__dynamic=0x7f030016;
     }
     public static final class menu {
         public static final int edit_item=0x7f090000;
@@ -159,10 +161,14 @@ public final class R {
         public static final int global=0x7f090003;
         public static final int main=0x7f090004;
         public static final int main_activity_2=0x7f090005;
-        public static final int show_items=0x7f090006;
-        public static final int single_item=0x7f090007;
-        public static final int splash=0x7f090008;
-        public static final int whats_new=0x7f090009;
+        public static final int one=0x7f090006;
+        public static final int show_items=0x7f090007;
+        public static final int single_item=0x7f090008;
+        public static final int splash=0x7f090009;
+        public static final int test_test=0x7f09000a;
+        public static final int two=0x7f09000b;
+        public static final int whats_new=0x7f09000c;
+        public static final int whats_new__dynamic=0x7f09000d;
     }
     public static final class string {
         public static final int action_example=0x7f07001b;
@@ -179,6 +185,7 @@ public final class R {
         public static final int title_activity_events_menu=0x7f07000b;
         public static final int title_activity_item_menu=0x7f070010;
         public static final int title_activity_main_activity_2=0x7f07000d;
+        public static final int title_activity_one_fragment=0x7f07001d;
         public static final int title_activity_post=0x7f070004;
         public static final int title_activity_show_events=0x7f07000e;
         public static final int title_activity_show_items=0x7f070014;
@@ -187,9 +194,12 @@ public final class R {
         public static final int title_activity_splash=0x7f070003;
         public static final int title_activity_store_sign_up=0x7f070008;
         public static final int title_activity_test=0x7f070009;
+        public static final int title_activity_test_test=0x7f07001c;
+        public static final int title_activity_two_fragment=0x7f07001e;
         public static final int title_activity_view_all_loan_items=0x7f070011;
         public static final int title_activity_view_post=0x7f07000a;
         public static final int title_activity_whats_new=0x7f070015;
+        public static final int title_activity_whats_new__dynamic=0x7f07001f;
         public static final int title_section1=0x7f070016;
         public static final int title_section2=0x7f070017;
         public static final int title_section3=0x7f070018;

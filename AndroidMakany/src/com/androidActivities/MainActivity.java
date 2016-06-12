@@ -91,6 +91,8 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 		    {
 	    		Intent testIntent = new Intent(getApplicationContext(),TestActivity.class);
 				startActivity(testIntent);
+				
+				
 				break;
 		    }
 		    
