@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import SimpleModels.FilteredPost;
+import SimpleModels.SimplePost;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -320,7 +320,7 @@ public class PostController
 				{
 					System.out.println("result " + result);
 					
-					ArrayList<FilteredPost> posts = new ArrayList<FilteredPost>();
+					ArrayList<SimplePost> posts = new ArrayList<SimplePost>();
 					JSONArray requestArray;
 					
 					try {
@@ -331,11 +331,9 @@ public class PostController
 								JSONObject object=new JSONObject();
 								object = (JSONObject)requestArray.get(i);
 								
-								FilteredPost post = new FilteredPost(object.getString("ID"), object.getString("postType"), 
+								SimplePost post = new SimplePost(object.getString("ID"), object.getString("postType"), 
 										object.getString("content"), object.getString("photo"), object.getString("userEmail"), 
-										object.getString("district"), object.getString("numApprovals"), object.getString("approvalMails"),
-										object.getString("numDisApprovals"),object.getString("disapprovalMails"), 
-										object.getString("numreports"), object.getString("reportMails"));
+										object.getString("district"), object.getString("onEventID"), object.getString("score"));
 								posts.add(post);
 							}
 						} 
@@ -350,7 +348,7 @@ public class PostController
 					
 					
 					//Post added successfully 
-					Toast.makeText(Application.getAppContext(), "SUCCESS\n" + posts.get(0).content,
+					Toast.makeText(Application.getAppContext(), "SUCCESS\nPOST= " + posts.get(0).getContent(),
 					Toast.LENGTH_LONG).show();
 					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

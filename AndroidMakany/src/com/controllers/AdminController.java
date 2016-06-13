@@ -17,10 +17,9 @@ import android.os.AsyncTask;
 public class AdminController 
 {
 	
-	public void getInterests(Prepare_SignUp d) 
+	public void getInterests() 
 	{
 		Connection connectionClass = new Connection();
-		connectionClass.delegate = d;
 		
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/ShowAllInterestsService",
 		"ShowAllInterestsService");
@@ -28,10 +27,10 @@ public class AdminController
 
 	}
 	
-	public void getDistricts(Prepare_SignUp d) 
+	public void getDistricts() 
 	{
 		Connection connectionClass = new Connection();
-		connectionClass.delegate = d;
+		
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/ShowAllDistrictsService",
 		"ShowAllDistrictsService");
 		
@@ -43,7 +42,6 @@ public class AdminController
 		
 	static class Connection extends AsyncTask<String, String, String> 
 	{
-		public Prepare_SignUp delegate = null;
 		String serviceType;
 		
 		/*private static ArrayList<String> interestsList = new ArrayList<String>();
@@ -147,7 +145,6 @@ public class AdminController
 						e.printStackTrace();
 					}
 
-					delegate.collectInterests(interestsList);
 					
 					//getDistricts();
 					//Intent signUpIntent = new Intent(Application.getAppContext(),SignUpActivity.class);
@@ -191,7 +188,6 @@ public class AdminController
 						e.printStackTrace();
 					}
 					
-					delegate.collectDistricts(districtsList);
 				}
 				
 				

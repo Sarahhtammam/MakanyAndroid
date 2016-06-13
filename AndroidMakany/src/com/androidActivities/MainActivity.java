@@ -13,10 +13,10 @@ import android.widget.Button;
 
 import com.controllers.AdminController;
 import com.controllers.Application;
-import com.controllers.Prepare_SignUp;
 import com.controllers.UserController;
 
-public class MainActivity extends Activity implements OnClickListener, Prepare_SignUp {
+public class MainActivity extends Activity implements OnClickListener
+{
 
 	
 	Button login;
@@ -44,8 +44,8 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 		test.setOnClickListener(this);
   
 		AdminController adminController = new AdminController();
-		adminController.getInterests(this);
-		adminController.getDistricts(this);
+		adminController.getInterests();
+		adminController.getDistricts();
 		
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
 		Editor editor = pref.edit();
@@ -62,19 +62,7 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 		}
     }
     
-	@Override
-    public void collectInterests(ArrayList<String> output) 
-	{
-		tempInterests = output;
-	}
 	
-	@Override
-	public void collectDistricts(ArrayList<String> output) 
-	{
-		tempDistricts = output;
-	}
-
-
 	@Override
 	public void onClick(View v) 
 	{
