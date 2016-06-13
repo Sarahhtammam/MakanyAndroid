@@ -24,20 +24,8 @@ import com.androidActivities.MainActivity;
 public class UserController 
 {
 
-	private static UserController userController = new UserController();
 	static String emaill;
 	
-	public static UserController getInstance() 
-	{
-		if (userController == null)
-			userController = new UserController();
-		
-		return userController;
-	}
-
-	private UserController() 
-	{ }
-
 	public void login(String email, String password) 
 	{
 		Connection connectionClass = new Connection();
@@ -73,7 +61,6 @@ public class UserController
 	}
 
 	
-	//"http://localhost:8888/rest/LoginService",
 	
 	
 	static class Connection extends AsyncTask<String, String, String> 

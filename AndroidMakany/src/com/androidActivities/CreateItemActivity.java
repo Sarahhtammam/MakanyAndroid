@@ -46,10 +46,21 @@ public class CreateItemActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		String selectedType = String.valueOf(itemTypeSpinner.getSelectedItem());
-		ItemController itemController = new ItemController();
-		itemController.createItem(itemnameEditText.getText().toString(), descriptionEditText.getText().toString(), 
-		currentEmail, Application.getCurrentUser().getDistrict(),"",categoryEditText.getText().toString(),selectedType);
+		
+		if (itemnameEditText.getText().toString().trim().equals(""))
+		{
+			itemnameEditText.setError( "Item name is required!" );
+			
+		}
+		else
+		{
+			String selectedType = String.valueOf(itemTypeSpinner.getSelectedItem());
+			ItemController itemController = new ItemController();
+			itemController.createItem(itemnameEditText.getText().toString(), descriptionEditText.getText().toString(), 
+			currentEmail, Application.getCurrentUser().getDistrict(),"",categoryEditText.getText().toString(),selectedType);
+			
+		}
+		
 		
 		
 	}

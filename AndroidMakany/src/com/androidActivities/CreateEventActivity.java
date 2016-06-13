@@ -44,10 +44,24 @@ public class CreateEventActivity extends Activity {
  			public void onClick(View arg0) 
  			{
  				//TODO Auto-generated method stub
- 				EventController eventController = new EventController();
-				eventController.createEvent(eventName.getText().toString(), eventCategory.getText().toString(), 
-				eventDescription.getText().toString(), Integer.toString(0), Integer.toString(0), currentEmail, currentDistrict);
+ 				if (eventName.getText().toString().trim().equals(""))
+ 				{
+ 					eventName.setError( "Event name is required!" );
+ 					
+ 				}
+ 				else if (eventCategory.getText().toString().trim().equals(""))
+ 				{
+ 					eventCategory.setError( "Event Category is required!" );
+ 					
+ 				}
+ 				else
+ 				{
+ 					EventController eventController = new EventController();
+ 					eventController.createEvent(eventName.getText().toString(), eventCategory.getText().toString(), 
+ 					eventDescription.getText().toString(), Integer.toString(0), Integer.toString(0), currentEmail, currentDistrict);
 
+ 				}
+ 				
  			}
  		});
        

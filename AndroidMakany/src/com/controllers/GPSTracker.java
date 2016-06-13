@@ -26,6 +26,8 @@ public class GPSTracker extends Service implements LocationListener {
  
     // flag for GPS status
     boolean canGetLocation = false;
+    
+    public static boolean isStatic = false;
  
     Location location; // location
     double latitude; // latitude
@@ -163,8 +165,17 @@ public class GPSTracker extends Service implements LocationListener {
         // On pressing Settings button
         alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
+            	isStatic = false;
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 mContext.startActivity(intent);
+            }
+        });
+        
+        alertDialog.setNeutralButton("Static Recommendation", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+            	isStatic = true;
+            	WhatsNewController whatsNewController = new WhatsNewController();
+				whatsNewController.getStaticRecommendation(Application.getCurrentUser().get_email());
             }
         });
   
@@ -172,6 +183,10 @@ public class GPSTracker extends Service implements LocationListener {
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
             dialog.cancel();
+            isStatic = true;
+            WhatsNewController whatsNewController = new WhatsNewController();
+			whatsNewController.getStaticRecommendation(Application.getCurrentUser().get_email());
+
             }
         });
   
@@ -181,6 +196,7 @@ public class GPSTracker extends Service implements LocationListener {
  
     @Override
     public void onLocationChanged(Location location) {
+    	//RefreshDynamic();
     }
  
     @Override
@@ -198,6 +214,36 @@ public class GPSTracker extends Service implements LocationListener {
     @Override
     public IBinder onBind(Intent arg0) {
         return null;
+    }
+    
+    public void RefreshDynamic()
+    {
+    	AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
+        
+        // Setting Dialog Title
+        alertDialog.setTitle("Location changed");
+  
+        // Setting Dialog Message
+        alertDialog.setMessage("Your Location is changed. Do you want to go to refresh to get dynamic recommendation?");
+  
+        // On pressing Settings button
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+            	WhatsNewController whatsNewController = new WhatsNewController();
+				whatsNewController.getDynamicRecommendation(Application.getCurrentUser().get_email());
+
+            }
+        });
+
+        // on pressing cancel button
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            dialog.cancel();
+            }
+        });
+  
+        // Showing Alert Message
+        alertDialog.show();
     }
  
 }

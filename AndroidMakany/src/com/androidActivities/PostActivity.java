@@ -31,21 +31,16 @@ public class PostActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		UserController controller = Application.getUserController();
-		if (controller == null)
-		{
-			Toast.makeText(getApplicationContext(), "null! ", Toast.LENGTH_LONG).show();
-		}
-		else
-		{
-			Intent currentIntent = getIntent();
-			String currentEmail = currentIntent.getStringExtra("email");
-			System.out.println("curentEmail on post screen " + currentEmail);
+		UserController userController = new UserController();
+		
+		Intent currentIntent = getIntent();
+		String currentEmail = currentIntent.getStringExtra("email");
+		System.out.println("curentEmail on post screen " + currentEmail);
 			
-			PostController postController = new PostController();
-			postController.addPost("normal", postEditText.getText().toString(), "no-pic", 
-			"maadi","", currentEmail, "art;food");
-		}		
+		PostController postController = new PostController();
+		postController.addPost("normal", postEditText.getText().toString(), "no-pic", 
+		"maadi","", currentEmail, "art;food");
+				
 	
 	}
 }

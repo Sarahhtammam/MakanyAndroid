@@ -51,7 +51,7 @@ public class MainActivity extends Activity implements OnClickListener, Prepare_S
 		Editor editor = pref.edit();
 		if (!pref.getString("email", "").equals(""))
 		{
-			UserController userController = Application.getUserController();
+			UserController userController = new UserController();
 			userController.getUser(pref.getString("email", ""));
 			
 			Application.setUserEmail(pref.getString("email", ""));

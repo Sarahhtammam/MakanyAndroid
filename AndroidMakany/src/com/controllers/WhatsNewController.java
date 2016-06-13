@@ -19,7 +19,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 
 import com.androidActivities.WhatsNew;
-import com.androidActivities.WhatsNew_Dynamic;
+
 
 
 public class WhatsNewController 
@@ -213,7 +213,7 @@ public class WhatsNewController
 					elements.add(event);
 					
 					
-					Intent whatsNew = new Intent(Application.getAppContext(),WhatsNew_Dynamic.class);
+					Intent whatsNew = new Intent(Application.getAppContext(),WhatsNew.class);
 	  				Application.setElements(elements);
 	  				
 	  				whatsNew.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -97,28 +97,23 @@ public class UpdateProfile extends Activity implements OnClickListener {
 		@Override
 		public void onClick(View v) 
 		{
-			UserController userController = Application.getUserController();
-			if (userController == null)
+			UserController userController = new UserController();
+			
+			for(int i=0;i<checks.size();i++)
 			{
-				Toast.makeText(getApplicationContext(), "null! ", Toast.LENGTH_LONG).show();
-			}
-			else
-			{
-				for(int i=0;i<checks.size();i++)
-				{
-					if(checks.get(i).isChecked())
+				if(checks.get(i).isChecked())
 					
-						checkedInterests+=checks.get(i).getText()+";";
-						System.out.println(checkedInterests);
-					}		
-				}
+					checkedInterests+=checks.get(i).getText()+";";
+					System.out.println(checkedInterests);
+			}		
 				
-				selectedDistrict = String.valueOf(districtSpinner.getSelectedItem());
-				selectedGender = String.valueOf(genderSpinner.getSelectedItem());
 				
-				System.out.println("\nSelected interests: " + checkedInterests);
-				System.out.println("\nSelected districts: " + selectedDistrict);
-				System.out.println("\nSelected interests: " + selectedGender);
+			selectedDistrict = String.valueOf(districtSpinner.getSelectedItem());
+			selectedGender = String.valueOf(genderSpinner.getSelectedItem());
+				
+			System.out.println("\nSelected interests: " + checkedInterests);
+			System.out.println("\nSelected districts: " + selectedDistrict);
+			System.out.println("\nSelected interests: " + selectedGender);
 				
 				
 				userController.EditProfile(emailEditText.getText().toString(), passwordEditText.getText().toString(), 

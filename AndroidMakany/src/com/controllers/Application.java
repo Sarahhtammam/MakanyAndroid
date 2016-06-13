@@ -12,11 +12,10 @@ import android.content.Context;
 public class Application extends android.app.Application {
 
 	private static Context context;
-	private static UserController userController;
 	public static boolean loggedIn;
 	
 	private static SimpleUser currentUser;
-	private static String userEmail; // no need for this
+	private static String userEmail; 
 	private static SimpleEvent currentEvent;
 	private static SimpleItem currentItem;
 	
@@ -29,7 +28,6 @@ public class Application extends android.app.Application {
     public void onCreate(){
         super.onCreate();
         Application.context = getApplicationContext();
-        Application.userController = UserController.getInstance();
         loggedIn= false;
     }
 
@@ -37,9 +35,6 @@ public class Application extends android.app.Application {
         return Application.context;
     }
     
-    public static UserController getUserController(){
-    	return Application.userController;
-    }
     
  
 	public static SimpleUser getCurrentUser() {

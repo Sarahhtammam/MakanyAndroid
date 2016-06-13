@@ -36,31 +36,23 @@ public class HomeActivity extends Activity
 		Toast.makeText(getApplicationContext(),
 		"Welocome User!\nYour Email is: " + currentEmail , Toast.LENGTH_LONG).show();
 		
-		UserController userController = Application.getUserController();
+		UserController userController = new UserController();
 		
-		if (userController == null)
+		
+		
+		if(!Application.loggedIn)
 		{
-			Toast.makeText(getApplicationContext(), "null! ", Toast.LENGTH_LONG).show();
+			userController.getUser(currentEmail);
+			Application.loggedIn = true;
+				
+			SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+			Editor editor = pref.edit();
+			//on the login store the login
+			editor.putString("email", currentEmail); 
+			editor.commit();	
+			Toast.makeText(getApplicationContext(),"first visit to homepage", Toast.LENGTH_LONG).show();			
 		}
 		
-		else
-		{
-			if(!Application.loggedIn)
-			{
-				userController.getUser(currentEmail);
-				Application.loggedIn = true;
-				
-				SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-				Editor editor = pref.edit();
-				//on the login store the login
-				editor.putString("email", currentEmail); 
-				editor.commit();
-				
-				Toast.makeText(getApplicationContext(),
-						"first visit to homepage", Toast.LENGTH_LONG).show();
-						
-			}
-		}
 	
 		
 		
@@ -113,9 +105,8 @@ public class HomeActivity extends Activity
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				WhatsNewController whatsNewController = new WhatsNewController();
-				whatsNewController.getStaticRecommendation(currentEmail);
-				/*Intent whatsNew = new Intent(getApplicationContext(),WhatsNew.class);
-				startActivity(whatsNew);*/
+				whatsNewController.getDynamicRecommendation(currentEmail);
+				
 				
 			}
 		});

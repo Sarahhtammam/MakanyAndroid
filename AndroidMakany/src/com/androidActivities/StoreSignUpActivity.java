@@ -23,7 +23,7 @@ public class StoreSignUpActivity extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_profile);
+		//setContentView(R.layout.activity_edit_profile);
 		
 		StoreNameEditText = (EditText) findViewById(R.id.storeName);
 		EmailEditText = (EditText) findViewById(R.id.email);
