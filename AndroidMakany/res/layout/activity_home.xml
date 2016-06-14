@@ -11,10 +11,10 @@
         android:src="@drawable/test_image" /> -->
 
 <Button
-    android:id="@+id/addPostButton"
+    android:id="@+id/PostMenuButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Add Post" />
+    android:text="Post Menu" />
 
 <Button
     android:id="@+id/eventsButton"

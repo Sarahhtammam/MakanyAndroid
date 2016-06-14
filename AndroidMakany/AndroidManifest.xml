@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PostActivity"
+            android:name=".CreatePostActivity"
             android:label="@string/title_activity_post" >
         </activity>
         <activity
@@ -122,6 +122,10 @@
         <activity
             android:name=".WhatsNew_Dynamic"
             android:label="@string/title_activity_whats_new__dynamic" >
+        </activity>
+        <activity
+            android:name=".PostsMenuActivity"
+            android:label="@string/title_activity_posts_menu" >
         </activity>
     </application>
 

@@ -49,5 +49,6 @@
     <string name="title_activity_one_fragment">OneFragment</string>
     <string name="title_activity_two_fragment">TwoFragment</string>
     <string name="title_activity_whats_new__dynamic">WhatsNew_Dynamic</string>
+    <string name="title_activity_posts_menu">PostsMenuActivity</string>
 
 </resources>

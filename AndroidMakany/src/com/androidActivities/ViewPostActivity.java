@@ -7,7 +7,11 @@ import com.controllers.PostController;
 import SimpleModels.SimplePost;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -19,15 +23,30 @@ public class ViewPostActivity extends Activity {
 	{
 		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_view_post);
-		
+		setContentView(R.layout.activity_show_posts);
 		
 		ArrayList<SimplePost> post_Array = null;
 		PostController postController = new PostController();
 		postController.getPost("sarahhtammam@hotmail.com", "", "maadi", "", "");
+	
+		//Button viewPostsButton = (Button) findViewById(R.id.viewPostButton);
 		
+					
+		/*viewPostsButton.setOnClickListener(new OnClickListener() 
+		{
+
+			@Override
+			public void onClick(View v) 
+			{
+				ArrayList<SimplePost> post_Array = null;
+				PostController postController = new PostController();
+				postController.getPost("sarahhtammam@hotmail.com", "", "maadi", "", "");
+			
+			}
+			});
+	
 		
-		/*LinearLayout my_layout = (LinearLayout)findViewById(R.id.postLayout);
+*/		/*LinearLayout my_layout = (LinearLayout)findViewById(R.id.postLayout);
 
 		for (int i = 0; i < post_Array.size(); i++) 
 		{

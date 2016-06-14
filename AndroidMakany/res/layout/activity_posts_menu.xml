@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Posts Menu" />
+
+    
+	<Button 
+        android:id="@+id/addPostButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:text="Add Post"
+        />
+    
+	<Button 
+        android:id="@+id/viewMyPostsButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:text="Show all my Posts"
+        />
+	
+	<!-- 
+	<Button 
+        android:id="@+id/filterPostsCButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:text="Show posts by category"
+        />
+	
+	 
+	<Button 
+        android:id="@+id/filterPostsDButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:text="Show posts by disctrict"
+        />
+		 -->
+</LinearLayout>

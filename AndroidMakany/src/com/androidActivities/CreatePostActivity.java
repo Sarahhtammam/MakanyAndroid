@@ -14,7 +14,7 @@ import com.controllers.PostController;
 import com.controllers.UserController;
 
 
-public class PostActivity extends Activity {
+public class CreatePostActivity extends Activity {
 
 	EditText postEditText;
 	Button postButton, viewPostsButton;
@@ -22,11 +22,9 @@ public class PostActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_post);
+		setContentView(R.layout.activity_create_post);
 		postEditText = (EditText) findViewById(R.id.postEditText);
 		postButton = (Button) findViewById(R.id.postButton);
-		
-		viewPostsButton = (Button) findViewById(R.id.viewPostButton);
 		
 		postButton.setOnClickListener(new OnClickListener() 
 		{

@@ -25,7 +25,7 @@ public class HomeActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		
-		Button addPost = (Button) findViewById(R.id.addPostButton);
+		Button postMenu = (Button) findViewById(R.id.PostMenuButton);
 		Button events =  (Button) findViewById(R.id.eventsButton);
 		Button items =  (Button) findViewById(R.id.itemsButton);
 		Button whatsNew =  (Button) findViewById(R.id.whatsNew);
@@ -63,7 +63,6 @@ public class HomeActivity extends Activity
 			@Override
 			public void onClick(View arg0) 
 			{
-				// TODO Auto-generated method stub
 				Intent eventsIntent = new Intent(getApplicationContext(),EventsMenuActivity.class);
 				startActivity(eventsIntent);
 				
@@ -71,16 +70,14 @@ public class HomeActivity extends Activity
 		});
 
 	
-	 addPost.setOnClickListener(new OnClickListener() 
+	 postMenu.setOnClickListener(new OnClickListener() 
      {
 	
 		@Override
 		public void onClick(View v) 
 		{
-			Intent postIntent = new Intent(Application.getAppContext(),PostActivity.class);
-			postIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			postIntent.putExtra("email", currentEmail);
-			Application.getAppContext().startActivity(postIntent);
+			Intent postMenuIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
+			startActivity(postMenuIntent);
 			
 			
 		}
