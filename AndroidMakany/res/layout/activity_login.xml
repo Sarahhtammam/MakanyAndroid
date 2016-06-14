@@ -4,35 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+   <ImageView android:src="@drawable/makany_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" />
         
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="email"/>
+            android:text="Email"/>
         
         <EditText
             android:id="@+id/email"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
         
-    </LinearLayout>
 
-
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
         
         <TextView 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="password"
+            android:text="Password"
             />
         
         <EditText
@@ -41,14 +34,14 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
         
-    </LinearLayout>
+   
     
     <Button 
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="login"
+        android:text="LOGIN"
         />
 
     

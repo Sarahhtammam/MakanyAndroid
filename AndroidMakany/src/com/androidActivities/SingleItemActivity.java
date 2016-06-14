@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.controllers.Application;
 import com.controllers.EventController;
 import com.controllers.ItemController;
+import com.controllers.MessageController;
 
 public class SingleItemActivity extends Activity {
 	
@@ -87,6 +88,11 @@ public class SingleItemActivity extends Activity {
                 public void onClick(View v) 
                 {
                 	// send message 
+                	MessageController msgcontroller = new MessageController();
+	            	msgcontroller.getChatMessages(Application.getCurrentUser().get_email(), currentItem.getUserEmail());
+	            	Intent HomeActivity = new Intent(getApplicationContext(),HomeActivity.class);
+					startActivity(HomeActivity);
+
 
                 }
             });
@@ -95,22 +101,5 @@ public class SingleItemActivity extends Activity {
         
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.single_item, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+	
 }

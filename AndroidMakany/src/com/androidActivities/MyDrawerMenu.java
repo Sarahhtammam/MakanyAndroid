@@ -1,5 +1,8 @@
 package com.androidActivities;
 
+import com.controllers.Application;
+import com.controllers.MessageController;
+
 import SimpleModels.DrawerItemCustomAdapter;
 import SimpleModels.ObjectDrawerItem;
 import android.app.Activity;
@@ -41,14 +44,15 @@ public class MyDrawerMenu extends Activity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		
-		ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[6];
+		ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[7];
 		 
 		drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp, "Post");
 		drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp, "Event");
 		drawerItem[2] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp, "Aid");
 		drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp, "Store");
 		drawerItem[4] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp, "Update Profile");
-		drawerItem[5] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp, "Signout");
+		drawerItem[5] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp, "My Messages");
+		drawerItem[6] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp, "Signout");
 		
 		DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.listview_item_row, drawerItem);
 		mDrawerList.setAdapter(adapter);
@@ -116,6 +120,11 @@ public class MyDrawerMenu extends Activity {
 			    	break;
 			    	
 			    case 5:
+			    	MessageController msgController = new MessageController();
+			    	msgController.getMsgNames(Application.getCurrentUser().get_email());
+			    	break;
+			    	
+			    case 6:
 			    	SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
 					Editor editor = pref.edit();
 					editor.remove("email");
@@ -124,6 +133,7 @@ public class MyDrawerMenu extends Activity {
 					Intent login = new Intent(getApplicationContext(),LoginActivity.class);
 					startActivity(login);
 			    	break;
+			   
 			 
 			    default:
 			        break;

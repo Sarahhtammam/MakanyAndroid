@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import SimpleModels.SimpleUser;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -23,11 +24,12 @@ import com.androidActivities.MainActivity;
 
 public class UserController 
 {
-
+	static ProgressDialog myDialog;
 	static String emaill;
 	
-	public void login(String email, String password) 
+	public void login(String email, String password,ProgressDialog myDialog) 
 	{
+		this.myDialog = myDialog;
 		Connection connectionClass = new Connection();
 		emaill =email;
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/LoginService", email, password, "LoginService");
@@ -161,6 +163,7 @@ public class UserController
 						System.out.println("error");
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
+						myDialog.dismiss();
 						return;
 					}
 					
@@ -168,6 +171,7 @@ public class UserController
 					{
 						Toast.makeText(Application.getAppContext(), "error: Retype your email",
 						Toast.LENGTH_LONG).show();
+						myDialog.dismiss();
 						return;
 					}
 					
@@ -175,11 +179,12 @@ public class UserController
 					{
 						Toast.makeText(Application.getAppContext(), "Wrong Password",
 						Toast.LENGTH_LONG).show();
+						myDialog.dismiss();
 						return;
 					}
 					
 					//Logged in successfully 
-					
+					myDialog.dismiss();
 					//String username = object.getString("username");
 					Application.setUserEmail(emaill);
 					

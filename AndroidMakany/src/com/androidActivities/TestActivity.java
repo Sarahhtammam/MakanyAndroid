@@ -1,23 +1,22 @@
 package com.androidActivities;
 
+import java.util.Locale;
+
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.controllers.GPSTracker;
 
 public class TestActivity extends Activity implements OnClickListener  {
 	
-	GPSTracker gps;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,27 +59,22 @@ public class TestActivity extends Activity implements OnClickListener  {
 	@Override
 	public void onClick(View v) 
 	{
-		/*Application.setUserEmail("magieda@hotmail.com");
-		EventController eventController = new EventController();
-			eventController.getGoingEvents("magiedaa@hotmail.com", "");*/
 		
-		 // create class object
-        gps = new GPSTracker(this);
-
-        // check if GPS enabled     
-        if(gps.canGetLocation()){
-             
-            double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
-             
-            // \n is for new line
-            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();    
-        }else{
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            gps.showSettingsAlert();
-        }
+		/*String uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude);
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+		startActivity(intent);*/
+		
+		
+		double latitude = 30;
+		double longitude = 31;
+		String label = "In Egypt";
+		String uriBegin = "geo:" + latitude + "," + longitude;
+		String query = latitude + "," + longitude + "(" + label + ")";
+		String encodedQuery = Uri.encode(query);
+		String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
+		Uri uri = Uri.parse(uriString);
+		Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+		startActivity(intent);
 	}
 	
 }

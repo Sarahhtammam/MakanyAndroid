@@ -131,6 +131,14 @@
             android:name=".MyDrawerMenu"
             android:label="@string/title_activity_my_drawer_menu" >
         </activity>
+        <activity
+            android:name=".MyMessages"
+            android:label="@string/title_activity_my_messages" >
+        </activity>
+        <activity
+            android:name=".SingleMessage"
+            android:label="@string/title_activity_single_message" >
+        </activity>
     </application>
 
 </manifest>

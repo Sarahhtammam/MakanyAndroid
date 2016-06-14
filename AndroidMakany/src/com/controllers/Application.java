@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import SimpleModels.Element;
 import SimpleModels.SimpleEvent;
 import SimpleModels.SimpleItem;
+import SimpleModels.SimpleMessage;
 import SimpleModels.SimplePost;
 import SimpleModels.SimpleUser;
 import android.content.Context;
@@ -23,6 +24,8 @@ public class Application extends android.app.Application {
 	private static ArrayList<SimplePost> posts;
 	private static ArrayList<SimpleItem> items;
 	private static ArrayList<Element> Elements;
+	private static ArrayList<String> msgNames;
+	private static ArrayList<SimpleMessage> messgaes;
 	
 	
     public void onCreate(){
@@ -105,6 +108,22 @@ public class Application extends android.app.Application {
 
 	public static void setElements(ArrayList<Element> elements) {
 		Elements = elements;
+	}
+
+	public static ArrayList<SimpleMessage> getMessgaes() {
+		return messgaes;
+	}
+
+	public static void setMessgaes(ArrayList<SimpleMessage> messgaes) {
+		Application.messgaes = messgaes;
+	}
+
+	public static ArrayList<String> getMsgNames() {
+		return msgNames;
+	}
+
+	public static void setMsgNames(ArrayList<String> msgNames) {
+		Application.msgNames = msgNames;
 	}
     
 }
