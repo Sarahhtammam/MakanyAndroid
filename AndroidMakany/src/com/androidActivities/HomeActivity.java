@@ -15,7 +15,7 @@ import com.controllers.Application;
 import com.controllers.UserController;
 import com.controllers.WhatsNewController;
 
-public class HomeActivity extends Activity
+public class HomeActivity extends MyDrawerMenu
 {
 	String currentEmail ="";
 
@@ -24,6 +24,7 @@ public class HomeActivity extends Activity
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		super.onCreateDrawer();
 		
 		Button postMenu = (Button) findViewById(R.id.PostMenuButton);
 		Button events =  (Button) findViewById(R.id.eventsButton);

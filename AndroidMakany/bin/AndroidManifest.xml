@@ -127,6 +127,10 @@
             android:name=".PostsMenuActivity"
             android:label="@string/title_activity_posts_menu" >
         </activity>
+        <activity
+            android:name=".MyDrawerMenu"
+            android:label="@string/title_activity_my_drawer_menu" >
+        </activity>
     </application>
 
 </manifest>
