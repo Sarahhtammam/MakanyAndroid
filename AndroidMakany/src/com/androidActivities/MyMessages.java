@@ -42,6 +42,7 @@ public class MyMessages extends Activity {
 	        b.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) 
 	            {
+	            	Application.setMsgTo(temp.getSenderMail());
 	            	MessageController msgcontroller = new MessageController();
 	            	msgcontroller.getChatMessages(Application.getCurrentUser().get_email(), temp.getSenderMail() );
 

@@ -114,6 +114,7 @@ public class HomeActivity extends MyDrawerMenu
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Application.loggedIn = false;
 				SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
 				Editor editor = pref.edit();
 				editor.remove("email");

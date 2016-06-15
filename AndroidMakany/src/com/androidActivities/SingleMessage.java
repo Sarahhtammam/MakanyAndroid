@@ -59,7 +59,7 @@ public class SingleMessage extends Activity {
             public void onClick(View v) 
             {
             	MessageController msgcontroller = new MessageController();
-            	msgcontroller.sendMessage(Application.getCurrentUser().get_email(), "", sendContent.getText().toString());
+            	msgcontroller.sendMessage(Application.getCurrentUser().get_email(), Application.getMsgTo(), sendContent.getText().toString());
             	
             }
         });

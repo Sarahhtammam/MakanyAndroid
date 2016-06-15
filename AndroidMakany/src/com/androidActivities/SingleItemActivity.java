@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.controllers.Application;
-import com.controllers.EventController;
 import com.controllers.ItemController;
 import com.controllers.MessageController;
 
@@ -88,6 +85,7 @@ public class SingleItemActivity extends Activity {
                 public void onClick(View v) 
                 {
                 	// send message 
+                	Application.setMsgTo(currentItem.getUserEmail());
                 	MessageController msgcontroller = new MessageController();
 	            	msgcontroller.getChatMessages(Application.getCurrentUser().get_email(), currentItem.getUserEmail());
 	            	Intent HomeActivity = new Intent(getApplicationContext(),HomeActivity.class);

@@ -28,6 +28,7 @@ public class Application extends android.app.Application {
 	private static ArrayList<Element> Elements;
 	private static ArrayList<SimpleMessage> msgNames;
 	private static ArrayList<SimpleMessage> messgaes;
+	public static String msgTo;
 	
 	
     public void onCreate(){
@@ -126,6 +127,14 @@ public class Application extends android.app.Application {
 
 	public static void setMsgNames(ArrayList<SimpleMessage> msgNames) {
 		Application.msgNames = msgNames;
+	}
+
+	public static String getMsgTo() {
+		return msgTo;
+	}
+
+	public static void setMsgTo(String msgTo) {
+		Application.msgTo = msgTo;
 	}
     
 }

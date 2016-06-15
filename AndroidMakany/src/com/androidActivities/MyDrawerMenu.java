@@ -125,6 +125,7 @@ public class MyDrawerMenu extends Activity {
 			    	break;
 			    	
 			    case 6:
+			    	Application.loggedIn = false;
 			    	SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
 					Editor editor = pref.edit();
 					editor.remove("email");
