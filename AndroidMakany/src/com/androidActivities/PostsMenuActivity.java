@@ -1,6 +1,9 @@
 package com.androidActivities;
 
 
+import com.controllers.Application;
+import com.controllers.PostController;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -53,9 +56,9 @@ public class PostsMenuActivity extends Activity implements OnClickListener
 		
 		    case R.id.viewMyPostsButton:
 		    {
-		    	Intent viewPostActivity = new Intent(getApplicationContext(),ShowPostsActivity.class);
-		    	startActivity(viewPostActivity);
-		    	break;
+		    	PostController postController = new PostController();
+				postController.getPost(Application.getCurrentUser().get_email(), "", Application.currentDistrict, "", "");
+				break;
 		    }
 		   	
 		 /*   case R.id.filterEventsCButton:

@@ -22,6 +22,7 @@ public class Application extends android.app.Application {
 	private static String userEmail; 
 	private static SimpleEvent currentEvent;
 	private static SimpleItem currentItem;
+	private static SimplePost currentPost;
 	
 	private static ArrayList<SimpleEvent> events;
 	private static ArrayList<SimplePost> posts;

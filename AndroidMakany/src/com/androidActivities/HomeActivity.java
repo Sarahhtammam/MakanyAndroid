@@ -34,8 +34,8 @@ public class HomeActivity extends MyDrawerMenu
 		
 		currentEmail = Application.getUserEmail();
 		
-		Toast.makeText(getApplicationContext(),
-		"Welcome User!\nYour Email is: " + currentEmail , Toast.LENGTH_SHORT).show();
+		//Toast.makeText(getApplicationContext(),
+		//"Welcome User!\nYour Email is: " + currentEmail , Toast.LENGTH_SHORT).show();
 		
 		UserController userController = new UserController();
 		

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.androidActivities.CreatePostActivity;
 import com.androidActivities.HomeActivity;
 import com.androidActivities.PostsMenuActivity;
+import com.androidActivities.ShowPostsActivity;
 import com.simpleModels.SimplePost;
 
 public class PostController 
@@ -353,9 +354,15 @@ public class PostController
 					}
 					
 					//Post added successfully 
-					Toast.makeText(Application.getAppContext(), "SUCCESS\nPOST= " + posts.get(0).getContent(),
-					Toast.LENGTH_LONG).show();
 					Application.setPosts(posts);
+					
+					//Toast.makeText(Application.getAppContext(), "SUCCESS\nPOST= " + posts.get(0).getContent(),
+					//Toast.LENGTH_LONG).show();
+					
+					Intent showPostActivity = new Intent(Application.getAppContext(),ShowPostsActivity.class);
+					showPostActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(showPostActivity);
+			    	
 				}
 			
 				//Do the same for other services
