@@ -3,13 +3,13 @@ package com.androidActivities;
 import java.util.ArrayList;
 
 import SimpleModels.SimpleMessage;
-import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
-import android.content.Intent;
+import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -34,11 +34,12 @@ public class SingleMessage extends Activity {
 		{
 			final SimpleMessage temp = messgaes.get(i);
 			TextView username = new TextView(this);
-			username.setText("Name: " + temp.getSenderMail() );
+			username.setText("Name: " + temp.getSenderName() );
 	        my_layout.addView(username); 
 	        
 	        TextView content = new TextView(this);
-	        content.setText("Content: " + temp.getContent() );
+	        content.setText(temp.getContent() );
+	        content.setTypeface(null, Typeface.BOLD);
 	        my_layout.addView(content); 
 	        
 	        View ruler = new View(this); ruler.setBackgroundColor(0xff000000);

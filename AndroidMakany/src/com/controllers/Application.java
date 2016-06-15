@@ -15,6 +15,8 @@ public class Application extends android.app.Application {
 	private static Context context;
 	public static boolean loggedIn;
 	
+	public static String currentDistrict;
+	
 	private static SimpleUser currentUser;
 	private static String userEmail; 
 	private static SimpleEvent currentEvent;
@@ -24,7 +26,7 @@ public class Application extends android.app.Application {
 	private static ArrayList<SimplePost> posts;
 	private static ArrayList<SimpleItem> items;
 	private static ArrayList<Element> Elements;
-	private static ArrayList<String> msgNames;
+	private static ArrayList<SimpleMessage> msgNames;
 	private static ArrayList<SimpleMessage> messgaes;
 	
 	
@@ -118,11 +120,11 @@ public class Application extends android.app.Application {
 		Application.messgaes = messgaes;
 	}
 
-	public static ArrayList<String> getMsgNames() {
+	public static ArrayList<SimpleMessage> getMsgNames() {
 		return msgNames;
 	}
 
-	public static void setMsgNames(ArrayList<String> msgNames) {
+	public static void setMsgNames(ArrayList<SimpleMessage> msgNames) {
 		Application.msgNames = msgNames;
 	}
     

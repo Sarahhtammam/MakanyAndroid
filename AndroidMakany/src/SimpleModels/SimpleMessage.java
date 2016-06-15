@@ -2,15 +2,27 @@ package SimpleModels;
 
 public class SimpleMessage {
 
+	
 	private String senderMail;
 	private String reciverMail;
 	private String content;
+	private String senderName;
+	private String reciverName;
 	
-	public SimpleMessage(String senderMail, String reciverMail, String content) {
+	public SimpleMessage(String senderMail, String reciverMail, String content,
+			String senderName, String reciverName) {
 		super();
 		this.senderMail = senderMail;
 		this.reciverMail = reciverMail;
 		this.content = content;
+		this.senderName = senderName;
+		this.reciverName = reciverName;
+	}
+	
+	public SimpleMessage(String senderName, String senderMail) {
+		super();
+		this.senderName = senderName;
+		this.senderMail = senderMail;
 	}
 	
 	public String getSenderMail() {
@@ -30,6 +42,22 @@ public class SimpleMessage {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getSenderName() {
+		return senderName;
+	}
+
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
+	}
+
+	public String getReciverName() {
+		return reciverName;
+	}
+
+	public void setReciverName(String reciverName) {
+		this.reciverName = reciverName;
 	}
 	
 	

@@ -2,9 +2,9 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
+import SimpleModels.SimpleMessage;
 import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.controllers.Application;
 import com.controllers.MessageController;
 
@@ -24,14 +25,14 @@ public class MyMessages extends Activity {
 		
 		LinearLayout my_layout = (LinearLayout)findViewById(R.id.myMessagesLayout);
 
-		ArrayList<String> msgNames = new ArrayList<String>(); 
+		ArrayList<SimpleMessage> msgNames = new ArrayList<SimpleMessage>(); 
 		msgNames = Application.getMsgNames();
 
 		for (int i = 0; i < msgNames.size(); i++) 
 		{
-			final String temp = msgNames.get(i);
+			final SimpleMessage temp = msgNames.get(i);
 			TextView name = new TextView(this);
-	        name.setText("Name: " + temp  );
+	        name.setText("Name: " + temp.getSenderName()  );
 	        my_layout.addView(name); 
 
 	        
@@ -42,7 +43,7 @@ public class MyMessages extends Activity {
 	            public void onClick(View v) 
 	            {
 	            	MessageController msgcontroller = new MessageController();
-	            	msgcontroller.getChatMessages(Application.getCurrentUser().get_email(), temp);
+	            	msgcontroller.getChatMessages(Application.getCurrentUser().get_email(), temp.getSenderMail() );
 
 	            }
 	        });
