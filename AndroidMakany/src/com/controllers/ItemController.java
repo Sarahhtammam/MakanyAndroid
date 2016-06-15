@@ -187,18 +187,18 @@ public class ItemController
 					{
 						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						return;
 					}
 					else if (object.get("Status").equals("Failed"))
 					{
 						Toast.makeText(Application.getAppContext(), "Failed to create Item",
-								Toast.LENGTH_LONG).show();
+								Toast.LENGTH_SHORT).show();
 					}
 					
 					
 					
-					Toast.makeText(Application.getAppContext(), "Item Created", Toast.LENGTH_LONG).show();
+					Toast.makeText(Application.getAppContext(), "Item Created", Toast.LENGTH_SHORT).show();
 					
 					Intent itemIntent = new Intent(Application.getAppContext(),ItemsMenuActivity.class);
 					itemIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -220,16 +220,16 @@ public class ItemController
 					{
 						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						return;
 					}
 					else if (object.get("Status").equals("Failed"))
 					{
 						Toast.makeText(Application.getAppContext(), "Failed to edit Item!",
-								Toast.LENGTH_LONG).show();
+								Toast.LENGTH_SHORT).show();
 					}
 					else
-						Toast.makeText(Application.getAppContext(), "Item has been edited successfully", Toast.LENGTH_LONG).show();
+						Toast.makeText(Application.getAppContext(), "Item has been edited successfully", Toast.LENGTH_SHORT).show();
 					
 					Intent itemIntent = new Intent(Application.getAppContext(),ItemsMenuActivity.class);
 					itemIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -252,21 +252,21 @@ public class ItemController
 					{
 						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						return;
 					}
 					else if (object.get("Status").equals("Failed"))
 					{
 						Toast.makeText(Application.getAppContext(), "Failed to delete Item!",
-								Toast.LENGTH_LONG).show();
+								Toast.LENGTH_SHORT).show();
 					}
 					else if (object.get("Status").equals("notYourItem"))
 					{
 						Toast.makeText(Application.getAppContext(), "It's not your Item!",
-								Toast.LENGTH_LONG).show();
+								Toast.LENGTH_SHORT).show();
 					}
 					else
-						Toast.makeText(Application.getAppContext(), "Item has been deleted successfully", Toast.LENGTH_LONG).show();
+						Toast.makeText(Application.getAppContext(), "Item has been deleted successfully", Toast.LENGTH_SHORT).show();
 					
 					Intent itemIntent = new Intent(Application.getAppContext(),ItemsMenuActivity.class);
 					itemIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

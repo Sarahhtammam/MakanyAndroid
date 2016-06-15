@@ -3,13 +3,14 @@ package com.controllers;
 import com.androidActivities.LoginActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 public class SessionController {
-	
+
 	public static void login()
 	{
 		Application.loggedIn = true;
@@ -35,9 +36,9 @@ public class SessionController {
 	}
 	
 	
-	public static void showSignoutDialog()
+	public static void showSignoutDialog(Context mContext)
 	{
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(Application.getAppContext());
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
         
         // Setting Dialog Title
         alertDialog.setTitle("Signout");

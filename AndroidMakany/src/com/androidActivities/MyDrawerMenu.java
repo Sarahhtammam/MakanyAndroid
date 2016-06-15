@@ -7,9 +7,8 @@ import com.simpleModels.DrawerItemCustomAdapter;
 import com.simpleModels.ObjectDrawerItem;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -26,11 +25,13 @@ public class MyDrawerMenu extends Activity {
 	private ListView mDrawerList;
 
 	ActionBarDrawerToggle mDrawerToggle;
+	Context mContext;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_drawer_menu);
+		mContext = this;
 
 	}
 
@@ -40,7 +41,7 @@ public class MyDrawerMenu extends Activity {
 
 		ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[8];
 
-		drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
+		drawerItem[0] = new ObjectDrawerItem(R.drawable.home_icon,
 				"Home");
 		drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
 				"Posts");
@@ -48,12 +49,12 @@ public class MyDrawerMenu extends Activity {
 				"Events");
 		drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
 				"Neighbours Aid");
-		drawerItem[4] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
+		drawerItem[4] = new ObjectDrawerItem(R.drawable.store_icon,
 				"Stores");
 		drawerItem[5] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
-				"Update Profile");
-		drawerItem[6] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
 				"My Messages");
+		drawerItem[6] = new ObjectDrawerItem(R.drawable.updateprofile_icon,
+				"Update Profile");
 		drawerItem[7] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
 				"Signout");
 
@@ -125,10 +126,10 @@ public class MyDrawerMenu extends Activity {
 						ItemsMenuActivity.class);
 				startActivity(itemMenuIntent);
 				break;
-			case 4: // store
+			case 4: // update profile
 
 				break;
-			case 5: // update profile
+			case 5: // store
 				break;
 
 			case 6: // my messages
@@ -138,7 +139,8 @@ public class MyDrawerMenu extends Activity {
 				break;
 
 			case 7: // signout
-				SessionController.signout();
+				//SessionController.signout();
+				SessionController.showSignoutDialog(mContext);
 				break;
 
 			default:
