@@ -15,7 +15,7 @@ import com.controllers.Application;
 import com.controllers.ItemController;
 import com.controllers.MessageController;
 
-public class SingleItemActivity extends Activity {
+public class SingleItemActivity extends MyDrawerMenu {
 	
 	final SimpleItem currentItem = Application.getCurrentItem();
 
@@ -23,6 +23,7 @@ public class SingleItemActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_single_item);
+		super.onCreateDrawer();
 		
 		LinearLayout my_layout = (LinearLayout)findViewById(R.id.singleItemLayout);
 		

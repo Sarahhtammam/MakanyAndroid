@@ -23,5 +23,12 @@
         android:text="Folder name here."
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:textColor="#ffffff" />
+    
+     <View
+             android:layout_width="fill_parent"
+             android:layout_height="1dp"
+             android:background="#c0c0c0"
+             android:layout_below="@+id/imageViewIcon"
+             android:paddingBottom="4dp"/>
  
 </RelativeLayout>

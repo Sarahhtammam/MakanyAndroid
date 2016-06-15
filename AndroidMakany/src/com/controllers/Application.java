@@ -92,10 +92,6 @@ public class Application extends android.app.Application {
 		Application.items = items;
 	}
 
-	public static String getCurrentEmail() {
-		// TODO Auto-generated method stub
-		return userEmail;
-	}
 
 	public static SimpleItem getCurrentItem() {
 		return currentItem;
@@ -135,6 +131,19 @@ public class Application extends android.app.Application {
 
 	public static void setMsgTo(String msgTo) {
 		Application.msgTo = msgTo;
+	}
+	
+	public static void addLocalMessage(SimpleMessage msg)
+	{
+		Application.messgaes.add(msg);
+	}
+
+	public static String getCurrentDistrict() {
+		return currentDistrict;
+	}
+
+	public static void setCurrentDistrict(String currentDistrict) {
+		Application.currentDistrict = currentDistrict;
 	}
     
 }

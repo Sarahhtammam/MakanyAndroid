@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import com.controllers.Application;
 import com.controllers.ItemController;
 
-public class EditItem extends Activity implements OnClickListener {
+public class EditItem extends MyDrawerMenu implements OnClickListener {
 	final SimpleItem currentItem = Application.getCurrentItem();
 	EditText itemnameEditText;
 	EditText descriptionEditText;
@@ -29,6 +29,7 @@ public class EditItem extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_item);
+		super.onCreateDrawer();
 		
 		currentEmail = Application.getCurrentUser().get_email();
 		

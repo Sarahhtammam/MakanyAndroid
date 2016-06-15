@@ -159,7 +159,7 @@ public class SingleEventActivity extends Activity implements OnClickListener{
 			    		String postTextt = postText.getText().toString() ;
 			    		PostController postController = new PostController();
 			 			postController.addPost("event", postTextt, "no-pic", 
-			 			"maadi", currentEvent.getID(), Application.getCurrentEmail(), "");
+			 			"maadi", currentEvent.getID(), Application.getUserEmail(), "");
 			    	}
 		    	});
 
@@ -190,14 +190,14 @@ public class SingleEventActivity extends Activity implements OnClickListener{
 		    {
 		    	
 		    	EventController eventController = new EventController();
-  				eventController.joinEvent(currentEvent.getID(), Application.getCurrentEmail());
+  				eventController.joinEvent(currentEvent.getID(), Application.getUserEmail());
   				break;
 		    }
 		    
 		    case R.id.DisAttendEvent:
 		    {
 		    	EventController eventController = new EventController();
-  				eventController.cancelGoingEvent(currentEvent.getID(), Application.getCurrentEmail());
+  				eventController.cancelGoingEvent(currentEvent.getID(), Application.getUserEmail());
   				break;
 			}
 	

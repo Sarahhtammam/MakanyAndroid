@@ -16,12 +16,13 @@ import android.widget.TextView;
 import com.controllers.Application;
 
 
-public class ShowItemsActivity extends Activity {
+public class ShowItemsActivity extends MyDrawerMenu {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_items);
+		super.onCreateDrawer();
 		
 		ArrayList<SimpleItem> items = new ArrayList<SimpleItem>(); 
 		        

@@ -13,7 +13,7 @@ import com.controllers.Application;
 import com.controllers.ItemController;
 
 
-public class CreateItemActivity extends Activity implements OnClickListener{
+public class CreateItemActivity extends MyDrawerMenu implements OnClickListener{
 
 	EditText itemnameEditText;
 	EditText descriptionEditText;
@@ -28,6 +28,7 @@ public class CreateItemActivity extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_item);
+		super.onCreateDrawer();
 		
 		itemnameEditText = (EditText) findViewById(R.id.name);
 		descriptionEditText=(EditText) findViewById(R.id.description);

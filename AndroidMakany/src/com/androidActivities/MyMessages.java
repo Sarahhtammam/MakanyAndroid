@@ -16,12 +16,13 @@ import android.widget.TextView;
 import com.controllers.Application;
 import com.controllers.MessageController;
 
-public class MyMessages extends Activity {
+public class MyMessages extends MyDrawerMenu {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_messages);
+		super.onCreateDrawer();
 		
 		LinearLayout my_layout = (LinearLayout)findViewById(R.id.myMessagesLayout);
 

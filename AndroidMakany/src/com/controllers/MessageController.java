@@ -15,7 +15,9 @@ import org.json.JSONObject;
 import SimpleModels.SimpleMessage;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Message;
 import android.widget.Toast;
+
 import com.androidActivities.MyMessages;
 import com.androidActivities.SingleMessage;
 
@@ -49,9 +51,8 @@ public class MessageController
 	public void sendMessage(String sender , String reciver,String content) 
 	{
 		
-		Toast.makeText(Application.getAppContext(), "msg is " + content,
-				Toast.LENGTH_LONG).show();
-		
+		SimpleMessage msg = new SimpleMessage(sender,reciver,content,"","");
+		Application.addLocalMessage(msg);
 		Connection connectionClass = new Connection();
 		
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/sendMessageService",

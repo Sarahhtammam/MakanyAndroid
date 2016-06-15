@@ -18,12 +18,13 @@ import android.widget.TextView;
 import com.controllers.Application;
 import com.controllers.MessageController;
 
-public class SingleMessage extends Activity {
+public class SingleMessage extends MyDrawerMenu {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_single_message);
+		super.onCreateDrawer();
 		
 		LinearLayout my_layout = (LinearLayout)findViewById(R.id.singleMessageLayout);
 
@@ -60,6 +61,9 @@ public class SingleMessage extends Activity {
             {
             	MessageController msgcontroller = new MessageController();
             	msgcontroller.sendMessage(Application.getCurrentUser().get_email(), Application.getMsgTo(), sendContent.getText().toString());
+            	finish();
+            	msgcontroller = new MessageController();
+            	msgcontroller.getChatMessages(Application.getCurrentUser().get_email(), Application.getMsgTo() );
             	
             }
         });

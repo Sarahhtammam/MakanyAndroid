@@ -151,10 +151,6 @@ public class UserController
 				{
 					System.out.println("result " + result);
 					
-					/*JSONParser parser = new JSONParser();
-					Object obj = parser.parse(result);
-					JSONObject object = (JSONObject) obj;*/
-					
 					JSONObject object = new JSONObject(result);
 					
 					
@@ -162,7 +158,7 @@ public class UserController
 					{
 						System.out.println("error");
 						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						myDialog.dismiss();
 						return;
 					}
@@ -170,7 +166,7 @@ public class UserController
 					if(object.getString("Status").equals("Failed"))
 					{
 						Toast.makeText(Application.getAppContext(), "error: Retype your email",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						myDialog.dismiss();
 						return;
 					}
@@ -178,14 +174,13 @@ public class UserController
 					if(object.getString("Status").equals("wrongPass"))
 					{
 						Toast.makeText(Application.getAppContext(), "Wrong Password",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						myDialog.dismiss();
 						return;
 					}
 					
 					//Logged in successfully 
 					myDialog.dismiss();
-					//String username = object.getString("username");
 					Application.setUserEmail(emaill);
 					
 					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
@@ -204,14 +199,14 @@ public class UserController
 					{
 						System.out.println("eroor" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						return;
 					}
 					
 					if(object.getString("Status").equals("Failed"))
 					{
 						Toast.makeText(Application.getAppContext(), "error",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						return;
 					}
 					
@@ -244,12 +239,12 @@ public class UserController
 					catch (JSONException e) 
 					{
 						Toast.makeText(Application.getAppContext(), "error",
-								Toast.LENGTH_LONG).show();
+								Toast.LENGTH_SHORT).show();
 								
 					}
-					
-					
+
 					Application.setCurrentUser(simpleUser);
+					Application.setCurrentDistrict(simpleUser.getDistrict());
 					
 					
 					
@@ -266,13 +261,13 @@ public class UserController
 					 ||object.getString("Status").equals("Failed"))
 					{
 						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						return;
 					}
 					
 					//Signed Up successfully 
 					Toast.makeText(Application.getAppContext(), "Success",
-					Toast.LENGTH_LONG).show();
+					Toast.LENGTH_SHORT).show();
 					
 					Intent mainIntent = new Intent(Application.getAppContext(),MainActivity.class);
 					mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -295,13 +290,13 @@ public class UserController
 					  ||object.getString("Status").equals("Failed"))
 					{
 						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 						return;
 					}
 							
 					//edit profile succeed
 					Toast.makeText(Application.getAppContext(), "Success",
-					Toast.LENGTH_LONG).show();
+					Toast.LENGTH_SHORT).show();
 					
 					Intent mainIntent = new Intent(Application.getAppContext(),MainActivity.class);
 					mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

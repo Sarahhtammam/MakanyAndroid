@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.controllers.ItemController;
 
-public class ItemsMenuActivity extends Activity {
+public class ItemsMenuActivity extends MyDrawerMenu {
 	
 	String currentEmail ="";
 	Button createItemButton, showLoanItems , showRequestItems;
@@ -18,6 +18,8 @@ public class ItemsMenuActivity extends Activity {
 	    {
 			 super.onCreate(savedInstanceState);
 		     setContentView(R.layout.activity_item_menu);
+		     super.onCreateDrawer();
+		     
 		     createItemButton = (Button) findViewById(R.id.createItemButton);
 		     showLoanItems = (Button) findViewById(R.id.getLoanItemsButton);
 		     showRequestItems = (Button) findViewById(R.id.getRequestItemsButton);

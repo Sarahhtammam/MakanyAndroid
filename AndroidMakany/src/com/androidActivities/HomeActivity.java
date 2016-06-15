@@ -32,10 +32,10 @@ public class HomeActivity extends MyDrawerMenu
 		Button whatsNew =  (Button) findViewById(R.id.whatsNew);
 		Button signout =  (Button) findViewById(R.id.signout);
 		
-		currentEmail = Application.getCurrentEmail();
+		currentEmail = Application.getUserEmail();
 		
 		Toast.makeText(getApplicationContext(),
-		"Welocome User!\nYour Email is: " + currentEmail , Toast.LENGTH_LONG).show();
+		"Welcome User!\nYour Email is: " + currentEmail , Toast.LENGTH_SHORT).show();
 		
 		UserController userController = new UserController();
 		
@@ -50,13 +50,10 @@ public class HomeActivity extends MyDrawerMenu
 			Editor editor = pref.edit();
 			//on the login store the login
 			editor.putString("email", currentEmail); 
-			editor.commit();	
-			Toast.makeText(getApplicationContext(),"first visit to homepage", Toast.LENGTH_LONG).show();			
+			editor.commit();			
 		}
 		
-	
-		
-		
+
 
 	 events.setOnClickListener(new OnClickListener() 
      {

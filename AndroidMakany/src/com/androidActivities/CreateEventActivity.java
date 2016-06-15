@@ -31,7 +31,7 @@ public class CreateEventActivity extends Activity {
 		eventCategory =(EditText) findViewById(R.id.eventCategory);
 		eventDescription = (EditText) findViewById(R.id.eventDescription);
 		
-		currentEmail =Application.getCurrentEmail();
+		currentEmail =Application.getUserEmail();
 		currentDistrict =Application.getCurrentUser().getDistrict();
 		
 		
