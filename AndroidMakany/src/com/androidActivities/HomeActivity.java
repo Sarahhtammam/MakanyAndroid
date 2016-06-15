@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.controllers.Application;
+import com.controllers.SessionController;
 import com.controllers.UserController;
 import com.controllers.WhatsNewController;
 
@@ -30,7 +31,6 @@ public class HomeActivity extends MyDrawerMenu
 		Button events =  (Button) findViewById(R.id.eventsButton);
 		Button items =  (Button) findViewById(R.id.itemsButton);
 		Button whatsNew =  (Button) findViewById(R.id.whatsNew);
-		Button signout =  (Button) findViewById(R.id.signout);
 		
 		currentEmail = Application.getUserEmail();
 		
@@ -44,13 +44,7 @@ public class HomeActivity extends MyDrawerMenu
 		if(!Application.loggedIn)
 		{
 			userController.getUser(currentEmail);
-			Application.loggedIn = true;
-				
-			SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-			Editor editor = pref.edit();
-			//on the login store the login
-			editor.putString("email", currentEmail); 
-			editor.commit();			
+			SessionController.login();		
 		}
 		
 
@@ -101,27 +95,11 @@ public class HomeActivity extends MyDrawerMenu
 				// TODO Auto-generated method stub
 				WhatsNewController whatsNewController = new WhatsNewController();
 				whatsNewController.getDynamicRecommendation(currentEmail);
-				
-				
-			}
-		});
-	 
-	 signout.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Application.loggedIn = false;
-				SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-				Editor editor = pref.edit();
-				editor.remove("email");
-				editor.commit();
-				
-				Intent login = new Intent(getApplicationContext(),LoginActivity.class);
-				startActivity(login);
-				
+
 			}
 		});
 	}
+	 
+
 
 }

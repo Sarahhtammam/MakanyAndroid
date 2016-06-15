@@ -12,7 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import SimpleModels.SimpleMessage;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Message;
@@ -20,6 +19,7 @@ import android.widget.Toast;
 
 import com.androidActivities.MyMessages;
 import com.androidActivities.SingleMessage;
+import com.simpleModels.SimpleMessage;
 
 
 

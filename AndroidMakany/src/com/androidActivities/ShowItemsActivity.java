@@ -2,7 +2,6 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
-import SimpleModels.SimpleItem;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.controllers.Application;
+import com.simpleModels.SimpleItem;
 
 
 public class ShowItemsActivity extends MyDrawerMenu {

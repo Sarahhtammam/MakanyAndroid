@@ -12,13 +12,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import SimpleModels.SimpleEvent;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.androidActivities.EventsMenuActivity;
 import com.androidActivities.ShowEventsActivity;
+import com.simpleModels.SimpleEvent;
 
 
 public class EventController 

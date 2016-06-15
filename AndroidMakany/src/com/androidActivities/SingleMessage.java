@@ -2,7 +2,6 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
-import SimpleModels.SimpleMessage;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.graphics.Typeface;
@@ -17,6 +16,7 @@ import android.widget.TextView;
 
 import com.controllers.Application;
 import com.controllers.MessageController;
+import com.simpleModels.SimpleMessage;
 
 public class SingleMessage extends MyDrawerMenu {
 

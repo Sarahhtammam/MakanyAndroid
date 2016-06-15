@@ -1,4 +1,4 @@
-package SimpleModels;
+package com.simpleModels;
 
 import android.app.Activity;
 import android.content.Context;

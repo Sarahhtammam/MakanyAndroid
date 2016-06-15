@@ -12,13 +12,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import SimpleModels.Element;
-import SimpleModels.SimpleEvent;
-import SimpleModels.SimpleItem;
 import android.content.Intent;
 import android.os.AsyncTask;
 
 import com.androidActivities.WhatsNew;
+import com.simpleModels.Element;
+import com.simpleModels.SimpleEvent;
+import com.simpleModels.SimpleItem;
 
 
 

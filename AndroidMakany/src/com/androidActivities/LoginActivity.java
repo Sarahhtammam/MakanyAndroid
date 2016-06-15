@@ -1,6 +1,5 @@
 package com.androidActivities;
 
-import SimpleModels.SimpleUser;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.controllers.UserController;
+import com.simpleModels.SimpleUser;
 
 
 public class LoginActivity extends Activity implements OnClickListener{

@@ -2,12 +2,13 @@ package com.controllers;
 
 import java.util.ArrayList;
 
-import SimpleModels.Element;
-import SimpleModels.SimpleEvent;
-import SimpleModels.SimpleItem;
-import SimpleModels.SimpleMessage;
-import SimpleModels.SimplePost;
-import SimpleModels.SimpleUser;
+import com.simpleModels.Element;
+import com.simpleModels.SimpleEvent;
+import com.simpleModels.SimpleItem;
+import com.simpleModels.SimpleMessage;
+import com.simpleModels.SimplePost;
+import com.simpleModels.SimpleUser;
+
 import android.content.Context;
 
 public class Application extends android.app.Application {

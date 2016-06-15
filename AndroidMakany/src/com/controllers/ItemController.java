@@ -12,13 +12,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import SimpleModels.SimpleItem;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.androidActivities.ItemsMenuActivity;
 import com.androidActivities.ShowItemsActivity;
+import com.simpleModels.SimpleItem;
 
 
 public class ItemController 

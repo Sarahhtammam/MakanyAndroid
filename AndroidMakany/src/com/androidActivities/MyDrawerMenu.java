@@ -2,9 +2,10 @@ package com.androidActivities;
 
 import com.controllers.Application;
 import com.controllers.MessageController;
+import com.controllers.SessionController;
+import com.simpleModels.DrawerItemCustomAdapter;
+import com.simpleModels.ObjectDrawerItem;
 
-import SimpleModels.DrawerItemCustomAdapter;
-import SimpleModels.ObjectDrawerItem;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -137,17 +138,7 @@ public class MyDrawerMenu extends Activity {
 				break;
 
 			case 7: // signout
-				Application.loggedIn = false;
-				SharedPreferences pref = getApplicationContext()
-						.getSharedPreferences("MyPref", 0); // 0 - for private
-															// mode
-				Editor editor = pref.edit();
-				editor.remove("email");
-				editor.commit();
-
-				Intent login = new Intent(getApplicationContext(),
-						LoginActivity.class);
-				startActivity(login);
+				SessionController.signout();
 				break;
 
 			default:

@@ -1,6 +1,5 @@
 package com.androidActivities;
 
-import SimpleModels.SimpleEvent;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 import com.controllers.Application;
 import com.controllers.EventController;
 import com.controllers.PostController;
+import com.simpleModels.SimpleEvent;
 
 public class SingleEventActivity extends Activity implements OnClickListener{
 

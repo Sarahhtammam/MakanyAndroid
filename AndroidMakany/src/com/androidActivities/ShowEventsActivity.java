@@ -2,8 +2,6 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
-import SimpleModels.SimpleEvent;
-
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
@@ -16,6 +14,7 @@ import android.widget.TextView;
 
 import com.controllers.Application;
 import com.controllers.EventController;
+import com.simpleModels.SimpleEvent;
 
 public class ShowEventsActivity extends Activity {
 

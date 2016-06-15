@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import com.controllers.Application;
 import com.controllers.GPSTracker;
 import com.controllers.WhatsNewController;
+import com.simpleModels.Element;
+import com.simpleModels.SimpleEvent;
+import com.simpleModels.SimpleItem;
+import com.simpleModels.ViewElements;
 
-import SimpleModels.Element;
-import SimpleModels.SimpleEvent;
-import SimpleModels.SimpleItem;
-import SimpleModels.ViewElements;
 import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;

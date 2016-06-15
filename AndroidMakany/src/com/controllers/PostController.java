@@ -12,7 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import SimpleModels.SimplePost;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -20,6 +19,7 @@ import android.widget.Toast;
 import com.androidActivities.CreatePostActivity;
 import com.androidActivities.HomeActivity;
 import com.androidActivities.PostsMenuActivity;
+import com.simpleModels.SimplePost;
 
 public class PostController 
 {

@@ -1,4 +1,4 @@
-package SimpleModels;
+package com.simpleModels;
 
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;

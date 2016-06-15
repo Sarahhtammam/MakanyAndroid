@@ -1,4 +1,4 @@
-package SimpleModels;
+package com.simpleModels;
 
 public class ObjectDrawerItem {
 	 

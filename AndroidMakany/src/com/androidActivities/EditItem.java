@@ -1,6 +1,5 @@
 package com.androidActivities;
 
-import SimpleModels.SimpleItem;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +13,7 @@ import android.widget.Spinner;
 
 import com.controllers.Application;
 import com.controllers.ItemController;
+import com.simpleModels.SimpleItem;
 
 public class EditItem extends MyDrawerMenu implements OnClickListener {
 	final SimpleItem currentItem = Application.getCurrentItem();

@@ -3,8 +3,8 @@ package com.androidActivities;
 import java.util.ArrayList;
 
 import com.controllers.PostController;
+import com.simpleModels.SimplePost;
 
-import SimpleModels.SimplePost;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
