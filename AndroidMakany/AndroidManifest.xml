@@ -64,7 +64,7 @@
             android:label="@string/title_activity_test" >
         </activity>
         <activity
-            android:name=".ViewPostActivity"
+            android:name=".ShowPostsActivity"
             android:label="@string/title_activity_view_post" >
         </activity>
         <activity

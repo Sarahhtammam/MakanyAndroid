@@ -340,8 +340,11 @@ public class PostController
 								
 								SimplePost post = new SimplePost(object.getString("ID"), object.getString("postType"), 
 										object.getString("content"), object.getString("photo"), object.getString("userEmail"), 
-										object.getString("district"), object.getString("onEventID"), object.getString("score"));
-								posts.add(post);
+										object.getString("district"), object.getString("onEventID"), object.getString("score"),
+										object.getString("numApprovals"), object.getString("numDisApprovals"), 
+										object.getString("numReports"), object.getString("approvalMails"),
+										object.getString("disapprovalMails"), object.getString("reportMails"));
+									posts.add(post);
 							}
 						} 
 					catch (JSONException e) 
@@ -349,18 +352,10 @@ public class PostController
 						e.printStackTrace();
 					}
 					
-					
-					
-					
-					
-					
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "SUCCESS\nPOST= " + posts.get(0).getContent(),
 					Toast.LENGTH_LONG).show();
-					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
-					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(homeIntent);
-					
+					Application.setPosts(posts);
 				}
 			
 				//Do the same for other services

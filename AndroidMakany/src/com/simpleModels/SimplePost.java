@@ -13,11 +13,10 @@ public class SimplePost extends Element
 		private String eventID;
 		private String score;
 		
+		private Vector<String> approvalsMails,disapprovalsMails, reportMails;
+		private int numApprovals, numDisApprovals, numReports;
 		
-		private Vector<String> categories;
-		private Vector<String> approvals,disapprovals;
 		private Vector<SimpleComment> comments;
-		private Vector<SimpleReport> reports;
 		
 		
 		public SimplePost() {
@@ -28,13 +27,10 @@ public class SimplePost extends Element
 			this.photo=null;
 			this.userEmail=null;
 			this.district=null;
-			this.categories=new Vector<String>();
 			this.comments=new Vector<SimpleComment>();
-			this.reports=new Vector<SimpleReport>();
-			this.approvals=new Vector<String>();
-			this.disapprovals=new Vector<String>();
+			
 		}
-
+//not used
 		public SimplePost(String id,String type,String content,String photo,String userEmail,String district,
 				Vector<String> categories, Vector<SimpleComment> comments, Vector<SimpleReport> reports) 
 		{
@@ -45,16 +41,13 @@ public class SimplePost extends Element
 			this.photo=photo;
 			this.userEmail=userEmail;
 			this.district=district;
-			this.categories=categories;
 			this.comments=comments;
-			this.reports=reports;
-			this.approvals=new Vector<String>();
-			this.disapprovals=new Vector<String>();
 		}
 		
 		
 		public SimplePost(String id,String type,String content,String photo,String userEmail,String district,
-				String eventID, String score) 
+				String eventID, String score, String numApprovals, String numDisApprovals, String numReports, 
+				String approvalsMails, String disapprovalsMails, String reportMails) 
 		{
 			super(Type.POST);
 			this.id=id;
@@ -65,11 +58,12 @@ public class SimplePost extends Element
 			this.district=district;
 			this.eventID=eventID;
 			this.score=score;
-			//this.categories=categories;
-			//this.comments=comments;
-			//this.reports=reports;
-			//this.approvals=new Vector<String>();
-			//this.disapprovals=new Vector<String>();
+			this.numApprovals=Integer.parseInt(numApprovals);
+			this.numDisApprovals=Integer.parseInt(numDisApprovals);
+			this.numReports=Integer.parseInt(numReports);
+			this.reportMails=new Vector <String>();
+			this.approvalsMails=new Vector<String>();
+			this.disapprovalsMails=new Vector<String>();
 		}
 		
 		public String getID(){return id;}
@@ -78,9 +72,18 @@ public class SimplePost extends Element
 		public String getPhoto(){return photo;}
 		public String getUserEmail(){return userEmail;}
 		public String getDistrict(){return district;}
-		public int getNumApprovals(){return approvals.size();}
-		public int getNumDisApprovals(){return disapprovals.size();}
-		public int getNumReports(){return reports.size();}
+		public int getNumApprovals(){return numApprovals;}
+		public int getNumDisApprovals(){return numDisApprovals;}
+		public int getNumReports(){return numReports;}
 
+		public void setComments(Vector<SimpleComment> comments)
+		{
+			this.comments=comments;
+		}
+		
+		public Vector<SimpleComment> getComments()
+		{
+			return this.comments;
+		}
 
 }

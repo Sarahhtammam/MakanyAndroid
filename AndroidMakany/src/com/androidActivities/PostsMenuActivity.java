@@ -53,7 +53,7 @@ public class PostsMenuActivity extends Activity implements OnClickListener
 		
 		    case R.id.viewMyPostsButton:
 		    {
-		    	Intent viewPostActivity = new Intent(getApplicationContext(),ViewPostActivity.class);
+		    	Intent viewPostActivity = new Intent(getApplicationContext(),ShowPostsActivity.class);
 		    	startActivity(viewPostActivity);
 		    	break;
 		    }
