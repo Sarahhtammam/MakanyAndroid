@@ -17,7 +17,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.androidActivities.CreatePostActivity;
 import com.androidActivities.HomeActivity;
+import com.androidActivities.PostsMenuActivity;
 
 public class PostController 
 {
@@ -162,6 +164,11 @@ public class PostController
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "SUCCESS",
 					Toast.LENGTH_LONG).show();
+					
+					Intent postMenuIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
+					postMenuIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(postMenuIntent);
+					
 					
 				}
 			

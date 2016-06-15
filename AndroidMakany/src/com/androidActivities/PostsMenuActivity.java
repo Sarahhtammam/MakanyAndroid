@@ -1,6 +1,5 @@
 package com.androidActivities;
 
-import com.controllers.Application;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,14 +10,15 @@ import android.widget.Button;
 
 public class PostsMenuActivity extends Activity implements OnClickListener
 {
-	Button addPostButton, showMyPosts, filterPostsByCategoryButton, filterPostsByDistrictButton ;
+	Button addPostButton, showMyPosts;
+	// , filterPostsByCategoryButton, filterPostsByDistrictButton ;
 	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) 
     {
 		  super.onCreate(savedInstanceState);
-	      setContentView(R.layout.activity_events_menu);
+	      setContentView(R.layout.activity_posts_menu);
 	      
 	      addPostButton = (Button) findViewById(R.id.addPostButton);
 	      showMyPosts = (Button) findViewById(R.id.viewMyPostsButton);

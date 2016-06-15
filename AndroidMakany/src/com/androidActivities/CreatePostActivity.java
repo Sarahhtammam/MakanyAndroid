@@ -32,25 +32,9 @@ public class CreatePostActivity extends Activity {
 			@Override
 			public void onClick(View v) 
 			{
-				Intent currentIntent = getIntent();
-				String currentEmail = currentIntent.getStringExtra("email");
-				System.out.println("curentEmail on post screen " + currentEmail);
-					
 				PostController postController = new PostController();
 				postController.addPost("normal", postEditText.getText().toString(), "no-pic", 
-				"maadi","", currentEmail, "art;food");			
-			}
-			});
-			
-		viewPostsButton.setOnClickListener(new OnClickListener() 
-		{
-
-			@Override
-			public void onClick(View v) 
-			{
-				PostController postController = new PostController();
-				postController.getPost("sarahhtammam@hotmail.com", "", "maadi", "", "");
-				
+				"maadi","", Application.getCurrentUser().get_email(), "art;food");			
 			}
 			});
 			

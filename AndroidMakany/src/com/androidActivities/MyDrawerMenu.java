@@ -102,6 +102,8 @@ public class MyDrawerMenu extends Activity {
 	    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 	    	 switch (position) {
 			    case 0:
+                 Intent postMenuIntent = new Intent(getApplicationContext(),PostsMenuActivity.class);
+					startActivity(postMenuIntent);
 			     
 			        break;
 			    case 1:
