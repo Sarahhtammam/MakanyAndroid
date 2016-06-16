@@ -43,9 +43,6 @@ public class MainActivity extends Activity implements OnClickListener
 		signUpStore.setOnClickListener(this);
 		test.setOnClickListener(this);
   
-		AdminController adminController = new AdminController();
-		adminController.getInterests();
-		adminController.getDistricts();
 		
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
 		Editor editor = pref.edit();
@@ -78,10 +75,9 @@ public class MainActivity extends Activity implements OnClickListener
 	
 		    case R.id.signUp:
 		    {
-				Intent signUpIntent = new Intent(getApplicationContext(),SignUpActivity.class);
-				signUpIntent.putStringArrayListExtra("interestsArrayList", tempInterests);
-				signUpIntent.putStringArrayListExtra("districtsArrayList", tempDistricts);
-				startActivity(signUpIntent);
+		    	AdminController adminController = new AdminController();
+				adminController.getInterests();
+				adminController.getDistricts();
 				break;
 			}
 	

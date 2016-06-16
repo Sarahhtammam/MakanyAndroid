@@ -25,6 +25,25 @@
         <requestFocus />
     </EditText>
 
+    <LinearLayout  
+	    android:id="@+id/selectCategoryLayout"
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+	    <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="choose post's categories"
+            />
+	    
+	    <!-- checkboxes  -->
+
+	   
+    </LinearLayout>
+    
+    
+    
     <Button
         android:id="@+id/postButton"
         android:layout_width="wrap_content"

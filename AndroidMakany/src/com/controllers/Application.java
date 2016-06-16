@@ -22,8 +22,11 @@ public class Application extends android.app.Application {
 	private static String userEmail; 
 	private static SimpleEvent currentEvent;
 	private static SimpleItem currentItem;
-	private static SimplePost currentPost;
+	//private static SimplePost currentPost;
 	
+	private static ArrayList<String> districts;
+	private static ArrayList<String> interests;
+	private static ArrayList<String> categories;
 	private static ArrayList<SimpleEvent> events;
 	private static ArrayList<SimplePost> posts;
 	private static ArrayList<SimpleItem> items;
@@ -53,15 +56,35 @@ public class Application extends android.app.Application {
 		Application.currentUser = currentUser;
 	}
 
-	public static String getUserEmail() {
-		return userEmail;
-	}
 
-	public static void setUserEmail(String userE) 
+	public static ArrayList<String> getDistricts() 
 	{
-		userEmail = userE;
+		return districts;
 	}
 
+	public static void setDistricts(ArrayList<String> districts) {
+		Application.districts = districts;
+	}
+	
+	public static ArrayList<String> getInterests() 
+	{
+		return interests;
+	}
+
+	public static void setInterests(ArrayList<String> interests) {
+		Application.interests = interests;
+	}
+	
+	public static ArrayList<String> getCategories() 
+	{
+		return categories;
+	}
+
+	public static void setCategories(ArrayList<String> categories) {
+		Application.categories = categories;
+	}
+	
+	
 	public static ArrayList<SimpleEvent> getEvents() {
 		return events;
 	}
@@ -147,5 +170,16 @@ public class Application extends android.app.Application {
 	public static void setCurrentDistrict(String currentDistrict) {
 		Application.currentDistrict = currentDistrict;
 	}
+
+	public static String getUserEmail() {
+		return userEmail;
+	}
+
+	public static void setUserEmail(String userE) 
+	{
+		userEmail = userE;
+	}
+
+	
     
 }

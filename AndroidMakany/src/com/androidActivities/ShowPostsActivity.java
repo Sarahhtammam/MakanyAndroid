@@ -3,22 +3,16 @@ package com.androidActivities;
 import java.util.ArrayList;
 
 import com.controllers.Application;
-import com.controllers.EventController;
-import com.controllers.PostController;
-import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimplePost;
 
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ShowPostsActivity extends Activity {
 
@@ -46,20 +40,33 @@ public class ShowPostsActivity extends Activity {
 		{
 			final SimplePost temp = posts.get(i);
 			
+			//to get normal posts only, no event posts
+			if(!temp.getPostType().equals("normal"))
+				continue;
+			
 			TextView owner = new TextView(this);
-	        owner.setText("Post Owner: " + temp.getUserEmail() );
+	        owner.setText("Post Owner: " + temp.getUserName());
 	        my_layout.addView(owner); 
 
 	        
 	        TextView content = new TextView(this);
 	        content.setText("Content: " + temp.getContent() );
 	        my_layout.addView(content); 
+	       
+	        TextView score = new TextView(this);
+	        score.setText("Score: " + (Integer.toString(temp.getScore())) );
+	        my_layout.addView(score); 
+	        
+	        TextView line = new TextView(this);
+	        line.setText("----------------------------");
+	        my_layout.addView(line); 
+	        
 	        
 	        TextView approvals = new TextView(this);
 	        approvals.setText("Approvals: " + (Integer.toString(temp.getNumApprovals())) );
 	        my_layout.addView(approvals); 
 	       
-	        TextView disAapprovals = new TextView(this);
+	         TextView disAapprovals = new TextView(this);
 	        disAapprovals.setText("disAapprovals: " + (Integer.toString(temp.getNumDisApprovals())) );
 	        my_layout.addView(disAapprovals); 
 	        
@@ -76,6 +83,9 @@ public class ShowPostsActivity extends Activity {
 	        b.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) 
 	            {
+	            	//PostController postController = new PostController();
+					//postController.getPost("", "", "", "", temp.getID());
+					
     	         	/*Intent selectedEvent = new Intent(Application.getAppContext(),SingleEventActivity.class);
 	  				selectedEvent.putExtra("eventID", temp.getID());
 	  				selectedEvent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -89,7 +99,6 @@ public class ShowPostsActivity extends Activity {
 	        });
 	        my_layout.addView(b);
 	        
-		
 		}
 		
 	}

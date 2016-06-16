@@ -12,7 +12,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.AsyncTask;
+
+import com.androidActivities.CreatePostActivity;
+import com.androidActivities.SignUpActivity;
 
 public class AdminController 
 {
@@ -37,7 +41,15 @@ public class AdminController
 		//return;
 	}
 	
+	public void getCategories() 
+	{
+		Connection connectionClass = new Connection();
 		
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/ShowAllCategoryService",
+		"ShowAllCategoryService");
+		
+		//return;
+	}	
 	
 		
 	static class Connection extends AsyncTask<String, String, String> 
@@ -136,6 +148,7 @@ public class AdminController
 								interestsList.add(x);
 								//temp+= x+ ",";
 							}
+							Application.setInterests(interestsList);
 					
 					} 
 					
@@ -179,7 +192,13 @@ public class AdminController
 								String x = object.getString("DistrictName");
 								districtsList.add(x);
 							}
+							
+							Application.setDistricts(districtsList);
 					
+							Intent signUpIntent = new Intent(Application.getAppContext(),SignUpActivity.class);
+							signUpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							Application.getAppContext().startActivity(signUpIntent);
+							
 					} 
 					
 					
@@ -190,6 +209,41 @@ public class AdminController
 					
 				}
 				
+				if (serviceType.equals("ShowAllCategoryService")) 
+				{
+					System.out.println("Categories result " + result);
+					
+					ArrayList<String> categoriesList = new ArrayList<String>();
+					JSONArray requestArray;
+					
+					try 
+					{
+							requestArray = new JSONArray(result);
+							for(int i=0;i<requestArray.length();i++)
+							
+							{
+								JSONObject object=new JSONObject();
+								object = (JSONObject)requestArray.get(i);
+								String x = object.getString("categoryValue");
+								categoriesList.add(x);
+							}
+					
+							Application.setCategories(categoriesList);
+
+				/*		 	Intent createPostIntent = new Intent(Application.getAppContext(),CreatePostActivity.class);
+						 	createPostIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							Application.getAppContext().startActivity(createPostIntent);
+				*/	   
+							
+					}	 
+				
+					
+					catch (JSONException e) 
+					{
+						e.printStackTrace();
+					}
+					
+				}
 				
 				//Do the same for other services
 				//else if(serviceType.equals(""))
@@ -200,6 +254,7 @@ public class AdminController
 			{}
 
 		}
+		
 
 	}
 

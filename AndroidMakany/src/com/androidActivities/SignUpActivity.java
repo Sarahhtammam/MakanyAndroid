@@ -60,11 +60,9 @@ public class SignUpActivity extends Activity implements OnClickListener {
 
 		signupButton = (Button) findViewById(R.id.RegistrationButton);
 
-		Intent currentIntent = getIntent();
-		myInterests = currentIntent
-				.getStringArrayListExtra("interestsArrayList");
-		myDistricts = currentIntent
-				.getStringArrayListExtra("districtsArrayList");
+		myInterests = Application.getInterests();
+		myDistricts = Application.getDistricts();
+		
 		LinearLayout my_layout = (LinearLayout) findViewById(R.id.interestLayout);
 
 		// loop of generation of check boxes

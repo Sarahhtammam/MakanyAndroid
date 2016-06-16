@@ -35,7 +35,7 @@ public class EventsMenuActivity extends Activity implements OnClickListener
 	      filterEventsByCategoryButton = (Button) findViewById(R.id.filterEventsCButton);
 	      filterEventsByDistrictButton = (Button) findViewById(R.id.filterEventsDButton);
   	      
-	      currentEmail = Application.getUserEmail();
+	      currentEmail = Application.getCurrentUser().get_email();
 		
 	      createEventButton.setOnClickListener(this);
 	      showMyEvents.setOnClickListener(this);
@@ -57,7 +57,6 @@ public class EventsMenuActivity extends Activity implements OnClickListener
 		    {
 		
 		    	Intent createEventIntent = new Intent(getApplicationContext(),CreateEventActivity.class);
-		    	createEventIntent.putExtra("email", currentEmail);
 		    	startActivity(createEventIntent);
 		    	break;
 		    }

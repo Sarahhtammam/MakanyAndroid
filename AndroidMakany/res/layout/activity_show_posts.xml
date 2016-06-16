@@ -9,15 +9,19 @@
         android:layout_height="wrap_content"
         android:text="Your Posts" />
     
-    
-  <LinearLayout  
-  		android:id="@+id/userPostsLayout"
+    <ScrollView 
+        android:id="@+id/userPostsView"
 	    android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
-     	   
-    </LinearLayout>
      
-    
+        <LinearLayout 
+        android:id="@+id/userPostsLayout"
+	    android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        </LinearLayout>
+        
+    </ScrollView>
 
 </LinearLayout>

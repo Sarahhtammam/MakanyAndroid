@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.controllers.AdminController;
 import com.controllers.Application;
 import com.controllers.SessionController;
 import com.controllers.UserController;
@@ -37,9 +38,11 @@ public class HomeActivity extends MyDrawerMenu
 		//Toast.makeText(getApplicationContext(),
 		//"Welcome User!\nYour Email is: " + currentEmail , Toast.LENGTH_SHORT).show();
 		
-		UserController userController = new UserController();
-		
-		
+		AdminController adminController = new AdminController();
+	      adminController.getCategories();
+	      
+	    UserController userController = new UserController();
+			
 		
 		if(!Application.loggedIn)
 		{

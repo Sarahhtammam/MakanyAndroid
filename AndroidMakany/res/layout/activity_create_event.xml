@@ -32,25 +32,6 @@
             />
         
     </LinearLayout>
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="category"
-            />
-        
-        <EditText 
-            android:id="@+id/eventCategory"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            />
-        
-    </LinearLayout>
     
     <LinearLayout 
         android:layout_width="fill_parent"
@@ -71,7 +52,28 @@
             />
         
     </LinearLayout>
-  			     <Button 
+    
+      <LinearLayout  
+	    android:id="@+id/selectCategoryLayout_event"
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+	    <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="choose only one"
+            />
+	    
+	    <!-- checkboxes  -->
+
+	   
+    </LinearLayout>
+    
+    
+  
+    
+	<Button 
         android:id="@+id/createEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

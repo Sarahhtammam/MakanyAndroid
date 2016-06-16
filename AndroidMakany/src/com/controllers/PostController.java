@@ -16,7 +16,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.androidActivities.CreatePostActivity;
 import com.androidActivities.HomeActivity;
 import com.androidActivities.PostsMenuActivity;
 import com.androidActivities.ShowPostsActivity;
@@ -336,15 +335,19 @@ public class PostController
 							for(int i=0;i<requestArray.length();i++)
 							
 							{
+								
 								JSONObject object=new JSONObject();
 								object = (JSONObject)requestArray.get(i);
 								
-								SimplePost post = new SimplePost(object.getString("ID"), object.getString("postType"), 
-										object.getString("content"), object.getString("photo"), object.getString("userEmail"), 
-										object.getString("district"), object.getString("onEventID"), object.getString("score"),
-										object.getString("numApprovals"), object.getString("numDisApprovals"), 
-										object.getString("numReports"), object.getString("approvalMails"),
-										object.getString("disapprovalMails"), object.getString("reportMails"));
+								SimplePost post = new SimplePost(
+										object.getString("ID"), object.getString("postType"), 
+										object.getString("content"), object.getString("photo"), 
+										object.getString("username"), object.getString("userEmail"), 
+										object.getString("district"), object.getString("onEventID"), 
+										object.getString("score"), object.getString("numApprovals"), 
+										object.getString("numDisApprovals"), object.getString("numReports"), 
+										object.getString("approvalMails"),object.getString("disapprovalMails"), 
+										object.getString("reportMails"), object.getString("categories"));
 									posts.add(post);
 							}
 						} 
@@ -355,6 +358,7 @@ public class PostController
 					
 					//Post added successfully 
 					Application.setPosts(posts);
+					
 					
 					//Toast.makeText(Application.getAppContext(), "SUCCESS\nPOST= " + posts.get(0).getContent(),
 					//Toast.LENGTH_LONG).show();

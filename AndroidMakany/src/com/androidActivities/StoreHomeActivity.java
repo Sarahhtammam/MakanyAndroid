@@ -25,7 +25,7 @@ public class StoreHomeActivity extends Activity {
 		Button editOffer = (Button) findViewById(R.id.editOffer);
 		Button removeOffer = (Button) findViewById(R.id.removeOffer);
 
-		currentEmail = Application.getUserEmail();
+		currentEmail = Application.getCurrentUser().get_email();
 		Toast.makeText(getApplicationContext(),
 				"Welocome User!\nYour Email is: " + currentEmail,
 				Toast.LENGTH_LONG).show();

@@ -1,6 +1,7 @@
 package com.androidActivities;
 
 
+import com.controllers.AdminController;
 import com.controllers.Application;
 import com.controllers.PostController;
 
@@ -22,6 +23,7 @@ public class PostsMenuActivity extends Activity implements OnClickListener
     {
 		  super.onCreate(savedInstanceState);
 	      setContentView(R.layout.activity_posts_menu);
+	      
 	      
 	      addPostButton = (Button) findViewById(R.id.addPostButton);
 	      showMyPosts = (Button) findViewById(R.id.viewMyPostsButton);
@@ -47,17 +49,20 @@ public class PostsMenuActivity extends Activity implements OnClickListener
 
 		    case R.id.addPostButton:
 		    {
-		
-		    	Intent createPostIntent = new Intent(getApplicationContext(),CreatePostActivity.class);
-		    	//createPostIntent.putExtra("email", Application.getCurrentUser().get_email());
-		    	startActivity(createPostIntent);
+		    	/*AdminController adminController = new AdminController();
+				adminController.getCategories();
+				*/
+			 	Intent createPostIntent = new Intent(getApplicationContext(),CreatePostActivity.class);
+				startActivity(createPostIntent);
+	
 		    	break;
 		    }
 		
 		    case R.id.viewMyPostsButton:
 		    {
 		    	PostController postController = new PostController();
-				postController.getPost(Application.getCurrentUser().get_email(), "", Application.currentDistrict, "", "");
+				postController.getPost("", "", Application.currentDistrict, "", "");
+				
 				break;
 		    }
 		   	
