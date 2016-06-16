@@ -63,8 +63,7 @@ public final class R {
         public static final int PostMenuButton=0x7f0a0016;
         public static final int RegistrationButton=0x7f0a0033;
         public static final int StoreRegistration=0x7f0a0044;
-        public static final int Updatebutton=0x7f0a0046;
-        public static final int action_settings=0x7f0a004a;
+        public static final int action_settings=0x7f0a0053;
         public static final int addOffer=0x7f0a003c;
         public static final int addPostButton=0x7f0a0026;
         public static final int birthDate=0x7f0a002e;
@@ -76,23 +75,28 @@ public final class R {
         public static final int district=0x7f0a0040;
         public static final int districtSpinner=0x7f0a002d;
         public static final int districtSpinnerLayout=0x7f0a002c;
+        public static final int districtSpinner_update=0x7f0a0048;
         public static final int drawer_layout=0x7f0a0004;
         public static final int editOffer=0x7f0a003d;
         public static final int editbutton=0x7f0a0012;
         public static final int email=0x7f0a001e;
+        public static final int email_update=0x7f0a0047;
         public static final int eventDescription=0x7f0a0001;
         public static final int eventName=0x7f0a0000;
         public static final int eventsButton=0x7f0a0017;
         public static final int filterEventsCButton=0x7f0a0013;
         public static final int filterEventsDButton=0x7f0a0014;
         public static final int foursquareAccount=0x7f0a0031;
+        public static final int foursquareAccount_update=0x7f0a004b;
         public static final int genderSpinner=0x7f0a002f;
+        public static final int genderSpinner_update=0x7f0a0049;
         public static final int getLoanItemsButton=0x7f0a001c;
         public static final int getMyEventsButton=0x7f0a0015;
         public static final int getRequestItemsButton=0x7f0a001d;
         public static final int goBack=0x7f0a0039;
-        public static final int imageViewIcon=0x7f0a0048;
+        public static final int imageViewIcon=0x7f0a0051;
         public static final int interestLayout=0x7f0a0032;
+        public static final int interestLayout_update=0x7f0a004c;
         public static final int itemsButton=0x7f0a0018;
         public static final int itemsLayout=0x7f0a0029;
         public static final int left_drawer=0x7f0a000c;
@@ -100,8 +104,11 @@ public final class R {
         public static final int loginButton=0x7f0a0020;
         public static final int myMessagesLayout=0x7f0a0025;
         public static final int name=0x7f0a0006;
+        public static final int name_update=0x7f0a0046;
         public static final int offers=0x7f0a0042;
         public static final int password=0x7f0a001f;
+        public static final int password_update_new=0x7f0a004d;
+        public static final int password_update_old=0x7f0a004e;
         public static final int postButton=0x7f0a0010;
         public static final int postEditText=0x7f0a000e;
         public static final int postOnEvent=0x7f0a0035;
@@ -120,15 +127,17 @@ public final class R {
         public static final int test=0x7f0a0024;
         public static final int testButton=0x7f0a0045;
         public static final int textView1=0x7f0a000d;
-        public static final int textViewName=0x7f0a0049;
+        public static final int textViewName=0x7f0a0052;
         public static final int twitterAccount=0x7f0a0030;
-        public static final int updateProfile=0x7f0a0019;
+        public static final int twitterAccount_update=0x7f0a004a;
+        public static final int updateButton=0x7f0a004f;
+        public static final int updateProfileButton=0x7f0a0019;
         public static final int userEventsLayout=0x7f0a0028;
         public static final int userPostsLayout=0x7f0a002b;
         public static final int userPostsView=0x7f0a002a;
         public static final int viewMyPostsButton=0x7f0a0027;
         public static final int whatsNew=0x7f0a001a;
-        public static final int whatsNewLayout=0x7f0a0047;
+        public static final int whatsNewLayout=0x7f0a0050;
     }
     public static final class layout {
         public static final int activity_create_event=0x7f030000;
@@ -154,7 +163,7 @@ public final class R {
         public static final int activity_store_home=0x7f030014;
         public static final int activity_store_sign_up=0x7f030015;
         public static final int activity_test=0x7f030016;
-        public static final int activity_update_profile=0x7f030017;
+        public static final int activity_update_my_profile=0x7f030017;
         public static final int activity_whats_new=0x7f030018;
         public static final int listview_item_row=0x7f030019;
     }
@@ -166,6 +175,7 @@ public final class R {
         public static final int my_drawer_menu=0x7f090004;
         public static final int posts_menu=0x7f090005;
         public static final int splash=0x7f090006;
+        public static final int update_my_profile=0x7f090007;
     }
     public static final class string {
         public static final int action_settings=0x7f070002;
@@ -192,6 +202,7 @@ public final class R {
         public static final int title_activity_splash=0x7f070003;
         public static final int title_activity_store_sign_up=0x7f070008;
         public static final int title_activity_test=0x7f070009;
+        public static final int title_activity_update_my_profile=0x7f07001b;
         public static final int title_activity_view_all_loan_items=0x7f070010;
         public static final int title_activity_view_post=0x7f07000a;
         public static final int title_activity_whats_new=0x7f070014;

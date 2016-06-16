@@ -75,7 +75,6 @@
             android:name=".CreateEventActivity"
             android:label="@string/title_activity_create_event" >
         </activity>
-       
         <activity
             android:name=".ShowEventsActivity"
             android:label="@string/title_activity_show_events" >
@@ -104,7 +103,6 @@
             android:name=".WhatsNew"
             android:label="@string/title_activity_whats_new" >
         </activity>
-  
         <activity
             android:name=".PostsMenuActivity"
             android:label="@string/title_activity_posts_menu" >
@@ -120,6 +118,10 @@
         <activity
             android:name=".SingleMessage"
             android:label="@string/title_activity_single_message" >
+        </activity>
+        <activity
+            android:name=".UpdateMyProfileActivity"
+            android:label="@string/title_activity_update_my_profile" >
         </activity>
     </application>
 

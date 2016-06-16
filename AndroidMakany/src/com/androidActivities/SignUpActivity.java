@@ -27,7 +27,6 @@ public class SignUpActivity extends Activity implements OnClickListener {
 	EditText passwordEditText;
 	Spinner districtSpinner;
 	EditText birthdateEditText;
-	EditText descriptionEditText;
 	Spinner genderSpinner;
 	EditText twitterAccountEditText;
 	EditText foursquareAccountEditText;
@@ -53,7 +52,6 @@ public class SignUpActivity extends Activity implements OnClickListener {
 		passwordEditText = (EditText) findViewById(R.id.password);
 		districtSpinner = (Spinner) findViewById(R.id.districtSpinner);
 		birthdateEditText = (EditText) findViewById(R.id.birthDate);
-		descriptionEditText = (EditText) findViewById(R.id.description);
 		genderSpinner = (Spinner) findViewById(R.id.genderSpinner);
 		twitterAccountEditText = (EditText) findViewById(R.id.twitterAccount);
 		foursquareAccountEditText = (EditText) findViewById(R.id.foursquareAccount);
@@ -112,7 +110,7 @@ public class SignUpActivity extends Activity implements OnClickListener {
 		userController.Signup(usernameEditText.getText().toString(),
 				emailEditText.getText().toString(), passwordEditText.getText()
 						.toString(), birthdateEditText.getText().toString(),
-				selectedDistrict, descriptionEditText.getText().toString(),
+				selectedDistrict, "",
 				selectedGender, twitterAccountEditText.getText().toString(),
 				foursquareAccountEditText.getText().toString(),
 				checkedInterests);

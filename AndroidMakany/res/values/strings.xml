@@ -40,11 +40,10 @@
     <string name="title_activity_whats_new">Whats New</string>
     <string name="title_activity_posts_menu">Posts Menu</string>
     <string name="title_activity_my_drawer_menu">MyDrawerMenu</string>
-
-
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_my_messages">My Messages</string>
     <string name="title_activity_single_message">Message</string>
+    <string name="title_activity_update_my_profile">UpdateMyProfileActivity</string>
 
 </resources>

@@ -58,10 +58,12 @@ public class UserController
 			String district, String gender, String twitter, String foursquare, String interests) 
 	{
 		new Connection().execute( "http://makanyapp2.appspot.com/rest/editProfileService", 
-		email, name, password,birthDate, district, gender, twitter, foursquare,
-		interests, "editProfileService");
+				"normal", name, email, password, "", "", birthDate, district, gender, twitter, 
+				foursquare, interests, "editProfileService");
 	}
 
+	
+	
 	
 	
 	
@@ -91,15 +93,14 @@ public class UserController
 							   "&district=" + params[6] + "&category=" + params[7] +"&description=" 
 							   + params[8] + "&gender=" + params[9] + "&twitter=" + params[10] 
 							   + "&foursquare=" + params[11] + "&interests=" + params[12];
-		
-			//////////////////////
+
 			else if(serviceType.equals("editProfileService"))
-				urlParameters ="email=" + params[1] + "&username=" + params[2] + 
-							   "&password=" + params[3] + "&birthDate=" + params[4] + 
-							   "&district=" + params[5] + "&gender=" + params[6] + 
-							   "&twitter=" + params[7] + "&foursquare=" + params[8] + 
-							   "&interests=" + params[9]; 
-				
+				urlParameters ="uType=" + params[1] + "&name=" + params[2] + "&email=" + params[3] + 
+				   "&password=" + params[4] + "&category=" + params[5] + 
+				   "&description=" + params[6] + "&birthDate=" + params[7] +"&district=" 
+				   + params[8] + "&gender=" + params[9] + "&twitter=" + params[10] 
+				   + "&foursquare=" + params[11] + "&interests=" + params[12];
+		
 			HttpURLConnection connection;
 			try {
 				url = new URL(params[0]);
@@ -279,7 +280,7 @@ public class UserController
 					Application.getAppContext().startActivity(mainIntent);
 				}
 			
-				else if(serviceType.equalsIgnoreCase("editProfileService"))
+				else if(serviceType.equals("editProfileService"))
 				{
 					
 					System.out.println("result" + result);
@@ -298,10 +299,10 @@ public class UserController
 					Toast.makeText(Application.getAppContext(), "Success",
 					Toast.LENGTH_SHORT).show();
 					
-					Intent mainIntent = new Intent(Application.getAppContext(),MainActivity.class);
-					mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(mainIntent);
-					
+					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
+					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(homeIntent);
+				
 					
 				}
 

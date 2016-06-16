@@ -1,15 +1,11 @@
 package com.androidActivities;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.controllers.AdminController;
 import com.controllers.Application;
@@ -33,14 +29,18 @@ public class HomeActivity extends MyDrawerMenu
 		Button items =  (Button) findViewById(R.id.itemsButton);
 		Button whatsNew =  (Button) findViewById(R.id.whatsNew);
 		
+		Button updateProfile =  (Button) findViewById(R.id.updateProfileButton);
+		
 		currentEmail = Application.getUserEmail();
 		
 		//Toast.makeText(getApplicationContext(),
 		//"Welcome User!\nYour Email is: " + currentEmail , Toast.LENGTH_SHORT).show();
 		
 		AdminController adminController = new AdminController();
-	      adminController.getCategories();
-	      
+	    adminController.getCategories();
+	    adminController.getInterests();
+	    adminController.getDistricts();
+	       
 	    UserController userController = new UserController();
 			
 		
@@ -91,6 +91,16 @@ public class HomeActivity extends MyDrawerMenu
 		}
 	});
 	 
+	 updateProfile.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent updateprofile = new Intent(getApplicationContext(), UpdateMyProfileActivity.class);
+				startActivity(updateprofile);
+				
+				
+			}
+		});
 	 whatsNew.setOnClickListener(new OnClickListener() {
 			
 			@Override

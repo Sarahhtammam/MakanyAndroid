@@ -37,7 +37,7 @@ public class AdminController
 		
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/ShowAllDistrictsService",
 		"ShowAllDistrictsService");
-		
+
 		//return;
 	}
 	
@@ -194,11 +194,13 @@ public class AdminController
 							}
 							
 							Application.setDistricts(districtsList);
-					
-							Intent signUpIntent = new Intent(Application.getAppContext(),SignUpActivity.class);
-							signUpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-							Application.getAppContext().startActivity(signUpIntent);
 							
+							if(Application.loggedIn==false)
+							{
+								Intent signUpIntent = new Intent(Application.getAppContext(),SignUpActivity.class);
+								signUpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+								Application.getAppContext().startActivity(signUpIntent);
+							}
 					} 
 					
 					

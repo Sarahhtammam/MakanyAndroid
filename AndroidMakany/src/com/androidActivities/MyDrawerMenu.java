@@ -126,16 +126,19 @@ public class MyDrawerMenu extends Activity {
 						ItemsMenuActivity.class);
 				startActivity(itemMenuIntent);
 				break;
-			case 4: // update profile
-
+			case 4: // store
 				break;
-			case 5: // store
-				break;
-
-			case 6: // my messages
+				
+			case 5: // messages
 				MessageController msgController = new MessageController();
 				msgController.getMsgNames(Application.getCurrentUser()
 						.get_email());
+				break;
+
+			case 6: //  update profile
+				Intent updateprofile = new Intent(getApplicationContext(), UpdateMyProfileActivity.class);
+				startActivity(updateprofile);
+		
 				break;
 
 			case 7: // signout

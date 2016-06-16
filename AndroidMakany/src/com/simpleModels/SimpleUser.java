@@ -13,16 +13,16 @@ public class SimpleUser
 		
 		public SimpleUser(String email)
 		{
-			this.id="";
+			this.setId("");
 			this.name="";
 			this.email=email;
-			this.password="";
-			this.birthDate="";
+			this.setPassword("");
+			this.setBirthDate("");
 			this.district="";
-			this.gender="";
-			this.twitter="";
-			this.foursquare="";
-			this.interests=null;
+			this.setGender("");
+			this.setTwitter("");
+			this.setFoursquare("");
+			this.setInterests(null);
 		}
 
 		
@@ -30,17 +30,17 @@ public class SimpleUser
 				String district, String gender, String twitter, String foursquare, int trust,
 				Vector<String> interests)
 		{
-			this.id=id;
+			this.setId(id);
 			this.name=name;
 			this.email=email;
-			this.password=password;
-			this.birthDate=birthDate;
+			this.setPassword(password);
+			this.setBirthDate(birthDate);
 			this.district=district;
-			this.gender=gender;
-			this.twitter=twitter;
-			this.foursquare=foursquare;
-			this.interests=interests;
-			this.trust=trust;
+			this.setGender(gender);
+			this.setTwitter(twitter);
+			this.setFoursquare(foursquare);
+			this.setInterests(interests);
+			this.setTrust(trust);
 		}
 		
 		public String get_email () 
@@ -59,6 +59,87 @@ public class SimpleUser
 			// TODO Auto-generated method stub
 			return district;
 		}
+
+
+		public String getFoursquare() {
+			return foursquare;
+		}
+
+
+		public void setFoursquare(String foursquare) {
+			this.foursquare = foursquare;
+		}
+
+
+		public String getTwitter() {
+			return twitter;
+		}
+
+
+		public void setTwitter(String twitter) {
+			this.twitter = twitter;
+		}
+
+
+		public String getBirthDate() {
+			return birthDate;
+		}
+
+
+		public void setBirthDate(String birthDate) {
+			this.birthDate = birthDate;
+		}
+
+
+		public String getPassword() {
+			return password;
+		}
+
+
+		public void setPassword(String password) {
+			this.password = password;
+		}
+
+
+		public String getId() {
+			return id;
+		}
+
+
+		public void setId(String id) {
+			this.id = id;
+		}
+
+
+		public String getGender() {
+			return gender;
+		}
+
+
+		public void setGender(String gender) {
+			this.gender = gender;
+		}
+
+
+		public int getTrust() {
+			return trust;
+		}
+
+
+		public void setTrust(int trust) {
+			this.trust = trust;
+		}
+
+
+		public Vector<String> getInterests() {
+			return interests;
+		}
+
+
+		public void setInterests(Vector<String> interests) {
+			this.interests = interests;
+		}
+
 
 
 }
