@@ -123,6 +123,7 @@
             android:name=".UpdateMyProfileActivity"
             android:label="@string/title_activity_update_my_profile" >
         </activity>
+    
     </application>
 
 </manifest>

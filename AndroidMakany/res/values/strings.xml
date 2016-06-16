@@ -45,5 +45,8 @@
     <string name="title_activity_my_messages">My Messages</string>
     <string name="title_activity_single_message">Message</string>
     <string name="title_activity_update_my_profile">UpdateMyProfileActivity</string>
+    <string name="item_tab_section1">View Items</string>
+    <string name="item_tab_section2">Create Item</string>
+
 
 </resources>

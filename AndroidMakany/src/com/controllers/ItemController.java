@@ -12,12 +12,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.androidActivities.ItemsMenuActivity;
-import com.androidActivities.ShowItemsActivity;
 import com.simpleModels.SimpleItem;
 
 
@@ -68,9 +68,11 @@ public class ItemController
 		return;
 	}
 
-	public void getFilteredLoanItems(String district, String state) 
+	public void getFilteredLoanItems(String district, String state, AsyncResponse d) 
 	{
+		
 		Connection connectionClass = new Connection();
+		connectionClass.delegate = d;
 		
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getFilteredLoanItemsService",
 				district, state, "getFilteredLoanItemsService");
@@ -78,10 +80,10 @@ public class ItemController
 		return;
 	}
 	
-	public void getFilteredRequestItems(String district, String state) 
+	public void getFilteredRequestItems(String district, String state, AsyncResponse d) 
 	{
 		Connection connectionClass = new Connection();
-		
+		connectionClass.delegate = d;
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getFilteredRequestItemsService",
 				district, state, "getFilteredRequestItemsService");
 		
@@ -94,7 +96,7 @@ public class ItemController
 	{
 
 		String serviceType;
-		
+		AsyncResponse delegate;
 		
 		@Override
 		protected String doInBackground(String... params)
@@ -310,11 +312,19 @@ public class ItemController
 						e.printStackTrace();
 					}
 					
-					Intent showItems = new Intent(Application.getAppContext(),ShowItemsActivity.class);
+					//Intent showItems = new Intent(Application.getAppContext(),ShowItemsActivity.class);
 	  				Application.setItems(items);
 	  				
-	  				showItems.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(showItems);
+	  				
+	  				String str = "";
+	  				if(serviceType.equals("getFilteredLoanItemsService"))
+	  					str = "Loan Items:";
+	  				else
+	  					str = "Request Items:";
+	  				delegate.processFinish(str);
+	  				
+	  				/*showItems.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(showItems);*/
 
 					
 					

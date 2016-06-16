@@ -1,11 +1,5 @@
 package com.androidActivities;
 
-import com.controllers.Application;
-import com.controllers.MessageController;
-import com.controllers.SessionController;
-import com.simpleModels.DrawerItemCustomAdapter;
-import com.simpleModels.ObjectDrawerItem;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.controllers.Application;
+import com.controllers.ItemController;
+import com.controllers.MessageController;
+import com.controllers.SessionController;
+import com.simpleModels.DrawerItemCustomAdapter;
+import com.simpleModels.ObjectDrawerItem;
 
 public class MyDrawerMenu extends Activity {
 

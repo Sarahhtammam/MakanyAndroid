@@ -157,11 +157,11 @@ public class GPSTracker extends Service implements LocationListener {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
       
         // Setting Dialog Title
-        alertDialog.setTitle("GPS is settings");
+        alertDialog.setTitle("GPS");
   
         // Setting Dialog Message
         alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
-  
+        
         // On pressing Settings button
         alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
@@ -171,14 +171,7 @@ public class GPSTracker extends Service implements LocationListener {
             }
         });
         
-        alertDialog.setNeutralButton("Static Recommendation", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog,int which) {
-            	isStatic = true;
-            	WhatsNewController whatsNewController = new WhatsNewController();
-				whatsNewController.getStaticRecommendation(Application.getCurrentUser().get_email());
-            }
-        });
-  
+
         // on pressing cancel button
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
