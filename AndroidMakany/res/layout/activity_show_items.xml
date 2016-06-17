@@ -25,6 +25,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
 
+                <Spinner
+                    android:id="@+id/openClosed_spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" 
+                    android:entries="@array/ItemState_array2"/>
+
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

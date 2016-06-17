@@ -28,9 +28,9 @@ public class ViewElements {
         description.setText("Item Description: " + temp.getDescription() );
         my_layout.addView(description); 
         
-        TextView category = new TextView(context);
-        category.setText("Item Category: " + temp.getCategories() );
-        my_layout.addView(category); 
+        TextView state = new TextView(context);
+        state.setText("Item State: " + temp.getState() );
+        my_layout.addView(state); 
         Button b = new Button(context);
         b.setText("View item details");
         b.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));

@@ -16,7 +16,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.androidActivities.HomeActivity;
 import com.androidActivities.PostsMenuActivity;
 import com.androidActivities.ShowPostsActivity;
 import com.simpleModels.SimplePost;
@@ -206,7 +205,7 @@ public class PostController
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "post deleted!",
 					Toast.LENGTH_LONG).show();
-					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
+					Intent homeIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(homeIntent);
 					
@@ -237,7 +236,7 @@ public class PostController
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "Comment added",
 					Toast.LENGTH_LONG).show();
-					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
+					Intent homeIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(homeIntent);
 					// go to view post  ...  with new comments
@@ -277,7 +276,7 @@ public class PostController
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "post approved!",
 					Toast.LENGTH_LONG).show();
-					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
+					Intent homeIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(homeIntent);
 					// go to view post with new number of approves
@@ -317,7 +316,7 @@ public class PostController
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "post disapproved!",
 					Toast.LENGTH_LONG).show();
-					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
+					Intent homeIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(homeIntent);
 					// go to view post with new number of disapproves

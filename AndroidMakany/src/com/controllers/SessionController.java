@@ -35,6 +35,15 @@ public class SessionController {
 		Application.getAppContext().startActivity(login);
 	}
 	
+	public static void getPredefined()
+	{
+		AdminController adminController = new AdminController();
+	    adminController.getCategories();
+	    adminController.getInterests();
+	    adminController.getDistricts();
+	    Application.setHavePredefined(true);
+	}
+	
 	
 	public static void showSignoutDialog(Context mContext)
 	{

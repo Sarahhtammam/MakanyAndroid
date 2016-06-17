@@ -15,7 +15,6 @@ import org.json.JSONObject;
 import android.content.Intent;
 import android.os.AsyncTask;
 
-import com.androidActivities.CreatePostActivity;
 import com.androidActivities.SignUpActivity;
 
 public class AdminController 
@@ -195,12 +194,12 @@ public class AdminController
 							
 							Application.setDistricts(districtsList);
 							
-							if(Application.loggedIn==false)
+							/*if(Application.loggedIn==false)
 							{
 								Intent signUpIntent = new Intent(Application.getAppContext(),SignUpActivity.class);
 								signUpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 								Application.getAppContext().startActivity(signUpIntent);
-							}
+							}*/
 					} 
 					
 					

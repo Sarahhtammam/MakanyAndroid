@@ -36,7 +36,7 @@ public class WhatsNewController
 		return;
 	}
 	
-	public void getDynamicRecommendation(String usermail) 
+	public void getDynamicRecommendation(String usermail, double latitude ,double logitude) 
 	{
 		Connection connectionClass = new Connection();
 		

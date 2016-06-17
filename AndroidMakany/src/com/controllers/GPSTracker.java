@@ -223,7 +223,7 @@ public class GPSTracker extends Service implements LocationListener {
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
             	WhatsNewController whatsNewController = new WhatsNewController();
-				whatsNewController.getDynamicRecommendation(Application.getCurrentUser().get_email());
+				whatsNewController.getDynamicRecommendation(Application.getCurrentUser().get_email(),latitude,latitude);
 
             }
         });

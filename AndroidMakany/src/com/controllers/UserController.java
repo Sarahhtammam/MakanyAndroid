@@ -16,8 +16,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.androidActivities.HomeActivity;
-import com.androidActivities.MainActivity;
+import com.androidActivities.LoginActivity;
 import com.simpleModels.SimpleUser;
 
 
@@ -184,9 +183,12 @@ public class UserController
 					myDialog.dismiss();
 					Application.setUserEmail(emaill);
 					
-					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
+					WhatsNewController whatsNewController = new WhatsNewController();
+					whatsNewController.getStaticRecommendation(emaill);
+					
+					/*Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(homeIntent);
+					Application.getAppContext().startActivity(homeIntent);*/
 				
 				}
 			
@@ -270,7 +272,7 @@ public class UserController
 					Toast.makeText(Application.getAppContext(), "Success",
 					Toast.LENGTH_SHORT).show();
 					
-					Intent mainIntent = new Intent(Application.getAppContext(),MainActivity.class);
+					Intent mainIntent = new Intent(Application.getAppContext(),LoginActivity.class);
 					mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					
 					//AdminController adminController = new AdminController();
@@ -299,9 +301,8 @@ public class UserController
 					Toast.makeText(Application.getAppContext(), "Success",
 					Toast.LENGTH_SHORT).show();
 					
-					Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
-					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(homeIntent);
+					WhatsNewController whatsNewController = new WhatsNewController();
+					whatsNewController.getStaticRecommendation(emaill);
 				
 					
 				}

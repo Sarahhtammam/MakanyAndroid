@@ -89,8 +89,7 @@ public class SingleItemActivity extends MyDrawerMenu {
                 	Application.setMsgTo(currentItem.getUserEmail());
                 	MessageController msgcontroller = new MessageController();
 	            	msgcontroller.getChatMessages(Application.getCurrentUser().get_email(), currentItem.getUserEmail());
-	            	Intent HomeActivity = new Intent(getApplicationContext(),HomeActivity.class);
-					startActivity(HomeActivity);
+	            	
 
 
                 }

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.controllers.Application;
 import com.controllers.ItemController;
 
 public class ItemsMenuActivity extends MyDrawerMenu implements ActionBar.TabListener {
@@ -117,7 +118,7 @@ public class ItemsMenuActivity extends MyDrawerMenu implements ActionBar.TabList
 				Fragment F = new ShowItemsActivity();
 				ItemController itemController;
 				itemController = new ItemController();
-				itemController.getFilteredRequestItems("", "",(ShowItemsActivity)F);
+				itemController.getFilteredRequestItems(Application.getCurrentDistrict(), "",(ShowItemsActivity)F);
 				return F;
 			case 1:
 				

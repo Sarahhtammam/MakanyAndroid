@@ -13,12 +13,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.controllers.Application;
 import com.controllers.AsyncResponse;
 import com.controllers.ItemController;
-import com.controllers.MessageController;
 import com.simpleModels.SimpleItem;
 
 
@@ -52,12 +52,16 @@ public class ShowItemsActivity extends Fragment implements  AsyncResponse {
 		
 		items = Application.getItems();
 		
+		final Spinner spinner = (Spinner) rootView.findViewById(R.id.openClosed_spinner);;
+		
 		Button request= (Button) rootView.findViewById(R.id.ReqButton);
 		request.setOnClickListener(new OnClickListener() {
             public void onClick(View v) 
             {
+            	String selectedState = String.valueOf(spinner.getSelectedItem());
             	ItemController itemController = new ItemController();
-				itemController.getFilteredRequestItems("", "",me);
+				itemController.getFilteredRequestItems(Application.getCurrentDistrict(), 
+						selectedState ,me);
             }
         });
 		
@@ -65,10 +69,14 @@ public class ShowItemsActivity extends Fragment implements  AsyncResponse {
 		loanButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) 
             {
+            	String selectedState = String.valueOf(spinner.getSelectedItem());
             	ItemController itemController = new ItemController();
-				itemController.getFilteredLoanItems("", "",me);
+				itemController.getFilteredLoanItems(Application.getCurrentDistrict(), 
+						selectedState,me);
             }
         });
+		
+	
 		
 
 		return rootView;
@@ -103,9 +111,9 @@ public class ShowItemsActivity extends Fragment implements  AsyncResponse {
 		        description.setText("Item Description: " + temp.getDescription() );
 		        my_layout.addView(description); 
 		        
-		        TextView category = new TextView(getActivity());
-		        category.setText("Item Category: " + temp.getCategories() );
-		        my_layout.addView(category); 
+		        TextView state = new TextView(getActivity());
+		        state.setText("Item State: " + temp.getState() );
+		        my_layout.addView(state); 
 		       
 
 		        Button b = new Button(getActivity());
@@ -129,6 +137,8 @@ public class ShowItemsActivity extends Fragment implements  AsyncResponse {
 		
 		
 	}
+	
+	
 
 	
 

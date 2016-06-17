@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 import com.controllers.Application;
 import com.controllers.GPSTracker;
+import com.controllers.SessionController;
+import com.controllers.UserController;
 import com.controllers.WhatsNewController;
 import com.simpleModels.Element;
 import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimpleItem;
 import com.simpleModels.ViewElements;
 
-import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;
 import android.view.View;
@@ -20,14 +21,32 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class WhatsNew extends Activity {
+public class WhatsNew extends MyDrawerMenu {
 	
+	String currentEmail ="";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_whats_new);
+		super.onCreateDrawer();
+		
 		LinearLayout my_layout = (LinearLayout)findViewById(R.id.whatsNewLayout);
+		
+		
+		if (!Application.isHavePredefined())
+			SessionController.getPredefined();
+	       
+	    UserController userController = new UserController();
+			
+	    currentEmail = Application.getUserEmail();
+		if(!Application.loggedIn)
+		{
+			userController.getUser(currentEmail);
+			SessionController.login();		
+		}
+		
+		
 		
 		 Button b = new Button(this);
          b.setText("Refresh");
@@ -37,7 +56,7 @@ public class WhatsNew extends Activity {
              {
             	GPSTracker.isStatic = false;
              	WhatsNewController whatsNewController = new WhatsNewController();
- 				whatsNewController.getDynamicRecommendation(Application.getCurrentUser().get_email());
+ 				whatsNewController.getStaticRecommendation(Application.getCurrentUser().get_email());
 
              }
          });

@@ -16,7 +16,10 @@ public class Application extends android.app.Application {
 	private static Context context;
 	public static boolean loggedIn;
 	
+	public static boolean havePredefined;
+	
 	public static String currentDistrict;
+	public static String selectedCategories;
 	
 	private static SimpleUser currentUser;
 	private static String userEmail; 
@@ -40,6 +43,7 @@ public class Application extends android.app.Application {
         super.onCreate();
         Application.context = getApplicationContext();
         loggedIn= false;
+        havePredefined = false;
     }
 
     public static Context getAppContext() {
@@ -178,6 +182,22 @@ public class Application extends android.app.Application {
 	public static void setUserEmail(String userE) 
 	{
 		userEmail = userE;
+	}
+
+	public static String getSelectedCategories() {
+		return selectedCategories;
+	}
+
+	public static void setSelectedCategories(String selectedCategories) {
+		Application.selectedCategories = selectedCategories;
+	}
+
+	public static boolean isHavePredefined() {
+		return havePredefined;
+	}
+
+	public static void setHavePredefined(boolean havePredefined) {
+		Application.havePredefined = havePredefined;
 	}
 
 	

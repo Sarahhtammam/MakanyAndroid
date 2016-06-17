@@ -14,9 +14,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.controllers.Application;
-import com.controllers.ItemController;
 import com.controllers.MessageController;
 import com.controllers.SessionController;
+import com.controllers.WhatsNewController;
 import com.simpleModels.DrawerItemCustomAdapter;
 import com.simpleModels.ObjectDrawerItem;
 
@@ -105,9 +105,8 @@ public class MyDrawerMenu extends Activity {
 			switch (position) {
 
 			case 0: // Home
-				Intent homeIntent = new Intent(getApplicationContext(),
-						HomeActivity.class);
-				startActivity(homeIntent);
+				WhatsNewController whatsNewController = new WhatsNewController();
+				whatsNewController.getStaticRecommendation(Application.getUserEmail());
 
 				break;
 

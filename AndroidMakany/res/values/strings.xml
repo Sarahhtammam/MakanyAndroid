@@ -23,12 +23,19 @@
     <string name="title_activity_show_events">Show Events</string>
     <string name="title_activity_single_event">Event</string>
     <string name="title_activity_item_menu">Item Menu</string>
-
+	
+    <string name="signup_msg">Do not have an account ?</string>
     <string-array name="ItemType_array">
         <item>Loan</item>
         <item>Request</item>
     </string-array>
     <string-array name="ItemState_array">
+        <item>Open</item>
+        <item>Closed</item>
+    </string-array>
+    
+    <string-array name="ItemState_array2">
+        <item></item>
         <item>Open</item>
         <item>Closed</item>
     </string-array>
