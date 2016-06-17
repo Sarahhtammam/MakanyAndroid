@@ -17,16 +17,22 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int blue=0x7f040000;
-        public static final int darkblue=0x7f040005;
-        public static final int darkgreen=0x7f040007;
-        public static final int darkorange=0x7f040008;
-        public static final int darkpurple=0x7f040006;
-        public static final int darkred=0x7f040009;
-        public static final int green=0x7f040002;
-        public static final int orange=0x7f040003;
-        public static final int purple=0x7f040001;
-        public static final int red=0x7f040004;
+        public static final int black=0x7f04000f;
+        public static final int blue=0x7f040005;
+        public static final int darkblue=0x7f04000a;
+        public static final int darkgreen=0x7f04000c;
+        public static final int darkmauve=0x7f040003;
+        public static final int darkorange=0x7f04000d;
+        public static final int darkpurple=0x7f04000b;
+        public static final int darkred=0x7f04000e;
+        public static final int green=0x7f040007;
+        public static final int grey=0x7f040004;
+        public static final int lightblue=0x7f040001;
+        public static final int lightmauve=0x7f040002;
+        public static final int orange=0x7f040008;
+        public static final int purple=0x7f040006;
+        public static final int red=0x7f040009;
+        public static final int zeity=0x7f040000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -236,7 +242,6 @@ public final class R {
          */
         public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
     }
