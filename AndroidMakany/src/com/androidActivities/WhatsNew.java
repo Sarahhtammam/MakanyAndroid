@@ -47,6 +47,8 @@ public class WhatsNew extends MyDrawerMenu {
 		}
 		
 		
+		Toast.makeText(Application.getAppContext(), currentEmail,
+				Toast.LENGTH_SHORT).show();
 		
 		 Button b = new Button(this);
          b.setText("Refresh");

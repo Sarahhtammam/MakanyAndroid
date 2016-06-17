@@ -125,8 +125,8 @@ public class WhatsNewController
 					
 					JSONArray requestArray;
 					
-					try {
-							/*requestArray = new JSONArray(result);
+					/*try {
+							requestArray = new JSONArray(result);
 							for(int i=0;i<requestArray.length();i++)
 							{
 								JSONObject object=new JSONObject();
@@ -156,16 +156,14 @@ public class WhatsNewController
 									
 								}
 								
-								
-							}*/
+							}
 					
 					}
-					
 					
 					catch (JSONException e) 
 					{
 						e.printStackTrace();
-					}
+					}*/
 					
 					SimpleItem simpleItem = new SimpleItem("1","Pen","nice pen","heba.khazbak@gmail.com","Zamalek","","Open","");
 					elements.add(simpleItem);
@@ -196,7 +194,7 @@ public class WhatsNewController
 					
 					JSONArray requestArray;
 					
-					try {
+					/*try {
 						
 				
 					}
@@ -205,7 +203,7 @@ public class WhatsNewController
 					catch (JSONException e) 
 					{
 						e.printStackTrace();
-					}
+					}*/
 					
 					SimpleItem simpleItem = new SimpleItem("10","car","nice car","heba.khazbak@gmail.com","Zamalek","","Open","");
 					elements.add(simpleItem);

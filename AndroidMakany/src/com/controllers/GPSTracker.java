@@ -178,7 +178,7 @@ public class GPSTracker extends Service implements LocationListener {
             dialog.cancel();
             isStatic = true;
             WhatsNewController whatsNewController = new WhatsNewController();
-			whatsNewController.getStaticRecommendation(Application.getCurrentUser().get_email());
+			whatsNewController.getStaticRecommendation(Application.getUserEmail());
 
             }
         });
