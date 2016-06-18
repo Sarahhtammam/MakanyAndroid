@@ -3,7 +3,6 @@ package com.androidActivities;
 import java.util.ArrayList;
 
 import android.app.ActionBar.LayoutParams;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,7 +18,7 @@ import android.widget.Toast;
 import com.controllers.Application;
 import com.controllers.UserController;
 
-public class UpdateMyProfileActivity extends Activity {
+public class UpdateMyProfileActivity extends MyDrawerMenu {
 
 	String checkedInterests = "";
 	String selectedDistrict = "";
@@ -43,6 +42,7 @@ public class UpdateMyProfileActivity extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_update_my_profile);
+		super.onCreateDrawer();
 		
 		name_update = (EditText) findViewById(R.id.name_update);
 		name_update.setText(Application.getCurrentUser().getName());

@@ -62,29 +62,35 @@ public class SignUpActivity extends Activity implements OnClickListener {
 		myDistricts = Application.getDistricts();
 		
 		LinearLayout my_layout = (LinearLayout) findViewById(R.id.interestLayout);
+		
+		if (myInterests != null)
+		{
+			// loop of generation of check boxes
+			for (int i = 0; i < myInterests.size(); i++) {
+				TableRow row = new TableRow(this);
+				row.setId(i);
+				row.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+						LayoutParams.WRAP_CONTENT));
+				CheckBox checkBox = new CheckBox(this);
+				checkBox.setTag(myInterests);
+				checkBox.setId(i);
+				checkBox.setText(myInterests.get(i));
+				checks.add(checkBox);
+				row.addView(checkBox);
+				my_layout.addView(row);
 
-		// loop of generation of check boxes
-		for (int i = 0; i < myInterests.size(); i++) {
-			TableRow row = new TableRow(this);
-			row.setId(i);
-			row.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-					LayoutParams.WRAP_CONTENT));
-			CheckBox checkBox = new CheckBox(this);
-			checkBox.setTag(myInterests);
-			checkBox.setId(i);
-			checkBox.setText(myInterests.get(i));
-			checks.add(checkBox);
-			row.addView(checkBox);
-			my_layout.addView(row);
-
+			}
 		}
-
-		// method of generation of districts drop down menu items
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, myDistricts);
-		dataAdapter
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		districtSpinner.setAdapter(dataAdapter);
+		
+		if (myDistricts != null)
+		{
+			// method of generation of districts drop down menu items
+			ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+					android.R.layout.simple_spinner_item, myDistricts);
+			dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			districtSpinner.setAdapter(dataAdapter);
+		}
+		
 
 		signupButton.setOnClickListener(this);
 	}

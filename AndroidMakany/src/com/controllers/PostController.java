@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.androidActivities.PostsMenuActivity;
 import com.androidActivities.ShowPostsActivity;
+import com.controllers.EventController.Connection;
 import com.simpleModels.SimplePost;
 
 public class PostController 
@@ -52,9 +53,11 @@ public class PostController
 		postID, userEmail, "disapprovePostService");
 	}
 	
-	public void getPost(String userEmail, String category, String district, String onEventID, String postID) 
+	public void getPost(String userEmail, String category, String district, String onEventID, String postID, AsyncResponse d) 
 	{
-		new Connection().execute( "http://makanyapp2.appspot.com/rest/getFilteredPostsService",
+		Connection connectionClass = new Connection();
+		connectionClass.delegate = d;
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getFilteredPostsService",
 				userEmail, category, district, onEventID, postID, "getFilteredPostsService");
 	}
 
@@ -63,7 +66,8 @@ public class PostController
 	{
 
 		String serviceType;
-
+		AsyncResponse delegate;
+		
 		@Override
 		protected String doInBackground(String... params)
 		{
@@ -357,14 +361,14 @@ public class PostController
 					
 					//Post added successfully 
 					Application.setPosts(posts);
-					
+					delegate.processFinish("Posts");
 					
 					//Toast.makeText(Application.getAppContext(), "SUCCESS\nPOST= " + posts.get(0).getContent(),
 					//Toast.LENGTH_LONG).show();
 					
-					Intent showPostActivity = new Intent(Application.getAppContext(),ShowPostsActivity.class);
+					/*Intent showPostActivity = new Intent(Application.getAppContext(),ShowPostsActivity.class);
 					showPostActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(showPostActivity);
+					Application.getAppContext().startActivity(showPostActivity);*/
 			    	
 				}
 			

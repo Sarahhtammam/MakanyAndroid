@@ -57,6 +57,9 @@
     
     <string name="event_tab_section1">View Events</string>
     <string name="event_tab_section2">Create Event</string>
+    
+    <string name="post_tab_section1">View Posts</string>
+    <string name="post_tab_section2">Create Post</string>
 
 
 </resources>

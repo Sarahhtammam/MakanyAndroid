@@ -51,22 +51,26 @@ public class CreateItemActivity extends Fragment implements OnClickListener {
 		myCategories = Application.getCategories();
 
 		LinearLayout my_layout = (LinearLayout) rootView.findViewById(R.id.selectCategoryLayout_item);
+		
+		if (myCategories != null)
+		{
+			// loop of generation of check boxes
+			for (int i = 0; i < myCategories.size(); i++) {
+				TableRow row = new TableRow(getActivity());
+				row.setId(i);
+				row.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+						LayoutParams.WRAP_CONTENT));
+				CheckBox checkBox = new CheckBox(getActivity());
+				checkBox.setTag(myCategories);
+				checkBox.setId(i);
+				checkBox.setText(myCategories.get(i));
+				checks.add(checkBox);
+				row.addView(checkBox);
+				my_layout.addView(row);
 
-		// loop of generation of check boxes
-		for (int i = 0; i < myCategories.size(); i++) {
-			TableRow row = new TableRow(getActivity());
-			row.setId(i);
-			row.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-					LayoutParams.WRAP_CONTENT));
-			CheckBox checkBox = new CheckBox(getActivity());
-			checkBox.setTag(myCategories);
-			checkBox.setId(i);
-			checkBox.setText(myCategories.get(i));
-			checks.add(checkBox);
-			row.addView(checkBox);
-			my_layout.addView(row);
-
+			}
 		}
+		
 
 		currentEmail = Application.getCurrentUser().get_email();
 

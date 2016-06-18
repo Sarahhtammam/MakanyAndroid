@@ -2,7 +2,6 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;
 import android.view.View;
@@ -28,33 +27,37 @@ public class MyMessages extends MyDrawerMenu {
 
 		ArrayList<SimpleMessage> msgNames = new ArrayList<SimpleMessage>(); 
 		msgNames = Application.getMsgNames();
-
-		for (int i = 0; i < msgNames.size(); i++) 
+		
+		if (msgNames != null)
 		{
-			final SimpleMessage temp = msgNames.get(i);
-			TextView name = new TextView(this);
-	        name.setText("Name: " + temp.getSenderName()  );
-	        my_layout.addView(name); 
+			for (int i = 0; i < msgNames.size(); i++) 
+			{
+				final SimpleMessage temp = msgNames.get(i);
+				TextView name = new TextView(this);
+		        name.setText("Name: " + temp.getSenderName()  );
+		        my_layout.addView(name); 
 
-	        
-	        Button b = new Button(this);
-	        b.setText("Show messages");
-	        b.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-	        b.setOnClickListener(new OnClickListener() {
-	            public void onClick(View v) 
-	            {
-	            	Application.setMsgTo(temp.getSenderMail());
-	            	MessageController msgcontroller = new MessageController();
-	            	msgcontroller.getChatMessages(Application.getCurrentUser().get_email(), temp.getSenderMail() );
+		        
+		        Button b = new Button(this);
+		        b.setText("Show messages");
+		        b.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		        b.setOnClickListener(new OnClickListener() {
+		            public void onClick(View v) 
+		            {
+		            	Application.setMsgTo(temp.getSenderMail());
+		            	MessageController msgcontroller = new MessageController();
+		            	msgcontroller.getChatMessages(Application.getCurrentUser().get_email(), temp.getSenderMail() );
 
-	            }
-	        });
-	        my_layout.addView(b);
-	        
-			View ruler = new View(this); ruler.setBackgroundColor(0xff000000);
-			my_layout.addView(ruler,
-			 new ViewGroup.LayoutParams( ViewGroup.LayoutParams.FILL_PARENT, 2));
+		            }
+		        });
+		        my_layout.addView(b);
+		        
+				View ruler = new View(this); ruler.setBackgroundColor(0xff000000);
+				my_layout.addView(ruler,
+				 new ViewGroup.LayoutParams( ViewGroup.LayoutParams.FILL_PARENT, 2));
+			}
 		}
+		
 	}
 	
 	

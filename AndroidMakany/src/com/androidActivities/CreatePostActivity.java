@@ -2,13 +2,13 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
-import android.content.Intent;
+import android.app.Fragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -18,11 +18,11 @@ import android.widget.Toast;
 
 import com.controllers.Application;
 import com.controllers.PostController;
-import com.controllers.UserController;
 
 
-public class CreatePostActivity extends Activity implements OnClickListener {
-
+public class CreatePostActivity extends Fragment implements OnClickListener {
+	
+	View rootView;
 	EditText postEditText;
 	Button postButton, viewPostsButton;
 	
@@ -30,37 +30,48 @@ public class CreatePostActivity extends Activity implements OnClickListener {
 	ArrayList<CheckBox> checks = new ArrayList<CheckBox>();
 	ArrayList<String> myCategories = new ArrayList<String>();
 	
+	
+	public CreatePostActivity() {
+	}
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_create_post);
-		postEditText = (EditText) findViewById(R.id.postEditText);
-		postButton = (Button) findViewById(R.id.postButton);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		rootView = inflater.inflate(R.layout.activity_create_post, container,
+				false);
+		
+		postEditText = (EditText)  rootView.findViewById(R.id.postEditText);
+		postButton = (Button)  rootView.findViewById(R.id.postButton);
 		
 		myCategories = Application.getCategories();
 		
-		LinearLayout my_layout = (LinearLayout) findViewById(R.id.selectCategoryLayout);
+		LinearLayout my_layout = (LinearLayout)  rootView.findViewById(R.id.selectCategoryLayout);
 		
-		// loop of generation of check boxes
-		for (int i = 0; i < myCategories.size(); i++) {
-			TableRow row = new TableRow(this);
-			row.setId(i);
-			row.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-					LayoutParams.WRAP_CONTENT));
-			CheckBox checkBox = new CheckBox(this);
-			checkBox.setTag(myCategories);
-			checkBox.setId(i);
-			checkBox.setText(myCategories .get(i));
-			checks.add(checkBox);
-			row.addView(checkBox);
-			my_layout.addView(row);
+		if (myCategories != null)
+		{
+			// loop of generation of check boxes
+			for (int i = 0; i < myCategories.size(); i++) {
+				TableRow row = new TableRow(getActivity());
+				row.setId(i);
+				row.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+						LayoutParams.WRAP_CONTENT));
+				CheckBox checkBox = new CheckBox(getActivity());
+				checkBox.setTag(myCategories);
+				checkBox.setId(i);
+				checkBox.setText(myCategories .get(i));
+				checks.add(checkBox);
+				row.addView(checkBox);
+				my_layout.addView(row);
 
+			}
 		}
+		
 
 		postButton.setOnClickListener(this);
+		return rootView;
 	}
+	
+
 	
 	@Override
 	public void onClick(View v) 
@@ -74,7 +85,7 @@ public class CreatePostActivity extends Activity implements OnClickListener {
 
 		if(Application.getCurrentUser().get_email().equals("") || Application.getCurrentUser().get_email()==null)
 		{
-			Toast.makeText(getApplicationContext(),"Error, you are not logged in!!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity().getApplicationContext(),"Error, you are not logged in!!", Toast.LENGTH_SHORT).show();
 					
 		}
 		else

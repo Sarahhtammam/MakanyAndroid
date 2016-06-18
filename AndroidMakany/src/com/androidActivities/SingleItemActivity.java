@@ -1,6 +1,5 @@
 package com.androidActivities;
 
-import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
 import android.content.Intent;
 import android.os.Bundle;

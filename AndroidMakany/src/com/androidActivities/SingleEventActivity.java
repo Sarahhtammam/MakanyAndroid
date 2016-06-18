@@ -1,6 +1,5 @@
 package com.androidActivities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,7 +17,7 @@ import com.controllers.EventController;
 import com.controllers.PostController;
 import com.simpleModels.SimpleEvent;
 
-public class SingleEventActivity extends Activity implements OnClickListener {
+public class SingleEventActivity extends MyDrawerMenu implements OnClickListener {
 
 	final SimpleEvent currentEvent = Application.getCurrentEvent();
 
@@ -26,13 +25,11 @@ public class SingleEventActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_single_event);
+		super.onCreateDrawer();
 
 		// singleEventLayout
 		LinearLayout my_layout = (LinearLayout) findViewById(R.id.singleEventLayout);
 
-		Toast.makeText(Application.getAppContext(),
-				"Event name issssss: " + currentEvent.getName(),
-				Toast.LENGTH_LONG).show();
 
 		TextView name = new TextView(this);
 		name.setText("Event Name: " + currentEvent.getName());

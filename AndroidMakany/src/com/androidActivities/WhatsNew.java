@@ -98,23 +98,27 @@ public class WhatsNew extends MyDrawerMenu {
 		elements = Application.getElements();
 		
 		ViewElements v  = new ViewElements();
-		for (int i = 0; i < elements.size(); i++) 
+		if (elements != null)
 		{
-			switch(elements.get(i).type)
+			for (int i = 0; i < elements.size(); i++) 
 			{
-				case ITEM: 
-					v.viewItem((SimpleItem) elements.get(i), i, my_layout, this);
-			        break;
-						
-				case EVENT:	
-					v.viewEvent((SimpleEvent) elements.get(i), i, my_layout, this);
+				switch(elements.get(i).type)
+				{
+					case ITEM: 
+						v.viewItem((SimpleItem) elements.get(i), i, my_layout, this);
+				        break;
+							
+					case EVENT:	
+						v.viewEvent((SimpleEvent) elements.get(i), i, my_layout, this);
 
-			        break;
+				        break;
+				}
+				View ruler = new View(this); ruler.setBackgroundColor(0xff000000);
+				my_layout.addView(ruler,
+				 new ViewGroup.LayoutParams( ViewGroup.LayoutParams.FILL_PARENT, 2));
 			}
-			View ruler = new View(this); ruler.setBackgroundColor(0xff000000);
-			my_layout.addView(ruler,
-			 new ViewGroup.LayoutParams( ViewGroup.LayoutParams.FILL_PARENT, 2));
 		}
+		
 	}
 	
 	

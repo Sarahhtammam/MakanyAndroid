@@ -4,7 +4,6 @@ import java.util.Locale;
 
 import com.controllers.Application;
 import com.controllers.EventController;
-import com.controllers.ItemController;
 
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -13,12 +12,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
+
 
 
 public class EventsMenuActivity extends MyDrawerMenu implements ActionBar.TabListener {
@@ -152,39 +146,4 @@ public class EventsMenuActivity extends MyDrawerMenu implements ActionBar.TabLis
 	}
 
 	
-	
-	public static class OneFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		View rootView;
-		
-
-		public OneFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			rootView = inflater.inflate(R.layout.fragment_second,
-					container, false);
-			
-			Button sendButton = (Button) rootView.findViewById(R.id.mybutton);
-			sendButton.setOnClickListener(new OnClickListener() 
-		     {
-					@Override
-					public void onClick(View arg0) 
-					{
-						Toast.makeText(rootView.getContext(),
-								"nooo "  , Toast.LENGTH_SHORT).show();
-						
-					}
-				});
-			return rootView;
-		}
-		
-		
-	}
-
 }
