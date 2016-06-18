@@ -21,126 +21,110 @@ import com.controllers.UserController;
 import com.controllers.WhatsNewController;
 import com.simpleModels.SimpleUser;
 
+public class LoginActivity extends Activity implements OnClickListener {
 
-public class LoginActivity extends Activity implements OnClickListener{
-	
 	EditText emailEditText;
 	EditText passwordEditText;
 	Button loginButton;
-	
+
 	Button signUp;
 	Button signUpStore;
-	
+
 	String loginMessage = "";
 	SimpleUser currentLoggedUser = null;
 	ProgressDialog myDialog;
 
-
 	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
+
 		emailEditText = (EditText) findViewById(R.id.email);
 		passwordEditText = (EditText) findViewById(R.id.password);
-		
+
 		loginButton = (Button) findViewById(R.id.loginButton);
 		loginButton.setOnClickListener(this);
-		
+
 		signUp = (Button) findViewById(R.id.SignupButton);
 		signUpStore = (Button) findViewById(R.id.SignupStoreButton);
-		
+
 		signUp.setOnClickListener(this);
 		signUpStore.setOnClickListener(this);
-		
+
 		if (!Application.isHavePredefined())
 			SessionController.getPredefined();
-		
-		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+
+		SharedPreferences pref = getApplicationContext().getSharedPreferences(
+				"MyPref", 0); // 0 - for private mode
 		Editor editor = pref.edit();
-		if (!pref.getString("email", "").equals(""))
-		{
+		if (!pref.getString("email", "").equals("")) {
 			UserController userController = new UserController();
 			userController.getUser(pref.getString("email", ""));
-			
+
 			Application.setUserEmail(pref.getString("email", ""));
-			
+
 			WhatsNewController whatsNewController = new WhatsNewController();
-			whatsNewController.getStaticRecommendation(pref.getString("email", ""));
+			whatsNewController.getStaticRecommendation(pref.getString("email",
+					""));
 
 		}
-		
+
 	}
-	
-	public void timerDelayRemoveDialog(long time, final Dialog d){
-	    new Handler().postDelayed(new Runnable() {
-	        public void run() {                
-	            d.dismiss();     
-	            Toast.makeText(Application.getAppContext(), "Please make sure that the Internet is on",
-	    				Toast.LENGTH_SHORT).show();
-	        }
-	    }, time); 
+
+	public void timerDelayRemoveDialog(long time, final Dialog d) {
+		new Handler().postDelayed(new Runnable() {
+			public void run() {
+				d.dismiss();
+				Toast.makeText(Application.getAppContext(),
+						"Please make sure that the Internet is on",
+						Toast.LENGTH_SHORT).show();
+			}
+		}, time);
 	}
 
 	@Override
-	public void onClick(View v)
-	{
-		
-		switch (v.getId()) 
-		{
+	public void onClick(View v) {
+		int id = v.getId();
 
-		    case R.id.loginButton:
-		    {
-		    	if (emailEditText.getText().toString().trim().equals(""))
-				{
-					emailEditText.setError( "Email is required!" );
-				}
-				else if (passwordEditText.getText().toString().trim().equals(""))
-				{
-					passwordEditText.setError( "Password is required!" );
-				}
-				else
-				{
-					
-					myDialog = ProgressDialog.show(LoginActivity.this, "Authenticating","Please wait ...", true);
-					myDialog.getWindow().setGravity(Gravity.CENTER);
-							
-					UserController userController = new UserController();
-					userController.login(emailEditText.getText().toString(), passwordEditText.getText().toString(),myDialog);
-					timerDelayRemoveDialog(5000,myDialog);
-					
-				}
-				break;
-			}
-	
-		    case R.id.SignupButton:
-		    {
-		    	if (Application.getCategories() == null || Application.getDistricts() == null)
-		    	{
-		    		Toast.makeText(Application.getAppContext(), "Please make sure that the Internet is on",
-		    				Toast.LENGTH_SHORT).show();
-		    		SessionController.getPredefined();
-		    	}
-		    	else
-		    	{
-		    		Intent signupIntent = new Intent(getApplicationContext(),SignUpActivity.class);
-					startActivity(signupIntent);
-		    	}
-		    	
+		if (id == R.id.loginButton) {
+			if (emailEditText.getText().toString().trim().equals("")) {
+				emailEditText.setError("Email is required!");
+			} else if (passwordEditText.getText().toString().trim().equals("")) {
+				passwordEditText.setError("Password is required!");
+			} else {
 
-				break;
+				myDialog = ProgressDialog.show(LoginActivity.this,
+						"Authenticating", "Please wait ...", true);
+				myDialog.getWindow().setGravity(Gravity.CENTER);
+
+				UserController userController = new UserController();
+				userController.login(emailEditText.getText().toString(),
+						passwordEditText.getText().toString(), myDialog);
+				timerDelayRemoveDialog(5000, myDialog);
+
 			}
-	
-		    case R.id.SignupStoreButton:
-		    {
-		    	break;
-		    }
+
 		}
-		
+
+		if (id == R.id.SignupButton) {
+			if (Application.getCategories() == null
+					|| Application.getDistricts() == null) {
+				Toast.makeText(Application.getAppContext(),
+						"Please make sure that the Internet is on",
+						Toast.LENGTH_SHORT).show();
+				SessionController.getPredefined();
+			} else {
+				Intent signupIntent = new Intent(getApplicationContext(),
+						SignUpActivity.class);
+				startActivity(signupIntent);
+			}
+
+		}
+
+		if (id == R.id.SignupStoreButton) {
+
+		}
 
 	}
-	
-
 
 }
