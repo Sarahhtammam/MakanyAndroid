@@ -1,25 +1,42 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Your Events" />
-    
-    
-  <LinearLayout  
-  		android:id="@+id/userEventsLayout"
-	    android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
-     	   
-    </LinearLayout>
-     
-    <!-- android:singleLine=30sp; -->
-       
-    
+        android:orientation="vertical" >
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/filterEventsCButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Category" />
+
+            <Button
+                android:id="@+id/getMyEventsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My events" />
+
+        </LinearLayout>
+        
+
+        <LinearLayout
+            android:id="@+id/userEventsLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

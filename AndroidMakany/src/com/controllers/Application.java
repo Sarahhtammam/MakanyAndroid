@@ -19,7 +19,6 @@ public class Application extends android.app.Application {
 	public static boolean havePredefined;
 	
 	public static String currentDistrict;
-	public static String selectedCategories;
 	
 	private static SimpleUser currentUser;
 	private static String userEmail; 
@@ -28,7 +27,6 @@ public class Application extends android.app.Application {
 	//private static SimplePost currentPost;
 	
 	private static ArrayList<String> districts;
-	private static ArrayList<String> interests;
 	private static ArrayList<String> categories;
 	private static ArrayList<SimpleEvent> events;
 	private static ArrayList<SimplePost> posts;
@@ -70,14 +68,6 @@ public class Application extends android.app.Application {
 		Application.districts = districts;
 	}
 	
-	public static ArrayList<String> getInterests() 
-	{
-		return interests;
-	}
-
-	public static void setInterests(ArrayList<String> interests) {
-		Application.interests = interests;
-	}
 	
 	public static ArrayList<String> getCategories() 
 	{
@@ -184,13 +174,6 @@ public class Application extends android.app.Application {
 		userEmail = userE;
 	}
 
-	public static String getSelectedCategories() {
-		return selectedCategories;
-	}
-
-	public static void setSelectedCategories(String selectedCategories) {
-		Application.selectedCategories = selectedCategories;
-	}
 
 	public static boolean isHavePredefined() {
 		return havePredefined;

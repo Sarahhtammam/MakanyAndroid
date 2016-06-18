@@ -68,7 +68,23 @@ public class UpdateMyProfileActivity extends Activity {
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		districtSpinner.setAdapter(dataAdapter);
 		
-		myInterests = Application.getInterests();
+		String compareValue = Application.getCurrentUser().getDistrict();
+		if (!compareValue.equals(null)) {
+		    int spinnerPosition = dataAdapter.getPosition(compareValue);
+		    districtSpinner.setSelection(spinnerPosition);
+		}
+		
+		// Gender
+		
+		String compareValue2 =Application.getCurrentUser().getGender();
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.gender_array, android.R.layout.simple_spinner_item);
+		genderSpinner.setAdapter(adapter);
+		if (!compareValue2.equals(null)) {
+		    int spinnerPosition = adapter.getPosition(compareValue2);
+		    genderSpinner.setSelection(spinnerPosition);
+		}
+		
+		myInterests = Application.getCategories();
 		
 		LinearLayout my_layout = (LinearLayout) findViewById(R.id.interestLayout_update);
 
@@ -83,6 +99,10 @@ public class UpdateMyProfileActivity extends Activity {
 			checkBox.setTag(myInterests);
 			checkBox.setId(i);
 			checkBox.setText(myInterests.get(i));
+			
+			if (isInMyInterest(myInterests.get(i)))
+				checkBox.setChecked(true);
+			
 			checks.add(checkBox);
 			row.addView(checkBox);
 			my_layout.addView(row);
@@ -147,5 +167,16 @@ public class UpdateMyProfileActivity extends Activity {
 					
 				}
 		});
+	}
+	
+	
+	public boolean isInMyInterest(String myinterest)
+	{
+		for (String I : Application.getCurrentUser().getInterests())
+		{
+			if (I.equals(myinterest))
+				return true;
+		}
+		return false;
 	}
 }

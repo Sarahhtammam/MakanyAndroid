@@ -58,7 +58,7 @@ public class SignUpActivity extends Activity implements OnClickListener {
 
 		signupButton = (Button) findViewById(R.id.RegistrationButton);
 
-		myInterests = Application.getInterests();
+		myInterests = Application.getCategories();
 		myDistricts = Application.getDistricts();
 		
 		LinearLayout my_layout = (LinearLayout) findViewById(R.id.interestLayout);

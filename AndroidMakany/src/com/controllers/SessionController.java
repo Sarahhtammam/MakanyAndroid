@@ -39,7 +39,6 @@ public class SessionController {
 	{
 		AdminController adminController = new AdminController();
 	    adminController.getCategories();
-	    adminController.getInterests();
 	    adminController.getDistricts();
 	    Application.setHavePredefined(true);
 	}

@@ -52,7 +52,7 @@ public class ShowItemsActivity extends Fragment implements  AsyncResponse {
 		
 		items = Application.getItems();
 		
-		final Spinner spinner = (Spinner) rootView.findViewById(R.id.openClosed_spinner);;
+		final Spinner spinner = (Spinner) rootView.findViewById(R.id.openClosed_spinner);
 		
 		Button request= (Button) rootView.findViewById(R.id.ReqButton);
 		request.setOnClickListener(new OnClickListener() {

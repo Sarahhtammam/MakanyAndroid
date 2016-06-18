@@ -12,23 +12,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 
-import com.androidActivities.SignUpActivity;
+
 
 public class AdminController 
 {
 	
-	public void getInterests() 
-	{
-		Connection connectionClass = new Connection();
-		
-		connectionClass.execute( "http://makanyapp2.appspot.com/rest/ShowAllInterestsService",
-		"ShowAllInterestsService");
-		
-
-	}
 	
 	public void getDistricts() 
 	{
@@ -55,13 +45,6 @@ public class AdminController
 	{
 		String serviceType;
 		
-		/*private static ArrayList<String> interestsList = new ArrayList<String>();
-		
-		public ArrayList<String> get_InterestList() 
-		{
-			return interestsList;
-		}
-		*/
 		
 		@Override
 		protected String doInBackground(String... params)
@@ -72,10 +55,6 @@ public class AdminController
 			serviceType = params[params.length - 1];
 			
 			String urlParameters="";
-			/*if (serviceType.equals("addPostService"))
-				urlParameters = "postType="+ params[1] +"&content="+ params[2] +"&photo="
-						+ params[3] +"&district=" + params[4] +"&userEmail=" 
-						+ params[5] +"&categories="+ params[6];*/
 						
 
 			HttpURLConnection connection;
@@ -127,51 +106,6 @@ public class AdminController
 			try 
 			
 			{
-				if (serviceType.equals("ShowAllInterestsService")) 
-				{
-					System.out.println("result " + result);
-					//String temp="";
-					//interestsList = result;
-					
-					ArrayList<String> interestsList = new ArrayList<String>();
-					JSONArray requestArray;
-					
-					try {
-							requestArray = new JSONArray(result);
-							for(int i=0;i<requestArray.length();i++)
-							
-							{
-								JSONObject object=new JSONObject();
-								object = (JSONObject)requestArray.get(i);
-								String x = object.getString("InterestValue");
-								interestsList.add(x);
-								//temp+= x+ ",";
-							}
-							Application.setInterests(interestsList);
-					
-					} 
-					
-					
-					catch (JSONException e) 
-					{
-						e.printStackTrace();
-					}
-
-					
-					//getDistricts();
-					//Intent signUpIntent = new Intent(Application.getAppContext(),SignUpActivity.class);
-					//signUpIntent.putExtra("interests", interestsList);
-					//signUpIntent.putExtra("districts", districtsList);
-					//System.out.println("testtttttt" + interestsList.get(0));	
-					//signUpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					//Application.getAppContext().startActivity(signUpIntent);
-
-					
-					//Toast.makeText(Application.getAppContext(),this.interestsList.get(0), Toast.LENGTH_LONG).show();
-					//return;
-			
-				}
-				
 				
 				if (serviceType.equals("ShowAllDistrictsService")) 
 				{

@@ -1,85 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
 
-<!-- 		(@FormParam("name") String name,
-			@FormParam("category") String category,
-			@FormParam("description") String description,
-			@FormParam("latitude") String latitude, 
-			@FormParam("longitude") String longitude, 
-			@FormParam("ownerMail") String ownerMail)
-			 -->
-			 
-			 
-		<LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            />
-        
-        <EditText 
-            android:id="@+id/eventName"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            />
-        
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="description"
-            />
-        
-        <EditText 
-            android:id="@+id/eventDescription"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/eventName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            />
-        
-    </LinearLayout>
-    
-      <LinearLayout  
-	    android:id="@+id/selectCategoryLayout_event"
-	    android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        
-	    <TextView 
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description" />
+
+            <EditText
+                android:id="@+id/eventDescription"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/selectCategoryLayout_event"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="choose only one" />
+
+            <!-- checkboxes -->
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/createEventButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="choose only one"
-            />
-	    
-	    <!-- checkboxes  -->
+            android:layout_gravity="center"
+            android:text="Create Event" />
 
-	   
+       
     </LinearLayout>
-    
-    
-  
-    
-	<Button 
-        android:id="@+id/createEventButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Create Event"
-        />
-    
-			 
-</LinearLayout>
+
+</ScrollView>

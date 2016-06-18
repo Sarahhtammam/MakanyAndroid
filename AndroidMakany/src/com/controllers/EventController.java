@@ -17,7 +17,6 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.androidActivities.EventsMenuActivity;
-import com.androidActivities.ShowEventsActivity;
 import com.simpleModels.SimpleEvent;
 
 
@@ -104,19 +103,21 @@ public class EventController
 		return;
 	}
 	
-	public void getGoingEvents(String userMail, String maxEventID) 
+	public void getGoingEvents(String userMail, String maxEventID, AsyncResponse d) 
 	{
 		Connection connectionClass = new Connection();
-		
+		connectionClass.delegate = d;
 		userEmail = userMail;
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getGoingEventsService", userMail, "","getGoingEventsService");
 		
 		return;
 	}
 	
-	public void getFilteredEvents(String category, String district) 
+	public void getFilteredEvents(String category, String district, AsyncResponse d) 
 	{
+		
 		Connection connectionClass = new Connection();
+		connectionClass.delegate = d;
 		
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getFilteredEventsService", category, district,"getFilteredEventsService");
 		
@@ -127,7 +128,7 @@ public class EventController
 	{
 
 		String serviceType;
-		
+		AsyncResponse delegate;
 		/*private static ArrayList<String> interestsList = new ArrayList<String>();
 		
 		public ArrayList<String> get_InterestList() 
@@ -400,11 +401,13 @@ public class EventController
 						e.printStackTrace();
 					}
 					
-							
-					Intent showEvents = new Intent(Application.getAppContext(),ShowEventsActivity.class);
-	  				Application.setEvents(events);
+					
+					Application.setEvents(events);
+					delegate.processFinish("My Events");
+					
+					/*Intent showEvents = new Intent(Application.getAppContext(),ShowEventsActivity.class);
 	  				showEvents.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(showEvents);
+					Application.getAppContext().startActivity(showEvents);*/
 
 					
 					
@@ -474,11 +477,12 @@ public class EventController
 						e.printStackTrace();
 					}
 					
-							
-					Intent showEvents = new Intent(Application.getAppContext(),ShowEventsActivity.class);
-	  				Application.setEvents(events);
+					Application.setEvents(events);
+					delegate.processFinish("Filtered Events");
+					
+					/*Intent showEvents = new Intent(Application.getAppContext(),ShowEventsActivity.class);
 	  				showEvents.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(showEvents);
+					Application.getAppContext().startActivity(showEvents);*/
 
 					
 					

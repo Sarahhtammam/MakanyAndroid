@@ -1,16 +1,19 @@
 package com.androidActivities;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.controllers.Application;
 import com.controllers.SessionController;
@@ -30,6 +33,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 	
 	String loginMessage = "";
 	SimpleUser currentLoggedUser = null;
+	ProgressDialog myDialog;
 
 
 	@Override
@@ -69,7 +73,15 @@ public class LoginActivity extends Activity implements OnClickListener{
 		
 	}
 	
-
+	public void timerDelayRemoveDialog(long time, final Dialog d){
+	    new Handler().postDelayed(new Runnable() {
+	        public void run() {                
+	            d.dismiss();     
+	            Toast.makeText(Application.getAppContext(), "Please make sure that the Internet is on",
+	    				Toast.LENGTH_SHORT).show();
+	        }
+	    }, time); 
+	}
 
 	@Override
 	public void onClick(View v)
@@ -91,12 +103,12 @@ public class LoginActivity extends Activity implements OnClickListener{
 				else
 				{
 					
-					ProgressDialog myDialog = ProgressDialog.show(LoginActivity.this, "Authenticating","Please wait ...", true);
+					myDialog = ProgressDialog.show(LoginActivity.this, "Authenticating","Please wait ...", true);
 					myDialog.getWindow().setGravity(Gravity.CENTER);
 							
 					UserController userController = new UserController();
 					userController.login(emailEditText.getText().toString(), passwordEditText.getText().toString(),myDialog);
-					
+					timerDelayRemoveDialog(5000,myDialog);
 					
 				}
 				break;
@@ -104,8 +116,18 @@ public class LoginActivity extends Activity implements OnClickListener{
 	
 		    case R.id.SignupButton:
 		    {
-		    	Intent signupIntent = new Intent(getApplicationContext(),SignUpActivity.class);
-				startActivity(signupIntent);
+		    	if (Application.getCategories() == null || Application.getDistricts() == null)
+		    	{
+		    		Toast.makeText(Application.getAppContext(), "Please make sure that the Internet is on",
+		    				Toast.LENGTH_SHORT).show();
+		    		SessionController.getPredefined();
+		    	}
+		    	else
+		    	{
+		    		Intent signupIntent = new Intent(getApplicationContext(),SignUpActivity.class);
+					startActivity(signupIntent);
+		    	}
+		    	
 
 				break;
 			}
@@ -116,11 +138,9 @@ public class LoginActivity extends Activity implements OnClickListener{
 		    }
 		}
 		
-		
-		
-		
-		
-		
+
 	}
+	
+
 
 }

@@ -2,13 +2,12 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
-import com.controllers.Application;
-import com.controllers.EventController;
-
-import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
+import android.app.Fragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,8 +15,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 
-public class CreateEventActivity extends Activity implements OnClickListener {
+import com.controllers.Application;
+import com.controllers.EventController;
 
+public class CreateEventActivity extends Fragment implements OnClickListener {
+	
+	View rootView;
 	EditText eventName;
 	EditText eventCategory;
 	EditText eventDescription;
@@ -27,27 +30,29 @@ public class CreateEventActivity extends Activity implements OnClickListener {
 	ArrayList<CheckBox> checks = new ArrayList<CheckBox>();
 	ArrayList<String> myCategories = new ArrayList<String>();
 	
-	
+	public CreateEventActivity() {
+	}
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_create_event);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		rootView = inflater.inflate(R.layout.activity_create_event, container,
+				false);
 		
-		
-		eventName = (EditText) findViewById(R.id.eventName);
-		eventDescription = (EditText) findViewById(R.id.eventDescription);
+		eventName = (EditText)  rootView.findViewById(R.id.eventName);
+		eventDescription = (EditText)  rootView.findViewById(R.id.eventDescription);
 		
 		myCategories = Application.getCategories();
 		
-		LinearLayout my_layout = (LinearLayout) findViewById(R.id.selectCategoryLayout_event);
+		LinearLayout my_layout = (LinearLayout)  rootView.findViewById(R.id.selectCategoryLayout_event);
 		
 		// loop of generation of check boxes
 		for (int i = 0; i < myCategories.size(); i++) {
-			TableRow row = new TableRow(this);
+			TableRow row = new TableRow(getActivity());
 			row.setId(i);
 			row.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 					LayoutParams.WRAP_CONTENT));
-			CheckBox checkBox = new CheckBox(this);
+			CheckBox checkBox = new CheckBox(getActivity());
 			checkBox.setTag(myCategories);
 			checkBox.setId(i);
 			checkBox.setText(myCategories .get(i));
@@ -56,10 +61,15 @@ public class CreateEventActivity extends Activity implements OnClickListener {
 			my_layout.addView(row);
 
 		}
-		createEventButton= (Button) findViewById(R.id.createEventButton);
+		createEventButton= (Button) rootView.findViewById(R.id.createEventButton);
 		
 		createEventButton.setOnClickListener(this);
+		
+		
+		return rootView;
 	}
+	
+
 	@Override
 	public void onClick(View arg0) 
 	{
