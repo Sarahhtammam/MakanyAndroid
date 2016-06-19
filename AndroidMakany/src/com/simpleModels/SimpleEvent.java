@@ -5,9 +5,9 @@ import java.util.Vector;
 public class SimpleEvent extends Element
 {
 
-	private String id, name, category, description;
+	private String id, name, category, description,date;
 	private double latitude, longitude;
-	private String ownerMail, district;
+	private String ownerMail, district, ownerName;
 	private Vector<String> goingMails, postIDs;
 	
 	
@@ -52,6 +52,22 @@ public class SimpleEvent extends Element
 	public String getOwner() {
 		// TODO Auto-generated method stub
 		return this.ownerMail;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
 	
 

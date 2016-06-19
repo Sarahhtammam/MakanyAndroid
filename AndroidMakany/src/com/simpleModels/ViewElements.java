@@ -3,12 +3,15 @@ package com.simpleModels;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.provider.CalendarContract.Colors;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.androidActivities.R.color;
 import com.androidActivities.SingleEventActivity;
 import com.androidActivities.SingleItemActivity;
 import com.controllers.Application;
@@ -51,18 +54,39 @@ public class ViewElements {
 	
 	public void viewEvent(final SimpleEvent temp ,int i, LinearLayout my_layout, Context context )
 	{
-		TextView name2 = new TextView(context);
-        name2.setText("Event Name: " + temp.getName() );
-        my_layout.addView(name2); 
-
+		TextView date = new TextView(context);
+        date.setText(temp.getDate() );
+        my_layout.addView(date); 
         
-        TextView category2 = new TextView(context);
-        category2.setText("Event Category: " + temp.getCategory() );
-        my_layout.addView(category2); 
+        LinearLayout lin_hor = new LinearLayout(context);
+        lin_hor.setOrientation(0);
+        TextView owner = new TextView(context);
+        owner.setText( temp.getOwnerName());
+        owner.setTypeface(null, Typeface.BOLD);
+        owner.setTextColor(color.darkpurple);
+        lin_hor.addView(owner);
+        TextView owner2 = new TextView(context);
+        owner2.setText( " organized an event" );
+        lin_hor.addView(owner2);
+        
+        my_layout.addView(lin_hor); 
+        
+		TextView name = new TextView(context);
+        name.setText(temp.getName());
+        name.setTypeface(null, Typeface.BOLD);
+        name.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+        my_layout.addView(name); 
+
+        LinearLayout lin_hor2 = new LinearLayout(context);
+        lin_hor2.setOrientation(0);
+        
+        TextView category = new TextView(context);
+        category.setText(temp.getCategory() );
+        lin_hor2.addView(category); 
        
 
         Button b2 = new Button(context);
-        b2.setText("View event details");
+        b2.setText("Show More");
         b2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         b2.setId(i+1);
         b2.setTag(temp.getID());
@@ -79,6 +103,7 @@ public class ViewElements {
 
             }
         });
-        my_layout.addView(b2);
+        lin_hor2.addView(b2);
+        my_layout.addView(lin_hor2);
 	}
 }
