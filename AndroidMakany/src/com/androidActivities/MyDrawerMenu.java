@@ -44,19 +44,19 @@ public class MyDrawerMenu extends Activity {
 
 		drawerItem[0] = new ObjectDrawerItem(R.drawable.home_icon,
 				"Home");
-		drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
+		drawerItem[1] = new ObjectDrawerItem(R.drawable.post_icon,
 				"Posts");
-		drawerItem[2] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
+		drawerItem[2] = new ObjectDrawerItem(R.drawable.event_icon,
 				"Events");
-		drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
+		drawerItem[3] = new ObjectDrawerItem(R.drawable.item_icon,
 				"Neighbours Aid");
 		drawerItem[4] = new ObjectDrawerItem(R.drawable.store_icon,
 				"Stores");
-		drawerItem[5] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
+		drawerItem[5] = new ObjectDrawerItem(R.drawable.messages_icon,
 				"My Messages");
 		drawerItem[6] = new ObjectDrawerItem(R.drawable.updateprofile_icon,
 				"Update Profile");
-		drawerItem[7] = new ObjectDrawerItem(R.drawable.ic_grade_black_24dp,
+		drawerItem[7] = new ObjectDrawerItem(R.drawable.logout_icon,
 				"Signout");
 
 		DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this,

@@ -1,0 +1,27 @@
+    <resources xmlns:android="http://schemas.android.com/apk/res/android">
+       
+        
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+           <item name="android:colorPrimary">@color/darkmauve</item>
+             <item name="android:windowBackground">@color/grey</item>
+             <item name="android:statusBarColor">@color/zeity</item>
+             <item name="android:colorAccent">@color/lightblue</item>
+             <item name="android:textColorPrimary">@color/zeity</item>
+             <item name="android:actionBarStyle">@style/AppTheme.ActionBarStyle</item>
+
+
+    </style>
+
+        <style name="AppTheme.ActionBarStyle" parent="android:style/Widget.Holo.Light.ActionBar">
+            <item name="android:background">@color/darkmauve</item>
+            <item name="android:icon">@drawable/makany_logo</item>
+        </style>
+
+
+        <!--  for the splash screen only -->
+      <style name="Theme.NoTitle" parent="@android:style/Theme.NoTitleBar"></style>
+              
+              
+    
+    
+</resources>
