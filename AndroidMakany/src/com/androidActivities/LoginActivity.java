@@ -75,9 +75,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		new Handler().postDelayed(new Runnable() {
 			public void run() {
 				d.dismiss();
-				Toast.makeText(Application.getAppContext(),
-						"Please make sure that the Internet is on",
-						Toast.LENGTH_SHORT).show();
+
 			}
 		}, time);
 	}

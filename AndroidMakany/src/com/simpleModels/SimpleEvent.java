@@ -13,7 +13,7 @@ public class SimpleEvent extends Element
 	
 	public SimpleEvent(String id, String name, String category, String description,
 			double latitude, double longitude, String ownerMail, String district,
-			String goingMails, String postIDs)
+			String goingMails, String postIDs,String date)
 	{
 		super(Type.EVENT);
 		this.id=id;
@@ -24,6 +24,7 @@ public class SimpleEvent extends Element
 		this.longitude=longitude;
 		this.ownerMail=ownerMail;
 		this.district=district;
+		this.date = date;
 		
 		//this.goingMails=goingMails;
 		//this.postIDs=postIDs;

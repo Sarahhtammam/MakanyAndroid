@@ -113,9 +113,9 @@ public class WhatsNew extends MyDrawerMenu {
 
 				        break;
 				}
-				View ruler = new View(this); ruler.setBackgroundColor(0xff000000);
+				/*View ruler = new View(this); ruler.setBackgroundColor(0xff000000);
 				my_layout.addView(ruler,
-				 new ViewGroup.LayoutParams( ViewGroup.LayoutParams.FILL_PARENT, 2));
+				 new ViewGroup.LayoutParams( ViewGroup.LayoutParams.FILL_PARENT, 2));*/
 			}
 		}
 		

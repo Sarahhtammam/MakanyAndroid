@@ -386,7 +386,8 @@ public class EventController
 								SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
 										object.getString("category"), object.getString("description"), 
 										Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
-										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs"));
+										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
+										,object.getString("date"));
 								String x = object.getString("name");
 								eventsNames.add(x);
 								events.add(simpleEvent);
@@ -426,7 +427,8 @@ public class EventController
 						SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
 								object.getString("category"), object.getString("description"), 
 								Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
-								object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs"));
+								object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
+								,object.getString("date"));
 						
 						Application.setCurrentEvent(simpleEvent);
 					
@@ -465,7 +467,8 @@ public class EventController
 								SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
 										object.getString("category"), object.getString("description"), 
 										Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
-										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs"));
+										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
+										,object.getString("date"));
 								events.add(simpleEvent);
 							}
 					

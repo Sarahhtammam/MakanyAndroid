@@ -2,8 +2,8 @@ package com.androidActivities;
 
 import java.util.Locale;
 
+
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -12,7 +12,8 @@ import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 
-public class StoreHomeActivity extends Activity implements ActionBar.TabListener {
+
+public class StoreMenu extends MyDrawerMenu implements ActionBar.TabListener {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -31,8 +32,8 @@ public class StoreHomeActivity extends Activity implements ActionBar.TabListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_store_home);
-		
+		setContentView(R.layout.activity_store_menu);
+		super.onCreateDrawer();
 
 		// Set up the action bar.
 		final ActionBar actionBar = getActionBar();
@@ -43,7 +44,7 @@ public class StoreHomeActivity extends Activity implements ActionBar.TabListener
 		mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
 
 		// Set up the ViewPager with the sections adapter.
-		mViewPager = (ViewPager) findViewById(R.id.pager_store_user); 
+		mViewPager = (ViewPager) findViewById(R.id.pager_store);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
 		// When swiping between different sections, select the corresponding
@@ -103,16 +104,15 @@ public class StoreHomeActivity extends Activity implements ActionBar.TabListener
 
 		@Override
 		public Fragment getItem(int position) {
-
+			
+			
+			
 			switch (position) {
 			case 0:
-				return new CreateOffer();
-				
+				return new ShowStoresActivity();
 			case 1:
-				return new CreateOffer();
 				
-			case 2: 
-				return new CreateOffer();
+				return new ShowStoresActivity();
 				
 			}
 			return null;
@@ -121,7 +121,7 @@ public class StoreHomeActivity extends Activity implements ActionBar.TabListener
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 3;
+			return 2;
 		}
 
 		@Override
@@ -129,15 +129,13 @@ public class StoreHomeActivity extends Activity implements ActionBar.TabListener
 			Locale l = Locale.getDefault();
 			switch (position) {
 			case 0:
-				return getString(R.string.storeuser_tab_section1).toUpperCase(l);
+				return getString(R.string.store_tab_section1).toUpperCase(l);
 			case 1:
-				return getString(R.string.storeuser_tab_section2).toUpperCase(l);
-			case 2:
-				return getString(R.string.storeuser_tab_section3).toUpperCase(l);
+				return getString(R.string.store_tab_section2).toUpperCase(l);
 			}
 			return null;
 		}
 	}
 
-
+	
 }

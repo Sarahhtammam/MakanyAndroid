@@ -23,8 +23,8 @@
     <string name="title_activity_show_events">Show Events</string>
     <string name="title_activity_single_event">Event</string>
     <string name="title_activity_item_menu">Item Menu</string>
-	
     <string name="signup_msg">Do not have an account ?</string>
+
     <string-array name="ItemType_array">
         <item>Loan</item>
         <item>Request</item>
@@ -33,7 +33,6 @@
         <item>Open</item>
         <item>Closed</item>
     </string-array>
-    
     <string-array name="ItemState_array2">
         <item></item>
         <item>Open</item>
@@ -54,12 +53,17 @@
     <string name="title_activity_update_my_profile">UpdateMyProfileActivity</string>
     <string name="item_tab_section1">View Items</string>
     <string name="item_tab_section2">Create Item</string>
-    
     <string name="event_tab_section1">View Events</string>
     <string name="event_tab_section2">Create Event</string>
-    
     <string name="post_tab_section1">View Posts</string>
     <string name="post_tab_section2">Create Post</string>
-
+    <string name="store_tab_section1">View Stores</string>
+    <string name="store_tab_section2">View Offers</string>
+    <string name="storeuser_tab_section1">View My Offers</string>
+    <string name="storeuser_tab_section2">Create Offer </string>
+    <string name="storeuser_tab_section3">Update Info </string>
+    <string name="title_activity_create_offer">CreateOffer</string>
+    <string name="title_activity_store_menu">StoreMenu</string>
+    <string name="title_activity_show_stores">ShowStoresActivity</string>
 
 </resources>

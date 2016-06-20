@@ -1,40 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="8dp"
-        android:layout_y="50dp"
-        android:text="Welcome to your Store Pgae"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager_store_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/addOffer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="22dp"
-        android:layout_y="99dp"
-        android:text="Add offer" />
-
-    <Button
-        android:id="@+id/editOffer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="30dp"
-        android:layout_y="178dp"
-        android:text="Edit Offer" />
-
-    <Button
-        android:id="@+id/removeOffer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="30dp"
-        android:layout_y="266dp"
-        android:text="Remove Offer" />
-
-  </AbsoluteLayout>
+</LinearLayout>

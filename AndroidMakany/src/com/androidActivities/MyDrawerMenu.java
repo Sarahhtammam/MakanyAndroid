@@ -127,6 +127,9 @@ public class MyDrawerMenu extends Activity {
 				startActivity(itemMenuIntent);
 				break;
 			case 4: // store
+				Intent storeIntent = new Intent(getApplicationContext(),
+						StoreMenu.class);
+				startActivity(storeIntent);
 				break;
 				
 			case 5: // messages

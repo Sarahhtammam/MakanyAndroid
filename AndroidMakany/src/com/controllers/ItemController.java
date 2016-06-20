@@ -295,10 +295,10 @@ public class ItemController
 								JSONObject object=new JSONObject();
 								object = (JSONObject)requestArray.get(i);
 								
-								SimpleItem simpleItem = new SimpleItem(object.getString("id"),object.getString("name"), 
-									  object.getString("description"), object.getString("userEmail"), object.getString("district"),
-									  object.getString("photo"),object.getString("state"), object.getString("categories"));
-								
+								SimpleItem simpleItem = new SimpleItem(object.getString("id"),object.getString("username"), object.getString("name"), 
+										object.getString("description"), object.getString("userEmail"), object.getString("district"),
+										object.getString("photo"),object.getString("state"), object.getString("categories"),
+										object.getString("date"),"");
 								items.add(simpleItem);
 								
 							}

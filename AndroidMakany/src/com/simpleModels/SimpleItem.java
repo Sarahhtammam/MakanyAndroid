@@ -3,13 +3,15 @@ package com.simpleModels;
 
 public class SimpleItem extends Element {
 	
-		private String id;
+		private String id, userName;
 		private String name, description,userEmail, district, photo, state;
+		private String date, itemType;
 		private String categories;
 		
 		public SimpleItem(){
 			super(Type.ITEM);
 			this.id="";
+			this.userName = "";
 			this.name="";
 			this.description="";
 			this.userEmail="";
@@ -17,13 +19,16 @@ public class SimpleItem extends Element {
 			this.photo="";
 			this.state="";
 			this.categories="";
+			this.date = "";
+			this.itemType = "";
 		}
 		
-		public SimpleItem(String id,String name,String description,String userEmail,
+		public SimpleItem(String id,String userName ,String name,String description,String userEmail,
 				String district,String photo,String state,
-				String categories){
+				String categories,String date, String itemType){
 			super(Type.ITEM);
 			this.id=id;
+			this.userName = userName;
 			this.name=name;
 			this.description=description;
 			this.userEmail=userEmail;
@@ -31,6 +36,8 @@ public class SimpleItem extends Element {
 			this.photo=photo;
 			this.state=state;
 			this.categories=categories;
+			this.date = date;
+			this.itemType = itemType;
 		}
 
 		public String getId() {
@@ -95,6 +102,22 @@ public class SimpleItem extends Element {
 
 		public void setCategories(String categories) {
 			this.categories = categories;
+		}
+
+		public String getDate() {
+			return date;
+		}
+
+		public void setDate(String date) {
+			this.date = date;
+		}
+
+		public String getItemType() {
+			return itemType;
+		}
+
+		public void setItemType(String itemType) {
+			this.itemType = itemType;
 		}
 
 }

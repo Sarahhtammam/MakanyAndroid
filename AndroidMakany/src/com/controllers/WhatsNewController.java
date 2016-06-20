@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -29,7 +31,7 @@ public class WhatsNewController
 	{
 		Connection connectionClass = new Connection();
 		
-		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getStaticRecommendationService",
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/staticRecommendService",
 				usermail ,"getStaticRecommendation");
 		
 		return;
@@ -65,7 +67,7 @@ public class WhatsNewController
 			
 			
 			if (serviceType.equals("getStaticRecommendation")||serviceType.equals("getDynamicRecommendation"))
-				urlParameters = "usermail="+ params[1] ;
+				urlParameters = "email="+ params[1] ;
 			
 			
 			HttpURLConnection connection;
@@ -124,36 +126,43 @@ public class WhatsNewController
 					
 					JSONArray requestArray;
 					
-					/*try {
+					try {
 							requestArray = new JSONArray(result);
 							for(int i=0;i<requestArray.length();i++)
 							{
 								JSONObject object=new JSONObject();
 								object = (JSONObject)requestArray.get(i);
-								if (object.getString("type").equals("1"))
+								if (object.getString("type").equals("LoanItem") || object.getString("type").equals("RequestItem"))
 								{
-									SimpleItem simpleItem = new SimpleItem(object.getString("id"),object.getString("name"), 
+									SimpleItem simpleItem = new SimpleItem(object.getString("id"),object.getString("username"), object.getString("name"), 
 									object.getString("description"), object.getString("userEmail"), object.getString("district"),
-									object.getString("photo"),object.getString("state"), object.getString("categories"));
+									object.getString("photo"),object.getString("state"), object.getString("categories"),
+									object.getString("date"),object.getString("type"));
 										
 									elements.add(simpleItem);
 								}
-								else if (object.getString("type").equals("2"))
+								else if (object.getString("type").equals("Event"))
 								{
 									SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
 											object.getString("category"), object.getString("description"), 
 											Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
-											object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs"));
+											object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
+											,object.getString("date") );
 									elements.add(simpleEvent);
 								}
-								else if (object.getString("type").equals("3"))
+								else if (object.getString("type").equals("Store"))
 								{
 									
 								}
-								else if (object.getString("type").equals("4"))
+								else if (object.getString("type").equals("Offer"))
 								{
 									
 								}
+								else if (object.getString("type").equals("Post"))
+								{
+									
+								}
+								
 								
 							}
 					
@@ -162,24 +171,19 @@ public class WhatsNewController
 					catch (JSONException e) 
 					{
 						e.printStackTrace();
-					}*/
+					}
 					
-					SimpleItem simpleItem = new SimpleItem("1","Pen","nice pen","heba.khazbak@gmail.com","Zamalek","","Open","");
-					elements.add(simpleItem);
-					SimpleEvent event = new SimpleEvent("3", "Running around Zamalek", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com","Zamalek", "", "");
+					/*SimpleItem simpleItem = new SimpleItem("1","Pen","nice pen","heba.khazbak@gmail.com","Zamalek","","Open","");
+					elements.add(simpleItem);*/
+					SimpleEvent event = new SimpleEvent("3", "Running around Zamalek", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com","Zamalek", "", "","");
 					Date d = new Date();
 					event.setDate(d.toString());
 					event.setOwnerName("Heba");
 					elements.add(event);
-					simpleItem = new SimpleItem("2","Cat","animals","heba.khazbak@gmail.com","Zamalek","","Open","");
-					elements.add(simpleItem);
+					elements.add(event);
+					/*simpleItem = new SimpleItem("2","Cat","animals","heba.khazbak@gmail.com","Zamalek","","Open","","","");
+					elements.add(simpleItem);*/
 					
-					event = new SimpleEvent("4", "eating", "food", "eat in zamalek fish", 30.0,32.0, "heba.khazbak@gmail.com","Zamalek", "", "");
-					elements.add(event);
-					event = new SimpleEvent("5", "eat", "food", "eat in zamalek chicken", 30.0,32.0, "heba.khazbak@gmail.com","Zamalek", "", "");
-					elements.add(event);
-					simpleItem = new SimpleItem("6","Dog","animals","heba.khazbak@gmail.com","Zamalek","","Open","");
-					elements.add(simpleItem);
 					
 					Intent whatsNew = new Intent(Application.getAppContext(),WhatsNew.class);
 	  				Application.setElements(elements);
@@ -207,9 +211,9 @@ public class WhatsNewController
 						e.printStackTrace();
 					}*/
 					
-					SimpleItem simpleItem = new SimpleItem("10","car","nice car","heba.khazbak@gmail.com","Zamalek","","Open","");
+					SimpleItem simpleItem = new SimpleItem("10","Heba", "car","nice car","heba.khazbak@gmail.com","Zamalek","","Open","","","");
 					elements.add(simpleItem);
-					SimpleEvent event = new SimpleEvent("30", "caaar", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com","Zamalek", "", "");
+					SimpleEvent event = new SimpleEvent("30", "caaar", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com","Zamalek", "", "","");
 					elements.add(event);
 					
 					
