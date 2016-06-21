@@ -37,7 +37,7 @@ public class SignUpActivity extends Activity implements OnClickListener {
 	String selectedDistrict = "";
 	String selectedGender = "";
 	ArrayList<CheckBox> checks = new ArrayList<CheckBox>();
-	ArrayList<String> myInterests = new ArrayList<String>();
+	ArrayList<String> myCategories = new ArrayList<String>();
 	ArrayList<String> myDistricts = new ArrayList<String>();
 
 	// Set<String> interestsSet = new HashSet<String>();
@@ -58,23 +58,23 @@ public class SignUpActivity extends Activity implements OnClickListener {
 
 		signupButton = (Button) findViewById(R.id.RegistrationButton);
 
-		myInterests = Application.getCategories();
+		myCategories = Application.getCategories();
 		myDistricts = Application.getDistricts();
 		
 		LinearLayout my_layout = (LinearLayout) findViewById(R.id.interestLayout);
 		
-		if (myInterests != null)
+		if (myCategories != null)
 		{
 			// loop of generation of check boxes
-			for (int i = 0; i < myInterests.size(); i++) {
+			for (int i = 0; i < myCategories.size(); i++) {
 				TableRow row = new TableRow(this);
 				row.setId(i);
 				row.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 						LayoutParams.WRAP_CONTENT));
 				CheckBox checkBox = new CheckBox(this);
-				checkBox.setTag(myInterests);
+				checkBox.setTag(myCategories);
 				checkBox.setId(i);
-				checkBox.setText(myInterests.get(i));
+				checkBox.setText(myCategories.get(i));
 				checks.add(checkBox);
 				row.addView(checkBox);
 				my_layout.addView(row);
@@ -109,10 +109,10 @@ public class SignUpActivity extends Activity implements OnClickListener {
 		selectedDistrict = String.valueOf(districtSpinner.getSelectedItem());
 		selectedGender = String.valueOf(genderSpinner.getSelectedItem());
 
-		System.out.println("\nSelected interests: " + checkedInterests);
+	/*	System.out.println("\nSelected interests: " + checkedInterests);
 		System.out.println("\nSelected districts: " + selectedDistrict);
 		System.out.println("\nSelected interests: " + selectedGender);
-
+*/
 		userController.Signup(usernameEditText.getText().toString(),
 				emailEditText.getText().toString(), passwordEditText.getText()
 						.toString(), birthdateEditText.getText().toString(),

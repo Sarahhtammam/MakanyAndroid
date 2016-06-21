@@ -1,5 +1,8 @@
 package com.androidActivities;
 
+import com.controllers.Application;
+import com.controllers.SessionController;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +21,9 @@ public class Splash extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.activity_splash);
+
+        if (!Application.isHavePredefined())
+			SessionController.getPredefined();
 
         /* New Handler to start the Menu-Activity 
          * and close this Splash-Screen after some seconds.*/

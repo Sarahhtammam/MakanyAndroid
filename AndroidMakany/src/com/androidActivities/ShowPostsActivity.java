@@ -2,21 +2,22 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
-import com.controllers.Application;
-import com.controllers.AsyncResponse;
-import com.simpleModels.SimplePost;
-
 import android.app.ActionBar.LayoutParams;
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.controllers.Application;
+import com.controllers.AsyncResponse;
+import com.simpleModels.SimplePost;
 
 public class ShowPostsActivity extends Fragment implements  AsyncResponse {
 	
@@ -58,7 +59,8 @@ public class ShowPostsActivity extends Fragment implements  AsyncResponse {
 	        x.setText(str);
 	        x.setTypeface(null, Typeface.BOLD);
 	        my_layout.addView(x); 
-			//loop of generation of events 
+	
+	        //loop of generation of posts 
 			for (int i = 0; i < posts.size(); i++) 
 			{
 				final SimplePost temp = posts.get(i);
@@ -106,18 +108,11 @@ public class ShowPostsActivity extends Fragment implements  AsyncResponse {
 		        b.setOnClickListener(new OnClickListener() {
 		            public void onClick(View v) 
 		            {
-		            	//PostController postController = new PostController();
-						//postController.getPost("", "", "", "", temp.getID());
-						
-	    	         	/*Intent selectedEvent = new Intent(Application.getAppContext(),SingleEventActivity.class);
-		  				selectedEvent.putExtra("eventID", temp.getID());
-		  				selectedEvent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		  				EventController eventController = new EventController();
-		  				eventController.getEventByID(temp.getID());
-		  				Application.setCurrentEvent(temp);
-		  				Application.getAppContext().startActivity(selectedEvent);
-
-	*/
+		            	Intent selectedPost = new Intent(Application.getAppContext(),SinglePostActivity.class);
+		            	selectedPost.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		  				Application.setCurrentPost(temp);
+		  				Application.getAppContext().startActivity(selectedPost);
+		  				
 		            	}
 		        });
 		        my_layout.addView(b);

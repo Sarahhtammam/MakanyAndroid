@@ -25,6 +25,7 @@ public class UserController
 {
 	static ProgressDialog myDialog;
 	static String emaill;
+	static String userType;
 	
 	public void login(String email, String password,ProgressDialog myDialog) 
 	{
@@ -46,6 +47,7 @@ public class UserController
 						String twitter, String foursquare, String interests) 
 	{
 		String uType="normal";
+		userType=uType;
 		String category="NONE";
 		
 		new Connection().execute( "http://makanyapp2.appspot.com/rest/signUpService", uType,
@@ -53,6 +55,18 @@ public class UserController
 		foursquare, interests, "signUpService");
 	}
 	
+	public void store_Signup(String name, String email, String password, String birthDate, 
+			String district, String description, String gender, 
+			String twitter, String foursquare, String category) 
+	{
+		String uType="store";
+		userType=uType;
+		new Connection().execute( "http://makanyapp2.appspot.com/rest/signUpService", uType,
+		name, email, password, birthDate, district, category, description, gender, twitter, 
+		foursquare, "", "signUpService");
+	}
+	
+
 	public void EditProfile(String email, String name, String password, String birthDate, 
 			String district, String gender, String twitter, String foursquare, String interests) 
 	{
@@ -269,16 +283,13 @@ public class UserController
 					}
 					
 					//Signed Up successfully 
-					Toast.makeText(Application.getAppContext(), "Success",
+					Toast.makeText(Application.getAppContext(), "Signed Up Successfully",
 					Toast.LENGTH_SHORT).show();
+					
+					
 					
 					Intent mainIntent = new Intent(Application.getAppContext(),LoginActivity.class);
 					mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					
-					//AdminController adminController = new AdminController();
-					///adminController.getInterests();	
-					
-					
 					Application.getAppContext().startActivity(mainIntent);
 				}
 			

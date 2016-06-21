@@ -27,6 +27,9 @@ public class SingleEventActivity extends MyDrawerMenu implements OnClickListener
 		setContentView(R.layout.activity_single_event);
 		super.onCreateDrawer();
 
+		Toast.makeText(Application.getAppContext(),"ID=" + currentEvent.getID(),Toast.LENGTH_SHORT).show();
+		Toast.makeText(Application.getAppContext(),currentEvent.getID(),Toast.LENGTH_SHORT).show();
+		
 		// singleEventLayout
 		LinearLayout my_layout = (LinearLayout) findViewById(R.id.singleEventLayout);
 
@@ -152,7 +155,7 @@ public class SingleEventActivity extends MyDrawerMenu implements OnClickListener
 							String postTextt = postText.getText().toString();
 							PostController postController = new PostController();
 							postController.addPost("event", postTextt,
-									"no-pic", "maadi", currentEvent.getID(),
+									"no-pic", Application.getCurrentDistrict(), currentEvent.getID(),
 									Application.getUserEmail(), "");
 						}
 					});

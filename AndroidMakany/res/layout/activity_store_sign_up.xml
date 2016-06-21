@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="fill_parent" android:layout_height="fill_parent">
    
@@ -7,191 +7,156 @@ android:layout_width="fill_parent" android:layout_height="fill_parent">
     android:layout_height="wrap_content"
     android:orientation="vertical" >
     
-    <!-- store name layout -->
+   
     <LinearLayout 
-         
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-           
-          <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Store Name" />
-          
-           <EditText
-               android:id="@+id/storeName"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content" 
-               android:inputType="text">
-               <requestFocus />
-           </EditText>
-         
-     </LinearLayout>
+        android:orientation="horizontal"
+        >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store Name"
+            />
+        
+        <EditText 
+            android:id="@+id/storeName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+        
+    </LinearLayout>
     
-
-      <!-- email layout -->
-      <LinearLayout 
-         
+    <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-           
-          <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Eamil" />
+        android:orientation="horizontal"
+        >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            />
+        
+        <EditText 
+            android:id="@+id/storeEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+        
+    </LinearLayout>
+    
           
-           <EditText
-               android:id="@+id/email"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content" 
-               android:inputType="text">
-               <requestFocus />
-           </EditText>
-         
-     </LinearLayout>
-     
-       <!-- password layout -->
-     <LinearLayout 
-         
+    <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-           
-          <TextView
+        android:orientation="horizontal"
+        >
+
+           <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="Password" />
-          
-           <EditText
-               android:id="@+id/password"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content" 
-               android:inputType="text">
-               <requestFocus />
-           </EditText>
-         
-     </LinearLayout>
-     
-     <!-- password layout -->
-     <LinearLayout 
-         
+
+	        <EditText
+	            android:id="@+id/storePassword"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:ems="10"
+	            android:inputType="textPassword" >
+	            </EditText>
+	            
+    </LinearLayout>
+		
+    <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-           
-          <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="District" />
-          
-           <EditText
-               android:id="@+id/district"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content" 
-               android:inputType="text">
-               <requestFocus />
-           </EditText>
-         
-     </LinearLayout>
-     
-     <!-- category layout -->
-     <LinearLayout 
-         
-        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store Discription"
+            />
+        
+        <EditText 
+            android:id="@+id/storeDescription"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+        
+   	</LinearLayout>
+   
+       
+    <LinearLayout  android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/districtSpinnerLayout_Store">
+        
+	    <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="District"
+            />
+	    
+		<Spinner
+        android:id="@+id/districtSpinner_Store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+        
+    </LinearLayout>
+    
+       
+       
+   
+    <LinearLayout  android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-           
-          <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Category" />
-          
-           <EditText
-               android:id="@+id/category"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content" 
-               android:inputType="text">
-               <requestFocus />
-           </EditText>
-         
-     </LinearLayout>
-     
-     <!-- discription layout -->
-     <LinearLayout 
-         
-        android:layout_width="fill_parent"
+    
+      <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Twitter Account"
+            />
+        
+        <EditText 
+            android:id="@+id/storeTwitterAccount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+      
+    </LinearLayout>
+    
+   <LinearLayout  
+	    android:id="@+id/storeInterestLayout"
+	    android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-           
-          <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Discrption" />
-          
-           <EditText
-               android:id="@+id/Discription"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content" 
-               android:inputType="text">
-               <requestFocus />
-           </EditText>
-         
-     </LinearLayout>
-     
-     <!-- Offers layout -->
-     <LinearLayout 
-         
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-           
-          <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Offers" />
-          
-           <EditText
-               android:id="@+id/offers"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content" 
-               android:inputType="text">
-               <requestFocus />
-           </EditText>
-         
-     </LinearLayout>
-     
-     <!-- reviews layout -->
-     <LinearLayout 
-         
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-           
-          <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Reviews" />
-          
-           <EditText
-               android:id="@+id/reviews"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content" 
-               android:inputType="text">
-               <requestFocus />
-           </EditText>
-         
-     </LinearLayout>
-     
-       <Button 
-        android:id="@+id/StoreRegistration"
+        android:orientation="vertical">
+        
+	    <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store Category: "
+            />
+	    
+	    <!-- radio buttons  -->
+
+	   
+    </LinearLayout>
+    
+
+    <Button 
+        android:id="@+id/storeRegistrationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="signUp"
         />
-     
-     
-  </LinearLayout>   
-  </ScrollView>
+      
+
+</LinearLayout>
+</ScrollView>

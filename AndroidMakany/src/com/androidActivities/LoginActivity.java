@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.controllers.Application;
+import com.controllers.EventController;
 import com.controllers.SessionController;
 import com.controllers.UserController;
 import com.controllers.WhatsNewController;
@@ -120,6 +121,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 		}
 
 		if (id == R.id.SignupStoreButton) {
+
+			Intent signUpStore = new Intent(Application.getAppContext(),StoreSignUpActivity.class);
+				startActivity(signUpStore);
 
 		}
 

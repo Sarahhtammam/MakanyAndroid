@@ -21,10 +21,11 @@ public class Application extends android.app.Application {
 	public static String currentDistrict;
 	
 	private static SimpleUser currentUser;
+	private static String currentUserType; 
 	private static String userEmail; 
 	private static SimpleEvent currentEvent;
 	private static SimpleItem currentItem;
-	//private static SimplePost currentPost;
+	private static SimplePost currentPost;
 	
 	private static ArrayList<String> districts;
 	private static ArrayList<String> categories;
@@ -181,6 +182,14 @@ public class Application extends android.app.Application {
 
 	public static void setHavePredefined(boolean havePredefined) {
 		Application.havePredefined = havePredefined;
+	}
+
+	public static SimplePost getCurrentPost() {
+		return currentPost;
+	}
+
+	public static void setCurrentPost(SimplePost currentPost) {
+		Application.currentPost = currentPost;
 	}
 
 	

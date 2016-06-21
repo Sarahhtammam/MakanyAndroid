@@ -168,10 +168,6 @@ public class PostController
 					Toast.makeText(Application.getAppContext(), "SUCCESS",
 					Toast.LENGTH_LONG).show();
 					
-					Intent postMenuIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
-					postMenuIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(postMenuIntent);
-					
 					
 				}
 			

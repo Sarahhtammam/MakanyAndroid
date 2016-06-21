@@ -65,5 +65,6 @@
     <string name="title_activity_create_offer">CreateOffer</string>
     <string name="title_activity_store_menu">StoreMenu</string>
     <string name="title_activity_show_stores">ShowStoresActivity</string>
+    <string name="title_activity_single_post">SinglePostActivity</string>
 
 </resources>
