@@ -43,7 +43,7 @@ public class MyDrawerMenu extends Activity {
 		ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[9];
 
 		drawerItem[0] = new ObjectDrawerItem(R.drawable.home_icon,
-				"Home");
+				"What's New");
 		drawerItem[1] = new ObjectDrawerItem(R.drawable.post_icon,
 				"Posts");
 		drawerItem[2] = new ObjectDrawerItem(R.drawable.event_icon,

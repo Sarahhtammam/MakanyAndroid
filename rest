@@ -1,20 +1,16 @@
-events: create event: add from-to dates 
-		get events(date problem), 
-		events options, 
-		view events posts and comments
 
-login: add userTupe to Application
 
-store: 
-	store owner: login, 
-				offers: add, delete, edit
-	store viewer: from heba
-	
-Text: enhance how texts are viewed in: dynamic and static
+Heba
 
-post: why create post doesn't move to a new intent?
-
+Edit offer / delete
+change district 
 what's new (static/dynamic)
 refesh f kolo 
+Text same as in what's new 
+---------------------
+Sarah 
 
-change district 
+User: view offers , show stores 
+Store : show my offers 
+Event from to 
+Post comment
