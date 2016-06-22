@@ -451,7 +451,7 @@ public class PostController
 								
 								SimpleComment comment= new SimpleComment(object.getString("ID"), object.getString("userEmail"), 
 										object.getString("username"), object.getString("content"), 
-										object.getString("date"), Application.getCurrentPost().getID());
+										object.getString("date"), "");
 									comments.add(comment);
 							}
 						} 

@@ -44,7 +44,7 @@ public class ShowPostsActivity extends Fragment implements  AsyncResponse {
 		my_layout = (LinearLayout)rootView.findViewById(R.id.userPostsLayout);
 		
 		posts = Application.getPosts();
-		
+		Application.setComments(null);
 		return rootView;
 	}
 	
@@ -110,7 +110,7 @@ public class ShowPostsActivity extends Fragment implements  AsyncResponse {
 		            public void onClick(View v) 
 		            {
 		            	PostController postController = new PostController();
-		            	postController.getComments(temp.getID(), Application.getCurrentUser().get_email(), "");
+		            	postController.getComments(temp.getID(), "", "");
 		            	Intent selectedPost = new Intent(Application.getAppContext(),SinglePostActivity.class);
 		            	selectedPost.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		  				Application.setCurrentPost(temp);

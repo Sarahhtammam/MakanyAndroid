@@ -106,7 +106,6 @@ public class SinglePostActivity extends MyDrawerMenu implements OnClickListener 
 				TextView owner = new TextView(this);
 		        owner.setText("Comment Owner: " + temp.getUserName());
 		        comments_layout.addView(owner); 
-
 		        
 		        TextView commentContent = new TextView(this);
 		        commentContent.setText(temp.getContent());
