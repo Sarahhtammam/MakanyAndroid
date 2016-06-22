@@ -20,6 +20,7 @@ import com.androidActivities.WhatsNew;
 import com.simpleModels.Element;
 import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimpleItem;
+import com.simpleModels.SimplePost;
 
 
 
@@ -160,7 +161,16 @@ public class WhatsNewController
 								}
 								else if (object.getString("type").equals("Post"))
 								{
-									
+									SimplePost post = new SimplePost(
+											object.getString("ID"), object.getString("postType"), 
+											object.getString("content"), object.getString("photo"), 
+											object.getString("username"), object.getString("userEmail"), 
+											object.getString("district"), object.getString("onEventID"), 
+											object.getString("score"), object.getString("numApprovals"), 
+											object.getString("numDisApprovals"), object.getString("numReports"), 
+											object.getString("approvalMails"),object.getString("disapprovalMails"), 
+											object.getString("reportMails"), object.getString("categories"));
+									elements.add(post);
 								}
 								
 								

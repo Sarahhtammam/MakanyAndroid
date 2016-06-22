@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+
 import com.androidActivities.PostsMenuActivity;
 import com.androidActivities.SinglePostActivity;
 import com.simpleModels.SimpleComment;
@@ -23,7 +24,7 @@ import com.simpleModels.SimplePost;
 
 public class PostController 
 {
-	private static String PostType;
+	private static  String PostType;
 	
 	public void addPost(String postType, String content, String photo, String district, String onEventID,
 						String userEmail, String categories ) 
@@ -116,6 +117,8 @@ public class PostController
 				urlParameters = "postID="+ params[1] +"&userEmail="+ params[2] +"&commentID="+ params[3];
 	
 			
+
+			
 			HttpURLConnection connection;
 			try {
 				url = new URL(params[0]);
@@ -151,6 +154,7 @@ public class PostController
 			catch (IOException e) 
 			{
 				e.printStackTrace();
+				System.out.println("The Error " + e.getMessage());
 			}
 			
 			return null;
@@ -169,6 +173,8 @@ public class PostController
 				if (serviceType.equals("addPostService")) 
 				{
 					System.out.println("result " + result);
+					Toast.makeText(Application.getAppContext(), "Result " + result,
+							Toast.LENGTH_LONG).show();
 					
 					JSONObject object = new JSONObject(result);
 					
@@ -324,7 +330,7 @@ public class PostController
 					
 					if(object.getString("Status").equals("alreadyApproved"))
 					{
-						Toast.makeText(Application.getAppContext(), "error: You are not allowed to delete"+
+						Toast.makeText(Application.getAppContext(), "error: You are not allowed to approve "+
 								"this post\nyou have already approved this post",
 						Toast.LENGTH_LONG).show();
 						return;

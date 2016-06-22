@@ -2,13 +2,9 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
-import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -20,6 +16,9 @@ import com.controllers.WhatsNewController;
 import com.simpleModels.Element;
 import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimpleItem;
+import com.simpleModels.SimpleOffer;
+import com.simpleModels.SimplePost;
+import com.simpleModels.SimpleStore;
 import com.simpleModels.ViewElements;
 
 public class WhatsNew extends MyDrawerMenu implements OnRefreshListener {
@@ -106,6 +105,18 @@ public class WhatsNew extends MyDrawerMenu implements OnRefreshListener {
 						v.viewEvent((SimpleEvent) elements.get(i), i, my_layout, this);
 
 				        break;
+				        
+					case POST:
+						v.viewPost((SimplePost) elements.get(i), i, my_layout, this);
+						break;
+					
+					case STORE:
+						v.viewStore((SimpleStore) elements.get(i), i, my_layout, this);
+						break;
+						
+					case OFFER:
+						v.viewOffer((SimpleOffer) elements.get(i), i, my_layout, this);
+						break;
 				}
 				/*View ruler = new View(this); ruler.setBackgroundColor(0xff000000);
 				my_layout.addView(ruler,

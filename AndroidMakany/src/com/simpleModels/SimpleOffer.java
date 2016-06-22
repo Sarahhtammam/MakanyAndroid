@@ -3,14 +3,17 @@ package com.simpleModels;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class SimpleOffer 
+public class SimpleOffer extends Element
 {
 	private String id;
 	private String description, storeMail, photo, date;
 	private int numThumbsUp, numThumbsDown, numViews;
 	private ArrayList<String> viewers,thumbsup,thumbsdown;
 	
+	private String district , category;
+	
 	public SimpleOffer(){
+		super(Type.OFFER);
 		this.id="";
 		this.description="";
 		this.storeMail="";
@@ -24,6 +27,7 @@ public class SimpleOffer
 	public SimpleOffer(String id,String description,String storeMail,String photo,String date, String numThumbsUp, 
 			String numThumbsDown,String numViewers, String thumbsUp, String thumbsDown, String viewers)
 	{
+		super(Type.OFFER);
 		this.id=id;
 		this.description=description;
 		this.storeMail=storeMail;
@@ -96,6 +100,22 @@ public class SimpleOffer
 
 	public void setViewers(ArrayList<String> viewers) {
 		this.viewers = viewers;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 }

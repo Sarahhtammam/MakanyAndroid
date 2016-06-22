@@ -14,6 +14,7 @@ public class SimplePost extends Element
 		private String userEmail;
 		private String district;
 		private String eventID;
+		private String date;
 		
 		private ArrayList<String> approvalsMails,disapprovalsMails, reportMails, categories;
 		private int score, numApprovals, numDisApprovals, numReports;
@@ -51,6 +52,8 @@ public class SimplePost extends Element
 			this.numApprovals=Integer.parseInt(numApprovals);
 			this.numDisApprovals=Integer.parseInt(numDisApprovals);
 			this.numReports=Integer.parseInt(numReports);
+			
+			this.date = "";
 			
 			this.setReportMails(parseStrings(reportMails));
 			this.setApprovalsMails(parseStrings(approvalsMails));
@@ -139,6 +142,14 @@ public class SimplePost extends Element
 
 		public void setApprovalsMails(ArrayList<String> approvalsMails) {
 			this.approvalsMails = approvalsMails;
+		}
+
+		public String getDate() {
+			return date;
+		}
+
+		public void setDate(String date) {
+			this.date = date;
 		}
 
 }

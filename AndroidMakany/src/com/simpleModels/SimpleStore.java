@@ -2,7 +2,7 @@ package com.simpleModels;
 
 import java.util.Vector;
 
-public class SimpleStore 
+public class SimpleStore extends Element
 {
 	private String id, storeName;
 	private String name, email, password, district, category, description, date;
@@ -13,6 +13,7 @@ public class SimpleStore
 	public SimpleStore(String id, String name,String email,String password,String district,
 			String category, String description, String date, String latitude, String longitude)
 	{
+		super(Type.STORE);
 		this.id=id;
 		this.storeName="";
 		this.name=name;

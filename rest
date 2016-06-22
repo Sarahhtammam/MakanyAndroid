@@ -10,3 +10,8 @@ store:
 	
 Text: enhance how texts are viewed in: dynamic and static
 post: why create post doesn't move to a new intent?
+
+what's new (static/dynamic)
+refesh f kolo 
+
+change district 
