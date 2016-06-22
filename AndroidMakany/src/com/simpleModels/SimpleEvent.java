@@ -5,7 +5,8 @@ import java.util.Vector;
 public class SimpleEvent extends Element
 {
 
-	private String id, name, category, description,date;
+	private String id, name, category, description,date, from, to;
+	
 	private double latitude, longitude;
 	private String ownerMail, district, ownerName;
 	private Vector<String> goingMails, postIDs;
@@ -14,7 +15,7 @@ public class SimpleEvent extends Element
 	
 	public SimpleEvent(String id, String name, String category, String description,
 			double latitude, double longitude, String ownerMail, String district,
-			String goingMails, String postIDs,String date)
+			String goingMails, String postIDs,String date, String from, String to)
 	{
 		super(Type.EVENT);
 		this.id=id;
@@ -26,6 +27,8 @@ public class SimpleEvent extends Element
 		this.ownerMail=ownerMail;
 		this.setDistrict(district);
 		this.date = date;
+		this.from = from;
+		this.to = to;
 		
 		//this.goingMails=goingMails;
 		//this.postIDs=postIDs;
@@ -118,6 +121,22 @@ public class SimpleEvent extends Element
 
 	public void setPostIDs(Vector<String> postIDs) {
 		this.postIDs = postIDs;
+	}
+
+	public String getFrom() {
+		return from;
+	}
+
+	public void setFrom(String from) {
+		this.from = from;
+	}
+
+	public String getTo() {
+		return to;
+	}
+
+	public void setTo(String to) {
+		this.to = to;
 	}
 	
 

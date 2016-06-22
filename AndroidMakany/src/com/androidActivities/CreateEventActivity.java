@@ -34,11 +34,15 @@ public class CreateEventActivity extends Fragment implements OnClickListener {
 	EditText eventCategory;
 	EditText eventDescription;
 	Button createEventButton;
+	
 
 	String checkedCategories = "";
 	ArrayList<CheckBox> checks = new ArrayList<CheckBox>();
 	ArrayList<String> myCategories = new ArrayList<String>();
+	
+	static String startDate="", endDate="", startTime="", endTime="";
 
+	static boolean startDateSelected = true, startTimeSelected = true;
 	/*
 	 * Button btnSelectStartDate,btnSelectStartTime,
 	 * btnSelectEndDate,btnSelectEndTime;
@@ -99,6 +103,19 @@ public class CreateEventActivity extends Fragment implements OnClickListener {
 
 			public void onClick(View v) {
 				// Show the DatePickerDialog
+				startDateSelected= true;
+				DialogFragment newFragment = new DatePickerFragment();
+				newFragment.show(getFragmentManager(), "datePicker");
+			}
+		});
+		
+		Button btnSelectEndDate = (Button) rootView
+				.findViewById(R.id.buttonSelectEndDate);
+		btnSelectEndDate.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				// Show the DatePickerDialog
+				startDateSelected= false;
 				DialogFragment newFragment = new DatePickerFragment();
 				newFragment.show(getFragmentManager(), "datePicker");
 			}
@@ -110,16 +127,35 @@ public class CreateEventActivity extends Fragment implements OnClickListener {
 
 			public void onClick(View v) {
 				// Show the DatePickerDialog
+				startTimeSelected= true;
+				DialogFragment newFragment = new TimePickerFragment();
+				newFragment.show(getFragmentManager(), "timePicker");
+			}
+		});
+
+		Button btnSelectEndtime = (Button) rootView
+				.findViewById(R.id.buttonSelectEndTime);
+		btnSelectEndtime.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				// Show the DatePickerDialog
+				startTimeSelected= false;
 				 DialogFragment newFragment = new TimePickerFragment();
 				newFragment.show(getFragmentManager(), "timePicker");
 			}
 		});
 
+		
+
+        createEventButton= (Button) rootView.findViewById(R.id.createEventButton);
+		createEventButton.setOnClickListener(this);
+		
 		return rootView;
 	}
 
 	@Override
 	public void onClick(View arg0) {
+		
 		if (eventName.getText().toString().trim().equals("")) {
 			eventName.setError("Event name is required!");
 
@@ -140,17 +176,22 @@ public class CreateEventActivity extends Fragment implements OnClickListener {
 				}
 			}
 
+			String startDateTime = startDate + " " + startTime + " SAST";
+			String endDateTime = endDate + " " +endTime + " SAST";
+			
 			EventController eventController = new EventController();
 			eventController.createEvent(eventName.getText().toString(),
 					checkedCategories, eventDescription.getText().toString(),
-					Integer.toString(0), Integer.toString(0), Application
-							.getCurrentUser().get_email(), Application
-							.getCurrentDistrict());
+					Integer.toString(0), Integer.toString(0), Application.getCurrentUser().get_email(), 
+					Application.getCurrentDistrict(), startDateTime, endDateTime);
 
 		}
 
 	}
 
+	
+	
+	
 	public static class DatePickerFragment extends DialogFragment implements
 			DatePickerDialog.OnDateSetListener {
 
@@ -169,8 +210,31 @@ public class CreateEventActivity extends Fragment implements OnClickListener {
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			// Do something with the date chosen by the user
 
-			Toast.makeText(Application.getAppContext(), "day " + day,
+			
+			String stringYear = Integer.toString(year);
+			String stringMonth = Integer.toString(month);
+			String stringDay = Integer.toString(day);
+			
+			if(stringMonth.length()==1)
+				stringMonth= "0" + stringMonth;
+
+			if(stringDay.length()==1)
+				stringDay= "0" + stringDay;
+			
+			if(startDateSelected)
+			{
+				startDate = stringYear +"-" + stringMonth +"-" + stringDay;  
+				Toast.makeText(Application.getAppContext(), "start Date: " + startDate,
 					Toast.LENGTH_SHORT).show();
+			}
+			
+			else
+			{
+				endDate = stringYear +"-" + stringMonth +"-" + stringDay;
+				Toast.makeText(Application.getAppContext(), "end Date: " + endDate,
+					Toast.LENGTH_SHORT).show();
+			}
+				
 		}
 	}
 
@@ -183,7 +247,7 @@ public class CreateEventActivity extends Fragment implements OnClickListener {
 			final Calendar c = Calendar.getInstance();
 			int hour = c.get(Calendar.HOUR_OF_DAY);
 			int minute = c.get(Calendar.MINUTE);
-
+			
 			// Create a new instance of TimePickerDialog and return it
 			return new TimePickerDialog(getActivity(), this, hour, minute,
 					DateFormat.is24HourFormat(getActivity()));
@@ -192,8 +256,30 @@ public class CreateEventActivity extends Fragment implements OnClickListener {
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 			// Do something with the time chosen by the user
 			
-			Toast.makeText(Application.getAppContext(), "hour " + hourOfDay,
+			String stringHour = Integer.toString(hourOfDay);
+			String stringMinute = Integer.toString(minute);
+			
+			if(stringHour.length()==1)
+				stringHour = "0" + stringHour;
+			
+			if(stringMinute.length()==1)
+				stringMinute = "0" + stringMinute;
+			
+			
+			if(startTimeSelected)
+			{
+				startTime = "("+ stringHour +":" + stringMinute +":00.000)";  
+				Toast.makeText(Application.getAppContext(), "start time: " + startTime,
 					Toast.LENGTH_SHORT).show();
+			}
+			
+			else
+			{
+				endTime = "("+ stringHour +":" + stringMinute +":00.000)";   
+				Toast.makeText(Application.getAppContext(), "end time: " + endTime,
+					Toast.LENGTH_SHORT).show();
+			}
+				
 		}
 	}
 

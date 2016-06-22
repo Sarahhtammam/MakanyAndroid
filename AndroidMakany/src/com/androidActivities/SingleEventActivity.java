@@ -27,8 +27,8 @@ public class SingleEventActivity extends MyDrawerMenu implements OnClickListener
 		setContentView(R.layout.activity_single_event);
 		super.onCreateDrawer();
 
-		Toast.makeText(Application.getAppContext(),"ID=" + currentEvent.getID(),Toast.LENGTH_SHORT).show();
-		Toast.makeText(Application.getAppContext(),currentEvent.getID(),Toast.LENGTH_SHORT).show();
+		//Toast.makeText(Application.getAppContext(),"ID=" + currentEvent.getID(),Toast.LENGTH_SHORT).show();
+		//Toast.makeText(Application.getAppContext(),currentEvent.getID(),Toast.LENGTH_SHORT).show();
 		
 		// singleEventLayout
 		LinearLayout my_layout = (LinearLayout) findViewById(R.id.singleEventLayout);
@@ -51,6 +51,15 @@ public class SingleEventActivity extends MyDrawerMenu implements OnClickListener
 		owner.setText("Event owner: " + currentEvent.getOwner());
 		my_layout.addView(owner);
 
+		TextView startDate = new TextView(this);
+		startDate.setText("Event start date: " + currentEvent.getFrom());
+		my_layout.addView(startDate);
+
+		TextView endDate = new TextView(this);
+		endDate.setText("Event end date: " + currentEvent.getTo());
+		my_layout.addView(endDate);
+
+		
 		/*
 		 * Button b = new Button(this); b.setText("Attend this event");
 		 * b.setId(101); b.setLayoutParams(new

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.androidActivities.EventsMenuActivity;
 import com.simpleModels.SimpleEvent;
+import com.simpleModels.SimpleOffer;
 
 
 public class EventController 
@@ -26,11 +27,12 @@ public class EventController
 	static String userEmail;
 	
 	public void createEvent(String name, String category, String description, String latitude, 
-			String longitude, String ownerMail, String district) 
+			String longitude, String ownerMail, String district, String startDate, String endDate) 
 	{
 		Connection connectionClass = new Connection();
 		
-		connectionClass.execute( "http://makanyapp2.appspot.com/rest/createEventService", name, category, description, latitude, longitude, ownerMail, district, "createEventService");
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/createEventService", 
+				name, category, description, latitude, longitude, ownerMail, district, startDate, endDate, "createEventService");
 		
 		return;
 	}
@@ -149,7 +151,8 @@ public class EventController
 			if (serviceType.equals("createEventService"))
 				urlParameters = "name="+ params[1] +"&category="+ params[2] +"&description="
 						+ params[3] +"&latitude=" + params[4] +"&longitude=" 
-						+ params[5] +"&ownerMail="+ params[6] + "&district="+ params[7];
+						+ params[5] +"&ownerMail="+ params[6] + "&district="+ params[7] 
+						+ "&from="+ params[8] + "&to="+ params[9];
 						
 			if (serviceType.equals("editEventService"))
 				urlParameters = "eventID="+ params[1] +"&category="+ params[2] +"&description="
@@ -351,17 +354,6 @@ public class EventController
 				{
 					System.out.println("result " + result);
 					
-					JSONObject object = new JSONObject(result);
-					
-					
-					if(object== null || !object.has("Status"))
-					{
-						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
-						return;
-					}
-							
 					//return;
 				}
 
@@ -387,7 +379,7 @@ public class EventController
 										object.getString("category"), object.getString("description"), 
 										Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
 										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
-										,object.getString("date"));
+										,object.getString("date"),object.getString("from"),object.getString("to"));
 								String x = object.getString("name");
 								eventsNames.add(x);
 								events.add(simpleEvent);
@@ -428,7 +420,7 @@ public class EventController
 								object.getString("category"), object.getString("description"), 
 								Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
 								object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
-								,object.getString("date"));
+								,object.getString("date"),object.getString("from"),object.getString("to"));
 						
 						Application.setCurrentEvent(simpleEvent);
 					
@@ -468,7 +460,7 @@ public class EventController
 										object.getString("category"), object.getString("description"), 
 										Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
 										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
-										,object.getString("date"));
+										,object.getString("date"),object.getString("from"),object.getString("to"));
 								events.add(simpleEvent);
 							}
 					

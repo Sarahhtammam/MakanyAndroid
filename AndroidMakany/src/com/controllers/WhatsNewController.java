@@ -148,7 +148,7 @@ public class WhatsNewController
 											object.getString("category"), object.getString("description"), 
 											Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
 											object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
-											,object.getString("date") );
+											,object.getString("date"),object.getString("from"),object.getString("to") );
 									elements.add(simpleEvent);
 								}
 								else if (object.getString("type").equals("Store"))
@@ -212,7 +212,8 @@ public class WhatsNewController
 					
 					SimpleItem simpleItem = new SimpleItem("10","Heba", "car","nice car","heba.khazbak@gmail.com","Zamalek","","Open","","","");
 					elements.add(simpleItem);
-					SimpleEvent event = new SimpleEvent("30", "caaar", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com","Zamalek", "", "","");
+					SimpleEvent event = new SimpleEvent("30", "caaar", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com"
+							,"Zamalek", "", "","", "", "");
 					elements.add(event);
 					
 					
