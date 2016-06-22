@@ -1,12 +1,10 @@
 package com.simpleModels;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Vector;
 
 public class SimpleStore 
 {
-	private String id;
+	private String id, storeName;
 	private String name, email, password, district, category, description, date;
 	private double latitude, longitude;
 	private Vector<SimpleOffer> offers;
@@ -15,7 +13,8 @@ public class SimpleStore
 	public SimpleStore(String id, String name,String email,String password,String district,
 			String category, String description, String date, String latitude, String longitude)
 	{
-		this.setId(id);
+		this.id=id;
+		this.storeName="";
 		this.name=name;
 		this.email=email;
 		this.password=password;
@@ -145,6 +144,16 @@ public class SimpleStore
 
 	public void setOffers(Vector<SimpleOffer> offers) {
 		this.offers = offers;
+	}
+
+
+	public String getStoreName() {
+		return storeName;
+	}
+
+
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
 	}
 
 }

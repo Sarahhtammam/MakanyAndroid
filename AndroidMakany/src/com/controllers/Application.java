@@ -7,7 +7,9 @@ import com.simpleModels.SimpleComment;
 import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimpleItem;
 import com.simpleModels.SimpleMessage;
+import com.simpleModels.SimpleOffer;
 import com.simpleModels.SimplePost;
+import com.simpleModels.SimpleStore;
 import com.simpleModels.SimpleUser;
 
 import android.content.Context;
@@ -22,11 +24,13 @@ public class Application extends android.app.Application {
 	public static String currentDistrict;
 	
 	private static SimpleUser currentUser;
+	private static SimpleStore currentStore;
 	private static String currentUserType; 
 	private static String userEmail; 
 	private static SimpleEvent currentEvent;
 	private static SimpleItem currentItem;
 	private static SimplePost currentPost;
+	private static SimpleOffer currentOffer;
 	
 	private static ArrayList<String> districts;
 	private static ArrayList<String> categories;
@@ -200,6 +204,30 @@ public class Application extends android.app.Application {
 
 	public static void setComments(ArrayList<SimpleComment> comments) {
 		Comments = comments;
+	}
+
+	public static SimpleOffer getCurrentOffer() {
+		return currentOffer;
+	}
+
+	public static void setCurrentOffer(SimpleOffer currentOffer) {
+		Application.currentOffer = currentOffer;
+	}
+
+	public static SimpleStore getCurrentStore() {
+		return currentStore;
+	}
+
+	public static void setCurrentStore(SimpleStore currentStore) {
+		Application.currentStore = currentStore;
+	}
+
+	public static String getCurrentUserType() {
+		return currentUserType;
+	}
+
+	public static void setCurrentUserType(String currentUserType) {
+		Application.currentUserType = currentUserType;
 	}
 
 	

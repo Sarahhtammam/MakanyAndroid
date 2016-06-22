@@ -8,7 +8,11 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.simpleModels.SimpleOffer;
+import com.simpleModels.SimpleStore;
 
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -17,27 +21,27 @@ import android.widget.Toast;
 public class StoreController {
 	
 
-	public void reviewStoreService(String uMail,String storeMail,String review,String rating ) 
+	public void reviewStoreService(String userMail,String storeMail,String review, String rating) 
 	{
-	new Connection().execute( "http://makanyapp2.appspot.com/rest/addOfferService",
-		uMail,storeMail,review,rating,"reviewStoreService");
+	new Connection().execute( "http://makanyapp2.appspot.com/rest/reviewStoreService",
+		userMail,storeMail,review,rating,"reviewStoreService");
 	}
 	
-	public void getFilteredStoresService(String category,String district,String maxStoreID ) 
+	public void getFilteredStoresService(String category, String district, String maxStoreID) 
 	{
-	new Connection().execute( "http://makanyapp2.appspot.com/rest/addOfferService",
-		category,district,maxStoreID,"getFilteredStoresService");
+	new Connection().execute( "http://makanyapp2.appspot.com/rest/getFilteredStoresService",
+		category, district, maxStoreID,"getFilteredStoresService");
 	}
 	
-	public void getStoreOfferService(String storeMail ) 
+	public void getStoreOffersService(String storeMail) 
 	{
-	new Connection().execute( "http://makanyapp2.appspot.com/rest/addOfferService",
-		storeMail,"getStoreOfferService");
+	new Connection().execute( "http://makanyapp2.appspot.com/rest/getStoreOffersService",
+		storeMail,"getStoreOffersService");
 	}
 	
-	public void getStoreReviewsService(String storeMail ) 
+	public void getStoreReviewsService(String storeMail) 
 	{
-	new Connection().execute( "http://makanyapp2.appspot.com/rest/addOfferService",
+	new Connection().execute( "http://makanyapp2.appspot.com/rest/getStoreReviewsService",
 		storeMail,"getStoreReviewsService");
 	}
 
@@ -57,7 +61,7 @@ public class StoreController {
 			serviceType = params[params.length - 1];
 			String urlParameters="";
 			if (serviceType.equals("reviewStoreService"))
-				urlParameters = "uMail"+ params[1] +"&storMail="+ params[2] +"&review="
+				urlParameters = "userMail"+ params[1] +"&storeMail="+ params[2] +"&review="
 						+ params[3] +"&rating=" + params[4]; 
 			
 			else if (serviceType.equals("getFilteredStoresService"))
@@ -154,78 +158,52 @@ public class StoreController {
 					System.out.println("result " + result);
 					
 					JSONObject object = new JSONObject(result);
+					try
+					{
+						
+						SimpleStore simpleStore = new SimpleStore(object.getString("ID"), object.getString("name"),
+								object.getString("email"),object.getString("password"),object.getString("district"),
+								object.getString("category"), object.getString("description"),
+								object.getString("date"), object.getString("latitude"),
+								object.getString("longitude"));
+						
+						
+						Application.setCurrentStore(simpleStore);
 					
+					}
+			
 					
-					if(object== null || !object.has("Status"))
+			
+					catch (JSONException e) 
 					{
 						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
-						return;
+				
 					}
-							
 					
 				}
 				
-				if (serviceType.equals("getStoreOfferService")) 
+				
+				if (serviceType.equals("getStoreOffersService")) 
 				{
-					System.out.println("result " + result);
 					
-					JSONObject object = new JSONObject(result);
-					
-					
-					if(object== null || !object.has("Status"))
-					{
-						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
-						return;
-					}
-							
-					//return;
 				}
 				
 				if (serviceType.equals("getStoreReviewsService")) 
 				{
-					System.out.println("result " + result);
 					
-					JSONObject object = new JSONObject(result);
-					
-					
-					if(object== null || !object.has("Status"))
-					{
-						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
-						return;
-					}
 						
 				
 				}
-			}
-				catch(Exception e)
-				{}
-
-
-
-				
-				
-				
-
-			}
-					
-		
 			
-
 			
-		}
+			}
 
-		
-		
-		
-		
-
+			catch(Exception e) {}
 		}
+	}
+}
 		
 		
 		
