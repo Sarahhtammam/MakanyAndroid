@@ -5,8 +5,8 @@ import java.util.Vector;
 public class SimpleStore extends Element
 {
 	private String id, storeName;
-	private String name, email, password, district, category, description, date;
-	private double latitude, longitude;
+	private String email, password, district, category, description, date;
+	private String latitude, longitude;
 	private Vector<SimpleOffer> offers;
 	private Vector<SimpleReview> reviews;
 	
@@ -15,146 +15,114 @@ public class SimpleStore extends Element
 	{
 		super(Type.STORE);
 		this.id=id;
-		this.storeName="";
-		this.name=name;
+		this.storeName=name;
 		this.email=email;
 		this.password=password;
 		this.district=district;
 		this.category=category;
 		this.description=description;
 		this.date=date;
-		this.latitude=Integer.parseInt(latitude);
-		this.longitude=Integer.parseInt(longitude);
+		this.latitude=latitude;
+		this.longitude=longitude;
 	}
-	
-
-	public String getDate() {
-		return date;
-	}
-
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 
 	public String getId() {
 		return id;
 	}
 
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
-
-	public String getDistrict() {
-		return district;
-	}
-
-
-	public void setDistrict(String district) {
-		this.district = district;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-	public String getCategory() {
-		return category;
-	}
-
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
-
-	public Vector<SimpleReview> getReviews() {
-		return reviews;
-	}
-
-
-	public void setReviews(Vector<SimpleReview> reviews) {
-		this.reviews = reviews;
-	}
-
-
-	public Vector<SimpleOffer> getOffers() {
-		return offers;
-	}
-
-
-	public void setOffers(Vector<SimpleOffer> offers) {
-		this.offers = offers;
-	}
-
 
 	public String getStoreName() {
 		return storeName;
 	}
 
-
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public Vector<SimpleOffer> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(Vector<SimpleOffer> offers) {
+		this.offers = offers;
+	}
+
+	public Vector<SimpleReview> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(Vector<SimpleReview> reviews) {
+		this.reviews = reviews;
+	}
+	
+
+	
 
 }

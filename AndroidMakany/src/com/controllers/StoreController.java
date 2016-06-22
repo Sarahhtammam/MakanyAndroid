@@ -11,7 +11,6 @@ import java.net.URL;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.simpleModels.SimpleOffer;
 import com.simpleModels.SimpleStore;
 
 import android.os.AsyncTask;
@@ -33,9 +32,11 @@ public class StoreController {
 		category, district, maxStoreID,"getFilteredStoresService");
 	}
 	
-	public void getStoreOffersService(String storeMail) 
+	public void getStoreOffersService(String storeMail, AsyncResponse d) 
 	{
-	new Connection().execute( "http://makanyapp2.appspot.com/rest/getStoreOffersService",
+		Connection connectionClass = new Connection();
+		connectionClass.delegate = d;
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getStoreOffersService",
 		storeMail,"getStoreOffersService");
 	}
 	
@@ -44,6 +45,12 @@ public class StoreController {
 	new Connection().execute( "http://makanyapp2.appspot.com/rest/getStoreReviewsService",
 		storeMail,"getStoreReviewsService");
 	}
+	
+	public void getStoreService (String storeMail)
+	{
+		new Connection().execute( "http://makanyapp2.appspot.com/rest/getStoreService",
+				storeMail,"getStoreService");
+	}
 
 
 	
@@ -51,6 +58,7 @@ public class StoreController {
 	static class Connection extends AsyncTask<String, String, String> 
 	{
 		String serviceType;
+		AsyncResponse delegate;
 
 
 		@Override
@@ -61,15 +69,19 @@ public class StoreController {
 			serviceType = params[params.length - 1];
 			String urlParameters="";
 			if (serviceType.equals("reviewStoreService"))
-				urlParameters = "userMail"+ params[1] +"&storeMail="+ params[2] +"&review="
+				urlParameters = "userMail="+ params[1] +"&storeMail="+ params[2] +"&review="
 						+ params[3] +"&rating=" + params[4]; 
 			
 			else if (serviceType.equals("getFilteredStoresService"))
-				urlParameters = "category"+ params[1] +"&district="+ params[2] +"&maxStoreID="
+				urlParameters = "category="+ params[1] +"&district="+ params[2] +"&maxStoreID="
 						+ params[3];
 			
 			else if (serviceType.equals("getStoreOfferService") || serviceType.equals("getStoreReviewsService"))
-				urlParameters = "storeMail"+ params[1];
+				urlParameters = "storeMail="+ params[1];
+			
+			else if (serviceType.equals("getStoreService"))
+				urlParameters = "storeMail="+ params[1];
+				
 				 
 			
 			
@@ -158,10 +170,10 @@ public class StoreController {
 					System.out.println("result " + result);
 					
 					JSONObject object = new JSONObject(result);
-					try
+					/*try
 					{
 						
-						SimpleStore simpleStore = new SimpleStore(object.getString("ID"), object.getString("name"),
+					*SimpleStore simpleStore = new SimpleStore(object.getString("ID"), object.getString("name"),
 								object.getString("email"),object.getString("password"),object.getString("district"),
 								object.getString("category"), object.getString("description"),
 								object.getString("date"), object.getString("latitude"),
@@ -180,7 +192,7 @@ public class StoreController {
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 				
-					}
+					}*/
 					
 				}
 				
@@ -188,6 +200,8 @@ public class StoreController {
 				if (serviceType.equals("getStoreOffersService")) 
 				{
 					
+					
+					delegate.processFinish("");
 				}
 				
 				if (serviceType.equals("getStoreReviewsService")) 
@@ -196,7 +210,36 @@ public class StoreController {
 						
 				
 				}
+				
+				if (serviceType.equals("getStoreService"))
+				{
+					JSONObject object = new JSONObject(result);
+					try
+					{
+						
+						SimpleStore simpleStore = new SimpleStore(object.getString("ID"), object.getString("name"),
+								object.getString("email"),object.getString("password"),object.getString("district"),
+								object.getString("category"), object.getString("description"),
+								object.getString("date"), object.getString("latitude"),
+								object.getString("longitude"));
+						
+						
+						System.out.println("Store name " + simpleStore.getStoreName());
+						
+						Application.setCurrentStore(simpleStore);
+					
+					}
 			
+			
+					catch (JSONException e) 
+					{
+						System.out.println("error" );
+						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.LENGTH_LONG).show();
+				
+					}
+				}
+					
 			
 			}
 

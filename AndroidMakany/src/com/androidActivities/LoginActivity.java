@@ -2,6 +2,7 @@ package com.androidActivities;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.controllers.Application;
 import com.controllers.EventController;
 import com.controllers.SessionController;
+import com.controllers.StoreController;
 import com.controllers.UserController;
 import com.controllers.WhatsNewController;
 import com.simpleModels.SimpleUser;
@@ -63,10 +65,27 @@ public class LoginActivity extends Activity implements OnClickListener {
 			userController.getUser(pref.getString("email", ""));
 
 			Application.setUserEmail(pref.getString("email", ""));
-
-			WhatsNewController whatsNewController = new WhatsNewController();
-			whatsNewController.getStaticRecommendation(pref.getString("email",
-					""));
+			Application.setCurrentUserType(pref.getString("type", ""));
+			
+			if (Application.getCurrentUserType().equals("User"))
+			{
+				WhatsNewController whatsNewController = new WhatsNewController();
+				whatsNewController.getStaticRecommendation(pref.getString("email",
+						""));
+			}
+			else
+			{
+				StoreController store = new StoreController();
+				store.getStoreService(pref.getString("email", ""));
+				SessionController.login();	
+				
+				Fragment F = new ViewMyOffers();
+				store.getStoreOffersService(pref.getString("email", ""),(ViewMyOffers)F);
+				Intent storeIntent = new Intent(Application.getAppContext(),StoreHomeActivity.class);
+				storeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				Application.getAppContext().startActivity(storeIntent);
+			}
+			
 
 		}
 

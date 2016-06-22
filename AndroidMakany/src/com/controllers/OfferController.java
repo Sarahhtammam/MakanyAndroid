@@ -10,9 +10,12 @@ import java.net.URL;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.androidActivities.ItemsMenuActivity;
+import com.androidActivities.StoreHomeActivity;
 import com.simpleModels.SimpleOffer;
 
 
@@ -153,6 +156,9 @@ public class OfferController
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "SUCCESS", Toast.LENGTH_LONG).show();
 					
+					Intent offerIntent = new Intent(Application.getAppContext(),StoreHomeActivity.class);
+					offerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(offerIntent);
 				}
 				
 				if (serviceType.equals("removeOfferService")) 

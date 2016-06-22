@@ -147,6 +147,14 @@
             android:name=".Temp"
             android:label="@string/title_activity_temp" >
         </activity>
+        <activity
+            android:name=".ViewMyOffers"
+            android:label="@string/title_activity_view_my_offers" >
+        </activity>
+        <activity
+            android:name=".UpdateStoreProfileActivity"
+            android:label="@string/title_activity_update_store_profile" >
+        </activity>
     </application>
 
 </manifest>

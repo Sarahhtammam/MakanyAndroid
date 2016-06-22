@@ -106,13 +106,13 @@ public class StoreHomeActivity extends Activity implements ActionBar.TabListener
 
 			switch (position) {
 			case 0:
-				return new CreateOffer();
+				return new ViewMyOffers();
 				
 			case 1:
 				return new CreateOffer();
 				
 			case 2: 
-				return new CreateOffer();
+				return new UpdateStoreProfileActivity();
 				
 			}
 			return null;

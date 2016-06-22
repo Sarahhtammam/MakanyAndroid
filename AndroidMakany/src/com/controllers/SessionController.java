@@ -18,6 +18,7 @@ public class SessionController {
 		Editor editor = pref.edit();
 		//on the login store the login
 		editor.putString("email", Application.getUserEmail()); 
+		editor.putString("type", Application.getCurrentUserType()); 
 		editor.commit();	
 	}
 	
@@ -27,6 +28,7 @@ public class SessionController {
 		SharedPreferences pref = Application.getAppContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
 		Editor editor = pref.edit();
 		editor.remove("email");
+		editor.remove("type");
 		editor.commit();
 		
 		Intent login = new Intent(Application.getAppContext(),LoginActivity.class);

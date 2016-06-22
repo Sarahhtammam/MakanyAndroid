@@ -420,7 +420,7 @@ public class ViewElements {
 		lin_hor.setOrientation(0);
 		
 		TextView owner = new TextView(context);
-		owner.setText("  " + temp.getName());
+		owner.setText("  " + temp.getStoreName());
 		owner.setTypeface(null, Typeface.BOLD);
 		owner.setTextColor(color.darkpurple);
 		lin_hor.addView(owner);

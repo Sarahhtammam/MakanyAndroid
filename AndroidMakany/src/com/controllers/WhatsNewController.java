@@ -183,17 +183,6 @@ public class WhatsNewController
 						e.printStackTrace();
 					}
 					
-					/*SimpleItem simpleItem = new SimpleItem("1","Pen","nice pen","heba.khazbak@gmail.com","Zamalek","","Open","");
-					elements.add(simpleItem);*/
-					SimpleEvent event = new SimpleEvent("3", "Running around Zamalek", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com","Zamalek", "", "","");
-					Date d = new Date();
-					event.setDate(d.toString());
-					event.setOwnerName("Heba");
-					elements.add(event);
-					elements.add(event);
-					/*simpleItem = new SimpleItem("2","Cat","animals","heba.khazbak@gmail.com","Zamalek","","Open","","","");
-					elements.add(simpleItem);*/
-					
 					
 					Intent whatsNew = new Intent(Application.getAppContext(),WhatsNew.class);
 	  				Application.setElements(elements);

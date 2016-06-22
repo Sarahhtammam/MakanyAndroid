@@ -11,12 +11,16 @@ import java.util.Vector;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.androidActivities.LoginActivity;
+import com.androidActivities.ShowItemsActivity;
+import com.androidActivities.StoreHomeActivity;
+import com.androidActivities.ViewMyOffers;
 import com.simpleModels.SimpleUser;
 
 
@@ -74,6 +78,16 @@ public class UserController
 				"normal", name, email, password, "", "", birthDate, district, gender, twitter, 
 				foursquare, interests, "editProfileService");
 	}
+	
+	public void EditProfileStore(String email, String name, String password,String category 
+			,String description ,String district,String latitude , String longitude) 
+	{
+		new Connection().execute( "http://makanyapp2.appspot.com/rest/editProfileService", 
+				"store", name, email, password,category,description,district,latitude,longitude
+				, "editProfileServiceStore");
+		
+		
+	}
 
 	
 	
@@ -113,7 +127,14 @@ public class UserController
 				   "&description=" + params[6] + "&birthDate=" + params[7] +"&district=" 
 				   + params[8] + "&gender=" + params[9] + "&twitter=" + params[10] 
 				   + "&foursquare=" + params[11] + "&interests=" + params[12];
-		
+			
+			else if(serviceType.equals("editProfileServiceStore"))
+				urlParameters ="uType=" + params[1] + "&name=" + params[2] + "&email=" + params[3] + 
+				   "&password=" + params[4] + "&category=" + params[5] + 
+				   "&description=" + params[6]  +"&district=" + params[7] + "&latitude=" + params[8] 
+				   + "&longitude=" + params[9] ;
+
+	
 			HttpURLConnection connection;
 			try {
 				url = new URL(params[0]);
@@ -196,9 +217,27 @@ public class UserController
 					//Logged in successfully 
 					myDialog.dismiss();
 					Application.setUserEmail(emaill);
+					Application.setCurrentUserType(object.getString("type"));
 					
-					WhatsNewController whatsNewController = new WhatsNewController();
-					whatsNewController.getStaticRecommendation(emaill);
+					if (Application.getCurrentUserType().equals("User"))
+					{
+						WhatsNewController whatsNewController = new WhatsNewController();
+						whatsNewController.getStaticRecommendation(emaill);
+					}
+					else
+					{
+						StoreController store = new StoreController();
+						store.getStoreService(emaill);
+						SessionController.login();	
+						
+						Fragment F = new ViewMyOffers();
+						store.getStoreOffersService(emaill,(ViewMyOffers)F);
+						Intent storeIntent = new Intent(Application.getAppContext(),StoreHomeActivity.class);
+						storeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						Application.getAppContext().startActivity(storeIntent);
+						
+					}
+					
 					
 					/*Intent homeIntent = new Intent(Application.getAppContext(),HomeActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -315,6 +354,35 @@ public class UserController
 					WhatsNewController whatsNewController = new WhatsNewController();
 					whatsNewController.getStaticRecommendation(emaill);
 				
+					
+				}
+				
+				else if(serviceType.equals("editProfileServiceStore"))
+				{
+					System.out.println("result" + result);
+					
+					JSONObject object=new JSONObject (result);
+					
+					if(object== null || !object.has("Status") 
+					  ||object.getString("Status").equals("Failed"))
+					{
+						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.LENGTH_SHORT).show();
+						return;
+					}
+							
+					//edit profile succeed
+					Toast.makeText(Application.getAppContext(), "Success",
+					Toast.LENGTH_SHORT).show();
+
+					StoreController store = new StoreController();
+					store.getStoreService(emaill);
+					
+					Fragment F = new ViewMyOffers();
+					store.getStoreOffersService(emaill,(ViewMyOffers)F);
+					Intent storeIntent = new Intent(Application.getAppContext(),StoreHomeActivity.class);
+					storeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(storeIntent);
 					
 				}
 
