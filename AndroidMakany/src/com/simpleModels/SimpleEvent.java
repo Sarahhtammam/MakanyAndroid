@@ -9,6 +9,7 @@ public class SimpleEvent extends Element
 	private double latitude, longitude;
 	private String ownerMail, district, ownerName;
 	private Vector<String> goingMails, postIDs;
+	private Vector<SimpleReview> reviews;
 	
 	
 	public SimpleEvent(String id, String name, String category, String description,
@@ -20,8 +21,8 @@ public class SimpleEvent extends Element
 		this.name=name;
 		this.category=category;
 		this.description=description;
-		this.latitude=latitude;
-		this.longitude=longitude;
+		this.setLatitude(latitude);
+		this.setLongitude(longitude);
 		this.ownerMail=ownerMail;
 		this.setDistrict(district);
 		this.date = date;
@@ -77,6 +78,46 @@ public class SimpleEvent extends Element
 
 	public void setDistrict(String district) {
 		this.district = district;
+	}
+
+	public Vector<SimpleReview> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(Vector<SimpleReview> reviews) {
+		this.reviews = reviews;
+	}
+
+	public Vector<String> getGoingMails() {
+		return goingMails;
+	}
+
+	public void setGoingMails(Vector<String> goingMails) {
+		this.goingMails = goingMails;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	public Vector<String> getPostIDs() {
+		return postIDs;
+	}
+
+	public void setPostIDs(Vector<String> postIDs) {
+		this.postIDs = postIDs;
 	}
 	
 

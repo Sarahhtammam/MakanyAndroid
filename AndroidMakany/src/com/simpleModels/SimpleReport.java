@@ -6,7 +6,23 @@ public class SimpleReport
 	
 	public SimpleReport(String userEmail,String reason)
 	{
-		this.userEmail=userEmail;
-		this.reason=reason;
+		this.setUserEmail(userEmail);
+		this.setReason(reason);
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 }

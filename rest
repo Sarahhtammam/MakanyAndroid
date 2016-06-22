@@ -5,7 +5,7 @@ events: create event: add from-to dates
 login: add userTupe to Application
 store: 
 	store owner: login, 
-				offers: add, delete
+				offers: add, delete, edit
 	store viewer: from heba
 	
 Text: enhance how texts are viewed in: dynamic and static
