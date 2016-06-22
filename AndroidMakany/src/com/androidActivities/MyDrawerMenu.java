@@ -40,7 +40,7 @@ public class MyDrawerMenu extends Activity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-		ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[8];
+		ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[9];
 
 		drawerItem[0] = new ObjectDrawerItem(R.drawable.home_icon,
 				"Home");
@@ -58,7 +58,10 @@ public class MyDrawerMenu extends Activity {
 				"Update Profile");
 		drawerItem[7] = new ObjectDrawerItem(R.drawable.logout_icon,
 				"Signout");
+		drawerItem[8] = new ObjectDrawerItem(R.drawable.logout_icon,
+				"Test");
 
+		
 		DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this,
 				R.layout.listview_item_row, drawerItem);
 		mDrawerList.setAdapter(adapter);
@@ -149,6 +152,12 @@ public class MyDrawerMenu extends Activity {
 				SessionController.showSignoutDialog(mContext);
 				break;
 
+			case 8: // signout
+				//SessionController.signout();
+				Intent test = new Intent(getApplicationContext(), Temp.class);
+				startActivity(test);
+				break;
+				
 			default:
 				break;
 			}
