@@ -2,6 +2,16 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
+import android.app.ActionBar.LayoutParams;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import com.controllers.Application;
 import com.controllers.GPSTracker;
 import com.controllers.SessionController;
@@ -12,17 +22,9 @@ import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimpleItem;
 import com.simpleModels.ViewElements;
 
-import android.app.ActionBar.LayoutParams;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-
-public class WhatsNew extends MyDrawerMenu {
+public class WhatsNew extends MyDrawerMenu implements OnRefreshListener {
 	
+	private SwipeRefreshLayout mSwipeRefreshLayout;
 	String currentEmail ="";
 	
 	@Override
@@ -30,6 +32,8 @@ public class WhatsNew extends MyDrawerMenu {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_whats_new);
 		super.onCreateDrawer();
+		mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.container);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
 		
 		LinearLayout my_layout = (LinearLayout)findViewById(R.id.whatsNewLayout);
 		
@@ -48,20 +52,6 @@ public class WhatsNew extends MyDrawerMenu {
 		
 		
 		
-		
-		 Button b = new Button(this);
-         b.setText("Refresh");
-         b.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-         b.setOnClickListener(new OnClickListener() {
-             public void onClick(View v) 
-             {
-            	GPSTracker.isStatic = false;
-             	WhatsNewController whatsNewController = new WhatsNewController();
- 				whatsNewController.getStaticRecommendation(Application.getCurrentUser().get_email());
-
-             }
-         });
-         my_layout.addView(b);
          
 		GPSTracker gps;
 		
@@ -104,9 +94,13 @@ public class WhatsNew extends MyDrawerMenu {
 			{
 				switch(elements.get(i).type)
 				{
-					case ITEM: 
-						v.viewItem((SimpleItem) elements.get(i), i, my_layout, this);
+					case LOANITEM: 
+						v.viewItem((SimpleItem) elements.get(i), i, my_layout, this , true);
 				        break;
+				        
+					case REQUESTITEM: 
+						v.viewItem((SimpleItem) elements.get(i), i, my_layout, this , false);
+						break;
 							
 					case EVENT:	
 						v.viewEvent((SimpleEvent) elements.get(i), i, my_layout, this);
@@ -119,6 +113,16 @@ public class WhatsNew extends MyDrawerMenu {
 			}
 		}
 		
+	}
+
+	@Override
+	public void onRefresh() {
+		// TODO Auto-generated method stub
+		GPSTracker.isStatic = false;
+		Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show();
+     	WhatsNewController whatsNewController = new WhatsNewController();
+			whatsNewController.getStaticRecommendation(Application.getCurrentUser().get_email());
+
 	}
 	
 	

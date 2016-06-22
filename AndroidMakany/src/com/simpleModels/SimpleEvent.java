@@ -23,7 +23,7 @@ public class SimpleEvent extends Element
 		this.latitude=latitude;
 		this.longitude=longitude;
 		this.ownerMail=ownerMail;
-		this.district=district;
+		this.setDistrict(district);
 		this.date = date;
 		
 		//this.goingMails=goingMails;
@@ -69,6 +69,14 @@ public class SimpleEvent extends Element
 
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 	
 

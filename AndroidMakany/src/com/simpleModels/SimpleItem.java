@@ -11,7 +11,7 @@ public class SimpleItem extends Element {
 		public SimpleItem(){
 			super(Type.ITEM);
 			this.id="";
-			this.userName = "";
+			this.setUserName("");
 			this.name="";
 			this.description="";
 			this.userEmail="";
@@ -28,7 +28,7 @@ public class SimpleItem extends Element {
 				String categories,String date, String itemType){
 			super(Type.ITEM);
 			this.id=id;
-			this.userName = userName;
+			this.setUserName(userName);
 			this.name=name;
 			this.description=description;
 			this.userEmail=userEmail;
@@ -38,6 +38,12 @@ public class SimpleItem extends Element {
 			this.categories=categories;
 			this.date = date;
 			this.itemType = itemType;
+			
+			if (itemType.equals("LoanItem"))
+				this.type = Type.LOANITEM;
+			else if (itemType.equals("RequestItem"))
+				this.type = Type.REQUESTITEM;
+				
 		}
 
 		public String getId() {
@@ -118,6 +124,14 @@ public class SimpleItem extends Element {
 
 		public void setItemType(String itemType) {
 			this.itemType = itemType;
+		}
+
+		public String getUserName() {
+			return userName;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
 		}
 
 }

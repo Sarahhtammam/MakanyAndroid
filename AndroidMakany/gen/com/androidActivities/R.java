@@ -1696,7 +1696,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f09009e;
+        public static final int action_settings=0x7f09009f;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int addCommentOnPost=0x7f09007f;
         public static final int always=0x7f090014;
@@ -1706,6 +1706,7 @@ containing a value of this type.
         public static final int category=0x7f090055;
         public static final int checkbox=0x7f090029;
         public static final int collapseActionView=0x7f090015;
+        public static final int container=0x7f09009b;
         public static final int content_frame=0x7f090054;
         public static final int createEventButton=0x7f090046;
         public static final int createOfferButton=0x7f09004e;
@@ -1748,7 +1749,7 @@ containing a value of this type.
         public static final int icon=0x7f090026;
         public static final int ifRoom=0x7f090016;
         public static final int image=0x7f090023;
-        public static final int imageViewIcon=0x7f09009c;
+        public static final int imageViewIcon=0x7f09009d;
         public static final int imgLogo=0x7f090084;
         public static final int interestLayout=0x7f090073;
         public static final int interestLayout_update=0x7f090097;
@@ -1818,7 +1819,7 @@ containing a value of this type.
         public static final int tabMode=0x7f09000c;
         public static final int testButton=0x7f090090;
         public static final int textView1=0x7f09004f;
-        public static final int textViewName=0x7f09009d;
+        public static final int textViewName=0x7f09009e;
         public static final int title=0x7f090027;
         public static final int twitterAccount=0x7f090071;
         public static final int twitterAccount_update=0x7f090095;
@@ -1829,7 +1830,7 @@ containing a value of this type.
         public static final int userPostsLayout=0x7f09006a;
         public static final int userPostsView=0x7f090069;
         public static final int userStoreLayout=0x7f09006c;
-        public static final int whatsNewLayout=0x7f09009b;
+        public static final int whatsNewLayout=0x7f09009c;
         public static final int withText=0x7f090018;
         public static final int wrap_content=0x7f090009;
     }
