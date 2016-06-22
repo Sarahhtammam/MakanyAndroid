@@ -3,6 +3,7 @@ package com.controllers;
 import java.util.ArrayList;
 
 import com.simpleModels.Element;
+import com.simpleModels.SimpleComment;
 import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimpleItem;
 import com.simpleModels.SimpleMessage;
@@ -31,6 +32,7 @@ public class Application extends android.app.Application {
 	private static ArrayList<String> categories;
 	private static ArrayList<SimpleEvent> events;
 	private static ArrayList<SimplePost> posts;
+	private static ArrayList<SimpleComment> Comments;
 	private static ArrayList<SimpleItem> items;
 	private static ArrayList<Element> Elements;
 	private static ArrayList<SimpleMessage> msgNames;
@@ -190,6 +192,14 @@ public class Application extends android.app.Application {
 
 	public static void setCurrentPost(SimplePost currentPost) {
 		Application.currentPost = currentPost;
+	}
+
+	public static ArrayList<SimpleComment> getComments() {
+		return Comments;
+	}
+
+	public static void setComments(ArrayList<SimpleComment> comments) {
+		Comments = comments;
 	}
 
 	

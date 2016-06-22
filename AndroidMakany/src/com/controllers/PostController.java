@@ -17,15 +17,19 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.androidActivities.PostsMenuActivity;
-import com.androidActivities.ShowPostsActivity;
-import com.controllers.EventController.Connection;
+import com.androidActivities.SinglePostActivity;
+import com.simpleModels.SimpleComment;
 import com.simpleModels.SimplePost;
 
 public class PostController 
 {
+	private static String PostType;
+	
 	public void addPost(String postType, String content, String photo, String district, String onEventID,
 						String userEmail, String categories ) 
 	{
+		PostType=postType;
+		
 		new Connection().execute( "http://makanyapp2.appspot.com/rest/addPostService",
 				postType, content, photo, district, onEventID, userEmail, categories, "addPostService");
 	}
@@ -36,10 +40,10 @@ public class PostController
 		postID, userEmail, "deletePostService");
 	}
 
-	public void addCommentOnPost(String postID, String userEmail) 
+	public void addCommentOnPost(String content, String postID, String userEmail) 
 	{
 	new Connection().execute( "http://makanyapp2.appspot.com/rest/addCommentService",
-		postID, userEmail, "addCommentService");
+		content, postID, userEmail, "addCommentService");
 	}
 	
 	public void approvePost(String postID, String userEmail) 
@@ -53,6 +57,12 @@ public class PostController
 		postID, userEmail, "disapprovePostService");
 	}
 	
+	public void reportPost(String reason, String postID, String userEmail) 
+	{
+		new Connection().execute( "http://makanyapp2.appspot.com/rest/reportPostService",
+		reason, postID, userEmail, "reportPostService");
+	}
+	
 	public void getPost(String userEmail, String category, String district, String onEventID, String postID, AsyncResponse d) 
 	{
 		Connection connectionClass = new Connection();
@@ -62,6 +72,12 @@ public class PostController
 	}
 
 	
+	public void getComments(String postID, String userEmail, String commentID)
+	{
+		Connection connectionClass = new Connection();
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getFilteredCommentsService",
+				postID, userEmail, commentID, "getFilteredCommentsService");
+	}
 	static class Connection extends AsyncTask<String, String, String> 
 	{
 
@@ -82,15 +98,23 @@ public class PostController
 						+ params[6] +"&categories="+ params[7];
 			
 			else if (serviceType.equals("deletePostService") 
-					|| serviceType.equals("addCommentService")
 					|| serviceType.equals("approvePostService")
 					|| serviceType.equals("disapprovePostService"))
 				urlParameters = "postID="+ params[1] +"&userEmail="+ params[2];
 			
-			if (serviceType.equals("getFilteredPostsService"))
+			else if (serviceType.equals("getFilteredPostsService"))
 				urlParameters = "userEmail=" + params[1] + "&category="+ params[2] +"&district="+ params[3] +"&onEventID="
 						+ params[4] + "&postID=" + params[5];
 			
+			else if(serviceType.equals("addCommentService"))
+					urlParameters = "content="+ params[1] +"&postID="+ params[2] +"&userEmail="+ params[3];
+			
+			else if(serviceType.equals("reportPostService"))
+					urlParameters = "reason="+ params[1] +"&postID="+ params[2] +"&userEmail="+ params[3];
+		
+			else if(serviceType.equals("getFilteredPostsService"))
+				urlParameters = "postID="+ params[1] +"&userEmail="+ params[2] +"&commentID="+ params[3];
+	
 			
 			HttpURLConnection connection;
 			try {
@@ -165,8 +189,14 @@ public class PostController
 					}
 					
 					//Post added successfully 
-					Toast.makeText(Application.getAppContext(), "SUCCESS",
-					Toast.LENGTH_LONG).show();
+					Toast.makeText(Application.getAppContext(), "SUCCESS", Toast.LENGTH_LONG).show();
+					
+					if(PostType.equals("normal"))
+					{
+						Intent postIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
+						postIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						Application.getAppContext().startActivity(postIntent);
+					}
 					
 					
 				}
@@ -180,7 +210,7 @@ public class PostController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -195,19 +225,19 @@ public class PostController
 					
 					if(object.getString("Status").equals("notYourPost"))
 					{
-						Toast.makeText(Application.getAppContext(), "error: You are not allowed to delete"+
+						Toast.makeText(Application.getAppContext(), "error: You are not allowed to delete "+
 								"this post\n It is not your post",
 						Toast.LENGTH_LONG).show();
 						return;
 					}
 					
 					
-					//Post added successfully 
+					//Post deleted successfully 
 					Toast.makeText(Application.getAppContext(), "post deleted!",
 					Toast.LENGTH_LONG).show();
-					Intent homeIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
-					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(homeIntent);
+					Intent postIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
+					postIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(postIntent);
 					
 				}
 				
@@ -220,7 +250,7 @@ public class PostController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -228,7 +258,7 @@ public class PostController
 					
 					if(object.getString("Status").equals("Failed"))
 					{
-						Toast.makeText(Application.getAppContext(), "error: not able to delete post",
+						Toast.makeText(Application.getAppContext(), "error: not able to add comment",
 						Toast.LENGTH_LONG).show();
 						return;
 					}
@@ -236,10 +266,38 @@ public class PostController
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "Comment added",
 					Toast.LENGTH_LONG).show();
-					Intent homeIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
-					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(homeIntent);
+					/*Intent postIntent = new Intent(Application.getAppContext(),SinglePostActivity.class);
+					postIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(postIntent);
+					*/
 					// go to view post  ...  with new comments
+				}
+				
+				if (serviceType.equals("reportPostService")) 
+				{
+					System.out.println("result " + result);
+					
+					JSONObject object = new JSONObject(result);
+					
+					
+					if(object== null || !object.has("Status"))
+					{
+						System.out.println("error" );
+						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.LENGTH_LONG).show();
+						return;
+					}
+					
+					if(object.getString("Status").equals("Failed"))
+					{
+						Toast.makeText(Application.getAppContext(), "error: not able to report post",
+						Toast.LENGTH_LONG).show();
+						return;
+					}
+					
+					//Post added successfully 
+					Toast.makeText(Application.getAppContext(), "reported!",
+					Toast.LENGTH_LONG).show();
 				}
 				
 				if (serviceType.equals("approvePostService")) 
@@ -251,7 +309,7 @@ public class PostController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -276,11 +334,12 @@ public class PostController
 					//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "post approved!",
 					Toast.LENGTH_LONG).show();
-					Intent homeIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
+					/*Intent homeIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(homeIntent);
 					// go to view post with new number of approves
-				}
+*/				
+					}
 				
 				if (serviceType.equals("disapprovePostService")) 
 				{
@@ -291,7 +350,7 @@ public class PostController
 					
 					if(object== null || !object.has("Status"))
 					{
-						System.out.println("eroor" );
+						System.out.println("error" );
 						Toast.makeText(Application.getAppContext(), "Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
@@ -313,14 +372,15 @@ public class PostController
 					}
 					
 					
-					//Post added successfully 
+					/*//Post added successfully 
 					Toast.makeText(Application.getAppContext(), "post disapproved!",
 					Toast.LENGTH_LONG).show();
 					Intent homeIntent = new Intent(Application.getAppContext(),PostsMenuActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(homeIntent);
 					// go to view post with new number of disapproves
-				}
+*/				
+					}
 				
 				if (serviceType.equals("getFilteredPostsService")) 
 				{
@@ -367,7 +427,43 @@ public class PostController
 					Application.getAppContext().startActivity(showPostActivity);*/
 			    	
 				}
-			
+
+				if (serviceType.equals("getFilteredCommentsService")) 
+				{
+					System.out.println("result " + result);
+					
+					ArrayList<SimpleComment> comments = new ArrayList<SimpleComment>();
+					JSONArray requestArray;
+					
+					try {
+							requestArray = new JSONArray(result);
+
+							for(int i=0;i<requestArray.length();i++)
+							{
+								JSONObject object=new JSONObject();
+								object = (JSONObject)requestArray.get(i);
+								
+								SimpleComment comment= new SimpleComment(object.getString("ID"), object.getString("userEmail"), 
+										object.getString("username"), object.getString("content"), 
+										object.getString("date"), Application.getCurrentPost().getID());
+									comments.add(comment);
+							}
+						} 
+					catch (JSONException e) 
+					{
+						e.printStackTrace();
+					}
+					
+					//Post added successfully 
+					Application.setComments(comments);
+					//delegate.processFinish("Posts");
+					
+					Intent showPostActivity = new Intent(Application.getAppContext(),SinglePostActivity.class);
+					showPostActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(showPostActivity);
+			    	
+				}
+
 				//Do the same for other services
 				//else if(serviceType.equals(""))
 				//{}

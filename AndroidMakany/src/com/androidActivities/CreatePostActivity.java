@@ -91,7 +91,7 @@ public class CreatePostActivity extends Fragment implements OnClickListener {
 		else
 		{	
 			PostController postController = new PostController();
-			postController.addPost("normal", postEditText.getText().toString(), "no-pic", 
+			postController.addPost("normal", postEditText.getText().toString(), "", 
 					Application.getCurrentDistrict(),"", Application.getCurrentUser().get_email(), checkedCategories);	
 		}
 	}

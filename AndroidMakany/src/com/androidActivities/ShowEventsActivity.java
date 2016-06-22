@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.controllers.Application;
 import com.controllers.AsyncResponse;
@@ -126,6 +127,8 @@ public class ShowEventsActivity extends Fragment implements  AsyncResponse {
 		        my_layout.addView(b);
 			}
 		}
+		else
+			Toast.makeText(Application.getAppContext(), "Error, No events",Toast.LENGTH_LONG).show();
 		
 		
 	}

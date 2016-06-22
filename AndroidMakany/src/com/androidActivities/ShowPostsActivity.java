@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.controllers.Application;
 import com.controllers.AsyncResponse;
+import com.controllers.PostController;
 import com.simpleModels.SimplePost;
 
 public class ShowPostsActivity extends Fragment implements  AsyncResponse {
@@ -108,6 +109,8 @@ public class ShowPostsActivity extends Fragment implements  AsyncResponse {
 		        b.setOnClickListener(new OnClickListener() {
 		            public void onClick(View v) 
 		            {
+		            	PostController postController = new PostController();
+		            	postController.getComments(temp.getID(), Application.getCurrentUser().get_email(), "");
 		            	Intent selectedPost = new Intent(Application.getAppContext(),SinglePostActivity.class);
 		            	selectedPost.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		  				Application.setCurrentPost(temp);
