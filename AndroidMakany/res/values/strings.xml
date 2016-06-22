@@ -66,5 +66,6 @@
     <string name="title_activity_store_menu">StoreMenu</string>
     <string name="title_activity_show_stores">ShowStoresActivity</string>
     <string name="title_activity_single_post">SinglePostActivity</string>
+    <string name="title_activity_temp">Temp</string>
 
 </resources>

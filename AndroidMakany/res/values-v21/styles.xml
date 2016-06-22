@@ -14,7 +14,7 @@
 
         <style name="AppTheme.ActionBarStyle" parent="android:style/Widget.Holo.Light.ActionBar">
             <item name="android:background">@color/darkmauve</item>
-            <item name="android:icon">@drawable/makany_logo</item>
+            <item name="android:icon">@drawable/makany_logo_old</item>
         </style>
 
 

@@ -1,7 +1,5 @@
 package com.androidActivities;
 
-import java.util.Locale;
-
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -27,7 +25,7 @@ public class TestActivity extends Activity implements OnClickListener  {
 		
 		NotificationCompat.Builder mBuilder =
 		        new NotificationCompat.Builder(this)
-		        .setSmallIcon(R.drawable.makany_logo)
+		        .setSmallIcon(R.drawable.makany_logo_old)
 		        .setContentTitle("My notification")
 		        .setContentText("Hello World!");
 		// Creates an explicit intent for an Activity in your app

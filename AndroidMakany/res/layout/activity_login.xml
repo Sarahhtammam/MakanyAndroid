@@ -6,9 +6,9 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="72dp"
+        android:layout_height="200sp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="24dp"
+        android:layout_margin="5dp"
         android:src="@drawable/makany_logo" />
 
     <TextView
