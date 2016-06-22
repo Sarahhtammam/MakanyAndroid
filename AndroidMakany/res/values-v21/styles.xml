@@ -14,14 +14,14 @@
 
         <style name="AppTheme.ActionBarStyle" parent="android:style/Widget.Holo.Light.ActionBar">
             <item name="android:background">@color/darkmauve</item>
-            <item name="android:icon">@drawable/makany_logo_old</item>
-        </style>
+            <item name="android:icon">@drawable/makany_logo_small</item>
+            <!-- newwwwwwwww -->
+            <item name="android:height">80sp</item>
+       	</style>
 
 
         <!--  for the splash screen only -->
       <style name="Theme.NoTitle" parent="@android:style/Theme.NoTitleBar"></style>
-              
-              
     
     
 </resources>

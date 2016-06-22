@@ -1667,11 +1667,12 @@ containing a value of this type.
         public static final int logout_icon=0x7f02003b;
         public static final int makany_logo=0x7f02003c;
         public static final int makany_logo_old=0x7f02003d;
-        public static final int messages_icon=0x7f02003e;
-        public static final int post_icon=0x7f02003f;
-        public static final int store_icon=0x7f020040;
-        public static final int test_image=0x7f020041;
-        public static final int updateprofile_icon=0x7f020042;
+        public static final int makany_logo_small=0x7f02003e;
+        public static final int messages_icon=0x7f02003f;
+        public static final int post_icon=0x7f020040;
+        public static final int store_icon=0x7f020041;
+        public static final int test_image=0x7f020042;
+        public static final int updateprofile_icon=0x7f020043;
     }
     public static final class id {
         public static final int AttendEvent=0x7f090079;
