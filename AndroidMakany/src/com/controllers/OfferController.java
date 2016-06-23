@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.androidActivities.ItemsMenuActivity;
 import com.androidActivities.StoreHomeActivity;
 import com.simpleModels.SimpleOffer;
 
@@ -26,6 +25,13 @@ public class OfferController
 		Connection connectionClass = new Connection();
 		connectionClass.execute( "http://makanyapp2.appspot.com/rest/addOfferService",
 				storeMail, description, photo, "addOfferService");
+	}
+	
+	public void editOffer(String offerID, String description, String photo)
+	{
+		Connection connectionClass = new Connection();
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/editOfferService",
+				offerID, description, photo, "editOfferService");
 	}
 	
 	public void removeOffer(String offerID)
@@ -80,6 +86,12 @@ public class OfferController
 		
 			else if(serviceType.equals("removeOfferService"))
 				urlParameters = "offerID="+ params[1];	
+			
+			else if (serviceType.equals("editOfferService"))
+				urlParameters = "offerID="+ params[1] +"&description="+ params[2] +"&photo=" + params[3];
+
+				
+				
 			
 			
 			HttpURLConnection connection;
@@ -188,8 +200,12 @@ public class OfferController
 					Toast.makeText(Application.getAppContext(), "offer removed!",
 					Toast.LENGTH_LONG).show();
 					
+					Intent offerIntent = new Intent(Application.getAppContext(),StoreHomeActivity.class);
+					offerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(offerIntent);
+					
 				}
-				
+		
 				if (serviceType.equals("editOfferService")) 
 				{
 					System.out.println("result " + result);
@@ -214,6 +230,10 @@ public class OfferController
 					
 					Toast.makeText(Application.getAppContext(), "Successfully edited your offer!",
 					Toast.LENGTH_LONG).show();
+					
+					Intent offerIntent = new Intent(Application.getAppContext(),StoreHomeActivity.class);
+					offerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					Application.getAppContext().startActivity(offerIntent);
 					
 				}
 				

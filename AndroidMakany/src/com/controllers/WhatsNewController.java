@@ -144,7 +144,7 @@ public class WhatsNewController
 								}
 								else if (object.getString("type").equals("Event"))
 								{
-									SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
+									SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("username"),object.getString("name"), 
 											object.getString("category"), object.getString("description"), 
 											Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
 											object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
@@ -212,7 +212,7 @@ public class WhatsNewController
 					
 					SimpleItem simpleItem = new SimpleItem("10","Heba", "car","nice car","heba.khazbak@gmail.com","Zamalek","","Open","","","");
 					elements.add(simpleItem);
-					SimpleEvent event = new SimpleEvent("30", "caaar", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com"
+					SimpleEvent event = new SimpleEvent("30","Heba", "caaar", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com"
 							,"Zamalek", "", "","", "", "");
 					elements.add(event);
 					

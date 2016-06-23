@@ -56,10 +56,11 @@ public class MyDrawerMenu extends Activity {
 				"My Messages");
 		drawerItem[6] = new ObjectDrawerItem(R.drawable.updateprofile_icon,
 				"Update Profile");
-		drawerItem[7] = new ObjectDrawerItem(R.drawable.logout_icon,
-				"Signout");
+		drawerItem[7] = new ObjectDrawerItem(R.drawable.change_district_icon,
+				"Change District");
 		drawerItem[8] = new ObjectDrawerItem(R.drawable.logout_icon,
-				"Test");
+				"Signout");
+		
 
 		
 		DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this,
@@ -147,15 +148,14 @@ public class MyDrawerMenu extends Activity {
 		
 				break;
 
-			case 7: // signout
-				//SessionController.signout();
-				SessionController.showSignoutDialog(mContext);
+			case 7: // change district
+				
+				SessionController.ChangeDistrict(mContext);
 				break;
 
 			case 8: // signout
 				//SessionController.signout();
-				Intent test = new Intent(getApplicationContext(), Temp.class);
-				startActivity(test);
+				SessionController.showSignoutDialog(mContext);
 				break;
 				
 			default:

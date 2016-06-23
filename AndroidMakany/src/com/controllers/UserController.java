@@ -18,7 +18,6 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.androidActivities.LoginActivity;
-import com.androidActivities.ShowItemsActivity;
 import com.androidActivities.StoreHomeActivity;
 import com.androidActivities.ViewMyOffers;
 import com.simpleModels.SimpleUser;

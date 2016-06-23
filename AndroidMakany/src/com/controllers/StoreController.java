@@ -7,14 +7,18 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.simpleModels.SimpleStore;
-
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.simpleModels.SimpleEvent;
+import com.simpleModels.SimpleOffer;
+import com.simpleModels.SimpleStore;
 
 
 public class StoreController {
@@ -81,7 +85,9 @@ public class StoreController {
 			
 			else if (serviceType.equals("getStoreService"))
 				urlParameters = "storeMail="+ params[1];
-				
+			
+			else if (serviceType.equals("getStoreOffersService")) 
+				urlParameters = "storeMail="+ params[1];
 				 
 			
 			
@@ -199,9 +205,40 @@ public class StoreController {
 				
 				if (serviceType.equals("getStoreOffersService")) 
 				{
+					System.out.println("result " + result);
+					
+					ArrayList<SimpleOffer> offers = new ArrayList<SimpleOffer>();
+					
+					JSONArray requestArray;
+					
+					try {
+							requestArray = new JSONArray(result);
+							for(int i=0;i<requestArray.length();i++)
+							
+							{
+								JSONObject object=new JSONObject();
+								object = (JSONObject)requestArray.get(i);
+								
+								SimpleOffer simpleOffer= new SimpleOffer(object.getString("ID"), object.getString("description"),
+										"",object.getString("photo"),object.getString("date"),
+												object.getString("numThumbsup"), object.getString("numThumbsDown"),
+												object.getString("numViewers"), object.getString("thumbsupMails"),
+												object.getString("thumbsdownMails"), object.getString("viewersMails"));
+								offers.add(simpleOffer);
+							}
+					
+					}
 					
 					
+					catch (JSONException e) 
+					{
+						e.printStackTrace();
+					}
+					
+					
+					Application.setOffers(offers);
 					delegate.processFinish("");
+
 				}
 				
 				if (serviceType.equals("getStoreReviewsService")) 

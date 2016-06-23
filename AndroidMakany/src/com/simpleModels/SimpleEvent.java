@@ -13,12 +13,13 @@ public class SimpleEvent extends Element
 	private Vector<SimpleReview> reviews;
 	
 	
-	public SimpleEvent(String id, String name, String category, String description,
+	public SimpleEvent(String id,String ownerName, String name, String category, String description,
 			double latitude, double longitude, String ownerMail, String district,
 			String goingMails, String postIDs,String date, String from, String to)
 	{
 		super(Type.EVENT);
 		this.id=id;
+		this.ownerName = ownerName;
 		this.name=name;
 		this.category=category;
 		this.description=description;

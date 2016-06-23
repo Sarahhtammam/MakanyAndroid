@@ -317,9 +317,9 @@ public class ItemController
 	  				
 	  				String str = "";
 	  				if(serviceType.equals("getFilteredLoanItemsService"))
-	  					str = "Loan Items:";
+	  					str = "Loan Items";
 	  				else
-	  					str = "Request Items:";
+	  					str = "Request Items";
 	  				delegate.processFinish(str);
 	  				
 	  				/*showItems.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

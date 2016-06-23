@@ -1,5 +1,7 @@
 package com.controllers;
 
+import java.util.ArrayList;
+
 import com.androidActivities.LoginActivity;
 
 import android.app.AlertDialog;
@@ -8,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.widget.Toast;
 
 public class SessionController {
 
@@ -72,6 +75,40 @@ public class SessionController {
   
         // Showing Alert Message
         alertDialog.show();
+	}
+	
+	public static void ChangeDistrict(Context mContext)
+	{
+		final ArrayList<Integer> mSelectedItems = new ArrayList();  // Where we track the selected items
+		final String oldValue = Application.getCurrentDistrict();
+		final CharSequence[] items = Application.getDistricts().toArray(new CharSequence[Application.getDistricts().size()]);
+		AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+	    // Set the dialog title
+	    builder.setTitle("Choose District");
+	    builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item)
+            {
+            	Application.setCurrentDistrict(Application.getDistricts().get(item));
+            }
+	    });
+	    
+	    builder.setPositiveButton("Choose", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            	Toast.makeText(Application.getAppContext(), "District changed to " + Application.getCurrentDistrict(),
+    					Toast.LENGTH_SHORT).show();
+
+                
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            	Application.setCurrentDistrict(oldValue);
+            }
+        });
+	    
+	    builder.show();
 	}
 
 }
