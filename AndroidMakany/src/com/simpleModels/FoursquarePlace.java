@@ -2,7 +2,7 @@ package com.simpleModels;
 
 import java.util.Vector;
 
-public class FoursquarePlace {
+public class FoursquarePlace extends Element {
 
 	private String name, address;
 	private String rating, phone;
@@ -13,7 +13,7 @@ public class FoursquarePlace {
 	public FoursquarePlace(String name, String address, String rating,
 			String phone, String distance, String latitude, String longitude,
 			String category) {
-		super();
+		super(Type.FOURSQUAREPLACE);
 
 		this.name = name;
 

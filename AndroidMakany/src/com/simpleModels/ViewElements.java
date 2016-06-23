@@ -204,7 +204,7 @@ public class ViewElements {
 		my_layout_big.addView(my_layout);
 	}
 
-	public void FoursquarePlace(final FoursquarePlace temp, int i,
+	public void viewFoursquarePlace(final FoursquarePlace temp, int i,
 			LinearLayout my_layout_big, Context context) {
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);

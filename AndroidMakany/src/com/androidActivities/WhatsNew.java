@@ -2,6 +2,7 @@ package com.androidActivities;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
@@ -14,6 +15,7 @@ import com.controllers.SessionController;
 import com.controllers.UserController;
 import com.controllers.WhatsNewController;
 import com.simpleModels.Element;
+import com.simpleModels.FoursquarePlace;
 import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimpleItem;
 import com.simpleModels.SimpleOffer;
@@ -58,15 +60,16 @@ public class WhatsNew extends MyDrawerMenu implements OnRefreshListener {
         gps = new GPSTracker(this);
 
         // check if GPS enabled     
-        if(gps.canGetLocation()){
+        if(gps.canGetLocation() && !gps.userChoseIsStatic){
         	GPSTracker.isStatic = false;
             double latitude = gps.getLatitude();
             double longitude = gps.getLongitude();
              
             // \n is for new line
             Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show(); 
+            gps.RefreshDynamic();
             viewElement(my_layout);
-        }else if (!GPSTracker.isStatic){
+        }else if (!gps.canGetLocation() && !GPSTracker.isStatic){
             // can't get location
             // GPS or Network is not enabled
             // Ask user to enable GPS/network in settings
@@ -117,6 +120,11 @@ public class WhatsNew extends MyDrawerMenu implements OnRefreshListener {
 					case OFFER:
 						v.viewOffer((SimpleOffer) elements.get(i), i, my_layout, this);
 						break;
+						
+					case FOURSQUAREPLACE:
+						v.viewFoursquarePlace((FoursquarePlace) elements.get(i), i, my_layout, this);
+						break;
+						
 				}
 				/*View ruler = new View(this); ruler.setBackgroundColor(0xff000000);
 				my_layout.addView(ruler,
@@ -133,7 +141,8 @@ public class WhatsNew extends MyDrawerMenu implements OnRefreshListener {
 		Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show();
      	WhatsNewController whatsNewController = new WhatsNewController();
 			whatsNewController.getStaticRecommendation(Application.getCurrentUser().get_email());
-
+		
+			
 	}
 	
 	
