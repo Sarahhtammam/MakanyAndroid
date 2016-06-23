@@ -9,7 +9,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import com.controllers.Application;
 import com.controllers.AsyncResponse;
 import com.controllers.OfferController;
+import com.controllers.StoreController;
 import com.simpleModels.SimpleOffer;
 
 public class ViewMyOffers extends Fragment implements  AsyncResponse {
@@ -31,6 +33,7 @@ public class ViewMyOffers extends Fragment implements  AsyncResponse {
 	LinearLayout my_layout_big;
 	final ViewMyOffers me = this;
 	
+	
 	public ViewMyOffers() {
 	}
 
@@ -39,6 +42,7 @@ public class ViewMyOffers extends Fragment implements  AsyncResponse {
 			Bundle savedInstanceState) {
 		rootView = inflater.inflate(R.layout.activity_view_my_offers,
 				container, false);
+		
 		
 		
 		offers = Application.getOffers();
@@ -101,8 +105,7 @@ public class ViewMyOffers extends Fragment implements  AsyncResponse {
 		        if (!temp.getPhoto().equals(""))
 				{
 					TextView photo = new TextView(getActivity());
-					photo.setText(temp.getPhoto());
-					//photo.setMovementMethod(LinkMovementMethod.getInstance());
+					photo.setText("  " + temp.getPhoto());
 					Linkify.addLinks(photo, Linkify.ALL);
 					
 					my_layout.addView(photo);
@@ -151,6 +154,8 @@ public class ViewMyOffers extends Fragment implements  AsyncResponse {
 		}
 		
 	}
+
+
 	
 
 

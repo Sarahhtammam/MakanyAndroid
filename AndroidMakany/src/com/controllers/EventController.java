@@ -375,7 +375,7 @@ public class EventController
 								JSONObject object=new JSONObject();
 								object = (JSONObject)requestArray.get(i);
 								
-								SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
+								SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("username"),object.getString("name"), 
 										object.getString("category"), object.getString("description"), 
 										Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
 										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
@@ -416,7 +416,7 @@ public class EventController
 					try
 					{
 						
-						SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
+						SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("username"),object.getString("name"), 
 								object.getString("category"), object.getString("description"), 
 								Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
 								object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")
@@ -456,7 +456,7 @@ public class EventController
 								JSONObject object=new JSONObject();
 								object = (JSONObject)requestArray.get(i);
 								
-								SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("name"), 
+								SimpleEvent simpleEvent = new SimpleEvent(object.getString("id"),object.getString("username"),object.getString("name"), 
 										object.getString("category"), object.getString("description"), 
 										Double.parseDouble(object.getString("latitude")), Double.parseDouble(object.getString("longitude")), 
 										object.getString("ownerMail"), object.getString("district"), object.getString("goingMails"), object.getString("postIDs")

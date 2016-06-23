@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Message;
 import android.widget.Toast;
 
 import com.androidActivities.MyMessages;
@@ -69,7 +68,6 @@ public class MessageController
 	{
 
 		String serviceType;
-		
 		
 		@Override
 		protected String doInBackground(String... params)
@@ -183,11 +181,13 @@ public class MessageController
 					messages.add(simpleMsg);*/
 					
 					Application.setMessgaes(messages);
+
 					
 					Intent msgIntent = new Intent(Application.getAppContext(),SingleMessage.class);
 
 					msgIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Application.getAppContext().startActivity(msgIntent);
+					
 					
 				}
 				else if (serviceType.equals("getMsgNamesService")) 

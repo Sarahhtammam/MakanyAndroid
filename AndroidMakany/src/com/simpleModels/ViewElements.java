@@ -7,14 +7,17 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.text.util.Linkify;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidActivities.R.color;
+import com.androidActivities.R;
 import com.androidActivities.SingleEventActivity;
 import com.androidActivities.SingleItemActivity;
 import com.androidActivities.SinglePostActivity;
@@ -24,17 +27,16 @@ import com.controllers.PostController;
 
 public class ViewElements {
 
-	public void viewItem(final SimpleItem temp, int i, LinearLayout my_layout_big,
-			Context context , boolean isLoan) {
-		LinearLayout.LayoutParams  params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT);
+	public void viewItem(final SimpleItem temp, int i,
+			LinearLayout my_layout_big, Context context, boolean isLoan) {
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		params.setMargins(0, 5, 0, 5);
 
 		LinearLayout my_layout = new LinearLayout(context);
 		my_layout.setLayoutParams(params);
 
 		my_layout.setOrientation(LinearLayout.VERTICAL);
-		
 
 		GradientDrawable border = new GradientDrawable();
 
@@ -52,14 +54,14 @@ public class ViewElements {
 
 		LinearLayout lin_hor = new LinearLayout(context);
 		lin_hor.setOrientation(0);
-		
+
 		TextView owner = new TextView(context);
 		owner.setText("  " + temp.getUserName());
 		owner.setTypeface(null, Typeface.BOLD);
 		owner.setTextColor(color.darkpurple);
 		lin_hor.addView(owner);
 		TextView owner2 = new TextView(context);
-		
+
 		if (isLoan)
 			owner2.setText(" is loaning an item");
 		else
@@ -73,17 +75,17 @@ public class ViewElements {
 		name.setTypeface(null, Typeface.BOLD);
 		name.setTextAppearance(context, android.R.style.TextAppearance_Medium);
 		my_layout.addView(name);
-		
-		if (!temp.getPhoto().equals(""))
-		{
+
+		if (!temp.getPhoto().equals("")) {
 			TextView photo = new TextView(context);
 			photo.setText("  " + temp.getPhoto());
+			Linkify.addLinks(photo, Linkify.ALL);
 			my_layout.addView(photo);
 		}
 
 		LinearLayout lin_hor2 = new LinearLayout(context);
 		lin_hor2.setOrientation(0);
-		
+
 		TextView district = new TextView(context);
 		district.setText("  " + temp.getDistrict());
 		lin_hor2.addView(district);
@@ -112,21 +114,20 @@ public class ViewElements {
 		my_layout.addView(lin_hor2);
 
 		my_layout_big.addView(my_layout);
-		
+
 	}
 
 	public void viewEvent(final SimpleEvent temp, int i,
 			LinearLayout my_layout_big, Context context) {
 
-		LinearLayout.LayoutParams  params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		params.setMargins(0, 5, 0, 5);
 
 		LinearLayout my_layout = new LinearLayout(context);
 		my_layout.setLayoutParams(params);
 
 		my_layout.setOrientation(LinearLayout.VERTICAL);
-		
 
 		GradientDrawable border = new GradientDrawable();
 
@@ -144,7 +145,7 @@ public class ViewElements {
 
 		LinearLayout lin_hor = new LinearLayout(context);
 		lin_hor.setOrientation(0);
-		
+
 		TextView owner = new TextView(context);
 		owner.setText("  " + temp.getOwnerName());
 		owner.setTypeface(null, Typeface.BOLD);
@@ -153,6 +154,11 @@ public class ViewElements {
 		TextView owner2 = new TextView(context);
 		owner2.setText(" organized an event");
 		lin_hor.addView(owner2);
+		
+		TextView onDate = new TextView(context);
+		onDate.setText("  on " + temp.getFrom());
+		my_layout.addView(onDate);
+
 
 		my_layout.addView(lin_hor);
 
@@ -197,19 +203,17 @@ public class ViewElements {
 
 		my_layout_big.addView(my_layout);
 	}
-	
-	
-	public void FoursquarePlace (final FoursquarePlace temp, int i, LinearLayout my_layout_big,
-			Context context) {
-		LinearLayout.LayoutParams  params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT);
+
+	public void FoursquarePlace(final FoursquarePlace temp, int i,
+			LinearLayout my_layout_big, Context context) {
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		params.setMargins(0, 5, 0, 5);
 
 		LinearLayout my_layout = new LinearLayout(context);
 		my_layout.setLayoutParams(params);
 
 		my_layout.setOrientation(LinearLayout.VERTICAL);
-		
 
 		GradientDrawable border = new GradientDrawable();
 
@@ -221,19 +225,18 @@ public class ViewElements {
 			my_layout.setBackground(border);
 		}
 
-
 		LinearLayout lin_hor = new LinearLayout(context);
 		lin_hor.setOrientation(0);
-		
+
 		TextView owner = new TextView(context);
 		owner.setText("  " + temp.getName());
 		owner.setTypeface(null, Typeface.BOLD);
 		owner.setTextColor(color.darkpurple);
 		lin_hor.addView(owner);
 		TextView owner2 = new TextView(context);
-	
+
 		owner2.setText(" is nearby with " + temp.getDistance() + " meters");
-	
+
 		lin_hor.addView(owner2);
 
 		my_layout.addView(lin_hor);
@@ -241,14 +244,14 @@ public class ViewElements {
 		TextView address = new TextView(context);
 		address.setText("  " + temp.getAddress());
 		my_layout.addView(address);
-		
+
 		TextView phone = new TextView(context);
 		phone.setText("  To call: " + temp.getPhone());
 		my_layout.addView(phone);
 
 		LinearLayout lin_hor2 = new LinearLayout(context);
 		lin_hor2.setOrientation(0);
-		
+
 		TextView category = new TextView(context);
 		category.setText("  " + temp.getCategory());
 		lin_hor2.addView(category);
@@ -264,7 +267,7 @@ public class ViewElements {
 		b2.setId(i + 1);
 		b2.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				
+
 				String latitude = temp.getLatitude();
 				String longitude = temp.getLongitude();
 				String label = temp.getName();
@@ -273,7 +276,8 @@ public class ViewElements {
 				String encodedQuery = Uri.encode(query);
 				String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
 				Uri uri = Uri.parse(uriString);
-				Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+				Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+						uri);
 				Application.getAppContext().startActivity(intent);
 
 			}
@@ -282,21 +286,20 @@ public class ViewElements {
 		my_layout.addView(lin_hor2);
 
 		my_layout_big.addView(my_layout);
-		
+
 	}
-	
+
 	public void viewPost(final SimplePost temp, int i,
 			LinearLayout my_layout_big, Context context) {
 
-		LinearLayout.LayoutParams  params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		params.setMargins(0, 5, 0, 5);
 
 		LinearLayout my_layout = new LinearLayout(context);
 		my_layout.setLayoutParams(params);
 
 		my_layout.setOrientation(LinearLayout.VERTICAL);
-		
 
 		GradientDrawable border = new GradientDrawable();
 
@@ -314,7 +317,7 @@ public class ViewElements {
 
 		LinearLayout lin_hor = new LinearLayout(context);
 		lin_hor.setOrientation(0);
-		
+
 		TextView owner = new TextView(context);
 		owner.setText("  " + temp.getUserName());
 		owner.setTypeface(null, Typeface.BOLD);
@@ -329,16 +332,16 @@ public class ViewElements {
 		TextView Content = new TextView(context);
 		Content.setText("  " + temp.getContent());
 		Content.setTypeface(null, Typeface.BOLD);
-		Content.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+		Content.setTextAppearance(context,
+				android.R.style.TextAppearance_Medium);
 		my_layout.addView(Content);
-		
-		if (!temp.getPhoto().equals(""))
-		{
+
+		if (!temp.getPhoto().equals("")) {
 			TextView photo = new TextView(context);
 			photo.setText("  " + temp.getPhoto());
+			Linkify.addLinks(photo, Linkify.ALL);
 			my_layout.addView(photo);
 		}
-		
 
 		LinearLayout lin_hor2 = new LinearLayout(context);
 		lin_hor2.setOrientation(0);
@@ -350,20 +353,32 @@ public class ViewElements {
 		TextView category = new TextView(context);
 		category.setText(" - " + temp.getCategories());
 		lin_hor2.addView(category);
-		
+
 		LinearLayout lin_hor3 = new LinearLayout(context);
 		lin_hor3.setOrientation(0);
 
-		TextView score = new TextView(context);
-		score.setText("  " + temp.getScore());
-		lin_hor3.addView(score);
+		ImageView image = new ImageView(context); 
+		image.setImageDrawable(context.getResources().getDrawable(R.drawable.score_post));
+		lin_hor3.addView(image);
 
+		TextView score = new TextView(context);
+		score.setText("  " + temp.getScore()+ "  ");
+		lin_hor3.addView(score);
+		
+		ImageView image2 = new ImageView(context); 
+		image2.setImageDrawable(context.getResources().getDrawable(R.drawable.thumbs_up));
+		lin_hor3.addView(image2);
+		
 		TextView approval = new TextView(context);
-		approval.setText(" - " + temp.getNumApprovals());
+		approval.setText("  " + temp.getNumApprovals() + "  ");
 		lin_hor3.addView(approval);
 		
+		ImageView image3 = new ImageView(context); 
+		image3.setImageDrawable(context.getResources().getDrawable(R.drawable.thumbs_down));
+		lin_hor3.addView(image3);
+		
 		TextView disapproval = new TextView(context);
-		disapproval.setText(" - " + temp.getNumDisApprovals());
+		disapproval.setText("  " + temp.getNumDisApprovals() + "  ");
 		lin_hor3.addView(disapproval);
 
 		Button b2 = new Button(context);
@@ -375,7 +390,7 @@ public class ViewElements {
 		b2.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				PostController postController = new PostController();
-            	postController.getComments(temp.getID(), Application.getCurrentUser().get_email(), "");
+            	postController.getComments(temp.getID(), "", "");
             	Intent selectedPost = new Intent(Application.getAppContext(),SinglePostActivity.class);
             	selectedPost.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
   				Application.setCurrentPost(temp);
@@ -388,19 +403,18 @@ public class ViewElements {
 
 		my_layout_big.addView(my_layout);
 	}
-	
+
 	public void viewStore(final SimpleStore temp, int i,
 			LinearLayout my_layout_big, Context context) {
 
-		LinearLayout.LayoutParams  params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		params.setMargins(0, 5, 0, 5);
 
 		LinearLayout my_layout = new LinearLayout(context);
 		my_layout.setLayoutParams(params);
 
 		my_layout.setOrientation(LinearLayout.VERTICAL);
-		
 
 		GradientDrawable border = new GradientDrawable();
 
@@ -418,7 +432,7 @@ public class ViewElements {
 
 		LinearLayout lin_hor = new LinearLayout(context);
 		lin_hor.setOrientation(0);
-		
+
 		TextView owner = new TextView(context);
 		owner.setText("  " + temp.getStoreName());
 		owner.setTypeface(null, Typeface.BOLD);
@@ -429,7 +443,6 @@ public class ViewElements {
 		lin_hor.addView(owner2);
 
 		my_layout.addView(lin_hor);
-
 
 		LinearLayout lin_hor2 = new LinearLayout(context);
 		lin_hor2.setOrientation(0);
@@ -450,7 +463,6 @@ public class ViewElements {
 		b2.setTag(temp.getId());
 		b2.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				
 
 			}
 		});
@@ -459,18 +471,17 @@ public class ViewElements {
 
 		my_layout_big.addView(my_layout);
 	}
-	
-	public void viewOffer(final SimpleOffer temp, int i, LinearLayout my_layout_big,
-			Context context ) {
-		LinearLayout.LayoutParams  params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT);
+
+	public void viewOffer(final SimpleOffer temp, int i,
+			LinearLayout my_layout_big, Context context) {
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		params.setMargins(0, 5, 0, 5);
 
 		LinearLayout my_layout = new LinearLayout(context);
 		my_layout.setLayoutParams(params);
 
 		my_layout.setOrientation(LinearLayout.VERTICAL);
-		
 
 		GradientDrawable border = new GradientDrawable();
 
@@ -488,16 +499,16 @@ public class ViewElements {
 
 		LinearLayout lin_hor = new LinearLayout(context);
 		lin_hor.setOrientation(0);
-		
+
 		TextView owner = new TextView(context);
 		owner.setText("  " + temp.getStoreMail());
 		owner.setTypeface(null, Typeface.BOLD);
 		owner.setTextColor(color.darkpurple);
 		lin_hor.addView(owner);
 		TextView owner2 = new TextView(context);
-		
+
 		owner2.setText(" store added an offer");
-		
+
 		lin_hor.addView(owner2);
 
 		my_layout.addView(lin_hor);
@@ -505,19 +516,20 @@ public class ViewElements {
 		TextView description = new TextView(context);
 		description.setText("  " + temp.getDescription());
 		description.setTypeface(null, Typeface.BOLD);
-		description.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+		description.setTextAppearance(context,
+				android.R.style.TextAppearance_Medium);
 		my_layout.addView(description);
-		
-		if (!temp.getPhoto().equals(""))
-		{
+
+		if (!temp.getPhoto().equals("")) {
 			TextView photo = new TextView(context);
 			photo.setText("  " + temp.getPhoto());
+			Linkify.addLinks(photo, Linkify.ALL);
 			my_layout.addView(photo);
 		}
 
 		LinearLayout lin_hor2 = new LinearLayout(context);
 		lin_hor2.setOrientation(0);
-		
+
 		TextView district = new TextView(context);
 		district.setText("  " + temp.getDistrict());
 		lin_hor2.addView(district);
@@ -534,7 +546,6 @@ public class ViewElements {
 		b2.setTag(temp.getID());
 		b2.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				
 
 			}
 		});
@@ -542,6 +553,6 @@ public class ViewElements {
 		my_layout.addView(lin_hor2);
 
 		my_layout_big.addView(my_layout);
-		
+
 	}
 }
