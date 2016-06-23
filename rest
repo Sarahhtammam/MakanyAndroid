@@ -1,5 +1,3 @@
-
-
 Heba
 
 Edit offer / delete
@@ -7,10 +5,17 @@ change district
 what's new (static/dynamic)
 refesh f kolo 
 Text same as in what's new 
+msg using interface 
+thumb up and down in dynamic 
 ---------------------
 Sarah 
 
 User: view offers , show stores 
 Store : show my offers 
-Event from to 
-Post comment
+Event from to, rest of event 
+Post comment 
+View Element (Design)
+Chat Conversation End
+Type a message...
+
+Choose Files
