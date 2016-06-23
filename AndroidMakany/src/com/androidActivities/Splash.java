@@ -1,12 +1,16 @@
 package com.androidActivities;
 
-import com.controllers.Application;
-import com.controllers.SessionController;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+import com.controllers.Application;
+import com.controllers.SessionController;
 
 public class Splash extends Activity {
 
@@ -29,7 +33,30 @@ public class Splash extends Activity {
          * and close this Splash-Screen after some seconds.*/
         new Handler().postDelayed(new Runnable(){
             @Override
-            public void run() {
+            public void run() 
+            {
+            	
+            	final View view = findViewById(R.id.fadeOutLayer);
+        		Animation fadeOut = new AlphaAnimation(0f, 1f);
+        		fadeOut.setDuration(3000);
+        		fadeOut.setAnimationListener(new AnimationListener() {
+        			
+        			@Override
+        			public void onAnimationStart(Animation animation) 
+        			{
+        			}
+        			
+        			@Override
+        			public void onAnimationRepeat(Animation animation) {}
+        			
+        			@Override
+        			public void onAnimationEnd(Animation animation) {
+        			//	view.setVisibility(View.VISIBLE);
+        				
+        			}
+        		});
+        		
+        		view.startAnimation(fadeOut);
             	
                 /* Create an Intent that will start the Menu-Activity. */
                 Intent mainIntent = new Intent(Splash.this,LoginActivity.class);

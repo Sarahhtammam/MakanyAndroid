@@ -17,5 +17,12 @@
                     android:textSize="50sp"
                     android:text="Loading . . ."/>
                     -->
+                    
+        <View
+        android:id="@+id/fadeOutLayer"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF" />
 
   </LinearLayout>
