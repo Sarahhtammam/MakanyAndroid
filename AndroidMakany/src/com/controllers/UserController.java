@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.androidActivities.LoginActivity;
 import com.androidActivities.StoreHomeActivity;
 import com.androidActivities.ViewMyOffers;
+import com.androidActivities.WhatsNew;
 import com.simpleModels.SimpleUser;
 
 
@@ -220,8 +221,13 @@ public class UserController
 					
 					if (Application.getCurrentUserType().equals("User"))
 					{
-						WhatsNewController whatsNewController = new WhatsNewController();
-						whatsNewController.getStaticRecommendation(emaill);
+						/*WhatsNewController whatsNewController = new WhatsNewController();
+						whatsNewController.getStaticRecommendation(emaill);*/
+						
+						Intent whatsNew = new Intent(Application.getAppContext(),WhatsNew.class);
+
+		  				whatsNew.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						Application.getAppContext().startActivity(whatsNew);
 					}
 					else
 					{

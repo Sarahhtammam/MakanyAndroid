@@ -28,6 +28,7 @@ public class GPSTracker extends Service implements LocationListener {
     boolean canGetLocation = false;
     
     public static boolean isStatic = false;
+    public static boolean userChoseIsStatic = false;
  
     Location location; // location
     double latitude; // latitude
@@ -166,6 +167,7 @@ public class GPSTracker extends Service implements LocationListener {
         alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
             	isStatic = false;
+            	userChoseIsStatic = false;
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 mContext.startActivity(intent);
             }
@@ -176,6 +178,7 @@ public class GPSTracker extends Service implements LocationListener {
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
             dialog.cancel();
+            userChoseIsStatic = true;
             isStatic = true;
             WhatsNewController whatsNewController = new WhatsNewController();
 			whatsNewController.getStaticRecommendation(Application.getUserEmail());
@@ -222,6 +225,8 @@ public class GPSTracker extends Service implements LocationListener {
         // On pressing Settings button
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
+            	isStatic = false;
+            	userChoseIsStatic = false;
             	WhatsNewController whatsNewController = new WhatsNewController();
 				whatsNewController.getDynamicRecommendation(Application.getCurrentUser().get_email(),latitude,latitude);
 
@@ -232,6 +237,8 @@ public class GPSTracker extends Service implements LocationListener {
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
             dialog.cancel();
+            isStatic = true;
+            userChoseIsStatic = true;
             }
         });
   

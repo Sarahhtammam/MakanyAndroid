@@ -7,7 +7,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,9 +17,12 @@ import android.os.AsyncTask;
 
 import com.androidActivities.WhatsNew;
 import com.simpleModels.Element;
+import com.simpleModels.FoursquarePlace;
 import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimpleItem;
+import com.simpleModels.SimpleOffer;
 import com.simpleModels.SimplePost;
+import com.simpleModels.SimpleStore;
 
 
 
@@ -114,6 +116,8 @@ public class WhatsNewController
 		@Override
 		protected void onPostExecute(String result) 
 		{
+			
+			System.out.println(result);
 
 			super.onPostExecute(result);
 			
@@ -153,11 +157,22 @@ public class WhatsNewController
 								}
 								else if (object.getString("type").equals("Store"))
 								{
+									SimpleStore simpleStore = new SimpleStore(object.getString("ID"), object.getString("name"),
+											object.getString("email"),object.getString("password"),object.getString("district"),
+											object.getString("category"), object.getString("description"),
+											object.getString("date"), object.getString("latitude"),
+											object.getString("longitude"));
 									
+									elements.add(simpleStore);
 								}
 								else if (object.getString("type").equals("Offer"))
 								{
-									
+									SimpleOffer simpleOffer= new SimpleOffer(object.getString("ID"), object.getString("description"),
+											object.getString("storeMail"),object.getString("photo"),object.getString("date"),
+													object.getString("numThumbsup"), object.getString("numThumbsDown"),
+													object.getString("numViewers"), object.getString("thumbsupMails"),
+													object.getString("thumbsdownMails"), object.getString("viewersMails"));
+									elements.add(simpleOffer);
 								}
 								else if (object.getString("type").equals("Post"))
 								{
@@ -172,6 +187,13 @@ public class WhatsNewController
 											object.getString("reportMails"), object.getString("categories"));
 									elements.add(post);
 								}
+								
+								/*else if (object.getString("type").equals("fs"))
+								{
+									FoursquarePlace fs = new FoursquarePlace(name, address, rating, phone,
+											distance, latitude, longitude, category)
+									elements.add(fs);
+								}*/
 								
 								
 							}
