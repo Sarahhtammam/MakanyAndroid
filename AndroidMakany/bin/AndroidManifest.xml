@@ -155,6 +155,10 @@
             android:name=".UpdateStoreProfileActivity"
             android:label="@string/title_activity_update_store_profile" >
         </activity>
+        <activity
+            android:name=".EditOfferActivity"
+            android:label="@string/title_activity_edit_offer" >
+        </activity>
     </application>
 
 </manifest>

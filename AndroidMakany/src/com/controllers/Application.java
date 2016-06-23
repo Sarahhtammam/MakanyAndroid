@@ -36,6 +36,7 @@ public class Application extends android.app.Application {
 	private static ArrayList<String> categories;
 	private static ArrayList<SimpleEvent> events;
 	private static ArrayList<SimplePost> posts;
+	private static ArrayList<SimpleOffer> offers;
 	private static ArrayList<SimpleComment> Comments;
 	private static ArrayList<SimpleItem> items;
 	private static ArrayList<Element> Elements;
@@ -228,6 +229,14 @@ public class Application extends android.app.Application {
 
 	public static void setCurrentUserType(String currentUserType) {
 		Application.currentUserType = currentUserType;
+	}
+
+	public static ArrayList<SimpleOffer> getOffers() {
+		return offers;
+	}
+
+	public static void setOffers(ArrayList<SimpleOffer> offers) {
+		Application.offers = offers;
 	}
 
 	

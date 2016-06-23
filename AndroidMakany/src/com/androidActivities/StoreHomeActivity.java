@@ -2,6 +2,9 @@ package com.androidActivities;
 
 import java.util.Locale;
 
+import com.controllers.Application;
+import com.controllers.StoreController;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -106,7 +109,10 @@ public class StoreHomeActivity extends Activity implements ActionBar.TabListener
 
 			switch (position) {
 			case 0:
-				return new ViewMyOffers();
+				StoreController store = new StoreController();
+				Fragment F = new ViewMyOffers();
+				store.getStoreOffersService(Application.getUserEmail(),(ViewMyOffers)F);
+				return F;
 				
 			case 1:
 				return new CreateOffer();

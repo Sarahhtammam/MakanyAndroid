@@ -68,7 +68,7 @@
     <string name="title_activity_single_post">SinglePostActivity</string>
     <string name="title_activity_view_my_offers">ViewMyOffers</string>
     <string name="title_activity_update_store_profile">UpdateStoreProfileActivity</string>
-    
     <string name="title_activity_temp">temp</string>
+    <string name="title_activity_edit_offer">EditOfferActivity</string>
 
 </resources>
