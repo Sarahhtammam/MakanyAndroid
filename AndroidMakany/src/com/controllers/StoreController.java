@@ -16,8 +16,8 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.simpleModels.SimpleEvent;
 import com.simpleModels.SimpleOffer;
+import com.simpleModels.SimpleReview;
 import com.simpleModels.SimpleStore;
 
 
@@ -26,13 +26,16 @@ public class StoreController {
 
 	public void reviewStoreService(String userMail,String storeMail,String review, String rating) 
 	{
-	new Connection().execute( "http://makanyapp2.appspot.com/rest/reviewStoreService",
+		new Connection().execute( "http://makanyapp2.appspot.com/rest/reviewStoreService",
 		userMail,storeMail,review,rating,"reviewStoreService");
 	}
 	
-	public void getFilteredStoresService(String category, String district, String maxStoreID) 
+	public void getFilteredStoresService(String category, String district, String maxStoreID, AsyncResponse d) 
 	{
-	new Connection().execute( "http://makanyapp2.appspot.com/rest/getFilteredStoresService",
+		Connection connectionClass = new Connection();
+		connectionClass.delegate = d;
+		
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getFilteredStoresService",
 		category, district, maxStoreID,"getFilteredStoresService");
 	}
 	
@@ -46,7 +49,7 @@ public class StoreController {
 	
 	public void getStoreReviewsService(String storeMail) 
 	{
-	new Connection().execute( "http://makanyapp2.appspot.com/rest/getStoreReviewsService",
+		new Connection().execute( "http://makanyapp2.appspot.com/rest/getStoreReviewsService",
 		storeMail,"getStoreReviewsService");
 	}
 	
@@ -175,31 +178,36 @@ public class StoreController {
 				{
 					System.out.println("result " + result);
 					
-					JSONObject object = new JSONObject(result);
-					/*try
-					{
-						
-					*SimpleStore simpleStore = new SimpleStore(object.getString("ID"), object.getString("name"),
-								object.getString("email"),object.getString("password"),object.getString("district"),
-								object.getString("category"), object.getString("description"),
-								object.getString("date"), object.getString("latitude"),
-								object.getString("longitude"));
-						
-						
-						Application.setCurrentStore(simpleStore);
+					ArrayList<SimpleStore> stores = new ArrayList<SimpleStore>();
 					
+					JSONArray requestArray;
+					
+					try {
+							requestArray = new JSONArray(result);
+							for(int i=0;i<requestArray.length();i++)
+							{
+								JSONObject object=new JSONObject();
+								object = (JSONObject)requestArray.get(i);
+								
+								SimpleStore simpleStore = new SimpleStore (object.getString("ID"),
+										object.getString("name"),object.getString("email"),object.getString("password"),
+										object.getString("district"), object.getString("category"),object.getString("description"),
+										object.getString("date"), object.getString("latitude"), object.getString("longitude"));
+								
+								stores.add(simpleStore);
+							}
+					
+
+							Application.setStores(stores);
+							delegate.processFinish("Filtered Stores");
+
 					}
-			
 					
-			
+					
 					catch (JSONException e) 
 					{
-						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
-				
-					}*/
-					
+						e.printStackTrace();
+					}
 				}
 				
 				
@@ -243,11 +251,39 @@ public class StoreController {
 				
 				if (serviceType.equals("getStoreReviewsService")) 
 				{
+					System.out.println("result " + result);
 					
-						
-				
+					ArrayList<SimpleReview> reviews = new ArrayList<SimpleReview>();
+					
+					JSONArray requestArray;
+					
+					try {
+							requestArray = new JSONArray(result);
+							for(int i=0;i<requestArray.length();i++)
+							
+							{
+								JSONObject object=new JSONObject();
+								object = (JSONObject)requestArray.get(i);
+								
+								SimpleReview simpleReview= new SimpleReview(object.getString("ID"),
+										object.getString("reviewerMail"),object.getString(""), object.getString("review"),
+										object.getString("date"), object.getString("rating"));
+										
+										
+								reviews.add(simpleReview);
+							}
+					
+							Application.getCurrentStore().setReviews(reviews);
+					}
+					
+					
+					catch (JSONException e) 
+					{
+						e.printStackTrace();
+					}
+
 				}
-				
+
 				if (serviceType.equals("getStoreService"))
 				{
 					JSONObject object = new JSONObject(result);

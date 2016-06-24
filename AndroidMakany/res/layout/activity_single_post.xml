@@ -36,64 +36,64 @@
 			    </LinearLayout>
                 <Button
                     android:id="@+id/addCommentOnPost"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
-                    android:padding="30dp"
+                    android:padding="20dp"
                     android:text="Add Comment" />
 
                
 
                 <Button
                     android:id="@+id/approvePost"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
-                    android:padding="30dp"
+                    android:padding="20dp"
                     android:text="Approve" />
 
                 <Button
                     android:id="@+id/DisApprovePost"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
-                    android:padding="30dp"
+                    android:padding="20dp"
                     android:text="Dissaprove" />
 
                  <Button
                     android:id="@+id/deletePost"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
-                    android:padding="30dp"
+                    android:padding="20dp"
                     android:text="Delete" />
                 
                  <Button
                     android:id="@+id/reportPost"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
-                    android:padding="30dp"
+                    android:padding="20dp"
                     android:text="Report Post" />
                  
                 <Button
                     android:id="@+id/goBack"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
-                    android:padding="30dp"
+                    android:padding="20dp"
                     android:text="Back" />
             </LinearLayout>
         </ScrollView>

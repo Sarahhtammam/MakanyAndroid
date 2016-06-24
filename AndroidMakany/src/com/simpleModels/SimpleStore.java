@@ -1,14 +1,14 @@
 package com.simpleModels;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class SimpleStore extends Element
 {
 	private String id, storeName;
 	private String email, password, district, category, description, date;
 	private String latitude, longitude;
-	private Vector<SimpleOffer> offers;
-	private Vector<SimpleReview> reviews;
+	private ArrayList<SimpleOffer> offers;
+	private ArrayList<SimpleReview> reviews;
 	
 	public SimpleStore(String id, String name,String email,String password,String district,
 			String category, String description, String date, String latitude, String longitude)
@@ -106,19 +106,19 @@ public class SimpleStore extends Element
 		this.longitude = longitude;
 	}
 
-	public Vector<SimpleOffer> getOffers() {
+	public ArrayList<SimpleOffer> getOffers() {
 		return offers;
 	}
 
-	public void setOffers(Vector<SimpleOffer> offers) {
+	public void setOffers(ArrayList<SimpleOffer> offers) {
 		this.offers = offers;
 	}
 
-	public Vector<SimpleReview> getReviews() {
+	public ArrayList<SimpleReview> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(Vector<SimpleReview> reviews) {
+	public void setReviews(ArrayList<SimpleReview> reviews) {
 		this.reviews = reviews;
 	}
 	

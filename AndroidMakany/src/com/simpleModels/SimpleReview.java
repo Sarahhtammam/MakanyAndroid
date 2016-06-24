@@ -2,11 +2,10 @@ package com.simpleModels;
 
 public class SimpleReview 
 {
-	private String id, reviewerMail, reviewedID, review, date;
-	private int rating;
+	private String id, reviewerMail, reviewedID, review, date, rating;
 	
 	public SimpleReview(String id, String reviewerMail, String reviewedID, 
-			String review,String date,int rating)
+			String review,String date,String rating)
 	{
 		this.id=id;
 		this.reviewerMail=reviewerMail;
@@ -21,6 +20,6 @@ public class SimpleReview
 	public String getReviewedID(){return reviewedID;}
 	public String getReview(){return review;}
 	public String getDate(){return date;}
-	public int getRating(){return rating;}
+	public String getRating(){return rating;}
 	
 }

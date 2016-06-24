@@ -190,10 +190,8 @@ public class ShowPostsActivity extends Fragment implements  AsyncResponse {
 			
 		}
 			
-			
 		
 	}
-
 
 	
 	

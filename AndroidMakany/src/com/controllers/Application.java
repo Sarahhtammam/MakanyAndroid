@@ -37,6 +37,7 @@ public class Application extends android.app.Application {
 	private static ArrayList<SimpleEvent> events;
 	private static ArrayList<SimplePost> posts;
 	private static ArrayList<SimpleOffer> offers;
+	private static ArrayList<SimpleStore> stores;
 	private static ArrayList<SimpleComment> Comments;
 	private static ArrayList<SimpleItem> items;
 	private static ArrayList<Element> Elements;
@@ -237,6 +238,14 @@ public class Application extends android.app.Application {
 
 	public static void setOffers(ArrayList<SimpleOffer> offers) {
 		Application.offers = offers;
+	}
+
+	public static ArrayList<SimpleStore> getStores() {
+		return stores;
+	}
+
+	public static void setStores(ArrayList<SimpleStore> stores) {
+		Application.stores = stores;
 	}
 
 	

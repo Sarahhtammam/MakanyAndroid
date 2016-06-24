@@ -132,7 +132,7 @@
             android:label="@string/title_activity_create_offer" >
         </activity>
         <activity
-            android:name=".StoreMenu"
+            android:name=".StoresMenuActivity"
             android:label="@string/title_activity_store_menu" >
         </activity>
         <activity
@@ -158,6 +158,10 @@
         <activity
             android:name=".EditOfferActivity"
             android:label="@string/title_activity_edit_offer" >
+        </activity>
+        <activity
+            android:name=".ShowOffersActivity"
+            android:label="@string/title_activity_show_offers" >
         </activity>
     </application>
 

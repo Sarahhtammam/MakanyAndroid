@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@color/grey</item>
-        <item name="android:textColor">@color/purple</item>
+        <item name="android:textColor">@color/darkpurple</item>
         <item name="android:buttonStyle">@style/ButtonText</item>
         <item name="android:editTextStyle">@style/EditTextDefault</item>        
     </style>

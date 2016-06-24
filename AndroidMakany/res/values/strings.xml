@@ -70,5 +70,6 @@
     <string name="title_activity_update_store_profile">UpdateStoreProfileActivity</string>
     <string name="title_activity_temp">temp</string>
     <string name="title_activity_edit_offer">EditOfferActivity</string>
+    <string name="title_activity_show_offers">ShowOffersActivity</string>
 
 </resources>

@@ -118,7 +118,7 @@ public class PostsMenuActivity extends MyDrawerMenu implements ActionBar.TabList
 			case 0:
 				Fragment F = new ShowPostsActivity();
 				PostController postController = new PostController();
-			postController.getPost("", "", Application.currentDistrict, "", "",(ShowPostsActivity)F);
+				postController.getPost("", "", Application.currentDistrict, "", "",(ShowPostsActivity)F);
 				return F;
 				
 			case 1:

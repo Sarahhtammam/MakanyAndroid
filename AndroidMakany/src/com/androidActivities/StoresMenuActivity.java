@@ -2,7 +2,6 @@ package com.androidActivities;
 
 import java.util.Locale;
 
-
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -11,28 +10,21 @@ import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
+import com.controllers.Application;
+import com.controllers.StoreController;
 
 
-public class StoreMenu extends MyDrawerMenu implements ActionBar.TabListener {
 
-	/**
-	 * The {@link android.support.v4.view.PagerAdapter} that will provide
-	 * fragments for each of the sections. We use a {@link FragmentPagerAdapter}
-	 * derivative, which will keep every loaded fragment in memory. If this
-	 * becomes too memory intensive, it may be best to switch to a
-	 * {@link android.support.v13.app.FragmentStatePagerAdapter}.
-	 */
+public class StoresMenuActivity extends MyDrawerMenu implements ActionBar.TabListener {
+
 	SectionsPagerAdapter mSectionsPagerAdapter;
 
-	/**
-	 * The {@link ViewPager} that will host the section contents.
-	 */
 	ViewPager mViewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_store_menu);
+		setContentView(R.layout.activity_stores_menu);
 		super.onCreateDrawer();
 
 		// Set up the action bar.
@@ -109,11 +101,14 @@ public class StoreMenu extends MyDrawerMenu implements ActionBar.TabListener {
 			
 			switch (position) {
 			case 0:
-				return new ShowStoresActivity();
+				Fragment F = new ShowStoresActivity();
+				StoreController storeController = new StoreController();
+				storeController.getFilteredStoresService("", Application.getCurrentDistrict(), "", (ShowStoresActivity)F);
+				return F;
+			
 			case 1:
-				
-				return new ShowStoresActivity();
-				
+				Fragment F2 = new ShowOffersActivity();
+				return F2;
 			}
 			return null;
 		}
