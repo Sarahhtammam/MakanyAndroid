@@ -44,8 +44,10 @@ public class WhatsNewController
 	{
 		Connection connectionClass = new Connection();
 		
-		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getDynamicRecommendationService",
-				usermail, "getDynamicRecommendation");
+		String lat = latitude + "";
+		String longit = logitude + "";
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/DynamicRecommendService",
+				usermail,lat,longit, "getDynamicRecommendation");
 		
 		return;
 	}
@@ -69,8 +71,12 @@ public class WhatsNewController
 			String urlParameters="";
 			
 			
-			if (serviceType.equals("getStaticRecommendation")||serviceType.equals("getDynamicRecommendation"))
+			if (serviceType.equals("getStaticRecommendation"))
 				urlParameters = "email="+ params[1] ;
+			
+			if (serviceType.equals("getDynamicRecommendation"))
+				urlParameters = "email="+ params[1] + "&longitude=" + params[3]
+						+ "&latitude=" + params[2];
 			
 			
 			HttpURLConnection connection;
@@ -124,7 +130,7 @@ public class WhatsNewController
 			try 
 			{
 
-				if (serviceType.equals("getStaticRecommendation")) 
+				if (serviceType.equals("getStaticRecommendation") || serviceType.equals("getDynamicRecommendation") ) 
 				{
 					
 					ArrayList<Element> elements = new ArrayList<Element>();
@@ -188,12 +194,13 @@ public class WhatsNewController
 									elements.add(post);
 								}
 								
-								/*else if (object.getString("type").equals("fs"))
+								else if (object.getString("type").equals("Foursquare"))
 								{
-									FoursquarePlace fs = new FoursquarePlace(name, address, rating, phone,
-											distance, latitude, longitude, category)
+									FoursquarePlace fs = new FoursquarePlace(object.getString("name"), object.getString("address"), 
+											object.getString("rating"), object.getString("phone"),object.getString("distance"), 
+											object.getString("latitude"), object.getString("longitude"), object.getString("category"));
 									elements.add(fs);
-								}*/
+								}
 								
 								
 							}
@@ -214,38 +221,7 @@ public class WhatsNewController
 					
 				}
 				
-				else if (serviceType.equals("getDynamicRecommendation")) 
-				{
-					
-					ArrayList<Element> elements = new ArrayList<Element>();
-					
-					JSONArray requestArray;
-					
-					/*try {
-						
 				
-					}
-					
-					
-					catch (JSONException e) 
-					{
-						e.printStackTrace();
-					}*/
-					
-					SimpleItem simpleItem = new SimpleItem("10","Heba", "car","nice car","heba.khazbak@gmail.com","Zamalek","","Open","","","");
-					elements.add(simpleItem);
-					SimpleEvent event = new SimpleEvent("30","Heba", "caaar", "sports", "run in zamalek 250 m", 30.0,32.0, "heba.khazbak@gmail.com"
-							,"Zamalek", "", "","", "", "");
-					elements.add(event);
-					
-					
-					Intent whatsNew = new Intent(Application.getAppContext(),WhatsNew.class);
-	  				Application.setElements(elements);
-	  				
-	  				whatsNew.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					Application.getAppContext().startActivity(whatsNew);
-					
-				}
 
 
 			}
