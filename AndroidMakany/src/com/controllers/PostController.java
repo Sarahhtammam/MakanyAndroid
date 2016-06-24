@@ -113,7 +113,7 @@ public class PostController
 			else if(serviceType.equals("reportPostService"))
 					urlParameters = "reason="+ params[1] +"&postID="+ params[2] +"&userEmail="+ params[3];
 		
-			else if(serviceType.equals("getFilteredPostsService"))
+			else if(serviceType.equals("getFilteredCommentsService"))
 				urlParameters = "postID="+ params[1] +"&userEmail="+ params[2] +"&commentID="+ params[3];
 	
 			
@@ -182,7 +182,7 @@ public class PostController
 					if(object== null || !object.has("Status"))
 					{
 						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.makeText(Application.getAppContext(), "add post - Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
 					}
@@ -217,7 +217,7 @@ public class PostController
 					if(object== null || !object.has("Status"))
 					{
 						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.makeText(Application.getAppContext(), "delete post - Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
 					}
@@ -257,7 +257,7 @@ public class PostController
 					if(object== null || !object.has("Status"))
 					{
 						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.makeText(Application.getAppContext(), "add cooment - Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
 					}
@@ -289,7 +289,7 @@ public class PostController
 					if(object== null || !object.has("Status"))
 					{
 						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
+						Toast.makeText(Application.getAppContext(), "report post - Error occured",
 						Toast.LENGTH_LONG).show();
 						return;
 					}

@@ -1,5 +1,5 @@
-<resources>
-
+ <resources xmlns:android="http://schemas.android.com/apk/res/android">
+   
     <!--
         Base application theme for API 14+. This theme completely replaces
         AppBaseTheme from BOTH res/values/styles.xml and
@@ -7,6 +7,24 @@
     -->
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- API 14 theme customizations can go here. -->
+             <item name="android:windowBackground">@color/grey</item>
+             <item name="android:textColorPrimary">@color/zeity</item>
+             <item name="android:actionBarStyle">@style/AppTheme.ActionBarStyle</item>
     </style>
+       <style name="AppTheme.ActionBarStyle" parent="android:style/Widget.Holo.Light.ActionBar">
+            <item name="android:background">@color/darkmauve</item>
+            <item name="android:icon">@drawable/makany_logo_small</item>
+            <!-- newwwwwwwww -->
+            <item name="android:height">80sp</item>
+       	</style>
+
+
+        <!--  for the splash screen only -->
+      <style name="Theme.NoTitle" parent="@android:style/Theme.NoTitleBar"></style>
+    
 
 </resources>
+
+
+   
+     

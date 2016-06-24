@@ -3,8 +3,11 @@ package com.androidActivities;
 import java.util.ArrayList;
 
 import android.app.AlertDialog;
+import android.app.ActionBar.LayoutParams;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,7 +40,7 @@ public class SinglePostActivity extends MyDrawerMenu implements OnClickListener 
 		
 		LinearLayout my_layout = (LinearLayout) findViewById(R.id.singlePostLayout);
 
-
+		
 		TextView userName = new TextView(this);
 		userName.setText("Post Owner: " + currentPost.getUserName());
 		my_layout.addView(userName);

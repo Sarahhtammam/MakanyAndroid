@@ -43,23 +43,6 @@ public class CreateEventActivity extends Fragment implements OnClickListener {
 	static String startDate="", endDate="", startTime="", endTime="";
 
 	static boolean startDateSelected = true, startTimeSelected = true;
-	/*
-	 * Button btnSelectStartDate,btnSelectStartTime,
-	 * btnSelectEndDate,btnSelectEndTime;
-	 * 
-	 * static final int DATE_DIALOG_ID_Start = 0; static final int
-	 * TIME_DIALOG_ID_Start = 1; static final int DATE_DIALOG_ID_End = 2; static
-	 * final int TIME_DIALOG_ID_End = 3;
-	 * 
-	 * // variables to save user selected date and time public int
-	 * yearStart,monthStart,dayStart,hourStart,minuteStart; public int
-	 * yearEnd,monthEnd,dayEnd,hourEnd,minuteEnd;
-	 * 
-	 * // declare the variables to Show/Set the date and time when Time and Date
-	 * Picker Dialog first appears private int mYearStart, mMonthStart,
-	 * mDayStart,mHourStart,mMinuteStart; private int mYearEnd, mMonthEnd,
-	 * mDayEnd,mHourEnd,mMinuteEnd;
-	 */
 
 	public CreateEventActivity() {
 	}
