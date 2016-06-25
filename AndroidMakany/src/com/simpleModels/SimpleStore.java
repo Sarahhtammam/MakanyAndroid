@@ -123,6 +123,27 @@ public class SimpleStore extends Element
 	}
 	
 
+	public static ArrayList<String> getStoreNames(ArrayList<SimpleStore> stores)
+	{
+		ArrayList<String> names = new ArrayList<String>();
+		for(int i=0; i<stores.size(); i++)
+		{
+			names.add(stores.get(i).getStoreName());
+		}
+		return names;
+	}
 	
+	public static String getStoreMailByName(ArrayList<SimpleStore> stores, String storeName)
+	{
+		for(int i=0; i<stores.size(); i++)
+		{
+			if(stores.get(i).getStoreName().equals(storeName))
+			return stores.get(i).getEmail();
+			
+		}
+		return "";
+	}
+	
+
 
 }

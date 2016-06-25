@@ -39,6 +39,16 @@ public class StoreController {
 		category, district, maxStoreID,"getFilteredStoresService");
 	}
 	
+	public void getFilteredOffersService(String storeIDs, String offerID, String district, String category, AsyncResponse d) 
+	{
+		Connection connectionClass = new Connection();
+		connectionClass.delegate = d;
+		
+		connectionClass.execute( "http://makanyapp2.appspot.com/rest/getFilteredOffersService",
+				storeIDs, offerID, district, category ,"getFilteredOffersService");
+	}
+	
+
 	public void getStoreOffersService(String storeMail, AsyncResponse d) 
 	{
 		Connection connectionClass = new Connection();
@@ -62,6 +72,7 @@ public class StoreController {
 
 	
 	
+	
 	static class Connection extends AsyncTask<String, String, String> 
 	{
 		String serviceType;
@@ -82,6 +93,11 @@ public class StoreController {
 			else if (serviceType.equals("getFilteredStoresService"))
 				urlParameters = "category="+ params[1] +"&district="+ params[2] +"&maxStoreID="
 						+ params[3];
+			
+			else if (serviceType.equals("getFilteredOffersService"))
+				urlParameters = "storeIDs="+ params[1] +"&offerID="+ params[2] +"&district="
+						+ params[3]+"&category=" + params[4];
+			
 			
 			else if (serviceType.equals("getStoreOfferService") || serviceType.equals("getStoreReviewsService"))
 				urlParameters = "storeMail="+ params[1];
@@ -248,6 +264,45 @@ public class StoreController {
 					delegate.processFinish("");
 
 				}
+				
+				if (serviceType.equals("getFilteredOffersService")) 
+				{
+					System.out.println("result " + result);
+					
+					ArrayList<SimpleOffer> offers = new ArrayList<SimpleOffer>();
+					
+					JSONArray requestArray;
+					
+					try {
+							requestArray = new JSONArray(result);
+							for(int i=0;i<requestArray.length();i++)
+							
+							{
+								JSONObject object=new JSONObject();
+								object = (JSONObject)requestArray.get(i);
+								
+								SimpleOffer simpleOffer= new SimpleOffer(object.getString("ID"), object.getString("description"),
+										"",object.getString("photo"),object.getString("date"),
+												object.getString("numThumbsup"), object.getString("numThumbsDown"),
+												object.getString("numViewers"), object.getString("thumbsupMails"),
+												object.getString("thumbsdownMails"), object.getString("viewersMails"));
+								offers.add(simpleOffer);
+							}
+					
+					}
+					
+					
+					catch (JSONException e) 
+					{
+						e.printStackTrace();
+					}
+					
+					
+					Application.setOffers(offers);
+					delegate.processFinish("");
+
+				}
+
 				
 				if (serviceType.equals("getStoreReviewsService")) 
 				{

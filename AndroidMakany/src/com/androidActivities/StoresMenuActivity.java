@@ -106,9 +106,13 @@ public class StoresMenuActivity extends MyDrawerMenu implements ActionBar.TabLis
 				storeController.getFilteredStoresService("", Application.getCurrentDistrict(), "", (ShowStoresActivity)F);
 				return F;
 			
+				
 			case 1:
 				Fragment F2 = new ShowOffersActivity();
+				StoreController storeController2 = new StoreController();
+				storeController2.getFilteredOffersService("", "",Application.getCurrentDistrict(), "", (ShowOffersActivity)F2);
 				return F2;
+			
 			}
 			return null;
 		}
