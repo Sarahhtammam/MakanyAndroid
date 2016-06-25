@@ -278,6 +278,7 @@ public class ViewElements {
 				Uri uri = Uri.parse(uriString);
 				Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
 						uri);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				Application.getAppContext().startActivity(intent);
 
 			}
