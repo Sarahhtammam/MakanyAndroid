@@ -1,21 +1,18 @@
-Heba
+User: view offers , show stores  (ana 3amlt view my offers bas enty 3andk hatb2a mo5tlfa showaya)
 
-Edit offer / delete
-change district 
-what's new (static/dynamic)
-refesh f kolo 
-Text same as in what's new 
-msg using interface 
-thumb up and down in dynamic 
----------------------
-Sarah 
+View Element (Design)  - l kolo - 
 
-User: view offers , show stores 
-Store : show my offers 
-Event from to, rest of event 
-Post comment 
-View Element (Design)
-Chat Conversation End
-Type a message...
+f what's new check link l service mazbot lma ziad y3ml push
+w hatb2a same as static ( mmkn f nafs l if .. if static aw dynamic e3ml kda)
 
-Choose Files
+Testing and screenshots
+Store
+Post
+Event
+
+Aid
+Store user
+Normal user
+Admin panel (web) 
+BA
+whats new

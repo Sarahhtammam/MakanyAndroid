@@ -430,10 +430,7 @@ public class EventController
 			
 					catch (JSONException e) 
 					{
-						System.out.println("error" );
-						Toast.makeText(Application.getAppContext(), "Error occured",
-						Toast.LENGTH_LONG).show();
-				
+						e.printStackTrace();
 					}
 					
 					return;
