@@ -133,35 +133,44 @@ public class UpdateMyProfileActivity extends MyDrawerMenu {
 					System.out.println("\nSelected districts: " + selectedDistrict);
 					System.out.println("\nSelected Gender: " + selectedGender);
 					
-					if(passwordEditText_old.getText().toString().equals(Application.getCurrentUser().getPassword()))
-					{
-						System.out.println("OK same pass");
-						UserController userController = new UserController();
+					if (email_update.getText().toString().trim().equals("")) {
+						email_update.setError("Email is required!");
 
-						if(passwordEditText_new.getText().toString().trim().equals(""))
-							//update with old password
-							userController.EditProfile(email_update.getText().toString(),name_update.getText().toString(), 
-							passwordEditText_old.getText().toString(), Application.getCurrentUser().getBirthDate(), 
-							selectedDistrict, selectedGender, twitterAccount_update.getText().toString(), 
-							foursquareAccount_update.getText().toString(), checkedInterests);
-					
-						else
-							//update with new password
-							userController.EditProfile(email_update.getText().toString(),name_update.getText().toString(), 
-									passwordEditText_new.getText().toString(), Application.getCurrentUser().getBirthDate(), 
-									selectedDistrict, selectedGender, twitterAccount_update.getText().toString(), 
-									foursquareAccount_update.getText().toString(), checkedInterests);
-							
 					}
-					
 					else
-					
 					{
-						Toast.makeText(getApplicationContext(),"you entered your old password wrong", Toast.LENGTH_SHORT).show();
-						passwordEditText_old.setError( "Wrong password!" );
-						
-					}
+						if(passwordEditText_old.getText().toString().equals(Application.getCurrentUser().getPassword()))
+						{
+							System.out.println("OK same pass");
+							UserController userController = new UserController();
 
+							if(passwordEditText_new.getText().toString().trim().equals(""))
+								//update with old password
+								userController.EditProfile(email_update.getText().toString(),name_update.getText().toString(), 
+								passwordEditText_old.getText().toString(), Application.getCurrentUser().getBirthDate(), 
+								selectedDistrict, selectedGender, twitterAccount_update.getText().toString(), 
+								foursquareAccount_update.getText().toString(), checkedInterests);
+						
+							else
+								//update with new password
+								userController.EditProfile(email_update.getText().toString(),name_update.getText().toString(), 
+										passwordEditText_new.getText().toString(), Application.getCurrentUser().getBirthDate(), 
+										selectedDistrict, selectedGender, twitterAccount_update.getText().toString(), 
+										foursquareAccount_update.getText().toString(), checkedInterests);
+								
+						}
+						
+						else
+						
+						{
+							Toast.makeText(getApplicationContext(),"you entered your old password wrong", Toast.LENGTH_SHORT).show();
+							passwordEditText_old.setError( "Wrong password!" );
+							
+						}
+
+					}
+					
+					
 //	checkk for password		
 	
 					

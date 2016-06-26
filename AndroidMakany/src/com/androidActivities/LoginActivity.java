@@ -41,6 +41,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
 
 		emailEditText = (EditText) findViewById(R.id.email);
 		passwordEditText = (EditText) findViewById(R.id.password);
@@ -75,6 +76,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			}
 			else
 			{
+				
 				StoreController store = new StoreController();
 				store.getStoreService(pref.getString("email", ""));
 				SessionController.login();	
@@ -86,8 +88,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 				Application.getAppContext().startActivity(storeIntent);
 			}
 			
-
+		
 		}
+		
 
 	}
 

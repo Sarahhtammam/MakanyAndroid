@@ -112,14 +112,27 @@ public class SignUpActivity extends Activity implements OnClickListener {
 	/*	System.out.println("\nSelected interests: " + checkedInterests);
 		System.out.println("\nSelected districts: " + selectedDistrict);
 		System.out.println("\nSelected interests: " + selectedGender);
+		
 */
-		userController.Signup(usernameEditText.getText().toString(),
-				emailEditText.getText().toString(), passwordEditText.getText()
-						.toString(), birthdateEditText.getText().toString(),
-				selectedDistrict, "",
-				selectedGender, twitterAccountEditText.getText().toString(),
-				foursquareAccountEditText.getText().toString(),
-				checkedInterests);
+		if (emailEditText.getText().toString().trim().equals("")) {
+			emailEditText.setError("Email is required!");
+
+		}
+		else if (passwordEditText.getText().toString().trim().equals("")) {
+			passwordEditText.setError("Password is required!");
+
+		}
+		else
+		{
+			userController.Signup(usernameEditText.getText().toString(),
+					emailEditText.getText().toString(), passwordEditText.getText()
+							.toString(), birthdateEditText.getText().toString(),
+					selectedDistrict, "",
+					selectedGender, twitterAccountEditText.getText().toString(),
+					foursquareAccountEditText.getText().toString(),
+					checkedInterests);
+		}
+		
 
 	}
 

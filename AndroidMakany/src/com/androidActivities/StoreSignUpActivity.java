@@ -104,11 +104,28 @@ public class StoreSignUpActivity extends Activity implements OnClickListener{
         
 		selectedDistrict = String.valueOf(districtSpinner.getSelectedItem());
 		
-		userController.store_Signup(storeNameEditText.getText().toString(),
-				emailEditText.getText().toString(), passwordEditText.getText().toString(), "", 
-				selectedDistrict, discriptionEditText.getText().toString(), "", 
-				twitterEditText.getText().toString(), "", selectedCategory);
-//add lattitude and longitude after back end modification
+		
+		if (emailEditText.getText().toString().trim().equals("")) {
+			emailEditText.setError("Email is required!");
+
+		}
+		else if (passwordEditText.getText().toString().trim().equals("")) {
+			passwordEditText.setError("Password is required!");
+
+		}
+		else if (storeNameEditText.getText().toString().trim().equals("")) {
+			storeNameEditText.setError("Store Name is required!");
+		}
+		else
+		{
+			userController.store_Signup(storeNameEditText.getText().toString(),
+					emailEditText.getText().toString(), passwordEditText.getText().toString(), "", 
+					selectedDistrict, discriptionEditText.getText().toString(), "", 
+					twitterEditText.getText().toString(), "", selectedCategory);
+			//add lattitude and longitude after back end modification
+		}
+		
+
 
 	}
 	
