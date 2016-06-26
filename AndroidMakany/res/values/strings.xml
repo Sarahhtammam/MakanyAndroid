@@ -71,5 +71,6 @@
     <string name="title_activity_temp">temp</string>
     <string name="title_activity_edit_offer">EditOfferActivity</string>
     <string name="title_activity_show_offers">ShowOffersActivity</string>
+    <string name="title_activity_internet_msg">InternetMsgActivity</string>
 
 </resources>
