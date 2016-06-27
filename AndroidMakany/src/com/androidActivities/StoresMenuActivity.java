@@ -109,7 +109,9 @@ public class StoresMenuActivity extends MyDrawerMenu implements ActionBar.TabLis
 				
 			case 1:
 				Fragment F2 = new ShowOffersActivity();
+
 				StoreController storeController2 = new StoreController();
+				storeController2.getFilteredStoresService("", Application.getCurrentDistrict(), "", (ShowOffersActivity)F2);
 				storeController2.getFilteredOffersService("", "",Application.getCurrentDistrict(), "", (ShowOffersActivity)F2);
 				return F2;
 			

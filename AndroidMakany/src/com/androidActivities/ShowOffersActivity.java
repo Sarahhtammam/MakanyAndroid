@@ -207,7 +207,7 @@ public class ShowOffersActivity extends Fragment implements  AsyncResponse {
 	{
 		final ArrayList<Integer> mSelectedItems = new ArrayList();  // Where we track the selected items
 		final ArrayList<String> storeNames = SimpleStore.getStoreNames(Application.getStores());
-		final CharSequence[] items = storeNames.toArray(new CharSequence[Application.getCategories().size()]);
+		final CharSequence[] items = storeNames.toArray(new CharSequence[Application.getStores().size()]);
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 	    // Set the dialog title
 	    builder.setTitle("Choose Stores");
@@ -242,7 +242,7 @@ public class ShowOffersActivity extends Fragment implements  AsyncResponse {
 	            			   storeMails += ";";	   
 	            	   }
 	            	   
-	            	   StoreController storeController2 = new StoreController();
+	            	   	StoreController storeController2 = new StoreController();
 	   					storeController2.getFilteredOffersService(storeMails, "",Application.getCurrentDistrict(), "", me);
 	   				
 	                   
