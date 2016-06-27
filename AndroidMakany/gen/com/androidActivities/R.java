@@ -1947,16 +1947,15 @@ containing a value of this type.
         public static final int edit_offer=0x7f0d0000;
         public static final int gain=0x7f0d0001;
         public static final int global=0x7f0d0002;
-        public static final int internet_msg=0x7f0d0003;
-        public static final int main=0x7f0d0004;
-        public static final int main_activity_2=0x7f0d0005;
-        public static final int my_drawer_menu=0x7f0d0006;
-        public static final int posts_menu=0x7f0d0007;
-        public static final int show_stores=0x7f0d0008;
-        public static final int splash=0x7f0d0009;
-        public static final int update_my_profile=0x7f0d000a;
-        public static final int update_store_profile=0x7f0d000b;
-        public static final int view_my_offers=0x7f0d000c;
+        public static final int main=0x7f0d0003;
+        public static final int main_activity_2=0x7f0d0004;
+        public static final int my_drawer_menu=0x7f0d0005;
+        public static final int posts_menu=0x7f0d0006;
+        public static final int show_stores=0x7f0d0007;
+        public static final int splash=0x7f0d0008;
+        public static final int update_my_profile=0x7f0d0009;
+        public static final int update_store_profile=0x7f0d000a;
+        public static final int view_my_offers=0x7f0d000b;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 

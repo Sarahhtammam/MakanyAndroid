@@ -164,18 +164,6 @@
             android:label="@string/title_activity_show_offers" >
         </activity>
 
-        <receiver
-            android:name=".CheckConnectivity"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-        <activity
-            android:name=".InternetMsgActivity"
-            android:label="@string/title_activity_internet_msg" >
-        </activity>
     </application>
 
 </manifest>
